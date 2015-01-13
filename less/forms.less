@@ -22,7 +22,7 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.5);
+  font-size: (@font-size-large * 1.5);
   line-height: inherit;
   color: @legend-color;
   border: 0;
@@ -84,7 +84,7 @@ input[type="checkbox"]:focus {
 output {
   display: block;
   padding-top: (@padding-base-vertical + 1);
-  font-size: @font-size-base;
+  font-size: @font-size-large;
   line-height: @line-height-base;
   color: @input-color;
 }
@@ -117,7 +117,7 @@ output {
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @font-size-base;
+  font-size: @font-size-large;
   line-height: @line-height-base;
   color: @input-color;
   background-color: @input-bg;
@@ -321,11 +321,11 @@ input[type="checkbox"] {
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-xlarge; @line-height-large; @input-border-radius-large);
 }
 .form-group-lg {
   .form-control {
-    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-xlarge; @line-height-large; @input-border-radius-large);
   }
 }
 
