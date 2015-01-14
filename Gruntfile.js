@@ -33,8 +33,8 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     // Metadata.
-    pkg: grunt.file.readJSON('package.json')
-    //jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
+    pkg: grunt.file.readJSON('package.json'),
+    // jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
 
     // Task configuration.
     clean: {
