@@ -183,6 +183,7 @@
     <a href="#" class="btn btn-primary btn-lg disabled" role="button">首要按钮</a>
     <a href="#" class="btn btn-default btn-lg disabled" role="button">默认按钮</a>
   </p>
+
 {% highlight html %}
 <a href="#" class="btn btn-primary btn-lg disabled" role="button">首要按钮</a>
 <a href="#" class="btn btn-default btn-lg disabled" role="button">默认按钮</a>
@@ -194,5 +195,24 @@
     <h4>链接按钮的警告</h4>
     <p>上面这个类，是通过 <code>pointer-events:none</code> 来阻止<code>&lt;a&gt;</code>按钮的行为。但是这个CSS属性不是标准属性，所以无法兼容全部浏览器，不日opera 18 或者 IE11 。而且，即使浏览器支持 <code>pointer-events: none</code>，也无法影响键盘事件，用户依然可以通过键盘来激活这个链接。所以为了安全起见，要用JS来禁用这些按钮。</p>
   </div>
-
+  <h2 id='buttons-bordered'>只有边框</h2>
+  <p>通过添加 <code>.btn-bordered</code> 让按钮只有边框而没有背景颜色。</p>
+  <div class="bs-example" data-example-id="btn-bordered">
+    <button type="button" class="btn btn-default btn-bordered">默认</button>
+    <button type="button" class="btn btn-primary btn-bordered">首要</button>
+    <button type="button" class="btn btn-success btn-bordered">成功</button>
+    <button type="button" class="btn btn-info btn-bordered">提示</button>
+    <button type="button" class="btn btn-warning btn-bordered">警告</button>
+    <button type="button" class="btn btn-danger btn-bordered">危险</button>
+    <button type="button" class="btn btn-link btn-bordered">链接</button>
+  </div>
+{% highlight html %}
+<button type="button" class="btn btn-default btn-bordered">默认</button>
+<button type="button" class="btn btn-primary btn-bordered">首要</button>
+<button type="button" class="btn btn-success btn-bordered">成功</button>
+<button type="button" class="btn btn-info btn-bordered">提示</button>
+<button type="button" class="btn btn-warning btn-bordered">警告</button>
+<button type="button" class="btn btn-danger btn-bordered">危险</button>
+<button type="button" class="btn btn-link btn-bordered">链接</button>
+{% endhighlight %}
 </div>
