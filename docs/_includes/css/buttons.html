@@ -1,189 +1,198 @@
 <div class="bs-docs-section">
-  <h1 id="buttons" class="page-header">Buttons</h1>
+  <h1 id="buttons" class="page-header">按钮</h1>
 
-  <h2 id="buttons-tags">Button tags</h2>
-  <p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+  <h2 id="buttons-tags">按钮HTML标签</h2>
+  <p>按钮可以用在 <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, 或者 <code>&lt;input&gt;</code> 元素上.</p>
   <form class="bs-example" data-example-id="btn-tags">
-    <a class="btn btn-default" href="#" role="button">Link</a>
-    <button class="btn btn-default" type="submit">Button</button>
+    <a class="btn btn-default" href="#" role="button">链接</a>
+    <button class="btn btn-default" type="submit">按钮</button>
     <input class="btn btn-default" type="button" value="Input">
     <input class="btn btn-default" type="submit" value="Submit">
   </form>
 {% highlight html %}
-<a class="btn btn-default" href="#" role="button">Link</a>
-<button class="btn btn-default" type="submit">Button</button>
+<a class="btn btn-default" href="#" role="button">链接</a>
+<button class="btn btn-default" type="submit">按钮</button>
 <input class="btn btn-default" type="button" value="Input">
 <input class="btn btn-default" type="submit" value="Submit">
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-buttons-context-usage">
-    <h4>Context-specific usage</h4>
-    <p>While button classes can be used on <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements, only <code>&lt;button&gt;</code> elements are supported within our nav and navbar components.</p>
+    <h4>不同上下文中使用</h4>
+    <p>按钮可以用在 <code>&lt;a&gt;</code> 和 <code>&lt;button&gt;</code> 元素上, 但是在 nav 和 navbar 中只能用在<code>&lt;button&gt;</code>元素上。</p>
   </div>
 
   <div class="bs-callout bs-callout-warning" id="callout-buttons-anchor-accessibility">
-    <h4>Links acting as buttons</h4>
-    <p>If the <code>&lt;a&gt;</code> elements are used to act as buttons – triggering in-page functionality, rather than navigating to another document or section within the current page – they should also be given an appropriate <code>role="button"</code>.</p>
+    <h4>把链接变成按钮</h4>
+    <p>如果希望 <code>&lt;a&gt;</code> 元素表现的像按钮一样 – 点击会触发页面内的操作而不是跳转到其他页面 – 应该给它们加上 <code>role="button"</code>。</p>
   </div>
 
   <div class="bs-callout bs-callout-warning" id="callout-buttons-ff-height">
-    <h4>Cross-browser rendering</h4>
-    <p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
-    <p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a bug in Firefox &lt;30</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
+    <h4>跨浏览器</h4>
+    <p>根据最佳实践, <strong>我们强烈推荐在任何可能的情况下尽可能使用 <code>&lt;button&gt;</code> 元素</strong> ，以确保在不同的浏览器下有最好的渲染.</p>
+    <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">火狐 &lt;30 版本上有一个bug</a>，that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
+    <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">火狐 &lt;30 版本上有一个bug</a>，使用 <code>&lt;input&gt;</code> 当做按钮的时候，会无法设置正确的 <code>line-height</code>, 这会导致使用其他元素的按钮高度无法对齐.</p>
   </div>
 
-  <h2 id="buttons-options">Options</h2>
-  <p>Use any of the available button classes to quickly create a styled button.</p>
+  <h2 id="buttons-options">不同样式的按钮</h2>
+  <p>有一系列不同的class，可以让你的按钮有不同的样式</p>
   <div class="bs-example" data-example-id="btn-variants">
-    <button type="button" class="btn btn-default">Default</button>
-    <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-link">Link</button>
+    <button type="button" class="btn btn-default">默认</button>
+    <button type="button" class="btn btn-primary">首要</button>
+    <button type="button" class="btn btn-success">成功</button>
+    <button type="button" class="btn btn-info">提示</button>
+    <button type="button" class="btn btn-warning">警告</button>
+    <button type="button" class="btn btn-danger">危险</button>
+    <button type="button" class="btn btn-link">链接</button>
   </div>
 {% highlight html %}
 <!-- Standard button -->
-<button type="button" class="btn btn-default">Default</button>
+<button type="button" class="btn btn-default">默认</button>
 
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-primary">首要</button>
 
 <!-- Indicates a successful or positive action -->
-<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-success">成功</button>
 
 <!-- Contextual button for informational alert messages -->
-<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-info">提示</button>
 
 <!-- Indicates caution should be taken with this action -->
-<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-warning">警告</button>
 
 <!-- Indicates a dangerous or potentially negative action -->
-<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-danger">危险</button>
 
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-<button type="button" class="btn btn-link">Link</button>
+<button type="button" class="btn btn-link">链接</button>
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-buttons-color-accessibility">
-    <h4>Conveying meaning to assistive technologies</h4>
-    <p>Using color to add meaning to a button only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text of the button), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
+    <h4>把样式转变成辅助技术可以识别的含义</h4>
+    <p>使用上面的类只能改变样式，而不能改变按钮对于辅助技术-如屏幕阅读器-的意义。请确保你的按钮的含义不仅体现在它的颜色上，也体现在它的替代技术上，比如，可以通过 <code>.sr-only</code> 来增加一个隐藏的文案提示。
   </div>
 
-  <h2 id="buttons-sizes">Sizes</h2>
-  <p>Fancy larger or smaller buttons? Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> for additional sizes.</p>
+  <h2 id="buttons-sizes">大小</h2>
+  <p>希望改变按钮的大小？只需要在按钮上增加 <code>.btn-xl</code>, <code>.btn-lg</code>, <code>.btn-sm</code>, 或者 <code>.btn-xs</code></p>
   <div class="bs-example" data-example-id="btn-sizes">
     <p>
-      <button type="button" class="btn btn-primary btn-lg">Large button</button>
-      <button type="button" class="btn btn-default btn-lg">Large button</button>
+      <button type="button" class="btn btn-primary btn-xl">超大按钮</button>
+      <button type="button" class="btn btn-default btn-xl">超大按钮</button>
     </p>
     <p>
-      <button type="button" class="btn btn-primary">Default button</button>
-      <button type="button" class="btn btn-default">Default button</button>
+      <button type="button" class="btn btn-primary btn-lg">大按钮</button>
+      <button type="button" class="btn btn-default btn-lg">大按钮</button>
     </p>
     <p>
-      <button type="button" class="btn btn-primary btn-sm">Small button</button>
-      <button type="button" class="btn btn-default btn-sm">Small button</button>
+      <button type="button" class="btn btn-primary">默认大小</button>
+      <button type="button" class="btn btn-default">默认大小</button>
     </p>
     <p>
-      <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
-      <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+      <button type="button" class="btn btn-primary btn-sm">小按钮</button>
+      <button type="button" class="btn btn-default btn-sm">小按钮</button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-primary btn-xs">超小按钮</button>
+      <button type="button" class="btn btn-default btn-xs">超小按钮</button>
     </p>
   </div>
 {% highlight html %}
 <p>
-  <button type="button" class="btn btn-primary btn-lg">Large button</button>
-  <button type="button" class="btn btn-default btn-lg">Large button</button>
+  <button type="button" class="btn btn-primary btn-xl">超大按钮</button>
+  <button type="button" class="btn btn-default btn-xl">超大按钮</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary">Default button</button>
-  <button type="button" class="btn btn-default">Default button</button>
+  <button type="button" class="btn btn-primary btn-lg">大按钮</button>
+  <button type="button" class="btn btn-default btn-lg">大按钮</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-sm">Small button</button>
-  <button type="button" class="btn btn-default btn-sm">Small button</button>
+  <button type="button" class="btn btn-primary">默认大小</button>
+  <button type="button" class="btn btn-default">默认大小</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
-  <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-primary btn-sm">小按钮</button>
+  <button type="button" class="btn btn-default btn-sm">小按钮</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary btn-xs">超小按钮</button>
+  <button type="button" class="btn btn-default btn-xs">超小按钮</button>
 </p>
 {% endhighlight %}
 
-  <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
+  <p>通过添加 <code>.btn-block</code> 可以创建一个块级按钮 - 它会充满容器的宽度。</p>
   <div class="bs-example" data-example-id="block-btns">
     <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-      <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-      <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block">块级按钮</button>
+      <button type="button" class="btn btn-default btn-lg btn-block">块级按钮</button>
     </div>
   </div>
 {% highlight html %}
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-primary btn-lg btn-block">块级按钮</button>
+<button type="button" class="btn btn-default btn-lg btn-block">块级按钮</button>
 {% endhighlight %}
 
 
-  <h2 id="buttons-active">Active state</h2>
-  <p>Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. For <code>&lt;button&gt;</code> elements, this is done via <code>:active</code>. For <code>&lt;a&gt;</code> elements, it's done with <code>.active</code>. However, you may use <code>.active</code> on <code>&lt;button&gt;</code>s (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the active state programmatically.</p>
+  <h2 id="buttons-active">激活状态</h2>
+  <p>当按就被激活的时候，他们会显示出一个按下的状态（有更深的背景，深色的边框，和内联的阴影）。对于 <code>&lt;button&gt;</code> 元素来说，是通过 <code>:active</code> 来实现的。对于 <code>&lt;a&gt;</code> 元素，通过 <code>.active</code> 类来实现。不过，如果你在按钮上增加 <code>.actice</code> 类（或者通过 <code>aria-pressed="true"</code> 属性）来使它变得高亮，那么你还必须通过JS代码来使它变成真正的激活状态 </p>
 
-  <h3>Button element</h3>
-  <p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>.active</code>.</p>
+  <h3>button元素</h3>
+  <p>我们需要给他添加一个 <code>:active</code> 伪类, 不过如果你想强制显示一个激活状态的样式，也可以增加 <code>.active</code>.</p>
   <p class="bs-example" data-example-id="active-button-btns">
-    <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
-    <button type="button" class="btn btn-default btn-lg active">Button</button>
+    <button type="button" class="btn btn-primary btn-lg active">首要按钮</button>
+    <button type="button" class="btn btn-default btn-lg active">默认按钮</button>
   </p>
 {% highlight html %}
-<button type="button" class="btn btn-primary btn-lg active">Primary button</button>
-<button type="button" class="btn btn-default btn-lg active">Button</button>
+<button type="button" class="btn btn-primary btn-lg active">首要按钮</button>
+<button type="button" class="btn btn-default btn-lg active">默认按钮</button>
 {% endhighlight %}
 
-  <h3>Anchor element</h3>
-  <p>Add the <code>.active</code> class to <code>&lt;a&gt;</code> buttons.</p>
+  <h3>Anchor 元素</h3>
+  <p><code>&lt;a&gt;</code> 元素的按钮上，只需要加上 <code>.active</code> 即可.</p>
   <p class="bs-example" data-example-id="active-anchor-btns">
-    <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
-    <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+    <a href="#" class="btn btn-primary btn-lg active" role="button">首要按钮</a>
+    <a href="#" class="btn btn-default btn-lg active" role="button">默认按钮</a>
   </p>
 {% highlight html %}
-<a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
-<a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+<a href="#" class="btn btn-primary btn-lg active" role="button">首要按钮</a>
+<a href="#" class="btn btn-default btn-lg active" role="button">默认按钮</a>
 {% endhighlight %}
 
 
-  <h2 id="buttons-disabled">Disabled state</h2>
-  <p>Make buttons look unclickable by fading them back with <code>opacity</code>.</p>
+  <h2 id="buttons-disabled">禁用状态</h2>
+  <p>通过 <code>opacity</code> 来让一个按钮看起来像是不可点的。</p>
 
-  <h3>Button element</h3>
-  <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+  <h3>Button 元素</h3>
+  <p>在<code>&lt;button&gt;</code> 按钮上，添加 <code>disabled</code> 属性.</p>
   <p class="bs-example" data-example-id="disabled-button-btns">
-    <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
-    <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+    <button type="button" class="btn btn-primary btn-lg" disabled="disabled">首要按钮</button>
+    <button type="button" class="btn btn-default btn-lg" disabled="disabled">默认按钮</button>
   </p>
 {% highlight html %}
-<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
-<button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+<button type="button" class="btn btn-lg btn-primary" disabled="disabled">首要按钮</button>
+<button type="button" class="btn btn-default btn-lg" disabled="disabled">默认按钮</button>
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-danger" id="callout-buttons-ie-disabled">
-    <h4>Cross-browser compatibility</h4>
-    <p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.</p>
+    <h4>跨浏览器的兼容性</h4>
+    <p>如果你给 <code>&lt;button&gt;</code> 添加了 <code>disabled</code> 属性，IE9 及以下浏览器会给文案渲染出一个灰色的text-shadow出阿狸，并且我们无法修复这个问题。</p>
   </div>
 
-  <h3>Anchor element</h3>
-  <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+  <h3>Anchor 元素</h3>
+  <p>在<code>&lt;a&gt;</code> 按钮上，添加 <code>.disabled</code> 类。</p>
   <p class="bs-example" data-example-id="disabled-anchor-btns">
-    <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
-    <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+    <a href="#" class="btn btn-primary btn-lg disabled" role="button">首要按钮</a>
+    <a href="#" class="btn btn-default btn-lg disabled" role="button">默认按钮</a>
   </p>
 {% highlight html %}
-<a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
-<a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+<a href="#" class="btn btn-primary btn-lg disabled" role="button">首要按钮</a>
+<a href="#" class="btn btn-default btn-lg disabled" role="button">默认按钮</a>
 {% endhighlight %}
   <p>
-    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
+    我们把 <code>.disabled</code> 当做一个工具类来用，就和常见的<code>.active</code> 一样, 所以没有添加一个 <code>btn-</code> 的前缀.
   </p>
   <div class="bs-callout bs-callout-warning" id="callout-buttons-disabled-anchor">
-    <h4>Link functionality caveat</h4>
-    <p>This class uses <code>pointer-events: none</code> to try to disable the link functionality of <code>&lt;a&gt;</code>s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11. In addition, even in browsers that do support <code>pointer-events: none</code>, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, use custom JavaScript to disable such links.</p>
+    <h4>链接按钮的警告</h4>
+    <p>上面这个类，是通过 <code>pointer-events:none</code> 来阻止<code>&lt;a&gt;</code>按钮的行为。但是这个CSS属性不是标准属性，所以无法兼容全部浏览器，不日opera 18 或者 IE11 。而且，即使浏览器支持 <code>pointer-events: none</code>，也无法影响键盘事件，用户依然可以通过键盘来激活这个链接。所以为了安全起见，要用JS来禁用这些按钮。</p>
   </div>
 
 </div>
