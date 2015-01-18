@@ -480,6 +480,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 
+  grunt.loadNpmTasks('prefix-cssclass');
   grunt.registerTask('addprefix', ['prefix:sui']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
