@@ -42,6 +42,21 @@ module.exports = function (grunt) {
       docs: 'docs/dist'
     },
 
+    prefix: {
+      options: {
+        //均有默认配置
+        keyClass: []
+        ,prefix: 'sui-'
+      },
+      sui: {
+        expand: true,
+        cwd: 'less/',
+        src: ['./*.less'],
+        dest: 'less/',
+        ext: '.less'
+      }
+    },
+
     jshint: {
       options: {
         jshintrc: 'js/.jshintrc'
@@ -464,6 +479,8 @@ module.exports = function (grunt) {
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
+
+  grunt.registerTask('addprefix', ['prefix:sui']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
