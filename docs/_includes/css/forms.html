@@ -381,23 +381,75 @@
   <p>Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via <code>border-radius</code> properties.</p>
   <div class="bs-example" data-example-ids="select-form-control">
     <form>
-      <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control input-lg">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control input-sm">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<select class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control input-lg">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control input-sm">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
 {% endhighlight %}
 
   <p>For <code>&lt;select&gt;</code> controls with the <code>multiple</code> attribute, multiple options are shown by default.</p>
@@ -532,9 +584,11 @@
         </div>
         <div class="form-group">
           <label for="disabledSelect">Disabled select menu</label>
-          <select id="disabledSelect" class="form-control">
-            <option>Disabled select</option>
-          </select>
+          <label class="select">
+            <select id="disabledSelect" class="form-control">
+              <option>Disabled select</option>
+            </select>
+          </label>
         </div>
         <div class="checkbox">
           <label>
@@ -554,9 +608,11 @@
     </div>
     <div class="form-group">
       <label for="disabledSelect">Disabled select menu</label>
-      <select id="disabledSelect" class="form-control">
-        <option>Disabled select</option>
-      </select>
+      <label class="select">
+        <select id="disabledSelect" class="form-control">
+          <option>Disabled select</option>
+        </select>
+      </label>
     </div>
     <div class="checkbox">
       <label>
@@ -796,22 +852,28 @@
 
   <h3>Height sizing</h3>
   <p>Create taller or shorter form controls that match button sizes.</p>
-  <div class="bs-example bs-example-control-sizing" data-example-id="form-control-height-sizes">
+  <div class="bs-example" data-example-id="form-control-height-sizes">
     <form>
       <div class="controls">
         <input class="form-control input-lg" type="text" placeholder=".input-lg">
         <input type="text" class="form-control" placeholder="Default input">
         <input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-        <select class="form-control input-lg">
-          <option value="">.input-lg</option>
-        </select>
-        <select class="form-control">
-          <option value="">Default select</option>
-        </select>
-        <select class="form-control input-sm">
-          <option value="">.input-sm</option>
-        </select>
+        <label class="select">
+          <select class="form-control input-lg">
+            <option value="">.input-lg</option>
+          </select>
+        </label>
+        <label class="select">
+          <select class="form-control">
+            <option value="">Default select</option>
+          </select>
+        </label>
+        <label class="select">
+          <select class="form-control input-sm">
+            <option value="">.input-sm</option>
+          </select>
+        </label>
       </div>
     </form>
   </div><!-- /.bs-example -->
@@ -819,10 +881,21 @@
 <input class="form-control input-lg" type="text" placeholder=".input-lg">
 <input class="form-control" type="text" placeholder="Default input">
 <input class="form-control input-sm" type="text" placeholder=".input-sm">
-
-<select class="form-control input-lg">...</select>
-<select class="form-control">...</select>
-<select class="form-control input-sm">...</select>
+<label class="select">
+  <select class="form-control input-lg">
+    <option value="">.input-lg</option>
+  </select>
+</label>
+<label class="select">
+  <select class="form-control">
+    <option value="">Default select</option>
+  </select>
+</label>
+<label class="select">
+  <select class="form-control input-sm">
+    <option value="">.input-sm</option>
+  </select>
+</label>
 {% endhighlight %}
 
   <h3>Horizontal form group sizes</h3>
