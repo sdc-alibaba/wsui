@@ -50,10 +50,9 @@ module.exports = function (grunt) {
       },
       sui: {
         expand: true,
-        cwd: 'less/',
-        src: ['./*.less'],
-        dest: 'less/',
-        ext: '.less'
+        cwd: 'dist/',
+        src: ['./**/*.css', './**/*.js'],
+        dest: 'dist/'
       }
     },
 
@@ -439,11 +438,11 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs', 'prefix:sui']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'prefix:sui']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
