@@ -44,14 +44,14 @@ module.exports = function (grunt) {
 
     prefix: {
       options: {
-        //均有默认配置
-        keyClass: []
-        ,prefix: 'sui-'
+        // 均有默认配置
+        keyClass: [],
+        prefix: 'sui-'
       },
       sui: {
         expand: true,
         cwd: 'dist/',
-        src: ['./**/*.css', './**/*.js'],
+        src: ['./**/*.css'],
         dest: 'dist/'
       }
     },
@@ -438,7 +438,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs', 'prefix:sui']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
