@@ -18,7 +18,9 @@
     color: @text-color;
   }
   // Set the border and box shadow on specific inputs to match
-  .form-control {
+  .form-control,
+  .select,
+  .select:after {
     border-color: @border-color;
     &:focus {
       border-color: darken(@border-color, 10%);
@@ -34,6 +36,8 @@
   .form-control-feedback {
     color: @text-color;
   }
+
+  //select
 }
 
 

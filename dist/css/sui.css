@@ -1,37 +1,3 @@
-@font-face {
-  font-family: "iconfont";
-  src: url('../fonts/iconfont.eot');
-  src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/iconfont.woff') format('woff'), /* chrome、firefox */ url('../fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('../fonts/iconfont.svg#iconfont') format('svg');
-  
-  /* IE9*/
-  /* iOS 4.1- */
-}
-.icon-radio-checked,
-.icon-radio-unchecked,
-.icon-checkbox-unchecked,
-.icon-checkbox-checked,
-.icon-checkbox-halfchecked {
-  font-family: "iconfont" !important;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-radio-checked:before {
-  content: "\e600";
-}
-.icon-checkbox-unchecked:before {
-  content: "\e601";
-}
-.icon-checkbox-checked:before {
-  content: "\e602";
-}
-.icon-checkbox-halfchecked:before {
-  content: "\e603";
-}
-.icon-radio-unchecked:before {
-  content: "\e604";
-}
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -2527,7 +2493,7 @@ output {
 .form-control[readonly],
 fieldset[disabled] .form-control {
   cursor: not-allowed;
-  background-color: #eeeeee;
+  background-color: rgba(0, 0, 0, 0.1);
   opacity: 1;
 }
 textarea.form-control {
@@ -2722,10 +2688,14 @@ select[multiple].form-group-lg .form-control {
 .has-success.checkbox-inline label {
   color: #43cd6e;
 }
-.has-success .form-control {
+.has-success .form-control,
+.has-success .select,
+.has-success .select:after {
   border-color: #43cd6e;
 }
-.has-success .form-control:focus {
+.has-success .form-control:focus,
+.has-success .select:focus,
+.has-success .select:after:focus {
   border-color: #2eaf56;
 }
 .has-success .input-group-addon {
@@ -2748,10 +2718,14 @@ select[multiple].form-group-lg .form-control {
 .has-warning.checkbox-inline label {
   color: #ff7300;
 }
-.has-warning .form-control {
+.has-warning .form-control,
+.has-warning .select,
+.has-warning .select:after {
   border-color: #ff7300;
 }
-.has-warning .form-control:focus {
+.has-warning .form-control:focus,
+.has-warning .select:focus,
+.has-warning .select:after:focus {
   border-color: #cc5c00;
 }
 .has-warning .input-group-addon {
@@ -2774,10 +2748,14 @@ select[multiple].form-group-lg .form-control {
 .has-error.checkbox-inline label {
   color: #ea4a36;
 }
-.has-error .form-control {
+.has-error .form-control,
+.has-error .select,
+.has-error .select:after {
   border-color: #ea4a36;
 }
-.has-error .form-control:focus {
+.has-error .form-control:focus,
+.has-error .select:focus,
+.has-error .select:after:focus {
   border-color: #d72c16;
 }
 .has-error .input-group-addon {
@@ -2813,14 +2791,15 @@ select[multiple].form-group-lg .form-control {
   content: " ";
   position: absolute;
   border: 6px solid #333;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent!important;
+  border-right: 4px solid transparent!important;
+  border-bottom: 4px solid transparent!important;
   height: 0px;
   width: 0px;
   top: 50%;
   right: 10px;
   margin-top: -2px;
+  z-index: 0;
 }
 .select select {
   background: transparent;
@@ -2828,6 +2807,8 @@ select[multiple].form-group-lg .form-control {
   box-shadow: none;
   -webkit-appearance: none;
   margin: -1px 0;
+  position: relative;
+  z-index: 10;
 }
 @media (min-width: 768px) {
   .form-inline .form-group {

@@ -684,6 +684,33 @@
           </label>
         </div>
       </div>
+      <div class="has-success">
+        <label class='control-label' for="selectSuccess">select with success</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectSuccess'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
+      <div class="has-warning">
+        <label class='control-label' for="selectWarning">select with warning</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectWarning'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
+      <div class="has-error">
+        <label class='control-label' for="selectError">select with error</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectError'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
@@ -977,7 +1004,18 @@
         <label for="inputHelpBlock">Input with help text</label>
         <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
       </div>
-      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+      <span id="helpBlock" class="help-block">这是一大段的帮助文案，独占一行。好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案</span>
+    </form>
+    <form class="form-horizontal">
+      <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="helpBlockSmall">Large label</label>
+        <div class="col-sm-5">
+          <input class="form-control" type="text" id="helpBlockSmall" placeholder="input">
+        </div>
+        <div class="col-sm-5">
+          <span class="help-block">通过栅格添加内联的小段文案.</span>
+        </div>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}

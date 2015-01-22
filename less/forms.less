@@ -415,14 +415,15 @@ input[type="checkbox"] {
     content: " ";
     position: absolute;
     border: 6px solid #333;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent!important;
+    border-right: 4px solid transparent!important;
+    border-bottom: 4px solid transparent!important;
     height: 0px;
     width: 0px;
     top: 50%;
     right: 10px;
     margin-top: -2px;
+    z-index: 0;
   }
   select {
     background: transparent;
@@ -430,6 +431,8 @@ input[type="checkbox"] {
     box-shadow: none;
     -webkit-appearance: none;
     margin: -1px 0; //保持大小不变
+    position: relative;
+    z-index: 10;
   }
 }
 
