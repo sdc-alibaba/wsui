@@ -4856,7 +4856,7 @@ a.thumbnail.active {
   color: #333333;
 }
 .alert {
-  padding: 15px;
+  padding: 13px;
   margin-bottom: 18px;
   border: 1px solid transparent;
   border-radius: 2px;
@@ -4877,7 +4877,7 @@ a.thumbnail.active {
 }
 .alert-dismissable,
 .alert-dismissible {
-  padding-right: 35px;
+  padding-right: 33px;
 }
 .alert-dismissable .close,
 .alert-dismissible .close {
@@ -4929,6 +4929,23 @@ a.thumbnail.active {
 }
 .alert-danger .alert-link {
   color: #d72c16;
+}
+.alert-small {
+  padding: 2px 14px;
+}
+.alert-inline {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.alert {
+  overflow: hidden;
+}
+.alert .alert-icon {
+  float: left;
+  font-size: 18px;
+}
+.alert .alert-content {
+  margin-left: 32px;
 }
 @-webkit-keyframes progress-bar-stripes {
   from {
