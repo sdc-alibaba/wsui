@@ -1222,13 +1222,13 @@ h6,
 p {
   margin: 0 0 9px;
 }
-.sui-lead {
+.lead {
   margin-bottom: 18px;
   font-size: 15px;
   font-weight: 300;
 }
 @media (min-width: 768px) {
-  .sui-lead {
+  .lead {
     font-size: 19.2px;
   }
 }
