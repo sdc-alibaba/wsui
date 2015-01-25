@@ -59,6 +59,7 @@
     "load-grunt-tasks": "~2.0.0",
     "npm-shrinkwrap": "^200.0.0",
     "remarkable": "~1.6.0",
+    "prefix-cssclass": "~0.2.1",
     "grunt-newer": "^1.1.0",
     "time-grunt": "~1.0.0"
   },

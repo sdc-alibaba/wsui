@@ -42,6 +42,20 @@ module.exports = function (grunt) {
       docs: 'docs/dist'
     },
 
+    prefix: {
+      options: {
+        // 均有默认配置
+        keyClass: [],
+        prefix: 'sui-'
+      },
+      sui: {
+        expand: true,
+        cwd: './',
+        src: ['dist/css/**/*.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css'],
+        dest: './'
+      }
+    },
+
     jshint: {
       options: {
         jshintrc: 'js/.jshintrc'
@@ -388,7 +402,8 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
+  // grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll:docs']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -434,9 +449,13 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test', 'addprefix']);
 
-  // Version numbering task.
+  // 自动为产出文件和文档补全sui-前缀
+  grunt.loadNpmTasks('prefix-cssclass');
+  grunt.registerTask('addprefix', ['prefix:sui']);
+
+ // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
