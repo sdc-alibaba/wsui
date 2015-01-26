@@ -51,7 +51,7 @@ module.exports = function (grunt) {
       sui: {
         expand: true,
         cwd: './',
-        src: ['dist/css/**/*.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css'],
+        src: ['dist/css/**/*.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css', 'docs/assets/css/**/*.css'],
         dest: './'
       }
     },
