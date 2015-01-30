@@ -1,4 +1,5 @@
-.sui-steps {
+.steps {
+    * {box-sizing: content-box;}
     font-size: 0px;
     overflow: hidden;
     line-height: 0px;
@@ -15,7 +16,7 @@
         font-size: @font-size-base;
         position: relative;
         > label {
-            margin-left: @stepsBaseHeight / 2 + 10px;
+            margin-left: (@stepsBaseHeight / 2 + 10px);
             cursor: default;
         }
     }
@@ -24,26 +25,26 @@
         width: 0px;
         height: 0px;
         border-style: solid;
-        border-width: @stepsBaseHeight / 2;
+        border-width: (@stepsBaseHeight / 2);
         position: absolute;
-        right: -@stepsBaseHeight + 1; //加一个1px，fix wrap带来的宽度
+        right: (-@stepsBaseHeight + 1); //加一个1px，fix wrap带来的宽度
         z-index: 1;
     }
     .triangle-right-bg {
         .triangle-right;
-        border-width: @stepsBaseHeight / 2 + 4;
-        right: -@stepsBaseHeight -  4 * 2;
+        border-width: (@stepsBaseHeight / 2 + 4);
+        right: (-@stepsBaseHeight -  4 * 2);
         border-color: transparent transparent transparent #FFF;
         top: -4px;
     }
 
     .round {
         display: inline-block;
-        width: @font-size-base + 4;  
-        height: @font-size-base + 4;
-        .border-radius((@font-size-base + 4) / 2);
+        width: (@font-size-base + 4px);
+        height: (@font-size-base + 4px);
+        border-radius: ((@font-size-base + 4px) / 2);
         text-align: center;
-        line-height: @font-size-base + 4;
+        line-height: (@font-size-base + 4px);
         .sui-icon {
           vertical-align: -1px;
         }
@@ -96,28 +97,28 @@
 .steps-large {
     .wrap > div {
         font-size: @font-size-xlarge;
-        width: @stepsBaseWidth * 1.25;
-        height: @stepsBaseHeight * 1.25;
-        line-height: @stepsBaseHeight * 1.25;
+        width: (@stepsBaseWidth * 1.25);
+        height: (@stepsBaseHeight * 1.25);
+        line-height: (@stepsBaseHeight * 1.25);
         > label {
             font-size: @font-size-xlarge;
-            margin-left: @stepsBaseHeight * 1.25 / 2 + 10px;
+            margin-left: (@stepsBaseHeight * 1.25 / 2 + 10px);
         }
     }
     .triangle-right {
-        border-width: @stepsBaseHeight * 1.25 / 2;
-        right: -@stepsBaseHeight * 1.25 + 1;
+        border-width: (@stepsBaseHeight * 1.25 / 2);
+        right: (-@stepsBaseHeight * 1.25 + 1);
     }
     .triangle-right-bg {
-        border-width: @stepsBaseHeight * 1.25 / 2 + 4;
-        right: -@stepsBaseHeight * 1.25 -  4 * 2;
+        border-width: (@stepsBaseHeight * 1.25 / 2 + 4);
+        right: (-@stepsBaseHeight * 1.25 -  4 * 2);
     }
     .round {
-        width: @font-size-xlarge + 4;  
-        height: @font-size-xlarge + 4;
-        line-height: @font-size-xlarge + 4;
-        .border-radius((@font-size-xlarge + 4) / 2);
-                                        
+        width: (@font-size-xlarge + 4);
+        height: (@font-size-xlarge + 4);
+        line-height: (@font-size-xlarge + 4);
+        border-radius: ((@font-size-xlarge + 4) / 2);
+
     }
 }
 .steps-auto {
@@ -131,25 +132,26 @@
 
     }
 }
-.sui-steps-round {
+.steps-round {
+    * {box-sizing: content-box;}
     font-size: 0px;
     overflow: hidden;
     line-height: 0px;
     margin: @line-height-computed 0px;
-    padding: 0px @font-size-base / 2;
+    padding: 0px (@font-size-base / 2);
     > div {
         display: inline-block;
         vertical-align: top;
         position: relative;
         .wrap {
-            .clearfix; 
-        } 
+            .clearfix;
+        }
         > label {
             display: inline-block;
             .text-overflow();
             font-size: @font-size-base;
             line-height: @font-size-base;
-            height: @font-size-base; 
+            height: @font-size-base;
             margin-top: @font-size-base / 2;
             color: @stepsRoundFinishedTextColor;
             cursor: default;
@@ -178,8 +180,7 @@
         .round {
             width: 22px;
             height: 22px;
-            .border-radius(15px);
-            display: inline-block;
+            border-radius: 15px;
             vertical-align: middle;
             font-size: @font-size-base;
             color: #FFF;
@@ -192,7 +193,7 @@
             width: 200px;
             height: 6px;
             vertical-align: middle;
-            .border-radius(4px);
+            border-radius: 4px;
         }
     }
     > .finished {
