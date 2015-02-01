@@ -1,3 +1,5 @@
+/*
+ * popover changed so much that this is not applicative
 $(function () {
   'use strict';
 
@@ -226,3 +228,4 @@ $(function () {
       .bootstrapPopover('show')
   })
 })
+*/

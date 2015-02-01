@@ -5,7 +5,7 @@
 @attentionBg: #fef1e3;
 @tipBorderWidth: 2px;
 @arrowOffset: 7px;
-@attentionArrowOffset: @arrowOffset - @tipBorderWidth;
+@attentionArrowOffset: (@arrowOffset - @tipBorderWidth);
 
 .type-style {
   &.default, &.normal, &.confirm {  //normal 是为了兼容以前的版本
@@ -42,8 +42,8 @@
   word-break: break-all;
   word-wrap: break-word;
   //.opacity(0);   bug in IE8 
-  .border-radius(2px);
-  &.in     { /*.opacity(100);*/ opacity:1;}
+  border-radius: 2px;
+  &.in     { opacity:1;}
   &.top    { margin-top:  -3px;}
   &.right  { margin-left:  3px;}
   &.bottom { margin-top:   3px;}
@@ -84,7 +84,7 @@
     border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
     border-top-color: @tooltipBorderColor;
     & .tooltip-arrow.cover {
-      margin-left: -@tooltipArrowWidth + 2;
+      margin-left: (-@tooltipArrowWidth + 2);
       border-top-color: @body-bg;
       top: -@arrowOffset;
     }
@@ -101,7 +101,7 @@
     border-width: @tooltipArrowWidth @tooltipArrowWidth @tooltipArrowWidth 0;
     border-right-color: @tooltipBorderColor;
     & .tooltip-arrow.cover {
-      margin-top: -@tooltipArrowWidth + 2;
+      margin-top: (-@tooltipArrowWidth + 2);
       border-right-color: @body-bg;
       left: 0;
     }
@@ -118,7 +118,7 @@
     border-width: @tooltipArrowWidth 0 @tooltipArrowWidth @tooltipArrowWidth;
     border-left-color: @tooltipBorderColor;
     & .tooltip-arrow.cover {
-      margin-top: -@tooltipArrowWidth + 2;
+      margin-top: (-@tooltipArrowWidth + 2);
       border-left-color: @body-bg;
       left: -@arrowOffset;
     }
@@ -135,7 +135,7 @@
     border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
     border-bottom-color: @tooltipBorderColor;
     & .tooltip-arrow.cover {
-      margin-left: -@tooltipArrowWidth + 2;
+      margin-left: (-@tooltipArrowWidth + 2);
       border-bottom-color: @body-bg;
       top: 0;
     }
@@ -146,7 +146,7 @@
   }
   // ---- end 
   .tooltip-arrow.cover {
-    border-width: @tooltipArrowWidth - 2;
+    border-width: (@tooltipArrowWidth - 2);
   }
 
 }

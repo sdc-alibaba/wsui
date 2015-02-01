@@ -1,3 +1,4 @@
+/* jshint laxcomma: true */
 !function ($) {
 
   "use strict";
@@ -149,44 +150,46 @@
 
         //+ - 7修正，和css对应，勿单独修改
         var d = opt.type == 'attention' ? 5 : 7
+
+        //确定tooltip布局对齐方式
+        var positioning = function (){
+          var _left = pos.left + pos.width / 2 - actualWidth / 2
+            , _top = pos.top + pos.height / 2 - actualHeight / 2
+          switch (align) {
+            case 'left':
+              _left = pos.left
+              break
+            case 'right':
+              _left = pos.left - actualWidth + pos.width
+              break
+            case 'top':
+              _top = pos.top
+              break
+            case 'bottom':
+              _top = pos.top - actualHeight + pos.height
+              break
+          }
+          switch (placement) {
+            case 'bottom':
+              tp = {top: pos.top + pos.height + d, left: _left}
+              break
+            case 'top':
+              tp = {top: pos.top - actualHeight - d, left: _left }
+              break
+            case 'left':
+              tp = {top: _top, left: pos.left - actualWidth - d}
+              break
+            case 'right':
+              tp = {top: _top, left: pos.left + pos.width + d}
+              break
+          }
+          return tp
+        }
+
         tp = positioning();
         this.applyPlacement(tp, placement)
         this.applyAlign(align, pos)
         this.$element.trigger('shown')
-      }
-      //确定tooltip布局对齐方式
-      function positioning (){
-        var _left = pos.left + pos.width / 2 - actualWidth / 2
-          , _top = pos.top + pos.height / 2 - actualHeight / 2
-        switch (align) {
-          case 'left':
-            _left = pos.left
-            break
-          case 'right':
-            _left = pos.left - actualWidth + pos.width
-            break
-          case 'top':
-            _top = pos.top
-            break
-          case 'bottom':
-            _top = pos.top - actualHeight + pos.height
-            break
-        }
-        switch (placement) {
-          case 'bottom':
-            tp = {top: pos.top + pos.height + d, left: _left}
-            break
-          case 'top':
-            tp = {top: pos.top - actualHeight - d, left: _left }
-            break
-          case 'left':
-            tp = {top: _top, left: pos.left - actualWidth - d}
-            break
-          case 'right':
-            tp = {top: _top, left: pos.left + pos.width + d}
-            break
-        }
-        return tp
       }
 
     }
@@ -361,11 +364,13 @@
     }
 
   , tip: function () {
-      return this.$tip = this.$tip || $(this.options.template)
+      this.$tip = this.$tip || $(this.options.template)
+      return this.$tip
     }
 
   , arrow: function(){
-      return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
+      this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
+      return this.$arrow
     }
 
   , validate: function () {
