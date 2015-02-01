@@ -2,37 +2,56 @@
 // Tooltips
 // --------------------------------------------------
 
+@attentionBg: #fef1e3;
+@tipBorderWidth: 2px;
+@arrowOffset: 7px;
+@attentionArrowOffset: @arrowOffset - @tipBorderWidth;
 
+.type-style {
+  &.default, &.normal, &.confirm {  //normal 是为了兼容以前的版本
+    .tooltip-inner {
+      background-color: @body-bg;
+      color: @gray-darker;
+    }
+  }
+  &.attention {
+    .tooltip-inner {
+      background-color: @attentionBg;
+      color: #d7842b
+    }
+  }
+
+  // Wrapper for the tooltip content
+  .tooltip-inner {
+    padding: 9px 11px;
+    text-decoration: none;
+    text-align: left;
+    font-weight: normal;
+    //white-space: pre-wrap;  //fix bug in firefox: not break word when long line withou space
+  }
+
+}
 // Base class
-.tooltip {
+.sui-tooltip {
   position: absolute;
   z-index: @zindex-tooltip;
   display: block;
   visibility: visible;
-  // Reset font and text properties given new insertion method
-  font-family: @font-family-base;
-  font-size: @font-size-small;
-  font-weight: normal;
-  line-height: 1.4;
-  .opacity(0);
-
-  &.in     { .opacity(@tooltip-opacity); }
-  &.top    { margin-top:  -3px; padding: @tooltip-arrow-width 0; }
-  &.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
-  &.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
-  &.left   { margin-left: -3px; padding: 0 @tooltip-arrow-width; }
+  border: @tipBorderWidth solid @tooltipBorderColor;
+  opacity: 0;
+  word-break: break-all;
+  word-wrap: break-word;
+  //.opacity(0);   bug in IE8 
+  .border-radius(2px);
+  &.in     { /*.opacity(100);*/ opacity:1;}
+  &.top    { margin-top:  -3px;}
+  &.right  { margin-left:  3px;}
+  &.bottom { margin-top:   3px;}
+  &.left   { margin-left: -3px;}
+  .type-style();
 }
 
-// Wrapper for the tooltip content
-.tooltip-inner {
-  max-width: @tooltip-max-width;
-  padding: 3px 8px;
-  color: @tooltip-color;
-  text-align: center;
-  text-decoration: none;
-  background-color: @tooltip-bg;
-  border-radius: @border-radius-base;
-}
+
 
 // Arrows
 .tooltip-arrow {
@@ -42,62 +61,92 @@
   border-color: transparent;
   border-style: solid;
 }
-// Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
-.tooltip {
+
+//如果不想用tooltip，但只想要三角效果，对三角父元素用.tooltip-only-arrow和.top|.bottom|.right|.left
+.tooltip-only-arrow{
+  position: relative;
+  border:2px solid @tooltipBorderColor;
+
+  .type-style();
+}
+.sui-tooltip ,.tooltip-only-arrow{
+  &.attention {
+    border: none;
+    & .cover {
+      display: none
+    }
+  }
+  //------------------------------------------.top
   &.top .tooltip-arrow {
-    bottom: 0;
+    bottom: -@arrowOffset;
     left: 50%;
-    margin-left: -@tooltip-arrow-width;
-    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-    border-top-color: @tooltip-arrow-color;
+    margin-left: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
+    border-top-color: @tooltipBorderColor;
+    & .tooltip-arrow.cover {
+      margin-left: -@tooltipArrowWidth + 2;
+      border-top-color: @body-bg;
+      top: -@arrowOffset;
+    }
   }
-  &.top-left .tooltip-arrow {
-    bottom: 0;
-    right: @tooltip-arrow-width;
-    margin-bottom: -@tooltip-arrow-width;
-    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-    border-top-color: @tooltip-arrow-color;
+  &.top.attention .tooltip-arrow {
+    border-top-color: @attentionBg;
+    bottom: -@attentionArrowOffset
   }
-  &.top-right .tooltip-arrow {
-    bottom: 0;
-    left: @tooltip-arrow-width;
-    margin-bottom: -@tooltip-arrow-width;
-    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
-    border-top-color: @tooltip-arrow-color;
-  }
+  //------------------------------------------.right
   &.right .tooltip-arrow {
     top: 50%;
-    left: 0;
-    margin-top: -@tooltip-arrow-width;
-    border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
-    border-right-color: @tooltip-arrow-color;
+    left: -@arrowOffset;
+    margin-top: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth @tooltipArrowWidth @tooltipArrowWidth 0;
+    border-right-color: @tooltipBorderColor;
+    & .tooltip-arrow.cover {
+      margin-top: -@tooltipArrowWidth + 2;
+      border-right-color: @body-bg;
+      left: 0;
+    }
   }
+  &.right.attention .tooltip-arrow {
+    border-right-color: @attentionBg;
+    left: -@attentionArrowOffset
+  }
+  //------------------------------------------.left
   &.left .tooltip-arrow {
     top: 50%;
-    right: 0;
-    margin-top: -@tooltip-arrow-width;
-    border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
-    border-left-color: @tooltip-arrow-color;
+    right: -@arrowOffset;
+    margin-top: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth 0 @tooltipArrowWidth @tooltipArrowWidth;
+    border-left-color: @tooltipBorderColor;
+    & .tooltip-arrow.cover {
+      margin-top: -@tooltipArrowWidth + 2;
+      border-left-color: @body-bg;
+      left: -@arrowOffset;
+    }
   }
+  &.left.attention .tooltip-arrow {
+    border-left-color: @attentionBg;
+    right: -@attentionArrowOffset
+  }
+  //------------------------------------------.bottom
   &.bottom .tooltip-arrow {
-    top: 0;
+    top: -@arrowOffset;
     left: 50%;
-    margin-left: -@tooltip-arrow-width;
-    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-    border-bottom-color: @tooltip-arrow-color;
+    margin-left: -@tooltipArrowWidth;
+    border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
+    border-bottom-color: @tooltipBorderColor;
+    & .tooltip-arrow.cover {
+      margin-left: -@tooltipArrowWidth + 2;
+      border-bottom-color: @body-bg;
+      top: 0;
+    }
   }
-  &.bottom-left .tooltip-arrow {
-    top: 0;
-    right: @tooltip-arrow-width;
-    margin-top: -@tooltip-arrow-width;
-    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-    border-bottom-color: @tooltip-arrow-color;
+  &.bottom.attention .tooltip-arrow {
+    border-bottom-color: @attentionBg;
+    top: -@attentionArrowOffset
   }
-  &.bottom-right .tooltip-arrow {
-    top: 0;
-    left: @tooltip-arrow-width;
-    margin-top: -@tooltip-arrow-width;
-    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
-    border-bottom-color: @tooltip-arrow-color;
+  // ---- end 
+  .tooltip-arrow.cover {
+    border-width: @tooltipArrowWidth - 2;
   }
+
 }
