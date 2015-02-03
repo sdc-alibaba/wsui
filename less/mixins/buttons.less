@@ -10,7 +10,13 @@
 
   &:hover,
   &:focus,
-  &.focus,
+  &.focus {
+    @backgroundHighlightColor: lighten(@background, 8%);
+    color: @color;
+    background-color: @backgroundHighlightColor;
+        border-color: darken(@backgroundHighlightColor, 5%);
+  }
+
   &:active,
   &.active,
   .open > .dropdown-toggle& {
