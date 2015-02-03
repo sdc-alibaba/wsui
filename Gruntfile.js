@@ -92,6 +92,7 @@ module.exports = function (grunt) {
       },
       sui: {
         src: [
+          'js/template.js',
           'js/transition.js',
           'js/alert.js',
           'js/button.js',
