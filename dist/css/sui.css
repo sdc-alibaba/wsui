@@ -1162,7 +1162,7 @@ h6,
 .h6 {
   margin: 9px 0;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.5;
   color: inherit;
 }
@@ -1213,7 +1213,7 @@ h4,
 }
 h5,
 .h5 {
-  font-size: 12px;
+  font-size: 14px;
 }
 h6,
 .h6 {
@@ -1331,7 +1331,7 @@ a.bg-danger:hover {
 }
 .page-header {
   padding-bottom: 8px;
-  margin: 18px 0 1.5;
+  margin: 18px 0 27px;
   font-size: 14px;
   border-bottom: 1px solid #eee;
 }
@@ -2960,7 +2960,11 @@ fieldset[disabled] .btn {
 .btn:focus,
 .btn-default:focus,
 .btn.focus,
-.btn-default.focus,
+.btn-default.focus {
+  color: #333;
+  background-color: #fff;
+  border-color: #f2f2f2;
+}
 .btn:active,
 .btn-default:active,
 .btn.active,
@@ -3033,7 +3037,11 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary:hover,
 .btn-primary:focus,
-.btn-primary.focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #4eb3f2;
+  border-color: #36a9f0;
+}
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
@@ -3078,7 +3086,11 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-success:hover,
 .btn-success:focus,
-.btn-success.focus,
+.btn-success.focus {
+  color: #fff;
+  background-color: #63d687;
+  border-color: #4fd077;
+}
 .btn-success:active,
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
@@ -3123,7 +3135,11 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info:hover,
 .btn-info:focus,
-.btn-info.focus,
+.btn-info.focus {
+  color: #fff;
+  background-color: #7dcde5;
+  border-color: #68c5e1;
+}
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
@@ -3168,7 +3184,11 @@ fieldset[disabled] .btn-info.active {
 }
 .btn-warning:hover,
 .btn-warning:focus,
-.btn-warning.focus,
+.btn-warning.focus {
+  color: #fff;
+  background-color: #fcd029;
+  border-color: #fcca10;
+}
 .btn-warning:active,
 .btn-warning.active,
 .open > .dropdown-toggle.btn-warning {
@@ -3213,7 +3233,11 @@ fieldset[disabled] .btn-warning.active {
 }
 .btn-danger:hover,
 .btn-danger:focus,
-.btn-danger.focus,
+.btn-danger.focus {
+  color: #fff;
+  background-color: #ee6b5b;
+  border-color: #eb5644;
+}
 .btn-danger:active,
 .btn-danger.active,
 .open > .dropdown-toggle.btn-danger {
