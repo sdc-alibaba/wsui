@@ -37,7 +37,7 @@ p {
   margin: 0 0 (@line-height-computed / 2);
 }
 
-.sui-lead {
+.lead {
   margin-bottom: @line-height-computed;
   font-size: floor((@font-size-base * 1.25));
   font-weight: 300;
@@ -123,7 +123,8 @@ mark,
 
 .page-header {
   padding-bottom: ((@line-height-computed / 2) - 1);
-  margin: (@line-height-computed * 2) 0 @line-height-computed;
+  font-size: @font-size-xlarge;
+  margin: @line-height-computed 0 (@line-height-computed * 1.5);
   border-bottom: 1px solid @page-header-border-color;
 }
 

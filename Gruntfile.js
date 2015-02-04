@@ -92,6 +92,7 @@ module.exports = function (grunt) {
       },
       sui: {
         src: [
+          'js/template.js',
           'js/transition.js',
           'js/alert.js',
           'js/button.js',
@@ -388,7 +389,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll:docs']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
