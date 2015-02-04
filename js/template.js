@@ -3,6 +3,7 @@
 // By default, Underscore uses ERB-style template delimiters, change the
 // following template settings to use alternative delimiters.
 !function ($) {
+  'use strict';
   var escapeMap = {
     '&': '&amp;',
     '<': '&lt;',
