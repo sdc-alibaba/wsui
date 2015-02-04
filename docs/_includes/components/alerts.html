@@ -31,7 +31,108 @@
 <div class="alert alert-warning" role="alert">...</div>
 <div class="alert alert-danger" role="alert">...</div>
 {% endhighlight %}
-
+  <h2 id="alerts-small">小尺寸</h2>
+  <p>添加 <code>.alert-small</code> 变成小尺寸.</p>
+  <div class="bs-example" data-example-id="simple-alerts">
+    <div class="alert alert-success alert-small" role="alert">
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+    <div class="alert alert-info alert-small" role="alert">
+      <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+    </div>
+    <div class="alert alert-warning alert-small" role="alert">
+      <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+    <div class="alert alert-danger alert-small" role="alert">
+      <strong>Oh snap!</strong> Change a few things up and try submitting again.
+    </div>
+  </div>
+{% highlight html %}
+<div class="alert alert-success alert-small" role="alert">
+  <strong>Well done!</strong> You successfully read this important alert message.
+</div>
+<div class="alert alert-info alert-small" role="alert">
+  <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</div>
+<div class="alert alert-warning alert-small" role="alert">
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+<div class="alert alert-danger alert-small" role="alert">
+  <strong>Oh snap!</strong> Change a few things up and try submitting again.
+</div>
+{% endhighlight %}
+  <h2 id="alerts-inline">内联</h2>
+  <p>添加 <code>.alert-inline</code> 变成内联样式，不会独占一行.</p>
+  <div class="bs-example" data-example-id="simple-alerts">
+    <div class="alert alert-success alert-small alert-inline" role="alert">
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+    <div class="alert alert-info alert-small alert-inline" role="alert">
+      <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+    </div>
+    <div class="alert alert-warning alert-small alert-inline" role="alert">
+      <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+    <div class="alert alert-danger alert-small alert-inline" role="alert">
+      <strong>Oh snap!</strong> Change a few things up and try submitting again.
+    </div>
+  </div>
+{% highlight html %}
+<div class="alert alert-success alert-small alert-inline" role="alert">
+  <strong>Well done!</strong> You successfully read this important alert message.
+</div>
+<div class="alert alert-info alert-small alert-inline" role="alert">
+  <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</div>
+<div class="alert alert-warning alert-small alert-inline" role="alert">
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+<div class="alert alert-danger alert-small alert-inline" role="alert">
+  <strong>Oh snap!</strong> Change a few things up and try submitting again.
+</div>
+{% endhighlight %}
+  <h2 id="alerts-icons">带图标</h2>
+  <p></p>
+  <div class="bs-example" data-example-id="simple-alerts">
+    <div class="alert alert-success" role="alert">
+      <i class="iconfont icon-success alert-icon"></i>
+      <div class="alert-content">
+        <h4>注意</h4>
+        <strong>Well done!</strong> You successfully read this important alert message.
+        <p>阿里是个好地方，啦啦啦！</p>
+      </div>
+    </div>
+    <div class="alert alert-warning" role="alert">
+      <i class="iconfont icon-warning alert-icon"></i>
+      <div class="alert-content">
+        <h4>注意</h4>
+        <strong>Well done!</strong> You successfully read this important alert message.
+        <p>阿里是个好地方，啦啦啦！</p>
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert">
+      <i class="iconfont icon-danger alert-icon"></i>
+      <div class="alert-content">
+        <h4>注意</h4>
+        <strong>Well done!</strong> You successfully read this important alert message.
+        <p>阿里是个好地方，啦啦啦！</p>
+      </div>
+    </div>
+    <div class="alert alert-success alert-small" role="alert">
+      <i class="iconfont icon-success"></i>
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+    <div class="alert alert-warning alert-small" role="alert">
+      <i class="iconfont icon-warning"></i>
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+    <div class="alert alert-danger alert-small" role="alert">
+      <i class="iconfont icon-danger"></i>
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+  </div>
+{% highlight html %}
+{% endhighlight %}
   <h2 id="alerts-dismissible">Dismissible alerts</h2>
   <p>Build on any alert by adding an optional <code>.alert-dismissible</code> and close button.</p>
   <div class="bs-callout bs-callout-info" id="callout-alerts-dismiss-plugin">
