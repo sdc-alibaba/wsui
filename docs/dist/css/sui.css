@@ -2504,6 +2504,7 @@ output {
 .form-control[readonly],
 fieldset[disabled] .form-control {
   cursor: not-allowed;
+  background-color: #eee;
   background-color: rgba(0, 0, 0, .1);
   opacity: 1;
 }
