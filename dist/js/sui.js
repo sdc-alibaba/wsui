@@ -1026,18 +1026,18 @@
     this.$body          = $(document.body)
     if (element === null) {
       var TPL = ''
-        + '<div class="sui-modal fade" tabindex="-1" role="dialog" id="<%=id%>">'
+        + '<div class="modal fade" tabindex="-1" role="dialog" id="<%=id%>">'
           + '<div class="modal-dialog">'
             + '<div class="modal-content">'
               + '<div class="modal-header">'
-                + '<button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">&times;</button>'
+                + '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
                 + '<h4 class="modal-title"><%=title%></h4>'
               + '</div>'
               + '<div class="modal-body"><%=body%></div>'
               + '<div class="modal-footer">'
                 // 增加data-ok="modal"参数
-                + '<button type="button" class="sui-btn btn-primary btn-lg" data-ok="modal"><%=okbtn%></button>'
-                + (options.cancelbtn ? '<button type="button" class="sui-btn btn-default btn-lg" data-dismiss="modal"><%=cancelbtn%></button>' : '')
+                + '<button type="button" class="btn btn-primary btn-lg" data-ok="modal"><%=okbtn%></button>'
+                + (options.cancelbtn ? '<button type="button" class="btn btn-default btn-lg" data-dismiss="modal"><%=cancelbtn%></button>' : '')
               + '</div>'
             + '</div>'
           + '</div>'
@@ -1079,7 +1079,7 @@
     // 设置是否加过渡动画
     !options.transition && $ele.removeClass('fade')
     // 是否显示关闭按钮
-    !options.closebtn && $dialog.find('.sui-close').remove()
+    !options.closebtn && $dialog.find('.close').remove()
     // 设置是否指定宽度类型
     if (optWidth) {
       var widthMap = {

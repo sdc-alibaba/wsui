@@ -17,7 +17,7 @@
 
   <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong> To achieve the same effect, use some custom JavaScript:</p>
   {% highlight js %}
-  $('#myModal').on('shown.bs.modal', function () {
+  $('#myModal').on('shown', function () {
     $('#myInput').focus()
   })
   {% endhighlight %}
@@ -287,7 +287,7 @@
 </div>
 {% endhighlight %}
 {% highlight js %}
-$('#exampleModal').on('show.bs.modal', function (event) {
+$('#exampleModal').on('show', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -362,16 +362,21 @@ $('#myModal').modal({
 {% endhighlight %}
 
   <h4>.modal('toggle')</h4>
-  <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.modal</code> or <code>hidden.bs.modal</code> event occurs).</p>
+  <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown</code> or <code>hidden</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
 
   <h4>.modal('show')</h4>
-  <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown.bs.modal</code> event occurs).</p>
+  <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
   <h4>.modal('hide')</h4>
-  <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden.bs.modal</code> event occurs).</p>
+  <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
+
+  <h4>.modal('okHide')</h4>
+  <p>手动关闭弹层并触发okHide逻辑. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
+  {% highlight js %}$('#myModal').modal('okHide'){% endhighlight %}
+
 
   <h3 id="modals-events">Events</h3>
   <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
@@ -385,30 +390,46 @@ $('#myModal').modal({
       </thead>
       <tbody>
        <tr>
-         <td>show.bs.modal</td>
+         <td>show</td>
          <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
        </tr>
        <tr>
-         <td>shown.bs.modal</td>
+         <td>shown</td>
          <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
        </tr>
        <tr>
-         <td>hide.bs.modal</td>
+         <td>hide</td>
          <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
        </tr>
        <tr>
-         <td>hidden.bs.modal</td>
+         <td>hidden</td>
          <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
        </tr>
        <tr>
-         <td>loaded.bs.modal</td>
-         <td>This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
+         <td>okHide</td>
+         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
+       </tr>
+       <tr>
+         <td>okHidden</td>
+         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击“确认”按钮后弹层已经关闭后的回调</td>
+       </tr>
+       <tr>
+         <td>okHide</td>
+         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了除“确认”按钮外其他原因导致弹层关闭时执行的回调</td>
+       </tr>
+       <tr>
+         <td>okHidden</td>
+         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击了除“确认”按钮外其他原因导致弹层关闭完毕后执行的回调</td>
+       </tr>
+       <tr>
+         <td>loaded</td>
+         <td><code>new</code> This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
        </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
 {% highlight js %}
-$('#myModal').on('hidden.bs.modal', function (e) {
+$('#myModal').on('hidden', function (e) {
   // do something...
 })
 {% endhighlight %}
