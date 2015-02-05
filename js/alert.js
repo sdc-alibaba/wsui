@@ -36,7 +36,7 @@
     if (e) e.preventDefault()
 
     if (!$parent.length) {
-      $parent = $this.closest('.alert')
+      $parent = $this.closest('.sui-alert')
     }
 
     $parent.trigger(e = $.Event('close.bs.alert'))
