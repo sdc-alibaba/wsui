@@ -7,29 +7,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../" class="navbar-brand">Bootstrap</a>
+      <a href="../" class="navbar-brand">N3</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse">
       <ul class="nav navbar-nav">
         <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
-          <a href="../getting-started/">Getting started</a>
+          <a href="../getting-started/">开始入门</a>
         </li>
         <li{% if page.slug == "css" %} class="active"{% endif %}>
           <a href="../css/">CSS</a>
         </li>
         <li{% if page.slug == "components" %} class="active"{% endif %}>
-          <a href="../components/">Components</a>
+          <a href="../components/">组件</a>
         </li>
-        <li{% if page.slug == "js" %} class="active"{% endif %}>
+<!--         <li{% if page.slug == "js" %} class="active"{% endif %}>
           <a href="../javascript/">JavaScript</a>
         </li>
         <li{% if page.slug == "customize" %} class="active"{% endif %}>
           <a href="../customize/">Customize</a>
-        </li>
+        </li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
-        <li><a href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
+        <!-- <li><a href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li> -->
       </ul>
     </nav>
   </div>
