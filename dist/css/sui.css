@@ -3480,10 +3480,15 @@ tbody.collapse.in {
   right: 0;
   left: auto;
 }
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  position: relative;
+}
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
   border-bottom: 4px solid;
+  vertical-align: 2px;
   content: "";
 }
 .dropup .dropdown-menu,

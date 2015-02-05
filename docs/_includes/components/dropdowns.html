@@ -38,11 +38,11 @@
   <p>在 <code>li</code> 标签上添加 <code>.active</code> 变成高亮样式.</p>
   <div class="bs-example" data-example-id="active-dropdown">
     <div class="dropdown clearfix">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-active" data-toggle="dropdown" aria-expanded="true">
         类目
         <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-active">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">女装</a></li>
         <li class="active" role="presentation"><a role="menuitem" tabindex="-1" href="#">男装</a></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">童装</a></li>
@@ -52,11 +52,41 @@
   </div><!-- /example -->
 {% highlight html %}
 <div class="dropdown clearfix">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-active" data-toggle="dropdown" aria-expanded="true">
     类目
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-active">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">女装</a></li>
+    <li class="active" role="presentation"><a role="menuitem" tabindex="-1" href="#">男装</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">童装</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">家电</a></li>
+  </ul>
+</div>
+{% endhighlight %}
+  <h3 id="dropdowns-dropup">上拉</h3>
+  <p>把 <code>.dropdown</code> 换成 <code>.dropup</code>，变成上拉菜单.</p>
+  <div class="bs-example" data-example-id="dropup-dropdown">
+    <div class="dropup clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-dropup" data-toggle="dropdown" aria-expanded="true">
+        类目
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-dropup">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">女装</a></li>
+        <li class="active" role="presentation"><a role="menuitem" tabindex="-1" href="#">男装</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">童装</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">家电</a></li>
+      </ul>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<div class="dropup clearfix">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu-dropup" data-toggle="dropdown" aria-expanded="true">
+    类目
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-dropup">
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">女装</a></li>
     <li class="active" role="presentation"><a role="menuitem" tabindex="-1" href="#">男装</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">童装</a></li>
