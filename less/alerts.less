@@ -40,13 +40,16 @@
 .alert-dismissable, // The misspelled .alert-dismissable was deprecated in 3.2.0.
 .alert-dismissible {
   padding-right: (@alert-padding + 20);
+  position: relative;
 
   // Adjust close link position
   .close {
-    position: relative;
-    top: -2px;
-    right: -21px;
+    @size: @font-size-large;  //这是根据close的大小来的
+    position: absolute;
     color: inherit;
+    top: 50%;
+    right: @size;
+    margin-top: (@size*-1);
   }
 }
 
@@ -65,4 +68,25 @@
 }
 .alert-danger {
   .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
+}
+
+.alert-small {
+  padding: @padding-base-vertical @padding-base-horizontal;
+}
+
+.alert-inline {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+//带图标
+.alert {
+  overflow: hidden;
+  .alert-icon {
+    float: left;
+    font-size: @line-height-computed;
+  }
+  .alert-content {
+    margin-left: 32px;
+  }
 }
