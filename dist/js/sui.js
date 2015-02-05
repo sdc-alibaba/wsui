@@ -218,7 +218,7 @@
     if (e) e.preventDefault()
 
     if (!$parent.length) {
-      $parent = $this.closest('.alert')
+      $parent = $this.closest('.sui-alert')
     }
 
     $parent.trigger(e = $.Event('close.bs.alert'))
@@ -382,12 +382,12 @@
   $(document)
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       var $btn = $(e.target)
-      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+      if (!$btn.hasClass('sui-btn')) $btn = $btn.closest('.sui-btn')
       Plugin.call($btn, 'toggle')
       e.preventDefault()
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
+      $(e.target).closest('.sui-btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
     })
 
 }(jQuery);
@@ -603,7 +603,7 @@
     var href
     var $this   = $(this)
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
-    if (!$target.hasClass('carousel')) return
+    if (!$target.hasClass('sui-carousel')) return
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex = $this.attr('data-slide-to')
     if (slideIndex) options.interval = false
@@ -678,7 +678,7 @@
     if (this.transitioning || this.$element.hasClass('in')) return
 
     var activesData
-    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+    var actives = this.$parent && this.$parent.children('.sui-panel').children('.in, .collapsing')
 
     if (actives && actives.length) {
       activesData = actives.data('bs.collapse')
@@ -996,7 +996,7 @@
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', '.sui-dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
     .on('keydown.bs.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
@@ -1364,7 +1364,7 @@
     animation: true,
     placement: 'top',
     selector: false,
-    template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+    template: '<div class="sui-tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
     trigger: 'hover focus',
     title: '',
     delay: 0,
@@ -1829,7 +1829,7 @@
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    template: '<div class="sui-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   })
 
 
@@ -1937,7 +1937,7 @@
     this.$body          = $('body')
     this.$scrollElement = $(element).is('body') ? $(window) : $(element)
     this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-    this.selector       = (this.options.target || '') + ' .nav li > a'
+    this.selector       = (this.options.target || '') + ' .sui-nav li > a'
     this.offsets        = []
     this.targets        = []
     this.activeTarget   = null
@@ -2035,9 +2035,9 @@
       .parents('li')
       .addClass('active')
 
-    if (active.parent('.dropdown-menu').length) {
+    if (active.parent('.sui-dropdown-menu').length) {
       active = active
-        .closest('li.dropdown')
+        .closest('li.sui-dropdown')
         .addClass('active')
     }
 
@@ -2117,7 +2117,7 @@
 
   Tab.prototype.show = function () {
     var $this    = this.element
-    var $ul      = $this.closest('ul:not(.dropdown-menu)')
+    var $ul      = $this.closest('ul:not(.sui-dropdown-menu)')
     var selector = $this.data('target')
 
     if (!selector) {
@@ -2164,7 +2164,7 @@
     function next() {
       $active
         .removeClass('active')
-        .find('> .dropdown-menu > .active')
+        .find('> .sui-dropdown-menu > .active')
           .removeClass('active')
         .end()
         .find('[data-toggle="tab"]')
@@ -2182,9 +2182,9 @@
         element.removeClass('fade')
       }
 
-      if (element.parent('.dropdown-menu')) {
+      if (element.parent('.sui-dropdown-menu')) {
         element
-          .closest('li.dropdown')
+          .closest('li.sui-dropdown')
             .addClass('active')
           .end()
           .find('[data-toggle="tab"]')
