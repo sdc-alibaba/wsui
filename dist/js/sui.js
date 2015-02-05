@@ -1122,7 +1122,8 @@
     this.escape()
     this.resize()
 
-    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+    // 分发okHide okHidden cancelHide cancelHidden事件
+    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this)).on('click.ok.bs.modal', ':not(.disabled)[data-ok="modal"]', $.proxy(this.okHide, this))
 
     this.backdrop(function () {
       var transition = $.support.transition && that.$element.hasClass('fade')
@@ -1173,10 +1174,13 @@
 
   Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
+    var $ele = this.$element
 
     e = $.Event('hide.bs.modal')
 
-    this.$element.trigger(e)
+    // 不需要显示trigger('okHide') okHide回调会在this.okHide方法里被调用.注意此时e.type不是okHide而是click
+    this.hideReason != 'ok' && $ele.trigger('cancelHide')
+    $ele.trigger(e)
 
     if (!this.isShown || e.isDefaultPrevented()) return
 
@@ -1187,18 +1191,51 @@
 
     $(document).off('focusin.bs.modal')
 
-    this.$element
+    $ele
       .removeClass('in')
       .attr('aria-hidden', true)
-      .off('click.dismiss.bs.modal')
+      // 注销事件
+      .off('click.dismiss.bs.modal click.ok.bs.modal')
 
-    $.support.transition && this.$element.hasClass('fade') ?
-      this.$element
+    $.support.transition && $ele.hasClass('fade') ?
+      $ele
         .one('bsTransitionEnd', $.proxy(this.hideModal, this))
         .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
       this.hideModal()
   }
 
+  // 不需要显示trigger('okHide') okHide回调会在this.okHide方法里被调用.注意此时e.type不是okHide而是click
+  Modal.prototype.okHide = function (e) {
+    var that = this
+    function hideWithOk () {
+      that.hideReason = 'ok'
+      that.hide(e)
+    }
+    // 如果e为undefined而不是事件对象，则说明不是点击确定按钮触发的执行，而是手工调用，
+    // 那么直接执行hideWithOk
+    if (!e) {
+      hideWithOk()
+      return
+    }
+
+    var fn = this.options.okHide,
+      // 点击弹层脚部的确定后是否关闭弹层，默认关闭
+      ifNeedHide = true
+    if (!fn) {
+      var eventArr = $._data(this.$element[0], 'events').okHide
+      if (eventArr && eventArr.length) {
+        fn = eventArr[eventArr.length - 1].handler;
+      }
+    }
+
+    typeof fn == 'function' && (ifNeedHide = fn.call(this, e))
+    // 显式返回false，则不关闭对话框
+    if (ifNeedHide !== false) {
+      hideWithOk()
+    }
+
+    return this.$element
+  }
   Modal.prototype.enforceFocus = function () {
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
@@ -1228,13 +1265,17 @@
   }
 
   Modal.prototype.hideModal = function () {
-    var that = this
-    this.$element.hide()
+    var that = this,
+      $ele = this.$element
+    $ele.hide()
     this.backdrop(function () {
       that.$body.removeClass('modal-open')
       that.resetAdjustments()
       that.resetScrollbar()
-      that.$element.trigger('hidden.bs.modal')
+
+      $ele.trigger(that.hideReason == 'ok' ? 'okHidden' : 'cancelHidden')
+      that.hideReason = null
+      $ele.trigger('hidden.bs.modal')
     })
   }
 
