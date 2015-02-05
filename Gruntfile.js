@@ -42,6 +42,20 @@ module.exports = function (grunt) {
       docs: 'docs/dist'
     },
 
+    prefix: {
+      options: {
+        // 均有默认配置
+        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'icon', 'carousel', 'close', 'form', 'row-fluid', 'tag', 'label', 'container', 'container-fluid', 'row', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-groupa', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
+        prefix: 'sui-'
+      },
+      sui: {
+        expand: true,
+        cwd: './',
+        src: ['dist/css/**/*.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css', 'docs/assets/css/**/*.css'],
+        dest: './'
+      }
+    },
+
     jshint: {
       options: {
         jshintrc: 'js/.jshintrc'
@@ -53,7 +67,7 @@ module.exports = function (grunt) {
         src: ['Gruntfile.js', 'grunt/*.js']
       },
       core: {
-        src: 'js/*.js'
+        src: ['js/*.js', '!js/template.js']
       },
       test: {
         options: {
@@ -92,6 +106,8 @@ module.exports = function (grunt) {
       },
       sui: {
         src: [
+          'js/classmap-sui.js',
+          'js/template.js',
           'js/transition.js',
           'js/alert.js',
           'js/button.js',
@@ -389,7 +405,8 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
+  // grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll:docs']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -435,9 +452,13 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test', 'addprefix']);
 
-  // Version numbering task.
+  // 自动为产出文件和文档补全sui-前缀
+  grunt.loadNpmTasks('prefix-cssclass');
+  grunt.registerTask('addprefix', ['prefix:sui']);
+
+ // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
@@ -460,9 +481,12 @@ module.exports = function (grunt) {
   // Docs task.
   grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
-  grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  // 关闭自定义下载相关的任务执行
+  // grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+  // grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data']);
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 
