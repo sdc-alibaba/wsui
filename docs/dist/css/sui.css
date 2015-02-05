@@ -3830,11 +3830,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 2px 10px;
+  color: #777777;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
+  color: #28a3ef;
   background-color: #eeeeee;
+  border-color: #eeeeee;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -3874,13 +3877,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border: 1px solid transparent;
   border-radius: 2px 2px 0 0;
 }
-.nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
-}
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #555555;
+  color: #28a3ef;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
@@ -4010,6 +4010,44 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: -1px;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
+}
+.nav-tabs.nav-primary {
+  border-bottom: 2px solid #28a3ef;
+}
+.nav-tabs.nav-primary li {
+  margin-bottom: 0;
+}
+.nav-tabs.nav-primary li > a,
+.nav-tabs.nav-primary li > a:focus,
+.nav-tabs.nav-primary li > a:hover {
+  border-bottom: 0;
+}
+.nav-tabs.nav-primary .active > a,
+.nav-tabs.nav-primary .active > a:hover,
+.nav-tabs.nav-primary .active > a:focus {
+  background: #28a3ef;
+  border-color: #28a3ef;
+  color: white;
+  border-bottom: 0;
+}
+.nav-tabs.nav-primary.nav-stacked {
+  border-bottom: 0;
+  border-right: 2px solid #28a3ef;
+}
+.nav-tabs.nav-primary.nav-stacked > li > a {
+  border-radius: 2px 0 0 2px;
+  margin-right: 0;
+}
+.nav-tabs.nav-primary .open > a {
+  background-color: #28a3ef;
+  color: white;
+}
+.nav-lg > li > a {
+  padding: 4px 13px;
+}
+.nav-xl > li > a {
+  padding: 6px 16px;
+  font-size: 16.1px;
 }
 .navbar {
   position: relative;
@@ -5760,24 +5798,24 @@ button.close {
   background-color: #ffffff;
   background-color: transparent\9;
 }
-.steps-large .wrap > div {
+.steps-lg .wrap > div {
   font-size: 14px;
   height: 40px;
   line-height: 40px;
 }
-.steps-large .wrap > div > label {
+.steps-lg .wrap > div > label {
   font-size: 14px;
   margin-left: 30px;
 }
-.steps-large .triangle-right {
+.steps-lg .triangle-right {
   border-width: 20px;
   right: -39px;
 }
-.steps-large .triangle-right-bg {
+.steps-lg .triangle-right-bg {
   border-width: 24px;
   right: -48px;
 }
-.steps-large .round {
+.steps-lg .round {
   width: 18px;
   height: 18px;
   line-height: 18px;
