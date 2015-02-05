@@ -5,18 +5,16 @@
     line-height: 0px;
     margin: @line-height-computed 0px;
     .wrap {
-        display: inline-block;
+        padding: 0;
     }
     .wrap > div {
-        width: @stepsBaseWidth;
-        height: @stepsBaseHeight;
-        display: inline-block;
+        width: 100%;
         line-height: @stepsBaseHeight;
         vertical-align: top;
         font-size: @font-size-base;
         position: relative;
         > label {
-            margin-left: (@stepsBaseHeight / 2 + 10px);
+            margin: 0 0 0 (@stepsBaseHeight / 2 + 10px);
             cursor: default;
         }
     }
@@ -97,7 +95,6 @@
 .steps-large {
     .wrap > div {
         font-size: @font-size-xlarge;
-        width: (@stepsBaseWidth * 1.25);
         height: (@stepsBaseHeight * 1.25);
         line-height: (@stepsBaseHeight * 1.25);
         > label {
@@ -119,150 +116,5 @@
         line-height: (@font-size-xlarge + 4);
         border-radius: ((@font-size-xlarge + 4) / 2);
 
-    }
-}
-.steps-auto {
-    display: table;
-    width: 100%;
-    .wrap  {
-        display: table-cell;
-        > div {
-            width: 100%;
-        }
-
-    }
-}
-.steps-round {
-    * {box-sizing: content-box;}
-    font-size: 0px;
-    overflow: hidden;
-    line-height: 0px;
-    margin: @line-height-computed 0px;
-    padding: 0px (@font-size-base / 2);
-    > div {
-        display: inline-block;
-        vertical-align: top;
-        position: relative;
-        .wrap {
-            .clearfix;
-        }
-        > label {
-            display: inline-block;
-            .text-overflow();
-            font-size: @font-size-base;
-            line-height: @font-size-base;
-            height: @font-size-base;
-            margin-top: @font-size-base / 2;
-            color: @stepsRoundFinishedTextColor;
-            cursor: default;
-            text-align: center;
-            width:50%;
-            margin-left:-25%;
-            position: relative;
-            left:15px;
-        }
-        &:first-child > label{
-            width:auto;
-            max-width: 50%;
-            margin-left:0;
-            left:0;
-        }
-        &:last-child, &.last {
-            width:30px !important;
-            > label {
-                position: absolute;
-                width:auto;
-                margin-left:0;
-                left:auto;
-                right:0;
-            }
-        }
-        .round {
-            width: 22px;
-            height: 22px;
-            border-radius: 15px;
-            vertical-align: middle;
-            font-size: @font-size-base;
-            color: #FFF;
-            line-height: 22px;
-            text-align: center;
-            float: left;
-        }
-        .bar {
-            margin: 10px 10px 0px 40px;
-            width: 200px;
-            height: 6px;
-            vertical-align: middle;
-            border-radius: 4px;
-        }
-    }
-    > .finished {
-        .round {
-            border: 4px @stepsFinishedColor solid;
-            background-color: @stepsFinishedColor;
-            color: @stepsFinishedTextColor;
-        }
-        .bar {
-            background-color: @stepsFinishedColor;
-        }
-    }
-    > .current {
-        .round {
-            border: 4px @stepsCurrentColor solid;
-            background-color: @stepsCurrentColor;
-        }
-        .bar {
-            background-color: @stepsCurrentColor;
-        }
-    }
-    > .todo {
-        > label {
-            color: @stepsTodoTextColor;
-        }
-        .round {
-            border: 4px @stepsRoundTodoBorderColor solid;
-            background-color: #FFF;
-            color: @stepsTodoTextColor;
-        }
-        .bar {
-            background-color: @stepsTodoColor;
-        }
-    }
-
-}
-
-.steps-round-auto {
-    display: table;
-    width: 100%;
-    > div {
-        display: table-cell;
-        .bar {
-            width: auto;
-        }
-    }
-}
-.steps-3 {
-    > div {
-        width: 50%;
-    }
-}
-.steps-4 {
-    > div {
-        width: 33%;
-    }
-}
-.steps-5 {
-    > div {
-        width: 25%;
-    }
-}
-.steps-6 {
-    > div {
-        width: 20%;
-    }
-}
-.steps-7 {
-    > div {
-        width: 16%;
     }
 }
