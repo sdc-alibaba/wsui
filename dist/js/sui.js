@@ -1465,11 +1465,10 @@
    *  backdrop: true   决定是否为模态对话框添加一个背景遮罩层。另外，该属性指定'static'时，表示添加遮罩层，同时点击模态对话框的外部区域不会将其关闭。
    *  bgcolor : '#123456'  背景遮罩层颜色
    *  width: {number|string(px)|'small'|'normal'|'large'}推荐优先使用后三个描述性字符串，统一样式
-   *  height: {number|string(px)} 高度
    *  timeout: {number} 1000    单位毫秒ms ,dialog打开后多久自动关闭
    *  transition: {Boolean} 是否以动画弹出对话框，默认为true。HTML使用方式只需把模板里的fade的class去掉即可
    *  hasfoot: {Boolean}  是否显示脚部  默认true
-   *  remote: {string} 如果提供了远程url地址，就会加载远端内容
+   *  remote: {string} 如果提供了远程url地址，就会加载远端内容,之后触发loaded事件
    *  show:     fn --------------function(e) {}
    *  shown:    fn
    *  hide:     fn
