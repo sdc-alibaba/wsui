@@ -36,7 +36,7 @@
     if (e) e.preventDefault()
 
     if (!$parent.length) {
-      $parent = $this.closest('.sui-alert')
+      $parent = $this.closest('.' + CLASSMAP.alert)
     }
 
     $parent.trigger(e = $.Event('close.bs.alert'))

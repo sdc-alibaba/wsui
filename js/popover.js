@@ -25,7 +25,7 @@
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="sui-popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    template: '<div class="' + CLASSMAP.popover + '" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   })
 
 
