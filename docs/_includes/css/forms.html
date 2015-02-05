@@ -381,23 +381,75 @@
   <p>Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via <code>border-radius</code> properties.</p>
   <div class="bs-example" data-example-ids="select-form-control">
     <form>
-      <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control input-lg">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control input-sm">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<select class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control input-lg">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control input-sm">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
 {% endhighlight %}
 
   <p>For <code>&lt;select&gt;</code> controls with the <code>multiple</code> attribute, multiple options are shown by default.</p>
@@ -532,9 +584,11 @@
         </div>
         <div class="form-group">
           <label for="disabledSelect">Disabled select menu</label>
-          <select id="disabledSelect" class="form-control">
-            <option>Disabled select</option>
-          </select>
+          <label class="select">
+            <select id="disabledSelect" class="form-control">
+              <option>Disabled select</option>
+            </select>
+          </label>
         </div>
         <div class="checkbox">
           <label>
@@ -554,9 +608,11 @@
     </div>
     <div class="form-group">
       <label for="disabledSelect">Disabled select menu</label>
-      <select id="disabledSelect" class="form-control">
-        <option>Disabled select</option>
-      </select>
+      <label class="select">
+        <select id="disabledSelect" class="form-control">
+          <option>Disabled select</option>
+        </select>
+      </label>
     </div>
     <div class="checkbox">
       <label>
@@ -627,6 +683,33 @@
             Checkbox with error
           </label>
         </div>
+      </div>
+      <div class="has-success">
+        <label class='control-label' for="selectSuccess">select with success</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectSuccess'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
+      <div class="has-warning">
+        <label class='control-label' for="selectWarning">select with warning</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectWarning'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
+      <div class="has-error">
+        <label class='control-label' for="selectError">select with error</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectError'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
       </div>
     </form>
   </div><!-- /.bs-example -->
@@ -796,22 +879,28 @@
 
   <h3>Height sizing</h3>
   <p>Create taller or shorter form controls that match button sizes.</p>
-  <div class="bs-example bs-example-control-sizing" data-example-id="form-control-height-sizes">
+  <div class="bs-example" data-example-id="form-control-height-sizes">
     <form>
       <div class="controls">
         <input class="form-control input-lg" type="text" placeholder=".input-lg">
         <input type="text" class="form-control" placeholder="Default input">
         <input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-        <select class="form-control input-lg">
-          <option value="">.input-lg</option>
-        </select>
-        <select class="form-control">
-          <option value="">Default select</option>
-        </select>
-        <select class="form-control input-sm">
-          <option value="">.input-sm</option>
-        </select>
+        <label class="select">
+          <select class="form-control input-lg">
+            <option value="">.input-lg</option>
+          </select>
+        </label>
+        <label class="select">
+          <select class="form-control">
+            <option value="">Default select</option>
+          </select>
+        </label>
+        <label class="select">
+          <select class="form-control input-sm">
+            <option value="">.input-sm</option>
+          </select>
+        </label>
       </div>
     </form>
   </div><!-- /.bs-example -->
@@ -819,10 +908,21 @@
 <input class="form-control input-lg" type="text" placeholder=".input-lg">
 <input class="form-control" type="text" placeholder="Default input">
 <input class="form-control input-sm" type="text" placeholder=".input-sm">
-
-<select class="form-control input-lg">...</select>
-<select class="form-control">...</select>
-<select class="form-control input-sm">...</select>
+<label class="select">
+  <select class="form-control input-lg">
+    <option value="">.input-lg</option>
+  </select>
+</label>
+<label class="select">
+  <select class="form-control">
+    <option value="">Default select</option>
+  </select>
+</label>
+<label class="select">
+  <select class="form-control input-sm">
+    <option value="">.input-sm</option>
+  </select>
+</label>
 {% endhighlight %}
 
   <h3>Horizontal form group sizes</h3>
@@ -904,7 +1004,18 @@
         <label for="inputHelpBlock">Input with help text</label>
         <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
       </div>
-      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+      <span id="helpBlock" class="help-block">这是一大段的帮助文案，独占一行。好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案</span>
+    </form>
+    <form class="form-horizontal">
+      <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="helpBlockSmall">Large label</label>
+        <div class="col-sm-5">
+          <input class="form-control" type="text" id="helpBlockSmall" placeholder="input">
+        </div>
+        <div class="col-sm-5">
+          <span class="help-block">通过栅格添加内联的小段文案.</span>
+        </div>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
