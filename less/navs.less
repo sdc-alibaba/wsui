@@ -20,10 +20,13 @@
       position: relative;
       display: block;
       padding: @nav-link-padding;
+      color: @gray-light;
       &:hover,
       &:focus {
         text-decoration: none;
+        color: @brand-primary;
         background-color: @nav-link-hover-bg;
+        border-color: @nav-link-hover-bg;
       }
     }
 
@@ -86,9 +89,6 @@
       line-height: @line-height-base;
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
-      &:hover {
-        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
-      }
     }
 
     // Active state, and its :hover to override normal :hover
@@ -242,3 +242,53 @@
   // Remove the top rounded corners here since there is a hard edge above the menu
   .border-top-radius(0);
 }
+
+//primary
+.nav-tabs.nav-primary {
+  li > {
+    margin-bottom: 0;
+  }
+  border-bottom: 2px solid @brand-primary;
+  li > a {
+    &,
+    &:focus,
+    &:hover {
+      border-bottom: 0;
+    }
+  }
+  .active > a {
+    &,
+    &:hover,
+    &:focus {
+      background: @brand-primary;
+      border-color: @brand-primary;
+      color: white;
+      border-bottom: 0;
+    }
+  }
+  &.nav-stacked {
+    border-bottom: 0;
+    border-right: 2px solid @brand-primary;
+
+    > li > a {
+      border-radius: @border-radius-base 0 0 @border-radius-base;
+      margin-right: 0;
+    }
+  }
+
+  .open > a {
+    background-color: @brand-primary;
+    color: white;
+  }
+}
+
+//size
+.nav-lg > li > a {
+  padding: 4px 13px;
+}
+.nav-xl > li > a {
+  padding: 6px 16px;
+  font-size: 16.1px;
+}
+
+

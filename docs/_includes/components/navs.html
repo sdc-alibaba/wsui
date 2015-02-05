@@ -61,7 +61,35 @@
 </ul>
 {% endhighlight %}
 
-
+  <h2 id="nav-primary">首要样式</h2>
+  <p>在容器上加上 <code>.nav-primary</code> 变成首要样式。注意, <code>.nav-primary</code> 必须和 <code>.nav-tabs</code>一起使用</p>
+  <div class="bs-example" data-example-id="simple-nav-primary">
+    <ul class="nav nav-tabs nav-primary">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+  </div>
+{% highlight html %}
+<ul class="nav nav-tabs nav-primary">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+{% endhighlight %}
+  <p>primary are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
+  <div class="bs-example" data-example-id="simple-nav-stacked">
+    <ul class="nav nav-tabs nav-primary nav-stacked" style="max-width: 300px;">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+  </div>
+{% highlight html %}
+<ul class="nav nav-tabs nav-primary nav-stacked">
+  ...
+</ul>
+{% endhighlight %}
   <h2 id="nav-justified">Justified</h2>
   <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
   <p><strong class="text-danger">Justified navbar nav links are currently not supported.</strong></p>
@@ -81,6 +109,12 @@
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
     </ul>
+    <br />
+    <ul class="nav nav-tabs nav-primary nav-justified">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
   </div>
 {% highlight html %}
 <ul class="nav nav-tabs nav-justified">
@@ -89,8 +123,69 @@
 <ul class="nav nav-pills nav-justified">
   ...
 </ul>
+<ul class="nav nav-tabs nav-primary nav-justified">
+</ul>
 {% endhighlight %}
-
+  <h2 id="nav-size">不同大小</h2>
+  <p>在容器上添加 <code>.nav-lg</code> 或者 <code>.nav-xl</code> 来改变大小。</p>
+  <div class="bs-example" data-example-id="simple-nav-justified">
+    <ul class="nav nav-tabs nav-lg">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+    <br />
+    <ul class="nav nav-tabs nav-xl">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+    <br>
+    <ul class="nav nav-pills nav-lg">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+    <br>
+    <ul class="nav nav-pills nav-xl">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+    <br />
+    <ul class="nav nav-tabs nav-primary nav-lg">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+    <br>
+    <ul class="nav nav-tabs nav-primary nav-xl">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+  </div>
+{% highlight html %}
+<ul class="nav nav-tabs nav-lg">
+  ...
+</ul>
+<ul class="nav nav-tabs nav-xl">
+  ...
+</ul>
+<br>
+<ul class="nav nav-pills nav-lg">
+  ...
+</ul>
+<ul class="nav nav-pills nav-xl">
+  ...
+</ul>
+<ul class="nav nav-tabs nav-primary nav-lg">
+  ...
+</ul>
+<ul class="nav nav-tabs nav-primary nav-xl">
+  ...
+</ul>
+{% endhighlight %}
 
   <h2 id="nav-disabled-links">Disabled links</h2>
   <p>For any nav component (tabs or pills), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
@@ -174,6 +269,39 @@
   </div><!-- /example -->
 {% highlight html %}
 <ul class="nav nav-pills">
+  ...
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      Dropdown <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      ...
+    </ul>
+  </li>
+  ...
+</ul>
+{% endhighlight %}
+  <h3>首要样式带下拉菜单</h3>
+  <div class="bs-example" data-example-id="nav-pills-with-dropdown">
+    <ul class="nav nav-tabs nav-primary">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Help</a></li>
+      <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+          Dropdown <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div><!-- /example -->
+{% highlight html %}
+<ul class="nav nav-tabs nav-primary">
   ...
   <li role="presentation" class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
