@@ -23,7 +23,7 @@
 
   Tab.prototype.show = function () {
     var $this    = this.element
-    var $ul      = $this.closest('ul:not(.sui-dropdown-menu)')
+    var $ul      = $this.closest('ul:not(.' + CLASSMAP.dropdownMenu + ')')
     var selector = $this.data('target')
 
     if (!selector) {
@@ -70,7 +70,7 @@
     function next() {
       $active
         .removeClass('active')
-        .find('> .sui-dropdown-menu > .active')
+        .find('> .' + CLASSMAP.dropdownMenu + ' > .active')
           .removeClass('active')
         .end()
         .find('[data-toggle="tab"]')
@@ -88,9 +88,9 @@
         element.removeClass('fade')
       }
 
-      if (element.parent('.sui-dropdown-menu')) {
+      if (element.parent('.' + CLASSMAP.dropdownMenu)) {
         element
-          .closest('li.sui-dropdown')
+          .closest('li.' + CLASSMAP.dropdown)
             .addClass('active')
           .end()
           .find('[data-toggle="tab"]')
