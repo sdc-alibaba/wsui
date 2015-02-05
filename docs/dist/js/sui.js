@@ -1,3 +1,17 @@
+// classmapstart
+
+window.CLASSMAP = {
+  alert: 'sui-alert',
+  btn: 'sui-btn',
+  carousel: 'sui-carousel',
+  panel: 'sui-panel',
+  dropdown: 'sui-dropdown',
+  dropdownMenu: 'sui-dropdown-menu',
+  popover: 'sui-popover',
+  tooltip: 'sui-tooltip',
+  nav: 'sui-nav'
+}
+
 /*jshint -W054 */
 // use template in underscore: http://underscorejs.org/
 // By default, Underscore uses ERB-style template delimiters, change the
@@ -219,7 +233,7 @@
     if (e) e.preventDefault()
 
     if (!$parent.length) {
-      $parent = $this.closest('.alert')
+      $parent = $this.closest('.' + CLASSMAP.alert)
     }
 
     $parent.trigger(e = $.Event('close.bs.alert'))
@@ -383,12 +397,12 @@
   $(document)
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       var $btn = $(e.target)
-      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+      if (!$btn.hasClass(CLASSMAP.btn)) $btn = $btn.closest('.' + CLASSMAP.btn)
       Plugin.call($btn, 'toggle')
       e.preventDefault()
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
+      $(e.target).closest('.' + CLASSMAP.btn).toggleClass('focus', /^focus(in)?$/.test(e.type))
     })
 
 }(jQuery);
@@ -604,7 +618,7 @@
     var href
     var $this   = $(this)
     var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
-    if (!$target.hasClass('carousel')) return
+    if (!$target.hasClass(CLASSMAP.carousel)) return
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex = $this.attr('data-slide-to')
     if (slideIndex) options.interval = false
@@ -679,7 +693,7 @@
     if (this.transitioning || this.$element.hasClass('in')) return
 
     var activesData
-    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+    var actives = this.$parent && this.$parent.children('.' + CLASSMAP.panel).children('.in, .collapsing')
 
     if (actives && actives.length) {
       activesData = actives.data('bs.collapse')
@@ -997,7 +1011,7 @@
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', '.' + CLASSMAP.dropdown + ' form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
     .on('keydown.bs.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
@@ -1563,7 +1577,7 @@
     animation: true,
     placement: 'top',
     selector: false,
-    template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+    template: '<div class="' + CLASSMAP.tooltip + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
     trigger: 'hover focus',
     title: '',
     delay: 0,
@@ -2028,7 +2042,7 @@
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    template: '<div class="' + CLASSMAP.popover + '" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   })
 
 
@@ -2136,7 +2150,7 @@
     this.$body          = $('body')
     this.$scrollElement = $(element).is('body') ? $(window) : $(element)
     this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-    this.selector       = (this.options.target || '') + ' .nav li > a'
+    this.selector       = (this.options.target || '') + ' .' + CLASSMAP.nav + ' li > a'
     this.offsets        = []
     this.targets        = []
     this.activeTarget   = null
@@ -2234,9 +2248,9 @@
       .parents('li')
       .addClass('active')
 
-    if (active.parent('.dropdown-menu').length) {
+    if (active.parent('.' + CLASSMAP.dropdownMenu).length) {
       active = active
-        .closest('li.dropdown')
+        .closest('li.' + CLASSMAP.dropdown)
         .addClass('active')
     }
 
@@ -2316,7 +2330,7 @@
 
   Tab.prototype.show = function () {
     var $this    = this.element
-    var $ul      = $this.closest('ul:not(.dropdown-menu)')
+    var $ul      = $this.closest('ul:not(.' + CLASSMAP.dropdownMenu + ')')
     var selector = $this.data('target')
 
     if (!selector) {
@@ -2363,7 +2377,7 @@
     function next() {
       $active
         .removeClass('active')
-        .find('> .dropdown-menu > .active')
+        .find('> .' + CLASSMAP.dropdownMenu + ' > .active')
           .removeClass('active')
         .end()
         .find('[data-toggle="tab"]')
@@ -2381,9 +2395,9 @@
         element.removeClass('fade')
       }
 
-      if (element.parent('.dropdown-menu')) {
+      if (element.parent('.' + CLASSMAP.dropdownMenu)) {
         element
-          .closest('li.dropdown')
+          .closest('li.' + CLASSMAP.dropdown)
             .addClass('active')
           .end()
           .find('[data-toggle="tab"]')

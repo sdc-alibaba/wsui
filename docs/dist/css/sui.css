@@ -3402,7 +3402,7 @@ tbody.collapse.in {
   display: none;
   float: left;
   min-width: 160px;
-  padding: 5px 0;
+  padding: 1px 0;
   margin: 2px 0 0;
   font-size: 12px;
   text-align: left;
@@ -3422,13 +3422,13 @@ tbody.collapse.in {
 }
 .dropdown-menu .divider {
   height: 1px;
-  margin: 8px 0;
+  margin: 3.5px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
 .dropdown-menu > li > a {
   display: block;
-  padding: 3px 20px;
+  padding: 3px 12px;
   clear: both;
   font-weight: normal;
   line-height: 1.5;
@@ -3437,9 +3437,9 @@ tbody.collapse.in {
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #262626;
+  color: #fff;
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #4cb9fc;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -3478,7 +3478,7 @@ tbody.collapse.in {
 }
 .dropdown-header {
   display: block;
-  padding: 3px 20px;
+  padding: 3px 6px;
   font-size: 12px;
   line-height: 1.5;
   color: #777;
@@ -3496,8 +3496,13 @@ tbody.collapse.in {
   right: 0;
   left: auto;
 }
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  position: relative;
+}
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
+  vertical-align: 2px;
   content: "";
   border-top: 0;
   border-bottom: 4px solid;
@@ -3865,7 +3870,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav .nav-divider {
   height: 1px;
-  margin: 8px 0;
+  margin: 3.5px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
@@ -4898,13 +4903,15 @@ a.thumbnail.active {
 }
 .alert-dismissable,
 .alert-dismissible {
+  position: relative;
   padding-right: 33px;
 }
 .alert-dismissable .close,
 .alert-dismissible .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  margin-top: -12px;
   color: inherit;
 }
 .alert-success {
@@ -5679,6 +5686,132 @@ button.close {
   cursor: pointer;
   background: transparent;
   border: 0;
+}
+.steps {
+  margin: 18px 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+.steps * {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+.steps .wrap {
+  padding: 0;
+}
+.steps .wrap > div {
+  position: relative;
+  width: 100%;
+  font-size: 12px;
+  line-height: 32px;
+  vertical-align: top;
+}
+.steps .wrap > div > label {
+  margin: 0 0 0 26px;
+  cursor: default;
+}
+.steps .triangle-right {
+  position: absolute;
+  right: -31px;
+  z-index: 1;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 16px;
+}
+.steps .triangle-right-bg {
+  position: absolute;
+  top: -4px;
+  right: -31px;
+  right: -40px;
+  z-index: 1;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+  border-width: 16px;
+  border-width: 20px;
+}
+.steps .round {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 8px;
+}
+.steps .round .sui-icon {
+  vertical-align: -1px;
+}
+.steps .round + span:before {
+  content: '\00a0';
+}
+.steps .finished {
+  color: #fff;
+  background-color: #28a3ef;
+}
+.steps .finished .triangle-right {
+  border-color: transparent transparent transparent #28a3ef;
+}
+.steps .finished .round {
+  color: #28a3ef;
+  background-color: #fff;
+  background-color: transparent\9;
+}
+.steps .finished .round > i {
+  font-size: 12px;
+  color: #28a3ef;
+}
+.steps .current {
+  color: #fff;
+  background-color: #4cb9fc;
+}
+.steps .current .triangle-right {
+  border-color: transparent transparent transparent #4cb9fc;
+}
+.steps .current .round {
+  color: #4cb9fc;
+  color: #fff\9;
+  background-color: #fff;
+  background-color: transparent\9;
+}
+.steps .todo {
+  color: #999;
+  background-color: #eee;
+}
+.steps .todo .triangle-right {
+  border-color: transparent transparent transparent #eee;
+}
+.steps .todo .round {
+  background-color: #fff;
+  background-color: transparent\9;
+}
+.steps-large .wrap > div {
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+}
+.steps-large .wrap > div > label {
+  margin-left: 30px;
+  font-size: 14px;
+}
+.steps-large .triangle-right {
+  right: -39px;
+  border-width: 20px;
+}
+.steps-large .triangle-right-bg {
+  right: -48px;
+  border-width: 24px;
+}
+.steps-large .round {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 9px;
 }
 .modal-open {
   overflow: hidden;

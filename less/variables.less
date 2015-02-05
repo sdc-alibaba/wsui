@@ -248,9 +248,9 @@
 //** Dropdown link text color.
 @dropdown-link-color:            @gray-dark;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+@dropdown-link-hover-color:      #fff;
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         #f5f5f5;
+@dropdown-link-hover-bg:         @brand-primary-hover;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -865,3 +865,19 @@
 @dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
 @hr-border:                   @gray-lighter;
+
+// Steps
+// -------------------------
+
+@stepsFinishedColor: @brand-primary;
+@stepsCurrentColor: @brand-primary-hover;
+@stepsTodoColor: @gray-lighter;
+@stepsBaseHeight: 32px;
+@stepsBaseWidth: 195px;
+@stepsFinishedTextColor: @body-bg;
+@stepsCurrentTextColor: @body-bg;
+@stepsTodoTextColor: #999;
+@stepsRoundFinishedTextColor: @stepsFinishedColor;
+@stepsRoundTodoTextColor: #666;
+@stepsRoundTodoBorderColor: #d3d3d3;
+
