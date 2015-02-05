@@ -93,14 +93,14 @@
       $ele
         .find('.modal-content')
         .load(this.options.remote, $.proxy(function () {
-          $ele.trigger('loaded.bs.modal')
+          $ele.trigger('loaded')
         }, this))
     }
 
   }
   Modal.prototype.show = function (_relatedTarget) {
     var that = this
-    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+    var e    = $.Event('show', { relatedTarget: _relatedTarget })
 
     this.$element.trigger(e)
 
@@ -116,7 +116,7 @@
     this.resize()
 
     // 分发okHide okHidden cancelHide cancelHidden事件
-    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this)).on('click.ok.bs.modal', ':not(.disabled)[data-ok="modal"]', $.proxy(this.okHide, this))
+    this.$element.on('click.dismiss', '[data-dismiss="modal"]', $.proxy(this.hide, this)).on('click.ok', ':not(.disabled)[data-ok="modal"]', $.proxy(this.okHide, this))
 
     this.backdrop(function () {
       var transition = $.support.transition && that.$element.hasClass('fade')
@@ -142,7 +142,7 @@
 
       that.enforceFocus()
 
-      var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
+      var e = $.Event('shown', { relatedTarget: _relatedTarget })
 
       function callbackAfterTransition () {
         that.$element.trigger('focus').trigger(e)
@@ -169,7 +169,7 @@
     if (e) e.preventDefault()
     var $ele = this.$element
 
-    e = $.Event('hide.bs.modal')
+    e = $.Event('hide')
 
     // 不需要显示trigger('okHide') okHide回调会在this.okHide方法里被调用.注意此时e.type不是okHide而是click
     this.hideReason != 'ok' && $ele.trigger('cancelHide')
@@ -182,13 +182,13 @@
     this.escape()
     this.resize()
 
-    $(document).off('focusin.bs.modal')
+    $(document).off('focusin')
 
     $ele
       .removeClass('in')
       .attr('aria-hidden', true)
       // 注销事件
-      .off('click.dismiss.bs.modal click.ok.bs.modal')
+      .off('click.dismiss click.ok')
 
     $.support.transition && $ele.hasClass('fade') ?
       $ele
@@ -231,8 +231,8 @@
   }
   Modal.prototype.enforceFocus = function () {
     $(document)
-      .off('focusin.bs.modal') // guard against infinite focus loop
-      .on('focusin.bs.modal', $.proxy(function (e) {
+      .off('focusin') // guard against infinite focus loop
+      .on('focusin', $.proxy(function (e) {
         if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
           this.$element.trigger('focus')
         }
@@ -241,19 +241,19 @@
 
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
+      this.$element.on('keydown.dismiss', $.proxy(function (e) {
         e.which == 27 && this.hide()
       }, this))
     } else if (!this.isShown) {
-      this.$element.off('keydown.dismiss.bs.modal')
+      this.$element.off('keydown.dismiss')
     }
   }
 
   Modal.prototype.resize = function () {
     if (this.isShown) {
-      $(window).on('resize.bs.modal', $.proxy(this.handleUpdate, this))
+      $(window).on('resize', $.proxy(this.handleUpdate, this))
     } else {
-      $(window).off('resize.bs.modal')
+      $(window).off('resize')
     }
   }
 
@@ -268,7 +268,7 @@
 
       $ele.trigger(that.hideReason == 'ok' ? 'okHidden' : 'cancelHidden')
       that.hideReason = null
-      $ele.trigger('hidden.bs.modal')
+      $ele.trigger('hidden')
     })
   }
 
@@ -289,7 +289,7 @@
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '"' + bgcolorStyle + '/>')
         .prependTo(this.$element)
-        .on('click.dismiss.bs.modal', $.proxy(function (e) {
+        .on('click.dismiss', $.proxy(function (e) {
           if (e.target !== e.currentTarget) return
           this.options.backdrop == 'static'
             ? this.$element[0].focus.call(this.$element[0])
@@ -387,10 +387,10 @@
     // each让诸如 $('#qqq, #eee').modal(options) 的用法可行。
     return this.each(function () {
       var $this   = $(this),
-        data    = $this.data('bs.modal'),
+        data    = $this.data('modal'),
         options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
       // 这里判断的目的是：第一次show时实例化dialog，之后的show则用缓存在data-modal里的对象。
-      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
+      if (!data) $this.data('modal', (data = new Modal(this, options)))
       // 如果是$('#xx').modal('toggle'),务必保证传入的字符串是Modal类原型链里已存在的方法。否则会报错has no method。
       if (typeof option == 'string') data[option](_relatedTarget)
       else if (options.show) data.show(_relatedTarget)
@@ -425,19 +425,19 @@
   // MODAL DATA-API
   // ==============
 
-  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
+  $(document).on('click.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this),
       href    = $this.attr('href'),
       // $target这里指dialog本体Dom(若存在),通过data-target="#foo"或href="#foo"指向
       $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))), // strip for ie7
       // remote,href属性如果以#开头，表示等同于data-target属性
-      option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+      option  = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     if ($this.is('a')) e.preventDefault()
 
-    $target.one('show.bs.modal', function (showEvent) {
+    $target.one('show', function (showEvent) {
       if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
-      $target.one('hidden.bs.modal', function () {
+      $target.one('hidden', function () {
         $this.is(':visible') && $this.trigger('focus')
       })
     })
@@ -492,7 +492,7 @@
         var eType = ['show', 'shown', 'hide', 'hidden', 'okHidden', 'cancelHide', 'cancelHidden']
         $.each(eType, function (k, v) {
           if (typeof eList[v] == 'function') {
-            $(document).on(v + '.bs.modal', '#' + id, $.proxy(eList[v], $('#' + id)[0]))
+            $(document).on(v, '#' + id, $.proxy(eList[v], $('#' + id)[0]))
           }
         })
       }
