@@ -595,24 +595,24 @@ body {
 }
 
 /* Nav: second level (shown on .active) */
-.bs-docs-sidebar .gnav .sui-nav {
+.bs-docs-sidebar .gnav .nav {
   display: none; /* Hide by default, but at >768px, show it */
   padding-bottom: 10px;
 }
-.bs-docs-sidebar .gnav .sui-nav > li > a {
+.bs-docs-sidebar .gnav .nav > li > a {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 30px;
   font-size: 12px;
   font-weight: normal;
 }
-.bs-docs-sidebar .gnav .sui-nav > li > a:hover,
-.bs-docs-sidebar .gnav .sui-nav > li > a:focus {
+.bs-docs-sidebar .gnav .nav > li > a:hover,
+.bs-docs-sidebar .gnav .nav > li > a:focus {
   padding-left: 29px;
 }
-.bs-docs-sidebar .gnav .sui-nav > .active > a,
-.bs-docs-sidebar .gnav .sui-nav > .active:hover > a,
-.bs-docs-sidebar .gnav .sui-nav > .active:focus > a {
+.bs-docs-sidebar .gnav .nav > .active > a,
+.bs-docs-sidebar .gnav .nav > .active:hover > a,
+.bs-docs-sidebar .gnav .nav > .active:focus > a {
   padding-left: 28px;
   font-weight: 500;
 }
@@ -1017,7 +1017,7 @@ h1[id] {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.bs-example > .gbtn-toolbar + .sui-btn-toolbar {
+.bs-example > .gbtn-toolbar + .btn-toolbar {
   margin-top: 10px;
 }
 
@@ -1118,7 +1118,7 @@ h1[id] {
 .bs-example > .gdropdown > .dropdown-toggle {
   float: left;
 }
-.bs-example > .gdropdown > .sui-dropdown-menu {
+.bs-example > .gdropdown > .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 5px;
