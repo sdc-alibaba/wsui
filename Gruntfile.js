@@ -106,6 +106,7 @@ module.exports = function (grunt) {
       },
       sui: {
         src: [
+          'js/classmap.js',
           'js/template.js',
           'js/transition.js',
           'js/alert.js',
@@ -450,7 +451,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test', 'addprefix']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
 
   // 自动为产出文件和文档补全sui-前缀
   grunt.loadNpmTasks('prefix-cssclass');
