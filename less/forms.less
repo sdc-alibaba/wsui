@@ -116,15 +116,14 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @font-size-large;
+  padding: @padding-base-vertical @form-padding-base-horizontal;
+  font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   // Customize the `:focus` state to imitate native WebKit styles.
@@ -142,6 +141,7 @@ output {
   &[readonly],
   fieldset[disabled] & {
     cursor: @cursor-disabled;
+    background-color: @gray-lighter;  //rgba fallback
     background-color: @input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
   }
@@ -321,11 +321,11 @@ input[type="checkbox"] {
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-xlarge; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
 }
 .form-group-lg {
   .form-control {
-    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-xlarge; @line-height-large; @input-border-radius-large);
+    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
   }
 }
 
@@ -400,6 +400,41 @@ input[type="checkbox"] {
   margin-top: 5px;
   margin-bottom: 10px;
   color: lighten(@text-color, 25%); // lighten the text some for contrast
+}
+
+//select
+
+.select {
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  font-weight: normal;
+  margin: 0;
+  &:after {
+    content: " ";
+    position: absolute;
+    border: 6px solid #333;
+    border-left: 4px solid transparent!important;
+    border-right: 4px solid transparent!important;
+    border-bottom: 4px solid transparent!important;
+    height: 0px;
+    width: 0px;
+    top: 50%;
+    right: 10px;
+    margin-top: -2px;
+    z-index: 0;
+  }
+  select {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    margin: -1px 0; //保持大小不变
+    position: relative;
+    z-index: 10;
+  }
 }
 
 
