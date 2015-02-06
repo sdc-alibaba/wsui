@@ -184,4 +184,34 @@ $('.datepicker').datepicker('method', arg1, arg2);
       <td>设置起始/截止日期</td>
     </tr>
   </table>
+  <h2 id='datepicker-events'>事件</h3>
+  <p>通过如下形式注册事件监听。 </p>
+{% highlight js %}
+$('.datepicker').datepicker().on(eventName, function(e){
+  // e 中包含有其他的字段
+});
+{% endhighlight %}
+  <p>其中可用的事件有：</p>
+  <table class='table table-bordered table-striped bs-events-table'>
+    <tr>
+      <th>事件</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+    	<td>show</td>
+      <td>当datepicker显示时触发</td>
+    </tr>
+    <tr>
+    	<td>hide</td>
+      <td>当datepicker隐藏时触</td>
+    </tr>
+    <tr>
+    	<td>changeDate</td>
+      <td>当日期更改时触发</td>
+    </tr>
+    <tr>
+    	<td>changeYear/changeMonth</td>
+      <td>当展现的year/moth 被改变的时候触发</td>
+    </tr>
+  </table>
 </div>
