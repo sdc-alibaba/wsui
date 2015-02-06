@@ -896,7 +896,7 @@ window.CLASSMAP = {
       }
 
       var relatedTarget = { relatedTarget: this }
-      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+      $parent.trigger(e = $.Event('show', relatedTarget))
 
       if (e.isDefaultPrevented()) return
 
@@ -906,7 +906,7 @@ window.CLASSMAP = {
 
       $parent
         .toggleClass('open')
-        .trigger('shown.bs.dropdown', relatedTarget)
+        .trigger('shown', relatedTarget)
     }
 
     return false
@@ -954,12 +954,12 @@ window.CLASSMAP = {
 
       if (!$parent.hasClass('open')) return
 
-      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+      $parent.trigger(e = $.Event('hide', relatedTarget))
 
       if (e.isDefaultPrevented()) return
 
       $this.attr('aria-expanded', 'false')
-      $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+      $parent.removeClass('open').trigger('hidden', relatedTarget)
     })
   }
 
@@ -1009,12 +1009,12 @@ window.CLASSMAP = {
   // ===================================
 
   $(document)
-    .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.' + CLASSMAP.dropdown + ' form', function (e) { e.stopPropagation() })
-    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
-    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
-    .on('keydown.bs.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
-    .on('keydown.bs.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
+    .on('click.dropdown.data-api', clearMenus)
+    .on('click.dropdown.data-api', '.' + CLASSMAP.dropdown + ' form', function (e) { e.stopPropagation() })
+    .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
+    .on('keydown.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
 
 }(jQuery);
 
