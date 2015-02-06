@@ -40,7 +40,7 @@ th {
   // Bottom align for column headings
   > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid @table-border-color;
+    border-bottom: 1px solid @table-border-color;
   }
   // Remove top border from thead by default
   > caption + thead,
@@ -100,10 +100,12 @@ th {
   > thead > tr {
     > th,
     > td {
-      border-bottom-width: 2px;
+      border-bottom-width: 1px;
+      background: @table-bg-thead;
     }
   }
 }
+
 
 
 // Zebra-striping
@@ -115,7 +117,11 @@ th {
     background-color: @table-bg-accent;
   }
 }
-
+.table-vstriped {
+  > tbody > tr >td:nth-child(odd) ,> tbody > tr >th:nth-child(odd) ,{
+    background-color: @table-bg-accent;
+  }
+}
 
 // Hover effect
 //
@@ -127,7 +133,12 @@ th {
   }
 }
 
-
+//首要表格
+.table-primary thead > tr > th{
+  background-color: #28a3ef;
+  border-left: 1px solid #4cb9fc;
+  color: #ffffff;
+}
 // Table cell sizing
 //
 // Reset default table behavior
