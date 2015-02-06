@@ -5782,7 +5782,7 @@ button.close {
   text-align: center;
   border-radius: 8px;
 }
-.steps .round .sui-icon {
+.steps .round .icon {
   vertical-align: -1px;
 }
 .steps .round + span:before {
@@ -5930,10 +5930,11 @@ button.close {
 }
 .modal-body {
   position: relative;
+  min-height: 50px;
   padding: 10px 15px;
 }
 .modal-footer {
-  padding: 7px 10px 5px;
+  padding: 5px 10px;
   text-align: right;
   background-color: #f1f4f5;
 }

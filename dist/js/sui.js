@@ -2,6 +2,8 @@
 
 window.CLASSMAP = {
   alert: 'alert',
+  close: 'close',
+  modal: 'modal',
   btn: 'btn',
   carousel: 'carousel',
   panel: 'panel',
@@ -1039,25 +1041,7 @@ window.CLASSMAP = {
     this.options        = options
     this.$body          = $(document.body)
     if (element === null) {
-      var TPL = ''
-        + '<div class="modal fade" tabindex="-1" role="dialog" id="<%=id%>">'
-          + '<div class="modal-dialog">'
-            + '<div class="modal-content">'
-              + '<div class="modal-header">'
-                + '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
-                + '<h5 class="modal-title"><%=title%></h5>'
-              + '</div>'
-              + '<div class="modal-body"><%=body%></div>'
-              + '<div class="modal-footer">'
-                // 增加data-ok="modal"参数
-                + '<button type="button" class="btn btn-primary btn-lg" data-ok="modal"><%=okbtn%></button>'
-                + (options.cancelbtn ? '<button type="button" class="btn btn-default btn-lg" data-dismiss="modal"><%=cancelbtn%></button>' : '')
-              + '</div>'
-            + '</div>'
-          + '</div>'
-        + '</div>';
-      var compiled = $.template(TPL)
-      element = $(compiled({
+      element = $(Modal.COMPILEDTPL({
         title: options.title,
         body: options.body,
         id: options.id,
@@ -1075,7 +1059,23 @@ window.CLASSMAP = {
   }
 
   Modal.VERSION  = '3.3.1'
-
+  Modal.COMPILEDTPL  = $.template(''
+    + '<div class="' + CLASSMAP.modal + ' fade" tabindex="-1" role="dialog" id="<%=id%>">'
+      + '<div class="modal-dialog">'
+        + '<div class="modal-content">'
+          + '<div class="modal-header">'
+            + '<button type="button" class="' + CLASSMAP.close + '" data-dismiss="modal" aria-hidden="true">&times;</button>'
+            + '<h5 class="modal-title"><%=title%></h5>'
+          + '</div>'
+          + '<div class="modal-body"><%=body%></div>'
+          + '<div class="modal-footer">'
+            // 增加data-ok="modal"参数
+            + '<button type="button" class="' + CLASSMAP.btn + ' btn-primary btn-lg" data-ok="modal"><%=okbtn%></button>'
+            + '<button type="button" class="' + CLASSMAP.btn + ' btn-default btn-lg" data-dismiss="modal"><%=cancelbtn%></button>'
+          + '</div>'
+        + '</div>'
+      + '</div>'
+    + '</div>');
   Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
 
@@ -1093,7 +1093,9 @@ window.CLASSMAP = {
     // 设置是否加过渡动画
     !options.transition && $ele.removeClass('fade')
     // 是否显示关闭按钮
-    !options.closebtn && $dialog.find('.close').remove()
+    !options.closebtn && $dialog.find('.' + CLASSMAP.close).remove()
+    // 是否显示取消按钮
+    !options.cancelbtn && $dialog.find('.modal-footer .btn-default').remove()
     // 设置是否指定宽度类型
     if (optWidth) {
       var widthMap = {
@@ -1117,8 +1119,8 @@ window.CLASSMAP = {
           $ele.trigger('loaded')
         }, this))
     }
-
   }
+
   Modal.prototype.show = function (_relatedTarget) {
     var that = this
     var e    = $.Event('show', { relatedTarget: _relatedTarget })
@@ -1361,9 +1363,20 @@ window.CLASSMAP = {
   }
 
   Modal.prototype.adjustDialog = function () {
-    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
+    var $ele = this.$element,
+      $dialog = $ele.find('.modal-dialog'),
+      windowHeight = document.documentElement.clientHeight,
+      dialogHeight = $dialog.height(),
+      modalIsOverflowing = dialogHeight + 30 > windowHeight
 
-    this.$element.css({
+    // 对话框高度较小则尽量居中定位
+    if (!modalIsOverflowing) {
+      $dialog.css('margin-top', Math.round((windowHeight - dialogHeight) / 2.618));
+    } else {
+      $dialog.css('margin-top', 30);
+    }
+
+    $ele.css({
       paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
       paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
     })
