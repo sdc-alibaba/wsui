@@ -89,6 +89,7 @@ th {
   border: 1px solid @table-border-color;
   border-collapse: separate;
   border-radius: 2px;
+  border-left: none;
   > thead,
   > tbody,
   > tfoot {
@@ -96,6 +97,12 @@ th {
       > th,
       > td {
         border-left: 1px solid @table-border-color;
+      }
+    }
+    > tr:first-child{
+      >th,
+      >td{
+        border-top: 0;
       }
     }
   }

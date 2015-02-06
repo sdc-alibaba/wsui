@@ -2228,6 +2228,7 @@ th {
 .table-bordered {
   border-collapse: separate;
   border: 1px solid #ddd;
+  border-left: none;
   border-radius: 2px;
 }
 .table-bordered > thead > tr > th,
@@ -2237,6 +2238,14 @@ th {
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
   border-left: 1px solid #ddd;
+}
+.table-bordered > thead > tr:first-child > th,
+.table-bordered > tbody > tr:first-child > th,
+.table-bordered > tfoot > tr:first-child > th,
+.table-bordered > thead > tr:first-child > td,
+.table-bordered > tbody > tr:first-child > td,
+.table-bordered > tfoot > tr:first-child > td {
+  border-top: 0;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
