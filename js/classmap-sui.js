@@ -9,5 +9,6 @@ window.CLASSMAP = {
   dropdownMenu: 'sui-dropdown-menu',
   popover: 'sui-popover',
   tooltip: 'sui-tooltip',
-  nav: 'sui-nav'
+  nav: 'sui-nav',
+  pagination: 'sui-pagination'
 }

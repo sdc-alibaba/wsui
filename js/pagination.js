@@ -19,7 +19,7 @@
   Pagination.prototype = {
     // generate the outer wrapper with the config of custom style
     _draw: function () {
-      var tpl = '<div class="sui-pagination';
+      var tpl = '<div class="' + CLASSMAP.pagination;
       for (var i = 0; i < this.styleClass.length; i++) {
         tpl += ' ' + this.styleClass[i];
       }
@@ -29,7 +29,7 @@
     },
     // generate the true pagination
     _drawInner: function () {
-      var outer = this.hookNode.children('.sui-pagination');
+      var outer = this.hookNode.children('.' + CLASSMAP.pagination);
       var tpl = '<ul>' + '<li class="prev' + (this.currentPage - 1 <= 0 ? ' disabled' : ' ') + '"><a href="#" data="' + (this.currentPage - 1) + '">«上一页</a></li>';
       if (this.pages <= this.displayPage || this.pages == this.displayPage + 1) {
         for (var i = 1; i < this.pages + 1; i++) {
@@ -81,7 +81,7 @@
 
     _ctrl: function () {
       var self = this,
-      pag = self.hookNode.children('.sui-pagination');
+      pag = self.hookNode.children('.' + CLASSMAP.pagination);
 
       function doPagination() {
         var tmpNum = parseInt(pag.find('.page-num').val());
@@ -105,7 +105,7 @@
 
     _select: function () {
       var self = this;
-      self.hookNode.children('.sui-pagination').on('click', 'a', function (e) {
+      self.hookNode.children('.' + CLASSMAP.pagination).on('click', 'a', function (e) {
         e.preventDefault();
         var tmpNum = parseInt($(this).attr('data'));
         if (!$(this).parent().hasClass('disabled') && !$(this).parent().hasClass('active')) {
@@ -158,13 +158,13 @@
     var opts = $.extend({}, $.fn.pagination.defaults, typeof options == 'object' && options),
         args,
         $this = $(this),
-        pag = $this.data('sui-pagination');
+        pag = $this.data('pagination');
 
     if (typeof options == 'string') {
       args = $.makeArray(arguments);
       args.shift();
     }
-    if (!pag) $this.data('sui-pagination', (pag = new Pagination(opts).init(opts, $(this))))
+    if (!pag) $this.data('pagination', (pag = new Pagination(opts).init(opts, $(this))))
     else if (typeof options == 'string') {
       pag[options].apply(pag, args)
     }
