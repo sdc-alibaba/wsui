@@ -87,13 +87,15 @@ th {
 
 .table-bordered {
   border: 1px solid @table-border-color;
+  border-collapse: separate;
+  border-radius: 2px;
   > thead,
   > tbody,
   > tfoot {
     > tr {
       > th,
       > td {
-        border: 1px solid @table-border-color;
+        border-left: 1px solid @table-border-color;
       }
     }
   }
@@ -103,6 +105,15 @@ th {
       border-bottom-width: 1px;
       background: @table-bg-thead;
     }
+  }
+  >thead:last-child tr:last-child > th:first-child,
+  >tbody:last-child tr:last-child > td:first-child, 
+  >tbody:last-child tr:last-child > th:first-child, 
+  >tfoot:last-child tr:last-child > td:first-child,
+  >tfoot:last-child tr:last-child > th:first-child{
+    -webkit-border-bottom-left-radius: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-bottom-left-radius: 2px;
   }
 }
 
@@ -134,10 +145,12 @@ th {
 }
 
 //首要表格
-.table-primary thead > tr > th{
-  background-color: #28a3ef;
-  border-left: 1px solid #4cb9fc;
-  color: #ffffff;
+.table-primary {
+  > thead > tr > th{
+    background-color: @table-bg-primary;
+    border-left: 1px solid @table-primary-borderlf-color;
+    color: @table-primary-color;
+  }
 }
 // Table cell sizing
 //
