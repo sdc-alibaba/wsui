@@ -127,6 +127,7 @@
 
     //
     $("#datepicker-input-js").datepicker();
+    $("#datepicker-inline-1").datepicker();
 
     // Config ZeroClipboard
     ZeroClipboard.config({

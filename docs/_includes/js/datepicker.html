@@ -115,5 +115,73 @@
       </tr>
     </tbody>
   </table>
+  <h2 id='datepicker-range'>范围选择</h3>
+  <p>可以选择一个时间范围。注意，这种情况下，要给input加上 <code>input-daterange</code>。 </p>
+  <div class="bs-example">
+    <form class="form-inline" action="">
+      <div class="form-group input-daterange" data-toggle="datepicker" data-date-start-date='2015-01-01' data-date-end-date='2015-01-31'>
+        <input type="text" class="form-control input-date" placeholder="开始日期"  value='2015-01-01'/> -
+        <input type="text" class="form-control input-date" placeholder="结束日期" value='2015-01-31'/>
+      </div>
+    </form>
+    
+  </div>
+{% highlight html %}
+<div class="form-group input-daterange" data-toggle="datepicker" data-date-start-date='2015-01-01' data-date-end-date='2015-01-31'>
+  <input type="text" class="form-control input-date" placeholder="开始日期"  value='2015-01-01'/> -
+  <input type="text" class="form-control input-date" placeholder="结束日期" value='2015-01-31'/>
 </div>
-
+{% endhighlight %}
+  <h2 id='datepicker-inline'>内联</h3>
+  <p>日期选择器可以直接以内联形式写到页面中。并且支持通过 <code>data-api</code> 以及 js 两种初始化方式。 </p>
+  <p>通过 <code>data-api</code> 形式初始化，如下例所示。通过js初始化，可以这样写 <code>$("#datepicker-line-1").datepicker();</code>。</p>
+  <div class="bs-example">
+    <div id="datepicker-inline-1" data-toggle="datepicker-inline"></div>
+  </div>
+{% highlight html %}
+<div id="datepicker-inline-1" data-toggle="datepicker-inline"></div>
+{% endhighlight %}
+  <h2 id='datepicker-method'>方法</h3>
+  <p>通过如下形式调用对应方法。 </p>
+{% highlight js %}
+$('.datepicker').datepicker('method', arg1, arg2);
+{% endhighlight %}
+  <p>其中可用的方法有：</p>
+  <table class='table table-bordered table-striped bs-events-table'>
+    <tr>
+      <th>方法</th>
+      <th>参数</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+    	<td>remove</td>
+      <td>无</td>
+      <td>删除datepicker。会删除绑定的事件，内联对象，和添加的HTML</td>
+    </tr>
+    <tr>
+    	<td>show</td>
+      <td>无</td>
+      <td>显示datepicker</td>
+    </tr>
+    <tr>
+    	<td>hide</td>
+      <td>无</td>
+      <td>隐藏datepicker</td>
+    </tr>
+    <tr>
+    	<td>update</td>
+      <td>date(String|Date,optional)</td>
+      <td>更新datepicker或者当前的input value. <code>$('.datepicker').datepicker('update');</code> 或者 <code>$('.datepicker').datepicker('update', '2011-03-05');</code></td>
+    </tr>
+    <tr>
+    	<td>getDate / getDates</td>
+      <td>无</td>
+      <td>返回当前日期/getDates用于多选模式下</td>
+    </tr>
+    <tr>
+    	<td>setEndDate/setStartDate</td>
+      <td>date(String|Date)</td>
+      <td>设置起始/截止日期</td>
+    </tr>
+  </table>
+</div>
