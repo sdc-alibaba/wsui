@@ -81,6 +81,36 @@
       </tbody>
     </table>
   </div><!-- /example -->
+  <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-vstriped table-bordered">
+      <tbody>
+        <tr>
+          <th>#</th>
+          <td>First Name</td>
+          <th>Last Name</th>
+          <td>Username</td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <th>Otto</th>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <th>Thornton</th>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <th>the Bird</th>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- /example -->
 {% highlight html %}
 <table class="table table-striped">
   ...
@@ -169,6 +199,45 @@
 </table>
 {% endhighlight %}
 
+ <h2 id="tables-primary">首要表格</h2>
+  <p>首要表格，颜色接近首要按钮的颜色，加类 <code>.table-primary</code> </p>
+  <div class="bs-example" data-example-id="primary-table">
+    <table class="table table-bordered table-primary">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <td scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <td scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- /example -->
+{% highlight html %}
+<table class="table table-primary">
+  ...
+</table>
+{% endhighlight %}
 
   <h2 id="tables-condensed">Condensed table</h2>
   <p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
