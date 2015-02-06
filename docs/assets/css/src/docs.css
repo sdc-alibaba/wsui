@@ -23,7 +23,7 @@ body {
 }
 
 /* Keep code small in tables on account of limited space */
-.sui-table code {
+.table code {
   font-size: 13px;
   font-weight: normal;
 }
@@ -112,7 +112,7 @@ body {
 /*
  * Main navigation
  *
- * Turn the `.sui-navbar` at the top of the docs purple.
+ * Turn the `.navbar` at the top of the docs purple.
  */
 
 .bs-docs-nav {
@@ -246,7 +246,7 @@ body {
   line-height: 1;
   color: #fff;
 }
-.bs-docs-masthead .sui-lead {
+.bs-docs-masthead .lead {
   margin: 0 auto 30px;
   font-size: 20px;
   color: #fff;
@@ -256,14 +256,14 @@ body {
   margin-bottom: 30px;
   color: #9783b9;
 }
-.bs-docs-masthead .sui-btn {
+.bs-docs-masthead .btn {
   width: 100%;
   padding: 15px 30px;
   font-size: 20px;
 }
 
 @media (min-width: 480px) {
-  .bs-docs-masthead .sui-btn {
+  .bs-docs-masthead .btn {
     width: auto;
   }
 }
@@ -275,13 +275,13 @@ body {
   .bs-docs-masthead h1 {
     font-size: 60px;
   }
-  .bs-docs-masthead .sui-lead {
+  .bs-docs-masthead .lead {
     font-size: 24px;
   }
 }
 
 @media (min-width: 992px) {
-  .bs-docs-masthead .sui-lead {
+  .bs-docs-masthead .lead {
     width: 80%;
     font-size: 30px;
   }
@@ -308,7 +308,7 @@ body {
   font-weight: 300;
   line-height: 1.4;
 }
-.bs-docs-header .sui-container {
+.bs-docs-header .container {
   position: relative;
 }
 
@@ -477,7 +477,7 @@ body {
   .bs-docs-featurette-title {
     font-size: 40px;
   }
-  .bs-docs-featurette .sui-lead {
+  .bs-docs-featurette .lead {
     max-width: 80%;
     margin-right: auto;
     margin-left: auto;
@@ -523,7 +523,7 @@ body {
  * Linked docs examples.
  */
 
-.bs-examples .sui-thumbnail {
+.bs-examples .thumbnail {
   margin-bottom: 10px;
 }
 .bs-examples h4 {
@@ -569,24 +569,24 @@ body {
 }
 
 /* All levels of nav */
-.bs-docs-sidebar .sui-nav > li > a {
+.bs-docs-sidebar .nav > li > a {
   display: block;
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
   color: #767676;
 }
-.bs-docs-sidebar .sui-nav > li > a:hover,
-.bs-docs-sidebar .sui-nav > li > a:focus {
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
   padding-left: 19px;
   color: #563d7c;
   text-decoration: none;
   background-color: transparent;
   border-left: 1px solid #563d7c;
 }
-.bs-docs-sidebar .sui-nav > .active > a,
-.bs-docs-sidebar .sui-nav > .active:hover > a,
-.bs-docs-sidebar .sui-nav > .active:focus > a {
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
   padding-left: 18px;
   font-weight: bold;
   color: #563d7c;
@@ -595,24 +595,24 @@ body {
 }
 
 /* Nav: second level (shown on .active) */
-.bs-docs-sidebar .sui-nav .sui-nav {
+.bs-docs-sidebar .nav .nav {
   display: none; /* Hide by default, but at >768px, show it */
   padding-bottom: 10px;
 }
-.bs-docs-sidebar .sui-nav .sui-nav > li > a {
+.bs-docs-sidebar .nav .nav > li > a {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 30px;
   font-size: 12px;
   font-weight: normal;
 }
-.bs-docs-sidebar .sui-nav .sui-nav > li > a:hover,
-.bs-docs-sidebar .sui-nav .sui-nav > li > a:focus {
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
   padding-left: 29px;
 }
-.bs-docs-sidebar .sui-nav .sui-nav > .active > a,
-.bs-docs-sidebar .sui-nav .sui-nav > .active:hover > a,
-.bs-docs-sidebar .sui-nav .sui-nav > .active:focus > a {
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
   padding-left: 28px;
   font-weight: 500;
 }
@@ -646,7 +646,7 @@ body {
 
 /* Show and affix the side nav when space allows it */
 @media (min-width: 992px) {
-  .bs-docs-sidebar .sui-nav > .active > ul {
+  .bs-docs-sidebar .nav > .active > ul {
     display: block;
   }
   /* Widen the fixed sidebar */
@@ -948,7 +948,7 @@ h1[id] {
 }
 
 /* Undo width of container */
-.bs-example .sui-container {
+.bs-example .container {
   width: auto;
 }
 
@@ -958,31 +958,31 @@ h1[id] {
 .bs-example > ol:last-child,
 .bs-example > blockquote:last-child,
 .bs-example > .form-control:last-child,
-.bs-example > .sui-table:last-child,
-.bs-example > .sui-navbar:last-child,
-.bs-example > .sui-jumbotron:last-child,
-.bs-example > .sui-alert:last-child,
-.bs-example > .sui-panel:last-child,
-.bs-example > .sui-list-group:last-child,
-.bs-example > .sui-well:last-child,
-.bs-example > .sui-progress:last-child,
-.bs-example > .table-responsive:last-child > .sui-table {
+.bs-example > .table:last-child,
+.bs-example > .navbar:last-child,
+.bs-example > .jumbotron:last-child,
+.bs-example > .alert:last-child,
+.bs-example > .panel:last-child,
+.bs-example > .list-group:last-child,
+.bs-example > .well:last-child,
+.bs-example > .progress:last-child,
+.bs-example > .table-responsive:last-child > .table {
   margin-bottom: 0;
 }
-.bs-example > p > .sui-close {
+.bs-example > p > .close {
   float: none;
 }
 
 /* Typography */
-.bs-example-type .sui-table .type-info {
+.bs-example-type .table .type-info {
   color: #767676;
   vertical-align: middle;
 }
-.bs-example-type .sui-table td {
+.bs-example-type .table td {
   padding: 15px 0;
   border-color: #eee;
 }
-.bs-example-type .sui-table tr:first-child td {
+.bs-example-type .table tr:first-child td {
   border-top: 0;
 }
 .bs-example-type h1,
@@ -1007,17 +1007,17 @@ h1[id] {
 }
 
 /* Tables */
-.bs-example > .table-responsive > .sui-table {
+.bs-example > .table-responsive > .table {
   background-color: #fff;
 }
 
 /* Buttons */
-.bs-example > .sui-btn,
-.bs-example > .sui-btn-group {
+.bs-example > .btn,
+.bs-example > .btn-group {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.bs-example > .sui-btn-toolbar + .sui-btn-toolbar {
+.bs-example > .btn-toolbar + .btn-toolbar {
   margin-top: 10px;
 }
 
@@ -1034,12 +1034,12 @@ h1[id] {
 }
 
 /* List groups */
-.bs-example > .sui-list-group {
+.bs-example > .list-group {
   max-width: 400px;
 }
 
 /* Navbars */
-.bs-example .sui-navbar:last-child {
+.bs-example .navbar:last-child {
   margin-bottom: 0;
 }
 .bs-navbar-top-example,
@@ -1074,7 +1074,7 @@ h1[id] {
 .bs-navbar-bottom-example .navbar-fixed-bottom {
   bottom: -1px;
 }
-.bs-navbar-bottom-example .sui-navbar {
+.bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
 }
 @media (min-width: 768px) {
@@ -1085,7 +1085,7 @@ h1[id] {
 }
 
 /* Pagination */
-.bs-example .sui-pagination {
+.bs-example .pagination {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -1099,7 +1099,7 @@ h1[id] {
 .bs-example-modal {
   background-color: #f5f5f5;
 }
-.bs-example-modal .sui-modal {
+.bs-example-modal .modal {
   position: relative;
   top: auto;
   right: auto;
@@ -1115,10 +1115,10 @@ h1[id] {
 }
 
 /* Example dropdowns */
-.bs-example > .sui-dropdown > .dropdown-toggle {
+.bs-example > .dropdown > .dropdown-toggle {
   float: left;
 }
-.bs-example > .sui-dropdown > .sui-dropdown-menu {
+.bs-example > .dropdown > .dropdown-menu {
   position: static;
   display: block;
   margin-bottom: 5px;
@@ -1134,11 +1134,11 @@ h1[id] {
 .bs-example-tooltips {
   text-align: center;
 }
-.bs-example-tooltips > .sui-btn {
+.bs-example-tooltips > .btn {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.bs-example-tooltip .sui-tooltip {
+.bs-example-tooltip .tooltip {
   position: relative;
   display: inline-block;
   margin: 10px 20px;
@@ -1167,7 +1167,7 @@ h1[id] {
 }
 
 /* Simple collapse example */
-#collapseExample .sui-well {
+#collapseExample .well {
   margin-bottom: 0;
 }
 
@@ -1403,7 +1403,7 @@ h1[id] {
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
           box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
 }
-.bs-customizer-alert .sui-close {
+.bs-customizer-alert .close {
   margin-top: -4px;
   font-size: 24px;
 }
@@ -1440,7 +1440,7 @@ h1[id] {
 .bs-dropzone hr {
   width: 100px;
 }
-.bs-dropzone .sui-lead {
+.bs-dropzone .lead {
   margin-bottom: 10px;
   font-weight: normal;
   color: #333;
