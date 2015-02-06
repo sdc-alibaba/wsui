@@ -4929,9 +4929,8 @@ a.thumbnail.active {
 .alert-dismissible .close {
   position: absolute;
   color: inherit;
-  top: 50%;
+  top: 10px;
   right: 12px;
-  margin-top: -12px;
 }
 .alert-success {
   background-color: #bcedcb;
@@ -4979,6 +4978,10 @@ a.thumbnail.active {
 }
 .alert-small {
   padding: 2px 14px;
+}
+.alert-small .close {
+  font-size: 20px;
+  top: 0;
 }
 .alert-inline {
   display: inline-block;

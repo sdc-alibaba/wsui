@@ -235,7 +235,7 @@ window.CLASSMAP = {
       $parent = $this.closest('.' + CLASSMAP.alert)
     }
 
-    $parent.trigger(e = $.Event('close.bs.alert'))
+    $parent.trigger(e = $.Event('close'))
 
     if (e.isDefaultPrevented()) return
 
@@ -243,7 +243,7 @@ window.CLASSMAP = {
 
     function removeElement() {
       // detach from parent, fire event then clean up data
-      $parent.detach().trigger('closed.bs.alert').remove()
+      $parent.detach().trigger('closed').remove()
     }
 
     $.support.transition && $parent.hasClass('fade') ?
@@ -260,9 +260,9 @@ window.CLASSMAP = {
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.alert')
+      var data  = $this.data('alert')
 
-      if (!data) $this.data('bs.alert', (data = new Alert(this)))
+      if (!data) $this.data('alert', (data = new Alert(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
@@ -285,7 +285,7 @@ window.CLASSMAP = {
   // ALERT DATA-API
   // ==============
 
-  $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
+  $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
 
 }(jQuery);
 
@@ -365,10 +365,10 @@ window.CLASSMAP = {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.button')
+      var data    = $this.data('button')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.button', (data = new Button(this, options)))
+      if (!data) $this.data('button', (data = new Button(this, options)))
 
       if (option == 'toggle') data.toggle()
       else if (option) data.setState(option)
@@ -394,13 +394,13 @@ window.CLASSMAP = {
   // ===============
 
   $(document)
-    .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+    .on('click.button.data-api', '[data-toggle^="button"]', function (e) {
       var $btn = $(e.target)
       if (!$btn.hasClass(CLASSMAP.btn)) $btn = $btn.closest('.' + CLASSMAP.btn)
       Plugin.call($btn, 'toggle')
       e.preventDefault()
     })
-    .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+    .on('focus.button.data-api blur.button.data-api', '[data-toggle^="button"]', function (e) {
       $(e.target).closest('.' + CLASSMAP.btn).toggleClass('focus', /^focus(in)?$/.test(e.type))
     })
 
