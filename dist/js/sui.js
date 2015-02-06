@@ -313,7 +313,7 @@ window.CLASSMAP = {
   Button.VERSION  = '3.3.1'
 
   Button.DEFAULTS = {
-    loadingText: 'loading...'
+    loadingText: '加载中...'
   }
 
   Button.prototype.setState = function (state) {
