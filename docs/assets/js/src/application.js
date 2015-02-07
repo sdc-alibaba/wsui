@@ -125,6 +125,10 @@
       $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
     })
 
+    //
+    $("#datepicker-input-js").datepicker();
+    $("#datepicker-inline-1").datepicker();
+
     // Config ZeroClipboard
     ZeroClipboard.config({
       moviePath: '/assets/flash/ZeroClipboard.swf',
