@@ -65,7 +65,7 @@ $(function () {
       .find('#scrollspy-example')
       .bootstrapScrollspy({ target: '#ss-target' })
 
-    $scrollspy.on('scroll.bs.scrollspy', function () {
+    $scrollspy.on('scroll', function () {
       ok($section.hasClass('active'), '"active" class still on root node')
       start()
     })
@@ -96,7 +96,7 @@ $(function () {
 
     $scrollspy.bootstrapScrollspy({ target: '#navigation', offset: $scrollspy.position().top })
 
-    $scrollspy.on('scroll.bs.scrollspy', function () {
+    $scrollspy.on('scroll', function () {
       ok(!$section.find('#one-link').parent().hasClass('active'), '"active" class removed from first section')
       ok($section.find('#two-link').parent().hasClass('active'), '"active" class on middle section')
       ok(!$section.find('#three-link').parent().hasClass('active'), '"active" class not on last section')
@@ -169,12 +169,12 @@ $(function () {
         target: '#navigation',
         offset: $scrollspy.position().top
       })
-      .one('scroll.bs.scrollspy', function () {
+      .one('scroll', function () {
         strictEqual($('.active').length, 1, '"active" class on only one element present')
         strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section')
 
         $scrollspy
-          .one('scroll.bs.scrollspy', function () {
+          .one('scroll', function () {
             strictEqual($('.active').length, 0, 'selection cleared')
             start()
           })

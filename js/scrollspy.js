@@ -25,7 +25,7 @@
     this.activeTarget   = null
     this.scrollHeight   = 0
 
-    this.$scrollElement.on('scroll.bs.scrollspy', process)
+    this.$scrollElement.on('scroll', process)
     this.refresh()
     this.process()
   }
@@ -123,7 +123,7 @@
         .addClass('active')
     }
 
-    active.trigger('activate.bs.scrollspy')
+    active.trigger('activate.scrollspy')
   }
 
   ScrollSpy.prototype.clear = function () {
@@ -139,10 +139,10 @@
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.scrollspy')
+      var data    = $this.data('scrollspy')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -165,7 +165,7 @@
   // SCROLLSPY DATA-API
   // ==================
 
-  $(window).on('load.bs.scrollspy.data-api', function () {
+  $(window).on('load.data-api', function () {
     $('[data-spy="scroll"]').each(function () {
       var $spy = $(this)
       Plugin.call($spy, $spy.data())
