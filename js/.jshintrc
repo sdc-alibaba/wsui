@@ -13,5 +13,6 @@
   "undef"    : true,
   "unused"   : true,
   "laxcomma" : false,
+  "newcap"   : false,
   "predef": [ "CLASSMAP" ]
 }
