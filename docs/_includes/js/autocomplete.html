@@ -1,7 +1,136 @@
 <div class="bs-docs-section">
-  <h1 id="tabs" class="page-header">自动补全<small>autoplete.js</small></h1>
+  <h1 id="autocomplete" class="page-header">自动补全<small>autoplete.js</small></h1>
 
-  <h2 id="ac-examples">示例</h2>
-  <div class="bs-example" data-example-id="">
+  <h2 id="ac-examples">本地数据</h2>
+  <p>在 <code>input</code> 上 通过 <code>data-toggle='autocomplete'</code> 可以自动初始化。可以通过 <code>data-lookup</code> 直接配置一个本地数据作为自动补全的数据源。</p>
+  <div class="bs-example">
+    <input type="text" class="form-control" placeholder="输入名称" data-toggle="autocomplete" data-lookup="[&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;, &quot;ddd&quot;, &quot;edfa&quot;, &quot;wdasda&quot;, &quot;tueiyhgk&quot;, &quot;vjflcjx&quot;]"/>
   </div>
+{% highlight html %}
+<input type="text" class="form-control" placeholder="输入名称" data-toggle="autocomplete" data-lookup="[&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;, &quot;ddd&quot;, &quot;edfa&quot;, &quot;wdasda&quot;, &quot;tueiyhgk&quot;, &quot;vjflcjx&quot;]"/>
+{% endhighlight %}
+  <h2 id="ac-json">ajax数据</h2>
+  <p>通过 <code>data-servce-url</code> 可以配置一个JSON格式的数据接口，用以从服务器端读取自动补全的数据。其中，用户输入的内容会作为get参数 <code>query</code> 传递给服务器。（注意，因为这里是静态的数据做演示，所以输入任何内容，自动补全的内容都不变）</p>
+  <div class="bs-example">
+    <input type="text" class="form-control" placeholder="输入名称" data-toggle="autocomplete" data-service-url="../json/ac-strings.json"/>
+  </div>
+{% highlight html %}
+<input type="text" class="form-control" placeholder="输入名称" data-toggle="autocomplete" data-service-url="../json/ac-strings.json"/>
+{% endhighlight %}
+  <h2 id="ac-data">数据格式</h2>
+  <p>自动补全支持两种数据格式：字符串数组和键值对。</p>
+  <p>字符串数组格式如下所示：</p>
+{% highlight js %}
+{
+  "query": "a",
+  "suggestions": [
+    "张三",
+    "李四",
+    "王五",
+    "赵六"
+  ]
+}
+{% endhighlight %}
+  <p>键值对格式如下所示：</p>
+{% highlight js %}
+{
+  "query": "a",
+  "suggestions": [
+    { "value": "张三", "data": { "id": "123", "gender": "male"}},
+    { "value": "李四", "data": { "id": "124", "gender": "female"}},
+    { "value": "王五", "data": { "id": "125", "gender": "male"}}
+  ]
+}
+{% endhighlight %}
+  <h2 id="ac-js">通过JS初始化</h2>
+  <p>建议优先通过 <code>data-toggle="autocomplete"</code> 的方式自动初始化。但是，如果你需要有更详细的配置，或者你的html代码是异步加载的，你可能必须手动初始化。使用 <code>$().autocomplete(config)</code> 来手动初始化自动补全，其中config是一个配置对象。</p>
+  <div class="bs-example">
+    <input type="text" class="form-control" placeholder="输入名称" id='ac-js-input' />
+  </div>
+{% highlight js %}
+$('#ac-js-input').autocomplete({
+  serviceUrl: '../json/ac-strings.json'
+});
+{% endhighlight %}
+  <h2 id="ac-config">配置说明</h2>
+  <p>下面是初始化时可用的配置，其中字符串类型的配置都可以通过 <code>data-*</code> 的形式在html中配置。比如 <code>autoSelectFirst</code> 可以通过 <code>data-auto-select-first</code> 来配置。</p>
+  <table class='table table-bordered table-striped bs-events-table'>
+    <tbody>
+      <tr>
+        <th>参数</th>
+        <th>默认值</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>autoSelectFirst</td>
+        <td>false</td>
+        <td>是否自动选中第一个</td>
+      </tr>
+      <tr>
+        <td>appendTo</td>
+        <td>"body"</td>
+        <td>自动补全的菜单的容器</td>
+      </tr>
+      <tr>
+        <td>serviceUrl</td>
+        <td>null</td>
+        <td>获取数据的接口(服务器端的URL地址或者生成URL字符串的回调方法)，如果定义了lookup 则此配置无效</td>
+      </tr>
+      <tr>
+        <td>lookup</td>
+        <td>null</td>
+        <td>读取本地数据，建议查找数组。比如 ['a', 'b', 'c']，如果配置了lookup，则忽略serviceUrl</td>
+      </tr>
+      <tr>
+        <td>onSelect</td>
+        <td>null</td>
+        <td>选中结果时的回调,参数 (element, suggestion)</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>auto</td>
+        <td>下拉框宽度，默认与输入框一样</td>
+      </tr>
+      <tr>
+        <td>minChars</td>
+        <td>1</td>
+        <td>出发自动补全的字符最小数量</td>
+      </tr>
+      <tr>
+        <td>maxHeight</td>
+        <td>300</td>
+        <td>下拉菜单的最大高度</td>
+      </tr>
+      <tr>
+        <td>params</td>
+        <td>{}</td>
+        <td>附加参数</td>
+      </tr>
+      <tr>
+        <td>formatResult</td>
+        <td>Autocomplete.formatResult</td>
+        <td>自定义格式化补全结果，参数(suggestion, currentValue) </td>
+      </tr>
+      <tr>
+        <td>noCache</td>
+        <td>false</td>
+        <td>是否要缓存</td>
+      </tr>
+      <tr>
+        <td>lookupFilter</td>
+        <td>function (suggestion, originalQuery, queryLowerCase) { return suggestion.value.toLowerCase().indexOf(queryLowerCase) !== -1; }</td>
+        <td>过滤自动补全的结果，默认是匹配查询词。如果不需要过滤结果可以置为 $.noop。</td>
+      </tr>
+      <tr>
+        <td>paramName</td>
+        <td>query</td>
+        <td>查询请求参数</td>
+      </tr>
+      <tr>
+        <td>transformResult</td>
+        <td>function (response) { return typeof response === 'string' ? $.parseJSON(response) : response; }</td>
+        <td>处理ajax的返回结果，参数 (response)。</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

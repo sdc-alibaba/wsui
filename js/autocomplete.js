@@ -797,7 +797,7 @@
       onSearchStart: $.noop,
       onSearchComplete: $.noop,
       onSearchError: $.noop,
-      containerClass: 'sui-dropdown-menu sui-suggestion-container',
+      containerClass: 'dropdown-menu suggestion-container',
       tabDisabled: false,
       dataType: 'text',
       currentRequest: null,
