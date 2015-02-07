@@ -24,13 +24,13 @@
 	>div {
 		display: none;
 	}
-	&.days div.datepicker-days {
+	&.days .datepicker-days {
 		display: block;
 	}
-	&.months div.datepicker-months {
+	&.months .datepicker-months {
 		display: block;
 	}
-	&.years div.datepicker-years {
+	&.years .datepicker-years {
 		display: block;
 	}
 	table{
@@ -80,14 +80,6 @@
 			cursor: default;
 		}
     @orange: #f89406;
-		&.today,
-		&.today:hover,
-		&.today.disabled,
-		&.today.disabled:hover {
-			/*@todayBackground: lighten(@orange, 30%);
-			.button-variant(#000,@todayBackground, spin(@todayBackground, 20));*/
-			color: @orange;
-		}
 		&.today:hover:hover { // Thank bootstrap 2.0 for this selector...
 			// TODO: Bump min BS to 2.1, use @textColor in buttonBackground above
 			color: @orange;
@@ -113,7 +105,6 @@
 		&.selected.disabled,
 		&.selected.disabled:hover {
 			.button-variant(#fff,lighten(@gray-light, 10), darken(@gray-light, 10));
-			color: #fff;
 			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 		}
 		&.active,
@@ -121,7 +112,6 @@
 		&.active.disabled,
 		&.active.disabled:hover {
 			.button-variant(#fff,@brand-primary, spin(@brand-primary, 20));
-			color: #fff;
 			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 		}
 		span {
@@ -147,7 +137,6 @@
 			&.active.disabled,
 			&.active.disabled:hover {
 				.button-variant(#fff,@brand-primary, spin(@brand-primary, 20));
-				color: #fff;
 				text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 			}
 			&.old,
@@ -243,8 +232,6 @@
 	    -webkit-background-clip: padding-box;
 	       -moz-background-clip: padding;
 	            background-clip: padding-box;
-	    *border-right-width: 2px;
-	    *border-bottom-width: 2px;	
 
 	    // Normally inherited from bootstrap's `body`
 	    color: #333333;
