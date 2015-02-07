@@ -120,7 +120,8 @@ module.exports = function (grunt) {
           'js/scrollspy.js',
           'js/tab.js',
           'js/affix.js',
-          'js/datepicker.js'
+          'js/datepicker.js',
+          'js/validate.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
