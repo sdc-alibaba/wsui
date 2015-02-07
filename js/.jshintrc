@@ -12,5 +12,6 @@
   "strict"   : true,
   "undef"    : true,
   "unused"   : true,
+  "laxcomma" : false,
   "predef": [ "CLASSMAP" ]
 }
