@@ -1,3 +1,4 @@
+/* jshint laxcomma: true */
 /* ========================================================================
  * Bootstrap: transition.js v3.3.1
  * http://getbootstrap.com/javascript/#transitions
