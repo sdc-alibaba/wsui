@@ -249,28 +249,28 @@ $('#myCollapsible').collapse({
       </thead>
       <tbody>
        <tr>
-         <td>show.bs.collapse</td>
+         <td>show</td>
          <td>This event fires immediately when the <code>show</code> instance method is called.</td>
        </tr>
        <tr>
-         <td>shown.bs.collapse</td>
+         <td>shown</td>
          <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
        </tr>
        <tr>
-         <td>hide.bs.collapse</td>
+         <td>hide</td>
          <td>
           This event is fired immediately when the <code>hide</code> method has been called.
          </td>
        </tr>
        <tr>
-         <td>hidden.bs.collapse</td>
+         <td>hidden</td>
          <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
        </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
 {% highlight js %}
-$('#myCollapsible').on('hidden.bs.collapse', function () {
+$('#myCollapsible').on('hidden', function () {
   // do something…
 })
 {% endhighlight %}
