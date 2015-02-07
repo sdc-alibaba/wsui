@@ -2,6 +2,8 @@
 
 window.CLASSMAP = {
   alert: 'alert',
+  close: 'close',
+  modal: 'modal',
   btn: 'btn',
   carousel: 'carousel',
   panel: 'panel',
