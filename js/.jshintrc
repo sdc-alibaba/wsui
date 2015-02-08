@@ -11,7 +11,8 @@
   "nonbsp"   : true,
   "strict"   : true,
   "undef"    : true,
-  "unused"   : false,
+  "unused"   : true,
+  "laxcomma" : false,
   "newcap"   : false,
   "predef": [ "CLASSMAP", "console" ]
 }
