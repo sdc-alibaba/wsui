@@ -42,7 +42,7 @@ $(function () {
   test('should store popover instance in popover data object', function () {
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>').bootstrapPopover()
 
-    ok($popover.data('bs.popover'), 'popover instance exists')
+    ok($popover.data('popover'), 'popover instance exists')
   })
 
   test('should store popover trigger in popover instance data object', function () {
@@ -52,7 +52,7 @@ $(function () {
 
     $popover.bootstrapPopover('show')
 
-    ok($('.popover').data('bs.popover'), 'popover trigger stored in instance data')
+    ok($('.popover').data('popover'), 'popover trigger stored in instance data')
   })
 
   test('should get title and content from options', function () {
@@ -160,7 +160,7 @@ $(function () {
       })
       .on('click.foo', $.noop)
 
-    ok($popover.data('bs.popover'), 'popover has data')
+    ok($popover.data('popover'), 'popover has data')
     ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event')
     equal($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
 
@@ -209,11 +209,11 @@ $(function () {
 
     stop()
     $div
-      .one('shown.bs.popover', function () {
+      .one('shown', function () {
         $div
-          .one('hidden.bs.popover', function () {
+          .one('hidden', function () {
             $div
-              .one('shown.bs.popover', function () {
+              .one('shown', function () {
                 $('.content-with-handler .btn').click()
                 $div.bootstrapPopover('destroy')
                 ok(handlerCalled, 'content\'s event handler still present')

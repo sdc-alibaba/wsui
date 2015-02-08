@@ -13,5 +13,5 @@
   "undef"    : true,
   "unused"   : false,
   "newcap"   : false,
-  "predef": [ "CLASSMAP" ]
+  "predef": [ "CLASSMAP", "console" ]
 }

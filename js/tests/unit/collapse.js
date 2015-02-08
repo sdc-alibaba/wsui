@@ -277,7 +277,7 @@ $(function () {
 
     $('<div id="body1" class="collapse"/>')
       .appendTo($groups.eq(0))
-      .on('show.bs.collapse', function () {
+      .on('show', function () {
         showFired = true
       })
 
@@ -288,7 +288,7 @@ $(function () {
 
     $body2
       .toggleClass('in collapsing')
-      .data('bs.collapse').transitioning = 1
+      .data('collapse').transitioning = 1
 
     $target1.click()
 
