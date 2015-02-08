@@ -178,10 +178,10 @@ $(function () {
 
     $dropdown
       .parent('.dropdown')
-      .on('show.bs.dropdown', function () {
+      .on('show', function () {
         ok(true, 'show was fired')
       })
-      .on('hide.bs.dropdown', function () {
+      .on('hide', function () {
         ok(true, 'hide was fired')
         start()
       })
@@ -212,10 +212,10 @@ $(function () {
 
     $dropdown
       .parent('.dropdown')
-      .on('shown.bs.dropdown', function () {
+      .on('shown', function () {
         ok(true, 'shown was fired')
       })
-      .on('hidden.bs.dropdown', function () {
+      .on('hidden', function () {
         ok(true, 'hidden was fired')
         start()
       })
@@ -250,7 +250,7 @@ $(function () {
 
     $dropdown
       .parent('.dropdown')
-      .on('shown.bs.dropdown', function () {
+      .on('shown', function () {
         ok(true, 'shown was fired')
 
         $input.focus().trigger($.Event('keydown', { which: 38 }))

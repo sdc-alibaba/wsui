@@ -120,7 +120,9 @@ module.exports = function (grunt) {
           'js/scrollspy.js',
           'js/tab.js',
           'js/affix.js',
-          'js/pagination'
+          'js/pagination.js',
+          'js/datepicker.js',
+          'js/validate.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
@@ -336,7 +338,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:src', 'qunit', 'concat', 'newer:copy:docs']
+        tasks: ['newer:jshint:core', 'concat', 'newer:copy:docs']
       },
       test: {
         files: '<%= jshint.test.src %>',
