@@ -32,12 +32,12 @@ $(function () {
   test('should not fire slid when slide is prevented', function () {
     stop()
     $('<div class="carousel"/>')
-      .on('slide.bs.carousel', function (e) {
+      .on('slide', function (e) {
         e.preventDefault()
         ok(true, 'slide event fired')
         start()
       })
-      .on('slid.bs.carousel', function () {
+      .on('slid', function () {
         ok(false, 'slid event fired')
       })
       .bootstrapCarousel('next')
@@ -68,7 +68,7 @@ $(function () {
 
     stop()
     $carousel
-      .one('slide.bs.carousel', function (e) {
+      .one('slide', function (e) {
         e.preventDefault()
         setTimeout(function () {
           ok($carousel.find('.item:eq(0)').is('.active'), 'first item still active')
@@ -76,7 +76,7 @@ $(function () {
           $carousel.bootstrapCarousel('next')
         }, 0)
       })
-      .one('slid.bs.carousel', function () {
+      .one('slid', function () {
         setTimeout(function () {
           ok(!$carousel.find('.item:eq(0)').is('.active'), 'first item still active')
           ok(!$carousel.find('.carousel-indicators li:eq(0)').is('.active'), 'first indicator still active')
@@ -127,12 +127,12 @@ $(function () {
     stop()
 
     $carousel
-      .one('slide.bs.carousel', function (e) {
+      .one('slide', function (e) {
         ok(e.direction, 'direction present on next')
         strictEqual(e.direction, 'left', 'direction is left on next')
 
         $carousel
-          .one('slide.bs.carousel', function (e) {
+          .one('slide', function (e) {
             ok(e.direction, 'direction present on prev')
             strictEqual(e.direction, 'right', 'direction is right on prev')
             start()
@@ -181,12 +181,12 @@ $(function () {
     stop()
 
     $carousel
-      .one('slid.bs.carousel', function (e) {
+      .one('slid', function (e) {
         ok(e.direction, 'direction present on next')
         strictEqual(e.direction, 'left', 'direction is left on next')
 
         $carousel
-          .one('slid.bs.carousel', function (e) {
+          .one('slid', function (e) {
             ok(e.direction, 'direction present on prev')
             strictEqual(e.direction, 'right', 'direction is right on prev')
             start()
@@ -234,7 +234,7 @@ $(function () {
     stop()
 
     $(template)
-      .on('slide.bs.carousel', function (e) {
+      .on('slide', function (e) {
         ok(e.relatedTarget, 'relatedTarget present')
         ok($(e.relatedTarget).hasClass('item'), 'relatedTarget has class "item"')
         start()
@@ -280,7 +280,7 @@ $(function () {
     stop()
 
     $(template)
-      .on('slid.bs.carousel', function (e) {
+      .on('slid', function (e) {
         ok(e.relatedTarget, 'relatedTarget present')
         ok($(e.relatedTarget).hasClass('item'), 'relatedTarget has class "item"')
         start()
@@ -327,25 +327,25 @@ $(function () {
 
     $carousel.appendTo('body')
     $('[data-slide]').first().click()
-    equal($carousel.data('bs.carousel').options.interval, 1814)
+    equal($carousel.data('carousel').options.interval, 1814)
     $carousel.remove()
 
     $carousel.appendTo('body').attr('data-modal', 'foobar')
     $('[data-slide]').first().click()
-    equal($carousel.data('bs.carousel').options.interval, 1814, 'even if there is an data-modal attribute set')
+    equal($carousel.data('carousel').options.interval, 1814, 'even if there is an data-modal attribute set')
     $carousel.remove()
 
     $carousel.appendTo('body')
     $('[data-slide]').first().click()
     $carousel.attr('data-interval', 1860)
     $('[data-slide]').first().click()
-    equal($carousel.data('bs.carousel').options.interval, 1814, 'attributes should be read only on initialization')
+    equal($carousel.data('carousel').options.interval, 1814, 'attributes should be read only on initialization')
     $carousel.remove()
 
     $carousel.attr('data-interval', false)
     $carousel.appendTo('body')
     $carousel.bootstrapCarousel(1)
-    strictEqual($carousel.data('bs.carousel').options.interval, false, 'data attribute has higher priority than default options')
+    strictEqual($carousel.data('carousel').options.interval, false, 'data attribute has higher priority than default options')
     $carousel.remove()
   })
 
@@ -569,13 +569,13 @@ $(function () {
     stop()
 
     $carousel
-      .one('slid.bs.carousel', function () {
+      .one('slid', function () {
         strictEqual(getActiveId(), 'two', 'carousel slid from 1st to 2nd slide')
         $carousel
-          .one('slid.bs.carousel', function () {
+          .one('slid', function () {
             strictEqual(getActiveId(), 'three', 'carousel slid from 2nd to 3rd slide')
             $carousel
-              .one('slid.bs.carousel', function () {
+              .one('slid', function () {
                 strictEqual(getActiveId(), 'one', 'carousel wrapped around and slid from 3rd to 1st slide')
                 start()
               })
@@ -612,7 +612,7 @@ $(function () {
     stop()
 
     $carousel
-      .on('slid.bs.carousel', function () {
+      .on('slid', function () {
         strictEqual($carousel.find('.item.active').attr('id'), 'three', 'carousel wrapped around and slid from 1st to 3rd slide')
         start()
       })
@@ -646,13 +646,13 @@ $(function () {
     stop()
 
     $carousel
-      .one('slid.bs.carousel', function () {
+      .one('slid', function () {
         strictEqual(getActiveId(), 'two', 'carousel slid from 1st to 2nd slide')
         $carousel
-          .one('slid.bs.carousel', function () {
+          .one('slid', function () {
             strictEqual(getActiveId(), 'three', 'carousel slid from 2nd to 3rd slide')
             $carousel
-              .one('slid.bs.carousel', function () {
+              .one('slid', function () {
                 ok(false, 'carousel slid when it should not have slid')
               })
               .bootstrapCarousel('next')
@@ -688,7 +688,7 @@ $(function () {
     var $carousel = $(carouselHTML)
 
     $carousel
-      .on('slid.bs.carousel', function () {
+      .on('slid', function () {
         ok(false, 'carousel slid when it should not have slid')
       })
       .bootstrapCarousel('prev')
