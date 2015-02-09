@@ -50,10 +50,8 @@
     getOptions: function (options) {
       options = $.extend({}, $.fn[this.type].defaults, this.$element.data(), options)
 
-      var foot = options.type == 'confirm' ? '<div class="tooltip-footer"><button class="sui-btn btn-primary" data-ok="tooltip">确定</button><button class="sui-btn btn-default" data-dismiss="tooltip">取消</button></div>' : ''
       // 根据tooltip的type类型构造tip模版
-      options.template = '<div class="sui-tooltip ' + options.type + '" style="overflow:visible"><div class="tooltip-arrow"><div class="tooltip-arrow cover"></div></div><div class="tooltip-inner"></div>' + foot + '</div>'
-      options.type == 'confirm' && (options.html = true)
+      options.template = '<div class="sui-tooltip tooltip-' + options.type + '"><div class="tooltip-arrow">' + (options.type == 'default' ? '<div class="tooltip-arrow cover"></div>' : '') + '</div><div class="tooltip-inner"></div></div>'
 
       if (options.delay && typeof options.delay == 'number') {
         options.delay = {
@@ -143,7 +141,7 @@
         actualHeight = $tip[0].offsetHeight
 
         // + - 7修正，和css对应，勿单独修改
-        var d = opt.type == 'attention' ? 5 : 7
+        var d = opt.type == 'warning' ? 5 : 7
 
         // 确定tooltip布局对齐方式
         var positioning = function () {
@@ -419,7 +417,7 @@
 
   $.fn.tooltip.defaults = {
     animation: true,
-    type: 'default',   // tip 类型 {string} 'default'|'attention'|'confirm' ,区别见demo
+    type: 'default',   // tip 类型 {string} 'default'|'warning' ,区别见demo
     placement: 'top',
     selector: false,  // 通常要配合调用方法使用，如果tooltip元素很多，用此途径进行事件委托减少事件监听数量: $('body').tooltip({selector: '.tips'})
     trigger: 'hover focus',   // 触发方式，多选：click hover focus，如果希望手动触发，则传入'manual'
@@ -461,22 +459,6 @@
         switchTgt.trigger('click.tooltip')
       }
     })
-
-    // 为confirm类型tooltip增加取消按钮设置默认逻辑
-    $(document).on('click', '[data-dismiss=tooltip]', function (e) {
-      e.preventDefault()
-      $(e.target).parents('.sui-tooltip').prev().trigger('click.tooltip')
-    })
-    $(document).on('click', '[data-ok=tooltip]', function (e) {
-      e.preventDefault()
-      var triggerEle = $(e.target).parents('.sui-tooltip').prev(),
-          instance = triggerEle.data('tooltip'),
-          okHideCallback = instance.options.okHide
-      if (typeof okHideCallback == 'function') {
-        okHideCallback.call(triggerEle)
-      }
-    })
-
   })
 
 }(jQuery);
