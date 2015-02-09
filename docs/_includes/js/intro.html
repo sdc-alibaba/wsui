@@ -22,16 +22,38 @@
       <div data-step="6" data-intro="第六步:Last step." class="divcont">
         <h4>6.跨浏览器兼容性</h4>
         <p>它兼容最近版本的火狐,Chrome和IE8，更好的兼容性需要进一步开发。</p>
+      </div><a href="javascript:void(0);" class="btn btn-primary">展示操作</a>
+    </div>
+  </div><!-- /example -->
+  {% highlight html %}
+  <div>
+    <h1 data-step="1" data-intro="1..." style="text-align:center">1...</h1>
+    <p data-step="4" data-intro="4..." class="lead">4...</p>
+    <div>
+      <div data-step="2" data-intro="2..." data-position="right" class="divcont">
+        <h4>2...</h4>
+        <p>...</p>
+      </div>
+      <div data-step="3" data-intro="3..." data-position="left" class="divcont">
+        <h4>3... </h4>
+        <p>...</p>
+      </div>
+      <div data-step="5" data-intro="5..." class="divcont">
+        <h4>5...</h4>
+        <p>...</p>
+      </div>
+      <div data-step="6" data-intro="6..." class="divcont">
+        <h4>6...</h4>
+        <p>...</p>
       </div><a href="javascript:void(0);" class="sui-btn btn-xlarge btn-primary">展示操作</a>
     </div>
-    {% highlight js %}
-      $(".btn-primary").click(function(){
-        $.introJs().start();
-      })
-    {% endhighlight %}
-
-  </div><!-- /example -->
-
+  </div>
+  {% endhighlight %}
+  {% highlight js %}
+    $(".btn-primary").click(function(){
+      $.introJs().start();
+    })
+  {% endhighlight %}
 
   <h2 id="tabs-usage">Usage</h2>
   <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
