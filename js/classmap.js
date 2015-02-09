@@ -11,5 +11,6 @@ window.CLASSMAP = {
   dropdownMenu: 'dropdown-menu',
   popover: 'popover',
   tooltip: 'tooltip',
-  nav: 'nav'
+  nav: 'nav',
+  pagination: 'pagination'
 }
