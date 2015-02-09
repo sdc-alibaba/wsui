@@ -2,90 +2,126 @@
   <h1 id="pagination" class="page-header">Pagination</h1>
 
   <p class="lead">Provide pagination links for your site or app with the multi-page pagination component, or the simpler <a href="#pagination-pager">pager alternative</a>.</p>
+  <p class="lead">JS方法使用文档<a href="http://sui.taobao.org/sui/docs/pagination-js.html" target="_blank">详见原SUI文档页</a></p>
 
   <h2 id="pagination-default">Default pagination</h2>
   <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
   <div class="bs-example" data-example-id="simple-pagination">
     <nav>
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
+      <div class="pagination">
+        <ul>
+          <li class="prev">
+            <a href="#">&laquo;</a>
+          </li>
+          <li><a href="#">1</a></li>
+          <li class="active"><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next">
+            <a href="#">&raquo;</a>
+          </li>
+        </ul>
+      </div>
     </nav>
+    <nav>
+      <div class="pagination">
+        <ul>
+          <li class="disabled prev"><a href="#">&laquo;上一页</a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">下一页&raquo;</a></li>
+        </ul>
+        <div>
+          <span>共10页&nbsp;</span><span> 到 <input type="text" class="page-num"><button class="page-confirm" onclick="alert(1)">确定</button> 页</span>
+        </div>
+      </div>
+    </nav>
+
   </div>
 {% highlight html %}
 <nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+  <div class="pagination">
+    <ul>
+      <li class="prev">
+        <a href="#">&laquo;</a>
+      </li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li class="active"><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li class="next">
+        <a href="#">&raquo;</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+<nav>
+  <div class="pagination">
+    <ul>
+      <li class="disabled prev"><a href="#">&laquo;上一页</a></li>
+      <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li class="next"><a href="#">下一页&raquo;</a></li>
+    </ul>
+    <div>
+      <span>共10页&nbsp;</span><span> 到 <input type="text" class="page-num"><button class="page-confirm" onclick="alert(1)">确定</button> 页</span>
+    </div>
+  </div>
+</nav>
+
 {% endhighlight %}
 
   <h3>Disabled and active states</h3>
   <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
   <div class="bs-example" data-example-id="disabled-active-pagination">
     <nav>
-      <ul class="pagination">
-        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-     </ul>
-   </nav>
+      <div class="pagination">
+        <ul>
+          <li class="disabled prev"><a href="#">&laquo;</a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
+    </nav>
+
   </div>
 {% highlight html %}
 <nav>
-  <ul class="pagination">
-    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-    ...
-  </ul>
+  <div class="pagination">
+    <ul>
+      <li class="disabled prev"><a href="#">&laquo;</a></li>
+      <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+      ...
+    </ul>
+  </div>
 </nav>
 {% endhighlight %}
   <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code>, or omit the anchor in the case of the previous/next arrows, to remove click functionality while retaining intended styles.</p>
 {% highlight html %}
 <nav>
-  <ul class="pagination">
-    <li class="disabled">
-      <span>
-        <span aria-hidden="true">&laquo;</span>
-      </span>
-    </li>
-    <li class="active">
-      <span>1 <span class="sr-only">(current)</span></span>
-    </li>
-    ...
-  </ul>
+  <div class="pagination">
+    <ul>
+      <li class="disabled">
+        <span>&laquo;</span>
+      </li>
+      <li class="active">
+        <span>1 <span class="sr-only">(current)</span></span>
+      </li>
+      ...
+    </ul>
+  </div>
 </nav>
 {% endhighlight %}
 
@@ -94,43 +130,61 @@
   <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
   <div class="bs-example" data-example-id="pagination-sizing">
     <nav>
-      <ul class="pagination pagination-lg">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-      </ul>
+      <div class="pagination pagination-lg">
+        <ul>
+          <li class="prev"><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li class="active"><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
     </nav>
     <nav>
-      <ul class="pagination">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-      </ul>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li class="active"><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
     </nav>
     <nav>
-      <ul class="pagination pagination-sm">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-      </ul>
+      <div class="pagination pagination-sm">
+        <ul>
+          <li class="prev"><a href="#">&laquo;</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
     </nav>
   </div>
 {% highlight html %}
-<nav><ul class="pagination pagination-lg">...</ul></nav>
-<nav><ul class="pagination">...</ul></nav>
-<nav><ul class="pagination pagination-sm">...</ul></nav>
+<nav>
+  <div class="pagination pagination-lg">
+    <ul>...</ul>
+  </div>
+</nav>
+<nav>
+  <div class="pagination">
+    <ul>...</ul>
+  </div>
+</nav>
+<nav>
+  <div class="pagination pagination-sm">
+    <ul>...</ul>
+  </div>
+</nav>
 {% endhighlight %}
 
 

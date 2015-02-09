@@ -114,6 +114,12 @@
     $('#datepicker-input-js').datepicker();
     $('#datepicker-inline-1').datepicker();
 
+
+    // ac
+    $('#ac-js-input').autocomplete({
+      serviceUrl: '../json/ac-strings.json'
+    });
+
     // Config ZeroClipboard
     ZeroClipboard.config({
       moviePath: '/assets/flash/ZeroClipboard.swf',
