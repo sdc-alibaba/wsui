@@ -1,6 +1,9 @@
  /*jshint scripturl:true */
  /*jshint funcscope:true */
  /*jshint -W004 */
+ /*jshint unused:false*/
+ //jscs:disable 
+
 /**
  * Intro.js v0.9.0
  * https://github.com/usablica/intro.js
@@ -10,6 +13,9 @@
  */
 
 !function ($) {
+   'use strict';
+   /*jshint validthis: true */
+
   //Default config/variables
   var VERSION = '0.9.0';
 
@@ -26,7 +32,8 @@
     
   }
   function  getOptions(options) {
-      return options = $.extend({}, IntroJs.prototype.defaults, options);
+      options = $.extend({}, IntroJs.prototype.defaults, options);
+      return options;
   }
   /**
    * Initiate a new introduction/guide from an element in the page
@@ -383,7 +390,7 @@
     //custom css class for tooltip boxes
     var tooltipCssClass = this._options.tooltipClass;
 
-    currentTooltipPosition = this._introItems[this._currentStep].position;
+    var currentTooltipPosition = this._introItems[this._currentStep].position;
     switch (currentTooltipPosition) {
       case 'top':
         tooltipLayer.style.left = '15px';

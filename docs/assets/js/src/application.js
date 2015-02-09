@@ -10,6 +10,7 @@
  */
 
 /* global ZeroClipboard */
+//jscs:disable 
 
 !function ($) {
   'use strict';
@@ -134,6 +135,10 @@
     $('#ac-js-input').autocomplete({
       serviceUrl: '../json/ac-strings.json'
     });
+    //intro
+    $(".btn-primary").click(function(){
+      $.introJs().start();
+    })
 
     // Config ZeroClipboard
     ZeroClipboard.config({
