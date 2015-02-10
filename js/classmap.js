@@ -2,6 +2,8 @@
 
 window.CLASSMAP = {
   alert: 'alert',
+  close: 'close',
+  modal: 'modal',
   btn: 'btn',
   carousel: 'carousel',
   panel: 'panel',
@@ -9,5 +11,6 @@ window.CLASSMAP = {
   dropdownMenu: 'dropdown-menu',
   popover: 'popover',
   tooltip: 'tooltip',
-  nav: 'nav'
+  nav: 'nav',
+  pagination: 'pagination'
 }

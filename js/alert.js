@@ -39,7 +39,7 @@
       $parent = $this.closest('.' + CLASSMAP.alert)
     }
 
-    $parent.trigger(e = $.Event('close.bs.alert'))
+    $parent.trigger(e = $.Event('close'))
 
     if (e.isDefaultPrevented()) return
 
@@ -47,7 +47,7 @@
 
     function removeElement() {
       // detach from parent, fire event then clean up data
-      $parent.detach().trigger('closed.bs.alert').remove()
+      $parent.detach().trigger('closed').remove()
     }
 
     $.support.transition && $parent.hasClass('fade') ?
@@ -64,9 +64,9 @@
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.alert')
+      var data  = $this.data('alert')
 
-      if (!data) $this.data('bs.alert', (data = new Alert(this)))
+      if (!data) $this.data('alert', (data = new Alert(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
@@ -89,6 +89,6 @@
   // ALERT DATA-API
   // ==============
 
-  $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
+  $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
 
 }(jQuery);

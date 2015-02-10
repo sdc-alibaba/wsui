@@ -23,11 +23,11 @@
     this.$active     =
     this.$items      = null
 
-    this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this))
+    this.options.keyboard && this.$element.on('keydown.carousel', $.proxy(this.keydown, this))
 
     this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
-      .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
-      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
+      .on('mouseenter.carousel', $.proxy(this.pause, this))
+      .on('mouseleave.carousel', $.proxy(this.cycle, this))
   }
 
   Carousel.VERSION  = '3.3.1'
@@ -85,7 +85,7 @@
 
     if (pos > (this.$items.length - 1) || pos < 0) return
 
-    if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"
+    if (this.sliding)       return this.$element.one('slid', function () { that.to(pos) }) // yes, "slid"
     if (activeIndex == pos) return this.pause().cycle()
 
     return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos))
@@ -124,7 +124,7 @@
     if ($next.hasClass('active')) return (this.sliding = false)
 
     var relatedTarget = $next[0]
-    var slideEvent = $.Event('slide.bs.carousel', {
+    var slideEvent = $.Event('slide', {
       relatedTarget: relatedTarget,
       direction: direction
     })
@@ -141,7 +141,7 @@
       $nextIndicator && $nextIndicator.addClass('active')
     }
 
-    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
+    var slidEvent = $.Event('slid', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
     if ($.support.transition && this.$element.hasClass('slide')) {
       $next.addClass(type)
       $next[0].offsetWidth // force reflow
@@ -176,11 +176,11 @@
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.carousel')
+      var data    = $this.data('carousel')
       var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
       var action  = typeof option == 'string' ? option : options.slide
 
-      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
+      if (!data) $this.data('carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
@@ -217,15 +217,15 @@
     Plugin.call($target, options)
 
     if (slideIndex) {
-      $target.data('bs.carousel').to(slideIndex)
+      $target.data('carousel').to(slideIndex)
     }
 
     e.preventDefault()
   }
 
   $(document)
-    .on('click.bs.carousel.data-api', '[data-slide]', clickHandler)
-    .on('click.bs.carousel.data-api', '[data-slide-to]', clickHandler)
+    .on('click.carousel.data-api', '[data-slide]', clickHandler)
+    .on('click.carousel.data-api', '[data-slide-to]', clickHandler)
 
   $(window).on('load', function () {
     $('[data-ride="carousel"]').each(function () {

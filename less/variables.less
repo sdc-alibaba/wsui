@@ -128,18 +128,24 @@
 //## Customizes the `.table` component with basic values, each used across all table variations.
 
 //** Padding for `<th>`s and `<td>`s.
-@table-cell-padding:            8px;
+@table-cell-padding:            6px 8px;
 //** Padding for cells in `.table-condensed`.
-@table-condensed-cell-padding:  5px;
+@table-condensed-cell-padding:  3px 4px;
 
 //** Default background color used for all tables.
 @table-bg:                      transparent;
 //** Background color used for `.table-striped`.
 @table-bg-accent:               #f9f9f9;
+@table-bg-thead:                   #f4f4f4;
 //** Background color used for `.table-hover`.
 @table-bg-hover:                #f5f5f5;
 @table-bg-active:               @table-bg-hover;
-
+//** Background color used for '.table-primary'
+@table-bg-primary:              #28a3ef;
+//** Border color for '.table-primary'
+@table-primary-borderlf-color:  #4cb9fc;
+//** 文字颜色 for '.table-primary'
+@table-primary-color:           #fff;
 //** Border color for table and cell borders.
 @table-border-color:            #ddd;
 
@@ -451,37 +457,33 @@
 //
 //##
 
-@pagination-color:                     @link-color;
-@pagination-bg:                        #fff;
-@pagination-border:                    #ddd;
-
-@pagination-hover-color:               @link-hover-color;
-@pagination-hover-bg:                  @gray-lighter;
-@pagination-hover-border:              #ddd;
-
-@pagination-active-color:              #fff;
-@pagination-active-bg:                 @brand-primary;
-@pagination-active-border:             @brand-primary;
-
-@pagination-disabled-color:            @gray-light;
-@pagination-disabled-bg:               #fff;
-@pagination-disabled-border:           #ddd;
+@paginationPaddingSmall: 0px 5px;
+@paginationPadding: 2px 7px;
+@paginationPaddingLarge: 4px 9px;
+@paginationPaddingXLarge: 6px 12px;
+@paginationNakedPadding: 2px 2px;
+@paginationNakedPaddingLarge: 4px 2px;
+@paginationBackground:                @btn-primary-color;
+@paginationBorder:                    #e0e9ee;
+@paginationActiveBackground:          @brand-primary;
+@paginationBtnColor:                  #fafafa;
+@paginationExPageStatus: #333333;
 
 
 //== Pager
 //
 //##
 
-@pager-bg:                             @pagination-bg;
-@pager-border:                         @pagination-border;
+@pager-bg:                             @paginationBackground;
+@pager-border:                         @paginationBorder;
 @pager-border-radius:                  15px;
 
-@pager-hover-bg:                       @pagination-hover-bg;
+@pager-hover-bg:                       @brand-primary-hover;
 
-@pager-active-bg:                      @pagination-active-bg;
-@pager-active-color:                   @pagination-active-color;
+@pager-active-bg:                      @brand-primary;
+@pager-active-color:                   @btn-primary-color;
 
-@pager-disabled-color:                 @pagination-disabled-color;
+@pager-disabled-color:                 @gray-light;
 
 
 //== Jumbotron
@@ -590,33 +592,29 @@
 //
 //##
 
-//** Padding applied to the modal body
-@modal-inner-padding:         15px;
 
-//** Padding applied to the modal title
-@modal-title-padding:         15px;
 //** Modal title line-height
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
 @modal-content-bg:                             #fff;
 //** Modal content border color
-@modal-content-border-color:                   rgba(0,0,0,.2);
+@modal-content-border-color:                   rgba(178,178,178,.3);
 //** Modal content border color **for IE8**
-@modal-content-fallback-border-color:          #999;
+@modal-content-fallback-border-color:          #b2b2b2;
 
 //** Modal backdrop background color
 @modal-backdrop-bg:           #000;
 //** Modal backdrop opacity
-@modal-backdrop-opacity:      .5;
+@modal-backdrop-opacity:      .4;
 //** Modal header border color
-@modal-header-border-color:   #e5e5e5;
+@modal-header-border-color:   #b7b7b7;
 //** Modal footer border color
-@modal-footer-border-color:   @modal-header-border-color;
+@modal-footer-bg-color:   #f1f4f5;
 
-@modal-lg:                    900px;
-@modal-md:                    600px;
-@modal-sm:                    300px;
+@modal-lg:                    800px;
+@modal-md:                    590px;
+@modal-sm:                    400px;
 
 
 //== Alerts
@@ -706,8 +704,8 @@
 //##
 
 @panel-bg:                    #fff;
-@panel-body-padding:          15px;
-@panel-heading-padding:       10px 15px;
+@panel-body-padding:          @font-size-base;
+@panel-heading-padding:       (@font-size-base/2) @font-size-base;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 
@@ -885,3 +883,6 @@
 @stepsRoundTodoTextColor: #666;
 @stepsRoundTodoBorderColor: #d3d3d3;
 
+//intro
+@linkColor:                    #28a3ef;
+@baseMargin:                   18px;

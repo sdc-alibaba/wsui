@@ -16,7 +16,7 @@
   var backdrop = '.dropdown-backdrop'
   var toggle   = '[data-toggle="dropdown"]'
   var Dropdown = function (element) {
-    $(element).on('click.bs.dropdown', this.toggle)
+    $(element).on('click', this.toggle)
   }
 
   Dropdown.VERSION = '3.3.1'
@@ -38,7 +38,7 @@
       }
 
       var relatedTarget = { relatedTarget: this }
-      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+      $parent.trigger(e = $.Event('show', relatedTarget))
 
       if (e.isDefaultPrevented()) return
 
@@ -48,7 +48,7 @@
 
       $parent
         .toggleClass('open')
-        .trigger('shown.bs.dropdown', relatedTarget)
+        .trigger('shown', relatedTarget)
     }
 
     return false
@@ -96,12 +96,12 @@
 
       if (!$parent.hasClass('open')) return
 
-      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+      $parent.trigger(e = $.Event('hide', relatedTarget))
 
       if (e.isDefaultPrevented()) return
 
       $this.attr('aria-expanded', 'false')
-      $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+      $parent.removeClass('open').trigger('hidden', relatedTarget)
     })
   }
 
@@ -125,9 +125,9 @@
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.dropdown')
+      var data  = $this.data('dropdown')
 
-      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
@@ -151,11 +151,11 @@
   // ===================================
 
   $(document)
-    .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.' + CLASSMAP.dropdown + ' form', function (e) { e.stopPropagation() })
-    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
-    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
-    .on('keydown.bs.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
-    .on('keydown.bs.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
+    .on('click.dropdown.data-api', clearMenus)
+    .on('click.dropdown.data-api', '.' + CLASSMAP.dropdown + ' form', function (e) { e.stopPropagation() })
+    .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
+    .on('keydown.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
 
 }(jQuery);

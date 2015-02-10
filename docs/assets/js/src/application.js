@@ -10,6 +10,7 @@
  */
 
 /* global ZeroClipboard */
+//jscs:disable 
 
 !function ($) {
   'use strict';
@@ -123,6 +124,20 @@
     // Activate animated progress bar
     $('.bs-docs-activate-animated-progressbar').on('click', function () {
       $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
+    })
+
+    //
+    $('#datepicker-input-js').datepicker();
+    $('#datepicker-inline-1').datepicker();
+
+
+    // ac
+    $('#ac-js-input').autocomplete({
+      serviceUrl: '../json/ac-strings.json'
+    });
+    //intro
+    $(".btn-primary").click(function(){
+      $.introJs().start();
     })
 
     // Config ZeroClipboard

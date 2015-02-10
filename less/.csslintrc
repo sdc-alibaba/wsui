@@ -15,5 +15,9 @@
   "text-indent": false,
   "unique-headings": false,
   "universal-selector": false,
+  "overqualified-elements": false,
+  "duplicate-properties": false,
+  "zero-units": false,
+  "vendor-prefix": false,
   "unqualified-attributes": false
 }

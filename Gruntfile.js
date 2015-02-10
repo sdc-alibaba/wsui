@@ -119,7 +119,13 @@ module.exports = function (grunt) {
           'js/popover.js',
           'js/scrollspy.js',
           'js/tab.js',
-          'js/affix.js'
+          'js/autocomplete.js',
+          'js/affix.js',
+          'js/pagination.js',
+          'js/datepicker.js',
+          'js/validate.js',
+          'js/datepicker.js',
+          'js/intro.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
@@ -335,7 +341,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:src', 'qunit', 'concat', 'newer:copy:docs']
+        tasks: ['newer:jshint:core', 'concat', 'newer:copy:docs']
       },
       test: {
         files: '<%= jshint.test.src %>',
