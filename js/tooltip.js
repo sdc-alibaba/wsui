@@ -1,472 +1,464 @@
-/* ========================================================================
- * Bootstrap: tooltip.js v3.3.1
- * http://getbootstrap.com/javascript/#tooltip
- * Inspired by the original jQuery.tipsy by Jason Frame
- * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
+/* jshint laxcomma: true */
+!function ($) {
 
-
-+function ($) {
   'use strict';
 
-  // TOOLTIP PUBLIC CLASS DEFINITION
-  // ===============================
+ /* TOOLTIP PUBLIC CLASS DEFINITION
+  * =============================== */
 
+  // element为触发元素，如标识文字链
   var Tooltip = function (element, options) {
-    this.type       =
-    this.options    =
-    this.enabled    =
-    this.timeout    =
-    this.hoverState =
-    this.$element   = null
-
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.1'
+  Tooltip.prototype = {
+    constructor: Tooltip,
 
-  Tooltip.TRANSITION_DURATION = 150
+    init: function (type, element, options) {
+      var eventIn,
+        eventOut,
+        triggers,
+        trigger,
+        i
 
-  Tooltip.DEFAULTS = {
-    animation: true,
-    placement: 'top',
-    selector: false,
-    template: '<div class="' + CLASSMAP.tooltip + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
-    trigger: 'hover focus',
-    title: '',
-    delay: 0,
-    html: false,
-    container: false,
-    viewport: {
-      selector: 'body',
-      padding: 0
-    }
-  }
+      this.type = type
+      this.$element = $(element)
+      this.options = this.getOptions(options)
+      this.enabled = true
+      this.hoverState = 'out'
 
-  Tooltip.prototype.init = function (type, element, options) {
-    this.enabled   = true
-    this.type      = type
-    this.$element  = $(element)
-    this.options   = this.getOptions(options)
-    this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
+      triggers = this.options.trigger.split(' ')
 
-    var triggers = this.options.trigger.split(' ')
+      for (i = triggers.length; i--;) {
+        trigger = triggers[i]
+        if (trigger == 'click') {
+          this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
 
-    for (var i = triggers.length; i--;) {
-      var trigger = triggers[i]
-
-      if (trigger == 'click') {
-        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
-      } else if (trigger != 'manual') {
-        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
-        var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
-
-        this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+        } else if (trigger != 'manual') {
+          eventIn = trigger == 'hover' ? 'mouseenter' : 'focus'
+          eventOut = trigger == 'hover' ? 'mouseleave' : 'blur'
+          this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
+          this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+        }
       }
-    }
 
-    this.options.selector ?
-      (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
-      this.fixTitle()
-  }
+      this.options.selector ?
+        (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
+        this.fixTitle()
+    },
 
-  Tooltip.prototype.getDefaults = function () {
-    return Tooltip.DEFAULTS
-  }
+    getOptions: function (options) {
+      options = $.extend({}, $.fn[this.type].defaults, this.$element.data(), options)
 
-  Tooltip.prototype.getOptions = function (options) {
-    options = $.extend({}, this.getDefaults(), this.$element.data(), options)
+      // 根据tooltip的type类型构造tip模版
+      options.template = '<div class="sui-tooltip tooltip-' + options.type + '"><div class="tooltip-arrow">' + (options.type == 'default' ? '<div class="tooltip-arrow cover"></div>' : '') + '</div><div class="tooltip-inner"></div></div>'
 
-    if (options.delay && typeof options.delay == 'number') {
-      options.delay = {
-        show: options.delay,
-        hide: options.delay
+      if (options.delay && typeof options.delay == 'number') {
+        options.delay = {
+          show: options.delay,
+          hide: options.delay
+        }
       }
-    }
 
-    return options
-  }
+      return options
+    },
 
-  Tooltip.prototype.getDelegateOptions = function () {
-    var options  = {}
-    var defaults = this.getDefaults()
+    enter: function (e) {
+      var defaults = $.fn[this.type].defaults,
+        options = {},
+        self
 
-    this._options && $.each(this._options, function (key, value) {
-      if (defaults[key] != value) options[key] = value
-    })
+      this._options && $.each(this._options, function (key, value) {
+        if (defaults[key] != value) options[key] = value
+      }, this)
 
-    return options
-  }
+      self = $(e.currentTarget)[this.type](options).data(this.type)
 
-  Tooltip.prototype.enter = function (obj) {
-    var self = obj instanceof this.constructor ?
-      obj : $(obj.currentTarget).data('bs.' + this.type)
+      clearTimeout(self.timeout)
+      if (this.hoverState == 'out') {
+        this.hoverState = 'in'
+        this.tip().off($.support.transition && $.support.transition.end)
+        if (!this.options.delay || !this.options.delay.show) return this.show()
+        this.timeout = setTimeout(function () {
+          if (self.hoverState == 'in') self.show()
+        }, self.options.delay.show)
+      }
+    },
 
-    if (self && self.$tip && self.$tip.is(':visible')) {
-      self.hoverState = 'in'
-      return
-    }
+    leave: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      if (this.timeout) clearTimeout(this.timeout)
+      if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
-    if (!self) {
-      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
-      $(obj.currentTarget).data('bs.' + this.type, self)
-    }
+      this.timeout = setTimeout(function () {
+        // isHover 为0或undefined，undefined:没有移到tip上过
+        if (!self.isTipHover) {
+          self.hoverState = 'out'
+        }
+        if (self.hoverState == 'out') self.hide()
+      }, self.options.delay.hide)
+    },
 
-    clearTimeout(self.timeout)
+    show: function () {
+      var $tip, pos, actualWidth, actualHeight, placement, tp,
+        e = $.Event('show'),
+        opt = this.options,
+        align = opt.align,
+        self = this
 
-    self.hoverState = 'in'
+      if (this.hasContent() && this.enabled) {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
+        $tip = this.tip()
+        this.setContent()
 
-    if (!self.options.delay || !self.options.delay.show) return self.show()
+        if (opt.animation) {
+          $tip.addClass('fade')
+        }
 
-    self.timeout = setTimeout(function () {
-      if (self.hoverState == 'in') self.show()
-    }, self.options.delay.show)
-  }
-
-  Tooltip.prototype.leave = function (obj) {
-    var self = obj instanceof this.constructor ?
-      obj : $(obj.currentTarget).data('bs.' + this.type)
-
-    if (!self) {
-      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
-      $(obj.currentTarget).data('bs.' + this.type, self)
-    }
-
-    clearTimeout(self.timeout)
-
-    self.hoverState = 'out'
-
-    if (!self.options.delay || !self.options.delay.hide) return self.hide()
-
-    self.timeout = setTimeout(function () {
-      if (self.hoverState == 'out') self.hide()
-    }, self.options.delay.hide)
-  }
-
-  Tooltip.prototype.show = function () {
-    var e = $.Event('show.bs.' + this.type)
-
-    if (this.hasContent() && this.enabled) {
-      this.$element.trigger(e)
-
-      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0])
-      if (e.isDefaultPrevented() || !inDom) return
-      var that = this
-
-      var $tip = this.tip()
-
-      var tipId = this.getUID(this.type)
-
-      this.setContent()
-      $tip.attr('id', tipId)
-      this.$element.attr('aria-describedby', tipId)
-
-      if (this.options.animation) $tip.addClass('fade')
-
-      var placement = typeof this.options.placement == 'function' ?
-        this.options.placement.call(this, $tip[0], this.$element[0]) :
-        this.options.placement
-
-      var autoToken = /\s?auto?\s?/i
-      var autoPlace = autoToken.test(placement)
-      if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
-
-      $tip
-        .detach()
-        .css({ top: 0, left: 0, display: 'block' })
-        .addClass(placement)
-        .data('bs.' + this.type, this)
-
-      this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
-
-      var pos          = this.getPosition()
-      var actualWidth  = $tip[0].offsetWidth
-      var actualHeight = $tip[0].offsetHeight
-
-      if (autoPlace) {
-        var orgPlacement = placement
-        var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
-        var containerDim = this.getPosition($container)
-
-        placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
-                    placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
-                    placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
-                    placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
-                    placement
+        placement = typeof opt.placement == 'function' ?
+          opt.placement.call(this, $tip[0], this.$element[0]) :
+          opt.placement
 
         $tip
-          .removeClass(orgPlacement)
-          .addClass(placement)
+          .detach()
+          .css({ top: 0, left: 0, display: 'block' })
+
+        opt.container ? $tip.appendTo(opt.container) : $tip.insertAfter(this.$element)
+        if (/\bhover\b/.test(opt.trigger)) {
+          $tip.hover(function () {
+            self.isTipHover = 1
+          }, function () {
+            self.isTipHover = 0
+            self.hoverState = 'out'
+            $tip.detach()
+          })
+        }
+        this.setWidth()
+        pos = this.getPosition()
+
+        actualWidth = $tip[0].offsetWidth
+        actualHeight = $tip[0].offsetHeight
+
+        // + - 7修正，和css对应，勿单独修改
+        var d = opt.type == 'warning' ? 5 : 7
+
+        // 确定tooltip布局对齐方式
+        var positioning = function () {
+          var _left = pos.left + pos.width / 2 - actualWidth / 2,
+              _top = pos.top + pos.height / 2 - actualHeight / 2
+          switch (align) {
+            case 'left':
+              _left = pos.left
+              break
+            case 'right':
+              _left = pos.left - actualWidth + pos.width
+              break
+            case 'top':
+              _top = pos.top
+              break
+            case 'bottom':
+              _top = pos.top - actualHeight + pos.height
+              break
+          }
+          switch (placement) {
+            case 'bottom':
+              tp = { top: pos.top + pos.height + d, left: _left }
+              break
+            case 'top':
+              tp = { top: pos.top - actualHeight - d, left: _left }
+              break
+            case 'left':
+              tp = { top: _top, left: pos.left - actualWidth - d }
+              break
+            case 'right':
+              tp = { top: _top, left: pos.left + pos.width + d }
+              break
+          }
+          return tp
+        }
+
+        tp = positioning();
+        this.applyPlacement(tp, placement)
+        this.applyAlign(align, pos)
+        this.$element.trigger('shown')
       }
 
-      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+    },
 
-      this.applyPlacement(calculatedOffset, placement)
+    applyPlacement: function (offset, placement) {
+      var $tip = this.tip(),
+        width = $tip[0].offsetWidth,
+        height = $tip[0].offsetHeight,
+        actualWidth,
+        actualHeight,
+        delta,
+        replace
 
-      var complete = function () {
-        var prevHoverState = that.hoverState
-        that.$element.trigger('shown.bs.' + that.type)
-        that.hoverState = null
+      $tip
+        .offset(offset)
+        .addClass(placement)
+        .addClass('in')
 
-        if (prevHoverState == 'out') that.leave(that)
+      actualWidth = $tip[0].offsetWidth
+      actualHeight = $tip[0].offsetHeight
+
+      if (placement == 'top' && actualHeight != height) {
+        offset.top = offset.top + height - actualHeight
+        replace = true
+      }
+
+      if (placement == 'bottom' || placement == 'top') {
+        delta = 0
+
+        if (offset.left < 0) {
+          delta = offset.left * -2
+          offset.left = 0
+          $tip.offset(offset)
+          actualWidth = $tip[0].offsetWidth
+          actualHeight = $tip[0].offsetHeight
+        }
+
+        this.replaceArrow(delta - width + actualWidth, actualWidth, 'left')
+      } else {
+        this.replaceArrow(actualHeight - height, actualHeight, 'top')
+      }
+
+      if (replace) $tip.offset(offset)
+    },
+    applyAlign: function (align, tipPos) {
+      var $tip = this.tip(),
+        actualWidth = $tip[0].offsetWidth,
+        actualHeight = $tip[0].offsetHeight,
+        css = {}
+      switch (align) {
+        case 'left':
+          if (tipPos.width < actualWidth)
+            css = { left: tipPos.width / 2 }
+          break
+        case 'right':
+          if (tipPos.width < actualWidth)
+            css = { left: actualWidth - tipPos.width / 2 }
+          break
+        case 'top':
+          if (tipPos.height < actualHeight)
+            css = { top: tipPos.height / 2 }
+          break
+        case 'bottom':
+          if (tipPos.height < actualHeight)
+            css = { top: actualHeight - tipPos.height / 2 }
+          break
+      }
+      align != 'center' && $tip.find('.tooltip-arrow').first().css(css)
+
+    },
+
+    replaceArrow: function (delta, dimension, position) {
+      this
+        .arrow()
+        .css(position, delta ? (50 * (1 - delta / dimension) + '%') : '')
+    },
+
+    setWidth: function () {
+      var opt = this.options,
+        width = opt.width,
+        widthLimit = opt.widthlimit,
+        $tip = this.tip()
+      // 人工设置宽度，则忽略最大宽度限制
+      if (width) {
+        $tip.width(width)
+      } else {
+        // 宽度限制逻辑
+        if (widthLimit === true) {
+          $tip.css('max-width', '400px')
+        } else {
+          var val
+          widthLimit === false && (val = 'none')
+          typeof opt.widthlimit == 'string' && (val = widthLimit)
+          $tip.css('max-width', val)
+        }
+      }
+    },
+
+    setContent: function () {
+      var $tip = this.tip(),
+        title = this.getTitle()
+
+      $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+      $tip.removeClass('fade in top bottom left right')
+    },
+
+    hide: function () {
+      var $tip = this.tip(),
+        e = $.Event('hide'),
+        self = this,
+        opt = this.options
+
+      this.$element.trigger(e)
+      if (e.isDefaultPrevented()) return
+
+      $tip.removeClass('in')
+      if (typeof opt.hide == 'function') {
+        opt.hide.call(self.$element)
+      }
+
+      function removeWithAnimation () {
+        self.timeout = setTimeout(function () {
+          $tip.off($.support.transition.end).detach()
+        }, 500)
+
+        $tip.one($.support.transition.end, function () {
+          clearTimeout(self.timeout)
+          $tip.detach()
+        })
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
-        $tip
-          .one('bsTransitionEnd', complete)
-          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-        complete()
-    }
-  }
+        removeWithAnimation () :
+        ($tip.detach())
+      this.$element.trigger('hidden')
 
-  Tooltip.prototype.applyPlacement = function (offset, placement) {
-    var $tip   = this.tip()
-    var width  = $tip[0].offsetWidth
-    var height = $tip[0].offsetHeight
+      return this
+    },
 
-    // manually read margins because getBoundingClientRect includes difference
-    var marginTop = parseInt($tip.css('margin-top'), 10)
-    var marginLeft = parseInt($tip.css('margin-left'), 10)
-
-    // we must check for NaN for ie 8/9
-    if (isNaN(marginTop))  marginTop  = 0
-    if (isNaN(marginLeft)) marginLeft = 0
-
-    offset.top  = offset.top  + marginTop
-    offset.left = offset.left + marginLeft
-
-    // $.fn.offset doesn't round pixel values
-    // so we use setOffset directly with our own function B-0
-    $.offset.setOffset($tip[0], $.extend({
-      using: function (props) {
-        $tip.css({
-          top: Math.round(props.top),
-          left: Math.round(props.left)
-        })
+    fixTitle: function () {
+      var $e = this.$element
+      // 只有无js激活方式才处理title属性。同时html属性data-original-title必须附加到触发元素,即使是js调用生成的tooltip。
+      if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
+        if ($e.data('toggle') == 'tooltip') {
+          $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+        } else {
+          $e.attr('data-original-title', '')
+        }
       }
-    }, offset), 0)
+    },
 
-    $tip.addClass('in')
+    hasContent: function () {
+      return this.getTitle()
+    },
 
-    // check to see if placing tip in new offset caused the tip to resize itself
-    var actualWidth  = $tip[0].offsetWidth
-    var actualHeight = $tip[0].offsetHeight
+    getPosition: function () {
+      var el = this.$element[0]
+      return $.extend({}, (typeof el.getBoundingClientRect == 'function') ? el.getBoundingClientRect() : {
+        width: el.offsetWidth,
+        height: el.offsetHeight
+      }, this.$element.offset())
+    },
 
-    if (placement == 'top' && actualHeight != height) {
-      offset.top = offset.top + height - actualHeight
-    }
+    getTitle: function () {
+      var title,
+        $e = this.$element,
+        o = this.options
 
-    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
+      title = $e.attr('data-original-title')
+        || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+      return title
+    },
 
-    if (delta.left) offset.left += delta.left
-    else offset.top += delta.top
+    tip: function () {
+      this.$tip = this.$tip || $(this.options.template)
+      return this.$tip
+    },
 
-    var isVertical          = /top|bottom/.test(placement)
-    var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight
-    var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight'
+    arrow: function () {
+      this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow')
+      return this.$arrow
+    },
 
-    $tip.offset(offset)
-    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
-  }
-
-  Tooltip.prototype.replaceArrow = function (delta, dimension, isHorizontal) {
-    this.arrow()
-      .css(isHorizontal ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
-      .css(isHorizontal ? 'top' : 'left', '')
-  }
-
-  Tooltip.prototype.setContent = function () {
-    var $tip  = this.tip()
-    var title = this.getTitle()
-
-    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-    $tip.removeClass('fade in top bottom left right')
-  }
-
-  Tooltip.prototype.hide = function (callback) {
-    var that = this
-    var $tip = this.tip()
-    var e    = $.Event('hide.bs.' + this.type)
-
-    function complete() {
-      if (that.hoverState != 'in') $tip.detach()
-      that.$element
-        .removeAttr('aria-describedby')
-        .trigger('hidden.bs.' + that.type)
-      callback && callback()
-    }
-
-    this.$element.trigger(e)
-
-    if (e.isDefaultPrevented()) return
-
-    $tip.removeClass('in')
-
-    $.support.transition && this.$tip.hasClass('fade') ?
-      $tip
-        .one('bsTransitionEnd', complete)
-        .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-      complete()
-
-    this.hoverState = null
-
-    return this
-  }
-
-  Tooltip.prototype.fixTitle = function () {
-    var $e = this.$element
-    if ($e.attr('title') || typeof ($e.attr('data-original-title')) != 'string') {
-      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
-    }
-  }
-
-  Tooltip.prototype.hasContent = function () {
-    return this.getTitle()
-  }
-
-  Tooltip.prototype.getPosition = function ($element) {
-    $element   = $element || this.$element
-
-    var el     = $element[0]
-    var isBody = el.tagName == 'BODY'
-
-    var elRect    = el.getBoundingClientRect()
-    if (elRect.width == null) {
-      // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-      elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
-    }
-    var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
-    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
-    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
-
-    return $.extend({}, elRect, scroll, outerDims, elOffset)
-  }
-
-  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
-    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2  } :
-           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2  } :
-           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width   }
-
-  }
-
-  Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
-    var delta = { top: 0, left: 0 }
-    if (!this.$viewport) return delta
-
-    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
-    var viewportDimensions = this.getPosition(this.$viewport)
-
-    if (/right|left/.test(placement)) {
-      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
-      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
-      if (topEdgeOffset < viewportDimensions.top) { // top overflow
-        delta.top = viewportDimensions.top - topEdgeOffset
-      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
+    validate: function () {
+      if (!this.$element[0].parentNode) {
+        this.hide()
+        this.$element = null
+        this.options = null
       }
-    } else {
-      var leftEdgeOffset  = pos.left - viewportPadding
-      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
-      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-        delta.left = viewportDimensions.left - leftEdgeOffset
-      } else if (rightEdgeOffset > viewportDimensions.width) { // right overflow
-        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
-      }
+    },
+
+    enable: function () {
+      this.enabled = true
+    },
+
+    disable: function () {
+      this.enabled = false
+    },
+
+    toggleEnabled: function () {
+      this.enabled = !this.enabled
+    },
+
+    toggle: function (e) {
+      var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
+      self.tip().hasClass('in') ? self.hide() : self.show()
+    },
+
+    destroy: function () {
+      this.hide().$element.off('.' + this.type).removeData(this.type)
     }
 
-    return delta
-  }
-
-  Tooltip.prototype.getTitle = function () {
-    var title
-    var $e = this.$element
-    var o  = this.options
-
-    title = $e.attr('data-original-title')
-      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
-
-    return title
-  }
-
-  Tooltip.prototype.getUID = function (prefix) {
-    do prefix += ~~(Math.random() * 1000000)
-    while (document.getElementById(prefix))
-    return prefix
-  }
-
-  Tooltip.prototype.tip = function () {
-    return (this.$tip = this.$tip || $(this.options.template))
-  }
-
-  Tooltip.prototype.arrow = function () {
-    return (this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow'))
-  }
-
-  Tooltip.prototype.enable = function () {
-    this.enabled = true
-  }
-
-  Tooltip.prototype.disable = function () {
-    this.enabled = false
-  }
-
-  Tooltip.prototype.toggleEnabled = function () {
-    this.enabled = !this.enabled
-  }
-
-  Tooltip.prototype.toggle = function (e) {
-    var self = this
-    if (e) {
-      self = $(e.currentTarget).data('bs.' + this.type)
-      if (!self) {
-        self = new this.constructor(e.currentTarget, this.getDelegateOptions())
-        $(e.currentTarget).data('bs.' + this.type, self)
-      }
-    }
-
-    self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
-  }
-
-  Tooltip.prototype.destroy = function () {
-    var that = this
-    clearTimeout(this.timeout)
-    this.hide(function () {
-      that.$element.off('.' + that.type).removeData('bs.' + that.type)
-    })
   }
 
 
-  // TOOLTIP PLUGIN DEFINITION
-  // =========================
+ /* TOOLTIP PLUGIN DEFINITION
+  * ========================= */
 
-  function Plugin(option) {
+  var old = $.fn.tooltip
+
+  $.fn.tooltip = function (option) {
+
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.tooltip')
-      var options = typeof option == 'object' && option
-
-      if (!data && option == 'destroy') return
-      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+      var $this = $(this),
+        data = $this.data('tooltip'),
+        options = typeof option == 'object' && option
+      if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
 
-  var old = $.fn.tooltip
-
-  $.fn.tooltip             = Plugin
   $.fn.tooltip.Constructor = Tooltip
 
+  $.fn.tooltip.defaults = {
+    animation: true,
+    type: 'default',   // tip 类型 {string} 'default'|'warning' ,区别见demo
+    placement: 'top',
+    selector: false,  // 通常要配合调用方法使用，如果tooltip元素很多，用此途径进行事件委托减少事件监听数量: $('body').tooltip({selector: '.tips'})
+    trigger: 'hover focus',   // 触发方式，多选：click hover focus，如果希望手动触发，则传入'manual'
+    title: 'it is default title',  // 默认tooltip的内容，如果给html元素添加了title属性则使用该html属性替代此属性
+    delay: { show:0, hide: 200 },   // 如果只传number，则show、hide时都会使用这个延时，若想差异化则传入形如{show:400, hide: 600} 的对象   注：delay参数对manual触发方式的tooltip无效
+    html: true,  // 决定是html()还是text()
+    container: false,  // 将tooltip与输入框组一同使用时，为了避免不必要的影响，需要设置container.他用来将tooltip的dom节点插入到container指定的元素内的最后，可理解为 container.append(tooltipDom)。
+    widthlimit: true,  // {Boolean|string} tooltip元素最大宽度限制，false不限宽，true限宽300px，也可传入"500px",人工限制宽度
+    align: 'center'  // {string} tip元素的布局方式，默认居中：'center' ,'left','right','top','bottom'
+  }
 
-  // TOOLTIP NO CONFLICT
-  // ===================
+
+ /* TOOLTIP NO CONFLICT
+  * =================== */
 
   $.fn.tooltip.noConflict = function () {
     $.fn.tooltip = old
     return this
   }
+
+  // document ready init
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+
+    // mousedown外部可消失tooltip(为了在click回调执行前处理好dom状态)
+    $(document).on('mousedown', function (e) {
+      var tgt = $(e.target),
+          tip = $('.sui-tooltip'),
+          switchTgt = tip.prev(),
+          tipContainer = tgt.parents('.sui-tooltip')
+      /* 逻辑执行条件一次注释：
+       * 1、存在tip
+       * 2、点击的不是tip内的某区域
+       * 3、点击的不是触发元素本身
+       * 4、触发元素为复杂HTML结构时，点击的不是触发元素内的区域
+       */
+       // 这里决定了data-original-title属性必须存在于触发元素上
+      if (tip.length && !tipContainer.length && tgt[0] != switchTgt[0] && tgt.parents('[data-original-title]')[0] != switchTgt[0]) {
+        switchTgt.trigger('click.tooltip')
+      }
+    })
+  })
 
 }(jQuery);
