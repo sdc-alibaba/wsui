@@ -125,7 +125,8 @@ module.exports = function (grunt) {
           'js/pagination.js',
           'js/datepicker.js',
           'js/validate.js',
-          'js/datepicker.js'
+          'js/datepicker.js',
+          'js/intro.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }

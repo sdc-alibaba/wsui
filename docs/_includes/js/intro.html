@@ -1,0 +1,199 @@
+<div class="bs-docs-section">
+  <h1 id="intro" class="page-header">新手引导 <small>intro.js</small></h1>
+
+  <h2 id="intro-examples">Example intro</h2>
+  <p>1.备注：插件参考第三方来源：http://usablica.github.io/intro.js/</p>
+  <p>2.可用鼠标控制，也可以用键盘控制："←", "→","ENTER" 和 "ESC"控制。</p>
+  <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+    <h1 data-step="1" data-intro="Hello all! :) 第一步：This project's called Intro.js." style="text-align:center">1.Intro.js</h1>
+   <!--  <p data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">4.更好的介绍网站和功,以便逐步为您指导项目。</p> -->
+    <div class="introjs-content">
+      <div data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">
+        <p>4.更好的介绍网站和功,以便逐步为您指导项目。</p>
+      </div>
+      <div data-step="2" data-intro="第二步:Ok, wasn't that fun?" data-position="right" class="divcont">
+        <h4>2.容易使用</h4>
+        <p>包括js和css文件， 调价"data-step" 和 "data-intro" 到你的代码。</p>
+      </div>
+      <div data-step="3" data-intro="第三步：More features, more fun." data-position="left" class="divcont">
+        <h4>3.键盘 + 鼠标 控制 </h4>
+        <p>用鼠标, 或键盘  "←"控制后退, "→"控制前进, "ENTER" 和 "ESC" 控制退出.</p>
+      </div>
+      <div data-step="5" data-intro="第五步:Get it, use it." class="divcont">
+        <h4>5.快 &amp; 小</h4>
+        <p>仅需4 KB JavaScript 和 2.5 KB CSS (gzip).</p>
+      </div>
+      <div data-step="6" data-intro="第六步:Last step." class="divcont">
+        <h4>6.跨浏览器兼容性</h4>
+        <p>它兼容最近版本的火狐,Chrome和IE8，更好的兼容性需要进一步开发。</p>
+      </div><a href="javascript:void(0);" class="btn btn-primary">展示操作</a>
+    </div>
+  </div><!-- /example -->
+  {% highlight html %}
+  <div>
+    <h1 data-step="1" data-intro="1..." style="text-align:center">1...</h1>
+    <p data-step="4" data-intro="4..." class="lead">4...</p>
+    <div>
+      <div data-step="2" data-intro="2..." data-position="right" class="divcont">
+        <h4>2...</h4>
+        <p>...</p>
+      </div>
+      <div data-step="3" data-intro="3..." data-position="left" class="divcont">
+        <h4>3... </h4>
+        <p>...</p>
+      </div>
+      <div data-step="5" data-intro="5..." class="divcont">
+        <h4>5...</h4>
+        <p>...</p>
+      </div>
+      <div data-step="6" data-intro="6..." class="divcont">
+        <h4>6...</h4>
+        <p>...</p>
+      </div><a href="javascript:void(0);" class="btn btn-primary">展示操作</a>
+    </div>
+  </div>
+  {% endhighlight %}
+  {% highlight js %}
+    $(".btn-primary").click(function(){
+      $.introJs().start();
+    })
+  {% endhighlight %}
+
+   <h2 id="intro-usage">Usage</h2>
+  <p>1.在标签里加属性"data-step"标示是第几步；加"data-intro"添加提示语句；"data-position"控制提示框出现位置，可选left、right、top、bottom-middle-aligned、bottom-right-aligned,不写默认为下方。</p>
+  <p>2.调用js方法可触发新手指引。</p>
+  {% highlight js %}
+  $.introJs().start();
+  {% endhighlight %}
+
+  
+  <h3 id="intro-options">Options</h3>
+  <p>可通过introJs传入改变的参数.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nextLabel</td>
+          <td>下一步 <i class="sui-icon icon-double-angle-right"></i> </td>
+          <td>下一步按钮上的显示文字</td>
+        </tr>
+        <tr>
+          <td>prevLabel</td>
+          <td><i class="sui-icon icon-double-angle-left"></i> 上一步</td>
+          <td>上一步按钮上的显示文字</td>
+        </tr>
+        <tr>
+          <td>skipLabel</td>
+          <td>退出</td>
+          <td>退出按钮上的显示文字</td>
+        </tr>
+        <tr>
+          <td>doneLabel</td>
+          <td>结束</td>
+          <td>结束按钮上的显示文字</td>
+        </tr>
+        <tr>
+          <td>tooltipPosition</td>
+          <td>bottom</td>
+          <td>data-position初始值</td>
+        </tr>
+        <tr>
+          <td>exitOnEsc</td>
+          <td>true</td>
+          <td>是否可用ESC键退出</td>
+        </tr>
+        <tr>
+          <td>showStepNumbers</td>
+          <td>true</td>
+          <td>是否显示步骤数</td>
+        </tr>
+        <tr>
+          <td>exitOnOverlayClick</td>
+          <td>true</td>
+          <td>是否可点击背景退出</td>
+        </tr>
+        <tr>
+          <td>keyboardNavigation</td>
+          <td>true</td>
+          <td>是否可用键盘控制</td>
+        </tr>
+        <tr>
+          <td>showButtons</td>
+          <td>true</td>
+          <td>是否限制控制按钮</td>
+        </tr>
+        <tr>
+          <td>showBullets</td>
+          <td>true</td>
+          <td>是否显示点点</td>
+        </tr>
+        <tr>
+          <td>scrollToElement</td>
+          <td>true</td>
+          <td>是否滚动到下一步骤</td>
+        </tr>
+        <tr>
+          <td>overlayOpacity</td>
+          <td>0.8</td>
+          <td>背景透明值</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- /.table-responsive -->
+
+  <h3 id="intro-events">Events</h3>
+  <p>可通过introJs调用的方法.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped bs-events-table">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>说明</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tbody>
+          <tr>
+            <td>clone</td>
+            <td>下一步 <i class="sui-icon icon-double-angle-right"></i> </td>
+            <td>下一步按钮上的显示文字</td>
+          </tr>
+          <tr>
+            <td>prevLabel</td>
+            <td><i class="sui-icon icon-double-angle-left"></i> 上一步</td>
+            <td>上一步按钮上的显示文字</td>
+          </tr>
+          <tr>
+            <td>skipLabel</td>
+            <td>退出</td>
+            <td>退出按钮上的显示文字</td>
+          </tr>
+          <tr>
+            <td>doneLabel</td>
+            <td>结束</td>
+            <td>结束按钮上的显示文字</td>
+          </tr>
+          <tr>
+            <td>tooltipPosition</td>
+            <td>bottom</td>
+            <td>data-position初始值</td>
+          </tr>
+        </tbody>
+      </tbody>
+    </table>
+  </div><!-- /.table-responsive -->
+  {% highlight js %}
+  $.introJs().clone();
+  {% endhighlight %}
+
+
+  
+</div>
