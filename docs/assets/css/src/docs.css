@@ -30,16 +30,16 @@ body {
 
 /* Outline button for use within the docs */
 .btn-outline {
-  color: #39B5AA;
+  color: #39b5aa;
   background-color: transparent;
-  border-color: #39B5AA;
+  border-color: #39b5aa;
 }
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active {
   color: #fff;
-  background-color: #39B5AA;
-  border-color: #39B5AA;
+  background-color: #39b5aa;
+  border-color: #39b5aa;
 }
 
 /* Inverted outline button (white on dark) */
@@ -51,7 +51,7 @@ body {
 .btn-outline-inverse:hover,
 .btn-outline-inverse:focus,
 .btn-outline-inverse:active {
-  color: #39B5AA;
+  color: #39b5aa;
   text-shadow: none;
   background-color: #fff;
   border-color: #fff;
@@ -64,7 +64,7 @@ body {
   color: #fff;
   text-align: center;
   cursor: default;
-  background-color: #39B5AA;
+  background-color: #39b5aa;
   border-radius: 15%;
 }
 .bs-docs-booticon-sm {
@@ -80,13 +80,13 @@ body {
   line-height: 140px;
 }
 .bs-docs-booticon-inverse {
-  color: #39B5AA;
+  color: #39b5aa;
   background-color: #fff;
 }
 .bs-docs-booticon-outline {
-  background-color: transparent;
   /*border: 1px solid #cdbfe3;*/
   width: 172px;
+  background-color: transparent;
 }
 
 
@@ -100,7 +100,7 @@ body {
   display: block;
   padding: 1em;
   color: #fff;
-  background-color: #58C9F3;
+  background-color: #58c9f3;
   outline: 0;
 }
 
@@ -132,16 +132,17 @@ body {
 .bs-docs-nav .navbar-brand {
   font-size: 26px;
   font-weight: 400;
+
   -webkit-font-smoothing: antialiased;
 }
 .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
   color: #fff;
-  background-color: #F77B6F;
+  background-color: #f77b6f;
 }
 .bs-docs-nav .navbar-toggle .icon-bar {
-  background-color: #39B5AA;
+  background-color: #39b5aa;
 }
 .bs-docs-nav .navbar-header .navbar-toggle {
   border-color: #fff;
@@ -234,7 +235,7 @@ body {
   color: #cdbfe3;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
-  background-color: #39B5AA;
+  background-color: #39b5aa;
 }
 
 /* Masthead (headings and download button) */
@@ -554,7 +555,7 @@ body {
  */
 
 .bs-docs-sidebar {
-  background: #2A3542;
+  background: #2a3542;
 }
 
 /* By default it's not affixed in mobile views, so undo that */
@@ -579,7 +580,7 @@ body {
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
-  color: #AEB2B7;
+  color: #aeb2b7;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
@@ -587,7 +588,7 @@ body {
   color: #fff;
   text-decoration: none;
   background-color: transparent;
-  border-left: 1px solid #FF6C60;
+  border-left: 1px solid #ff6c60;
 }
 .bs-docs-sidebar .nav > .active > a,
 .bs-docs-sidebar .nav > .active:hover > a,
@@ -596,7 +597,7 @@ body {
   font-weight: bold;
   color: #fff;
   background-color: transparent;
-  border-left: 2px solid #FF6C60;
+  border-left: 2px solid #ff6c60;
 }
 
 /* Nav: second level (shown on .active) */
@@ -635,7 +636,7 @@ body {
 }
 .back-to-top:hover,
 .bs-docs-theme-toggle:hover {
-  color: #39B5AA;
+  color: #39b5aa;
   text-decoration: none;
 }
 .bs-docs-theme-toggle {
@@ -812,7 +813,7 @@ h1[id] {
 
 /* Docs colors */
 .color-swatches .bs-purple {
-  background-color: #39B5AA;
+  background-color: #39b5aa;
 }
 .color-swatches .bs-purple-light {
   background-color: #c7bfd3;
@@ -1325,7 +1326,7 @@ h1[id] {
 }
 .bs-glyphicons li:hover {
   color: #fff;
-  background-color: #39B5AA;
+  background-color: #39b5aa;
 }
 
 @media (min-width: 768px) {
@@ -1469,7 +1470,7 @@ h1[id] {
   width: 100%;
   margin-bottom: 15px;
   overflow: hidden;
-  color: #39B5AA;
+  color: #39b5aa;
   background-color: #f9f9f9;
   border-radius: 4px;
 }
@@ -1484,7 +1485,7 @@ h1[id] {
 }
 .bs-brand-logos .inverse {
   color: #fff;
-  background-color: #39B5AA;
+  background-color: #39b5aa;
 }
 
 /* Heading content within */
@@ -1553,8 +1554,8 @@ h1[id] {
 }
 .btn-clipboard-hover {
   color: #fff;
-  background-color: #39B5AA;
-  border-color: #39B5AA;
+  background-color: #39b5aa;
+  border-color: #39b5aa;
 }
 
 @media (min-width: 768px) {
@@ -1583,13 +1584,13 @@ h1[id] {
 
 
 .bs-docs-container {
-  margin: 0 !important;
   padding: 0 !important;
+  margin: 0 !important;
 }
 
 .bs-docs-header {
-  margin: 0 !important;
   display: none;
+  margin: 0 !important;
 }
 
 .bs-docs-sidebar {
@@ -1603,5 +1604,5 @@ h1[id] {
 }
 
 body {
-  background: #F1F2F7;
+  background: #f1f2f7;
 }
