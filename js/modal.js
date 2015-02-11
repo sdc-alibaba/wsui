@@ -130,7 +130,7 @@
         .scrollTop(0)
 
       if (that.options.backdrop) that.adjustBackdrop()
-      that.adjustDialog()
+      that.selfAdapt()
 
       if (transition) {
         that.$element[0].offsetWidth // force reflow
@@ -330,7 +330,7 @@
 
   Modal.prototype.handleUpdate = function () {
     if (this.options.backdrop) this.adjustBackdrop()
-    this.adjustDialog()
+    this.selfAdapt()
   }
 
   Modal.prototype.adjustBackdrop = function () {
@@ -339,7 +339,7 @@
       .css('height', this.$element[0].scrollHeight)
   }
 
-  Modal.prototype.adjustDialog = function () {
+  Modal.prototype.selfAdapt = function () {
     var $ele = this.$element,
       $dialog = $ele.find('.modal-dialog'),
       windowHeight = document.documentElement.clientHeight,
