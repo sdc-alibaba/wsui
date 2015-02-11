@@ -30,28 +30,28 @@ body {
 
 /* Outline button for use within the docs */
 .btn-outline {
-  color: #563d7c;
+  color: #39B5AA;
   background-color: transparent;
-  border-color: #563d7c;
+  border-color: #39B5AA;
 }
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active {
   color: #fff;
-  background-color: #563d7c;
-  border-color: #563d7c;
+  background-color: #39B5AA;
+  border-color: #39B5AA;
 }
 
 /* Inverted outline button (white on dark) */
 .btn-outline-inverse {
   color: #fff;
   background-color: transparent;
-  border-color: #cdbfe3;
+  border-color: #fff;
 }
 .btn-outline-inverse:hover,
 .btn-outline-inverse:focus,
 .btn-outline-inverse:active {
-  color: #563d7c;
+  color: #39B5AA;
   text-shadow: none;
   background-color: #fff;
   border-color: #fff;
@@ -64,7 +64,7 @@ body {
   color: #fff;
   text-align: center;
   cursor: default;
-  background-color: #563d7c;
+  background-color: #39B5AA;
   border-radius: 15%;
 }
 .bs-docs-booticon-sm {
@@ -80,12 +80,13 @@ body {
   line-height: 140px;
 }
 .bs-docs-booticon-inverse {
-  color: #563d7c;
+  color: #39B5AA;
   background-color: #fff;
 }
 .bs-docs-booticon-outline {
   background-color: transparent;
-  border: 1px solid #cdbfe3;
+  /*border: 1px solid #cdbfe3;*/
+  width: 172px;
 }
 
 
@@ -99,7 +100,7 @@ body {
   display: block;
   padding: 1em;
   color: #fff;
-  background-color: #6f5499;
+  background-color: #58C9F3;
   outline: 0;
 }
 
@@ -126,16 +127,21 @@ body {
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
   font-weight: 500;
-  color: #563d7c;
+  color: #666;
+}
+.bs-docs-nav .navbar-brand {
+  font-size: 26px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
-  color: #463265;
-  background-color: #f9f9f9;
+  color: #fff;
+  background-color: #F77B6F;
 }
 .bs-docs-nav .navbar-toggle .icon-bar {
-  background-color: #563d7c;
+  background-color: #39B5AA;
 }
 .bs-docs-nav .navbar-header .navbar-toggle {
   border-color: #fff;
@@ -228,13 +234,7 @@ body {
   color: #cdbfe3;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
-  background-color: #6f5499;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#563d7c), to(#6f5499));
-  background-image: -webkit-linear-gradient(top, #563d7c 0%, #6f5499 100%);
-  background-image:      -o-linear-gradient(top, #563d7c 0%, #6f5499 100%);
-  background-image:         linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
-  background-repeat: repeat-x;
+  background-color: #39B5AA;
 }
 
 /* Masthead (headings and download button) */
@@ -254,7 +254,7 @@ body {
 .bs-docs-masthead .version {
   margin-top: -15px;
   margin-bottom: 30px;
-  color: #9783b9;
+  color: #eee;
 }
 .bs-docs-masthead .btn {
   width: 100%;
@@ -466,7 +466,8 @@ body {
 
 @media (min-width: 480px) {
   .bs-docs-featurette .img-responsive {
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    margin: 30px auto 0 auto;
   }
 }
 @media (min-width: 768px) {
@@ -552,6 +553,10 @@ body {
  * sections of docs content.
  */
 
+.bs-docs-sidebar {
+  background: #2A3542;
+}
+
 /* By default it's not affixed in mobile views, so undo that */
 .bs-docs-sidebar.affix {
   position: static;
@@ -574,24 +579,24 @@ body {
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
-  color: #767676;
+  color: #AEB2B7;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
   padding-left: 19px;
-  color: #563d7c;
+  color: #fff;
   text-decoration: none;
   background-color: transparent;
-  border-left: 1px solid #563d7c;
+  border-left: 1px solid #FF6C60;
 }
 .bs-docs-sidebar .nav > .active > a,
 .bs-docs-sidebar .nav > .active:hover > a,
 .bs-docs-sidebar .nav > .active:focus > a {
   padding-left: 18px;
   font-weight: bold;
-  color: #563d7c;
+  color: #fff;
   background-color: transparent;
-  border-left: 2px solid #563d7c;
+  border-left: 2px solid #FF6C60;
 }
 
 /* Nav: second level (shown on .active) */
@@ -630,7 +635,7 @@ body {
 }
 .back-to-top:hover,
 .bs-docs-theme-toggle:hover {
-  color: #563d7c;
+  color: #39B5AA;
   text-decoration: none;
 }
 .bs-docs-theme-toggle {
@@ -807,7 +812,7 @@ h1[id] {
 
 /* Docs colors */
 .color-swatches .bs-purple {
-  background-color: #563d7c;
+  background-color: #39B5AA;
 }
 .color-swatches .bs-purple-light {
   background-color: #c7bfd3;
@@ -1320,7 +1325,7 @@ h1[id] {
 }
 .bs-glyphicons li:hover {
   color: #fff;
-  background-color: #563d7c;
+  background-color: #39B5AA;
 }
 
 @media (min-width: 768px) {
@@ -1464,7 +1469,7 @@ h1[id] {
   width: 100%;
   margin-bottom: 15px;
   overflow: hidden;
-  color: #563d7c;
+  color: #39B5AA;
   background-color: #f9f9f9;
   border-radius: 4px;
 }
@@ -1479,7 +1484,7 @@ h1[id] {
 }
 .bs-brand-logos .inverse {
   color: #fff;
-  background-color: #563d7c;
+  background-color: #39B5AA;
 }
 
 /* Heading content within */
@@ -1548,8 +1553,8 @@ h1[id] {
 }
 .btn-clipboard-hover {
   color: #fff;
-  background-color: #563d7c;
-  border-color: #563d7c;
+  background-color: #39B5AA;
+  border-color: #39B5AA;
 }
 
 @media (min-width: 768px) {
@@ -1574,4 +1579,29 @@ h1[id] {
   border-color: #28a3ef; /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
+}
+
+
+.bs-docs-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.bs-docs-header {
+  margin: 0 !important;
+  display: none;
+}
+
+.bs-docs-sidebar {
+  top: 0 !important;
+  width: 263px;
+  padding: 40px 20px 800px;
+}
+
+.bs-docs-sidenav {
+  margin: 0 !important;
+}
+
+body {
+  background: #F1F2F7;
 }
