@@ -85,21 +85,6 @@
     })();
 
     // Tooltip and popover demos
-    $('.tooltip-demo').tooltip({
-      selector: '[data-toggle="tooltip"]',
-      container: 'body'
-    })
-    $('.popover-demo').popover({
-      selector: '[data-toggle="popover"]',
-      container: 'body'
-    })
-
-    // Demos within modals
-    $('.tooltip-test').tooltip()
-    $('.popover-test').popover()
-
-    // Popover demos
-    $('.bs-docs-popover').popover()
 
     // Button state demo
     $('#loading-example-btn').on('click', function () {
@@ -111,7 +96,7 @@
     })
 
     // Modal relatedTarget demo
-    $('#exampleModal').on('show.bs.modal', function (event) {
+    $('#exampleModal').on('show', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var recipient = button.data('whatever') // Extract info from data-* attributes
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).

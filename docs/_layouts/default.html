@@ -22,9 +22,6 @@
     <div class="container bs-docs-container">
 
       <div class="row">
-        <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
-          {{ content }}
-        </div>
         {% unless page.fullwidth == true %}
         <div class="col-md-3" role="complementary">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
@@ -56,6 +53,9 @@
           </nav>
         </div>
         {% endunless %}
+        <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
+          {{ content }}
+        </div>
       </div>
     </div>
 

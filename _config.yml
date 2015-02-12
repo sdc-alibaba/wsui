@@ -10,12 +10,12 @@ source:           docs
 destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
-url:              http://getbootstrap.com
+url:              http://sui.taobao.org
 encoding:         UTF-8
 
 # Custom vars
 current_version:  3.3.1
-repo:             https://github.com/twbs/bootstrap
+repo:             http://gitlab.alibaba-inc.com/sui/sui3
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
 download:
@@ -23,8 +23,8 @@ download:
   dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.1/bootstrap-3.3.1-dist.zip
   sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.1.tar.gz
 
-blog:             http://blog.getbootstrap.com
-expo:             http://expo.getbootstrap.com
+blog:             http://sui.taobao.org
+expo:             http://sui.taobao.org
 
 cdn:
   css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css

@@ -3,13 +3,9 @@
   z-index: 999999;
   background-color: #000;
   opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+/*  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";*/
   filter: alpha(opacity=50);
-  -webkit-transition: all 0.3s ease-out;
-     -moz-transition: all 0.3s ease-out;
-      -ms-transition: all 0.3s ease-out;
-       -o-transition: all 0.3s ease-out;
-          transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .introjs-fixParent {
@@ -38,11 +34,7 @@ tr.introjs-showElement > th {
   border: 1px solid rgba(0,0,0,.5);
   border-radius: 4px;
   box-shadow: 0 2px 15px rgba(0,0,0,.4);
-  -webkit-transition: all 0.3s ease-out;
-     -moz-transition: all 0.3s ease-out;
-      -ms-transition: all 0.3s ease-out;
-       -o-transition: all 0.3s ease-out;
-          transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .introjs-helperNumberLayer {
@@ -57,13 +49,8 @@ tr.introjs-showElement > th {
   color: white;
   text-align: center;
   text-shadow: 1px 1px 1px rgba(0,0,0,.3);
-  background: @linkColor; /* Old browsers */
-  background: -webkit-linear-gradient(top, @linkColor 0%,@linkColor 100%); /* Chrome10+,Safari5.1+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @linkColor), color-stop(100%, @linkColor)); /* Chrome,Safari4+ */
-  background:    -moz-linear-gradient(top, @linkColor 0%, @linkColor 100%); /* FF3.6+ */
-  background:     -ms-linear-gradient(top, @linkColor 0%, @linkColor 100%); /* IE10+ */
-  background:      -o-linear-gradient(top, @linkColor 0%, @linkColor 100%); /* Opera 11.10+ */
-  background:         linear-gradient(to bottom, @linkColor 0%, @linkColor 100%);  /* W3C */
+  background:@link-color; /* Old browsers */
+  background:         linear-gradient(to bottom, @link-color 0%, @link-color 100%);  /* W3C */
   width: 30px;
   height:30px;
   line-height: 22px;
@@ -141,16 +128,12 @@ tr.introjs-showElement > th {
   max-width: 300px;
   border-radius: 3px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
-  -webkit-transition: opacity 0.1s ease-out;
-     -moz-transition: opacity 0.1s ease-out;
-      -ms-transition: opacity 0.1s ease-out;
-       -o-transition: opacity 0.1s ease-out;
-          transition: opacity 0.1s ease-out;
+  transition: opacity 0.1s ease-out;
 }
 
 .introjs-tooltipbuttons {
   text-align: right;
-  margin-top: @baseMargin;
+  margin-top: @line-height-computed;
   a + a {
     margin-left: 5px;
   }
@@ -198,8 +181,8 @@ tr.introjs-showElement > th {
   height: 6px;
   background: #ccc;
   border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  /*-moz-border-radius: 10px;
+  -webkit-border-radius: 10px;*/
   text-decoration: none;
 }
 .introjs-bullets ul li a:hover {

@@ -116,7 +116,8 @@ module.exports = function (grunt) {
           'js/dropdown.js',
           'js/modal.js',
           'js/tooltip.js',
-          'js/popover.js',
+          // SUI不需要bootstrap里的popover
+          // 'js/popover.js',
           'js/scrollspy.js',
           'js/tab.js',
           'js/autocomplete.js',
