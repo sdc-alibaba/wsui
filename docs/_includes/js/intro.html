@@ -26,31 +26,34 @@
       <div data-step="6" data-intro="第六步:Last step." class="divcont">
         <h4>6.跨浏览器兼容性</h4>
         <p>它兼容最近版本的火狐,Chrome和IE8，更好的兼容性需要进一步开发。</p>
-      </div><a href="javascript:void(0);" class="btn-intro btn btn-primary">展示操作</a>
+      </div><a href="javascript:void(0);" class="btn btn-primary btn-intro">展示操作</a>
     </div>
   </div><!-- /example -->
 {% highlight html %}
 <div>
-  <h1 data-step="1" data-intro="1..." style="text-align:center">1...</h1>
-  <p data-step="4" data-intro="4..." class="lead">4...</p>
-  <div>
-    <div data-step="2" data-intro="2..." data-position="right" class="divcont">
-      <h4>2...</h4>
-      <p>...</p>
+  <h1 data-step="1" data-intro="Hello all! :) 第一步：This project's called Intro.js." style="text-align:center">1.Intro.js</h1>
+   <!--  <p data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">4.更好的介绍网站和功,以便逐步为您指导项目。</p> -->
+    <div class="introjs-content">
+      <div data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">
+        <p>4.更好的介绍网站和功,以便逐步为您指导项目。</p>
+      </div>
+      <div data-step="2" data-intro="第二步:Ok, wasn't that fun?" data-position="right" class="divcont">
+        <h4>2.容易使用</h4>
+        <p>包括js和css文件， 调价"data-step" 和 "data-intro" 到你的代码。</p>
+      </div>
+      <div data-step="3" data-intro="第三步：More features, more fun." data-position="left" class="divcont">
+        <h4>3.键盘 + 鼠标 控制 </h4>
+        <p>用鼠标, 或键盘  "←"控制后退, "→"控制前进, "ENTER" 和 "ESC" 控制退出.</p>
+      </div>
+      <div data-step="5" data-intro="第五步:Get it, use it." class="divcont">
+        <h4>5.快 &amp; 小</h4>
+        <p>仅需4 KB JavaScript 和 2.5 KB CSS (gzip).</p>
+      </div>
+      <div data-step="6" data-intro="第六步:Last step." class="divcont">
+        <h4>6.跨浏览器兼容性</h4>
+        <p>它兼容最近版本的火狐,Chrome和IE8，更好的兼容性需要进一步开发。</p>
+      </div><a href="javascript:void(0);" class="btn btn-primary btn-intro">展示操作</a>
     </div>
-    <div data-step="3" data-intro="3..." data-position="left" class="divcont">
-      <h4>3... </h4>
-      <p>...</p>
-    </div>
-    <div data-step="5" data-intro="5..." class="divcont">
-      <h4>5...</h4>
-      <p>...</p>
-    </div>
-    <div data-step="6" data-intro="6..." class="divcont">
-      <h4>6...</h4>
-      <p>...</p>
-    </div><a href="javascript:void(0);" class="btn-intro btn btn-primary">展示操作</a>
-  </div>
 </div>
 {% endhighlight %}
 {% highlight js %}
