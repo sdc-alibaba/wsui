@@ -91,7 +91,7 @@
     position: 'top',
     type: 'danger',
     // speed: 500,
-    timeout: 33000,
+    timeout: 3000,
     // closeButton: false,
     closeOnClick: true,
     text:''
