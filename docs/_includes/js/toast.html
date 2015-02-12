@@ -116,7 +116,7 @@ $('#toast-bottomright').click(function(event){
     <p>1.可直接调用$.toast('字符串');改变提示文字</p>
     <p>2.可调用$.toast().show();$.toast().hide();手动控制提示框显示和消失</p>
 {% highlight js %}
-$.toast().show();
+$.toast({text:'button topright warning',type:'warning',position:'top right'}).show();
 $.toast().hide();
 {% endhighlight %}
 
