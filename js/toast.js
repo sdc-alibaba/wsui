@@ -17,7 +17,7 @@
 
 !function ($) {
   "use strict";
-   /*jshint validthis: true */
+  /*jshint validthis: true */
  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
   var template = '<div class=" toast"><h5 class="toast_text msg-con"></h5><s class="msg-icon"></s></div>';
@@ -27,8 +27,14 @@
     if(typeof options === typeof 'a'){
       this.options = $.extend({}, this.defaults);
       this.options.text = options;
-      this.options.position= arguments[2];
-      this.options.type = arguments[1];
+      if(horizontal=="center"){
+        var mlwidth = -(this.el.width()/2);
+        this.el.css("margin-left",mlwidth+"px");
+      }
+      if(vertical=="middle"){
+        var mtheight = -(this.el.height()/2);
+        this.el.css("margin-top",mtheight);
+      }
     }else{
       this.options = $.extend({}, this.defaults, options);
     }
@@ -93,7 +99,7 @@
     position: 'top',
     type: 'danger',
     // speed: 500,
-    timeout: 3000,
+    timeout: 33000,
     // closeButton: false,
     closeOnClick: true,
     text:''
