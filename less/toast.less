@@ -12,6 +12,15 @@
 	transition-property: opacity;
   	transition-duration: 800ms;
   	opacity: 0;
+	display: inline-block;
+	font-size:14px;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	cursor: default;
+	z-index: 500;
 	&.top{
 		top: 10px;
 	}
@@ -31,6 +40,29 @@
 	}
 }
 
+.toast-default {
+  background: @label-default-bg;
+}
+
+.toast-primary {
+  background: @label-primary-bg;
+}
+
+.toast-success {
+  background: @label-success-bg;
+}
+
+.toast-info {
+  background: @label-info-bg;
+}
+
+.toast-warning {
+  background: @label-warning-bg;
+}
+
+.toast-danger {
+  background: @label-danger-bg;
+}
 
 /*.modal-out {
   
@@ -38,6 +70,6 @@
 .sui-msg.msg-large.toast_message > .msg-con {
 	padding: 11px 31px 11px 44px;
 }
-.show-close-btn button{
+/*.show-close-btn button{
 	display: block;
-}
+}*/

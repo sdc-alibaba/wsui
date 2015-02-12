@@ -20,7 +20,7 @@
    /*jshint validthis: true */
  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
-  var template = '<div class="label toast_message"><h5 class="toast_text msg-con"></h5><s class="msg-icon"></s></div>';
+  var template = '<div class=" toast_message"><h5 class="toast_text msg-con"></h5><s class="msg-icon"></s></div>';
 
   var Toast = function (options) {
   	var $toast = null;
@@ -41,7 +41,7 @@
       var options = this.options;
       var message = ".toast_message";
       var text = ".toast_text";
-      var cssPrefix = "label-";
+      var cssPrefix = "toast-";
       $(message).remove();
       this.el = $(template);
       this.el.appendTo(document.body);
@@ -93,7 +93,7 @@
     position: 'top',
     type: 'danger',
     // speed: 500,
-    timeout: 3000,
+    timeout: 33000,
     // closeButton: false,
     closeOnClick: true,
     text:''
