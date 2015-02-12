@@ -2,23 +2,16 @@
 /* CORE STYLES */
 
 
-.noty_message{
+.toast_message{
 	position: fixed;
-	min-width: 150px;
 	border-radius: 25px;
 	text-align: center;
 	left: 50%;
 	top: 50%;
+	padding: 2px 25px .3em;
 	transition-property: opacity;
-	-webkit-transition-duration: 800ms;
   	transition-duration: 800ms;
   	opacity: 0;
-	button{
-		position: absolute;
-		top: 5px;
-		right: 10px;
-		display: none;
-	}
 	&.top{
 		top: 10px;
 	}
@@ -33,7 +26,7 @@
 		right: 20px;
 		left: auto;
 	}
-	&.noty-in {
+	&.toast-in {
 	  opacity: 1;
 	}
 }
@@ -42,7 +35,7 @@
 /*.modal-out {
   
 }*/
-.sui-msg.msg-large.noty_message > .msg-con {
+.sui-msg.msg-large.toast_message > .msg-con {
 	padding: 11px 31px 11px 44px;
 }
 .show-close-btn button{

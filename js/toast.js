@@ -1,7 +1,7 @@
  //jscs:disable 
 
  /**
- * noty.js
+ * toast.js
  * https://github.com/usablica/intro.js
  * MIT licensed
  *
@@ -20,10 +20,10 @@
    /*jshint validthis: true */
  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
-  var template = '<div class="label noty_message"><h5 class="noty_text msg-con"></h5><s class="msg-icon"></s></div>';
+  var template = '<div class="label toast_message"><h5 class="toast_text msg-con"></h5><s class="msg-icon"></s></div>';
 
-  var Noty = function (options) {
-  	var $noty = null;
+  var Toast = function (options) {
+  	var $toast = null;
     if(typeof options === typeof 'a'){
       this.options = $.extend({}, this.defaults);
       this.options.text = options;
@@ -35,12 +35,12 @@
     return this.render();
   }
 
-  Noty.prototype = {
-    Constructor : Noty,
+  Toast.prototype = {
+    Constructor : Toast,
      render: function(){
       var options = this.options;
-      var message = ".noty_message";
-      var text = ".noty_text";
+      var message = ".toast_message";
+      var text = ".toast_text";
       var cssPrefix = "label-";
       $(message).remove();
       this.el = $(template);
@@ -54,12 +54,12 @@
       // if(options.closeButton){
       //   this.el.addClass('show-close-btn');
       // }
-      if(options.closeOnSelfClick){
+      if(options.closeOnClick){
         this.el.click($.proxy(this.hide,this));
       }
     },
     hide : function(callback){  // hide : function(duration, callback);
-      this.el.removeClass('noty-in');
+      this.el.removeClass('toast-in');
     },
     show : function(duration, callback){  // show : function(duration, callback);
       var classes = this.el.attr("class");
@@ -71,39 +71,39 @@
       }
       if(vertical=="middle"){
         var mtheight = -(this.el.height()/2);
-        this.el.css("magin-top",mtheight);
+        this.el.css("margin-top",mtheight);
       }
       var addclass = function(){
-        this.el.addClass('noty-in')
+        this.el.addClass('toast-in')
       }
       setTimeout($.proxy(addclass,this));
       setTimeout($.proxy(this.hide,this),this.options.timeout);
     }
   } 
 
-  var old = $.noty
+  var old = $.toast
   
-  $.noty = function(arg1,arg2,arg3){
-    return new Noty(arg1,arg2, arg3);
+  $.toast = function(arg1,arg2,arg3){
+    return new Toast(arg1,arg2, arg3);
   }
 
-  Noty.prototype.defaults = {
+  Toast.prototype.defaults = {
     position: 'top',
     type: 'danger',
     // speed: 500,
-    timeout: 255000,
+    timeout: 33000,
     // closeButton: false,
-    closeOnSelfClick: true,
+    closeOnClick: true,
     text:''
   };
 
-  $.noty.Constructor = Noty;
+  $.toast.Constructor = Toast;
 
  /* BUTTON NO CONFLICT
   * ================== */
 
-  $.noty.noConflict = function () {
-    $.noty = old;
+  $.toast.noConflict = function () {
+    $.toast = old;
     return this
   }
 

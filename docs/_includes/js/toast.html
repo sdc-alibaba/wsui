@@ -40,35 +40,35 @@
 
 
   <h2 id="toast-usage">用法</h2>
-  <p>调用$.noty()可触发提示框事件，可传入对象参数；亦可省略参数名，默认第一个是text,第二个type,第三个position,如： $.noty('button bottomright warning','warning','bottom right');</p>
+  <p>调用$.toast()可触发提示框事件，可传入对象参数；亦可省略参数名，默认第一个是text,第二个type,第三个position,如： $.toast('button bottomright warning','warning','bottom right');</p>
 {% highlight js %}
 $('#toast-topleft').click(function(event){
   event.preventDefault();
-  $.noty({text:'button topleft danger',type:'danger',position:'top left'});
+  $.toast({text:'button topleft danger',type:'danger',position:'top left'});
 });
 $('#toast-top').click(function(event){
   event.preventDefault();
-  $.noty({text:'button top success',posititon:'top',type:'success'});
+  $.toast({text:'button top success',posititon:'top',type:'success'});
 });
 $('#toast-topright').click(function(event){
   event.preventDefault();
-  $.noty({text:'button topright warning',type:'warning',position:'top right'});
+  $.toast({text:'button topright warning',type:'warning',position:'top right'});
 });
 $('#toast-center').click(function(event){
   event.preventDefault();
-  $.noty({text:'button center danger',type:'danger',position:'center'});
+  $.toast({text:'button center danger',type:'danger',position:'center'});
 });
 $('#toast-bottomleft').click(function(event){
   event.preventDefault();
-  $.noty({text:'button bottomleft danger',type:'danger',position:'bottom left'});
+  $.toast({text:'button bottomleft danger',type:'danger',position:'bottom left'});
 });
 $('#toast-bottom').click(function(event){
   event.preventDefault();
-  $.noty({text:'button bottom success',type:'success',position:'bottom'});
+  $.toast({text:'button bottom success',type:'success',position:'bottom'});
 });
 $('#toast-bottomright').click(function(event){
   event.preventDefault();
-  $.noty('button bottomright warning','warning','bottom right');
+  $.toast('button bottomright warning','warning','bottom right');
 });
 {% endhighlight %}
   
@@ -113,11 +113,11 @@ $('#toast-bottomright').click(function(event){
   </div><!-- /.table-responsive -->
 
   <h3 id="toast-events">事件</h3>
-    <p>1.可直接调用$.noty('字符串');改变提示文字</p>
-    <p>2.可调用$.noty().show();$.noty().hide();手动控制提示框显示和消失</p>
+    <p>1.可直接调用$.toast('字符串');改变提示文字</p>
+    <p>2.可调用$.toast().show();$.toast().hide();手动控制提示框显示和消失</p>
 {% highlight js %}
-$.noty().show();
-$.noty().hide();
+$.toast().show();
+$.toast().hide();
 {% endhighlight %}
 
 
