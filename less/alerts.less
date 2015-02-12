@@ -47,9 +47,8 @@
     @size: @font-size-large;  //这是根据close的大小来的
     position: absolute;
     color: inherit;
-    top: 50%;
+    top: 10px;
     right: @size;
-    margin-top: (@size*-1);
   }
 }
 
@@ -72,6 +71,11 @@
 
 .alert-small {
   padding: @padding-base-vertical @padding-base-horizontal;
+
+  .close {
+    font-size: 20px;
+    top: 0;
+  }
 }
 
 .alert-inline {
@@ -89,4 +93,9 @@
   .alert-content {
     margin-left: 32px;
   }
+}
+
+//默认文本色
+.alert.text-default {
+  color: @text-default;
 }

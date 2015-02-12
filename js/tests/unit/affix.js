@@ -31,7 +31,7 @@ $(function () {
 
   test('should exit early if element is not visible', function () {
     var $affix = $('<div style="display: none"/>').bootstrapAffix()
-    $affix.data('bs.affix').checkPosition()
+    $affix.data('affix').checkPosition()
     ok(!$affix.hasClass('affix'), 'affix class was not added')
   })
 
@@ -52,9 +52,9 @@ $(function () {
     })
 
     $('#affixTarget')
-      .on('affix.bs.affix', function () {
+      .on('affix', function () {
         ok(true, 'affix event fired')
-      }).on('affixed.bs.affix', function () {
+      }).on('affixed', function () {
         ok(true, 'affixed event fired')
         $('#affixTarget, #affixAfter').remove()
         start()
@@ -84,7 +84,7 @@ $(function () {
       .bootstrapAffix({
         offset: { top: 120, bottom: 0 }
       })
-      .on('affixed-top.bs.affix', function () {
+      .on('affixed-top', function () {
         ok($('#affixTopTarget').hasClass('affix-top'), 'affix-top class applied')
         $('#padding-offset').remove()
         start()

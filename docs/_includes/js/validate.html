@@ -1,0 +1,84 @@
+<div class="bs-docs-section">
+  <h1 id="validate" class="page-header">表单校验</h1>
+
+  <p>表单校验我们采用了第三方插件 <a href="http://jqueryvalidation.org/" target='_blank'>jquery Validation</a>。</p>
+
+  <h2 id="validate-examples">示例</h2>
+
+  <p>在 <code>input</code> 通过 <code>data-toggle='validate'</code> 可以自动初始化。错误信息的展示，可以通过响应式栅格系统来控制。如下例所示，如果当前输入框所在的 <code>form-group</code> 中有 <code>.error-container</code>，则会自动把错误信息填写到这个元素中。如果没有，则会直接追加到input后面。 </p>
+
+  <div class="bs-example">
+    <form class='form-horizontal' data-toggle='validate'>
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+        <div class="col-sm-4 error-container"></div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-6">
+          <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required minlength="6" maxlength='12'>
+        </div>
+        <div class="col-sm-4 error-container"></div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Sign in</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% highlight html %}
+<form class='form-horizontal' data-toggle='validate'>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-6">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+    <div class="col-sm-4 error-container"></div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required minlength="6" maxlength='12'>
+    </div>
+    <div class="col-sm-4 error-container"></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+  <h2 id="validate-js">通过JS初始化</h2>
+{% highlight js %}
+$("form").validate({
+//config here
+});
+{% endhighlight %}
+  <h2 id="validate-rules">内置校验规则</h2>
+  <p>jQuery validation 内置了常用的校验规则，参见 <a href="http://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods" target='_blank'>内置校验规则</a></p>
+  <h2 id="validate-config">配置说明</h2>
+  <p>参见 <a href="http://jqueryvalidation.org/validate" target='_blank'>配置参数说明</a></p>
+</div>

@@ -1,0 +1,127 @@
+.steps {
+    * {box-sizing: content-box;}
+    font-size: 0px;
+    overflow: hidden;
+    line-height: 0px;
+    margin: @line-height-computed 0px;
+    .wrap {
+        padding: 0;
+    }
+    .wrap > div {
+        width: 100%;
+        line-height: @stepsBaseHeight;
+        vertical-align: top;
+        font-size: @font-size-base;
+        position: relative;
+        > label {
+            margin: 0 0 0 (@stepsBaseHeight / 2 + 10px);
+            cursor: default;
+        }
+    }
+    .triangle-right {
+        display: inline-block;
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: (@stepsBaseHeight / 2);
+        position: absolute;
+        right: (-@stepsBaseHeight + 1); //加一个1px，fix wrap带来的宽度
+        z-index: 1;
+    }
+    .triangle-right-bg {
+        .triangle-right;
+        border-width: (@stepsBaseHeight / 2 + 4);
+        right: (-@stepsBaseHeight -  4 * 2);
+        border-color: transparent transparent transparent #FFF;
+        top: -4px;
+    }
+
+    .round {
+        display: inline-block;
+        width: (@font-size-base + 4px);
+        height: (@font-size-base + 4px);
+        border-radius: ((@font-size-base + 4px) / 2);
+        text-align: center;
+        line-height: (@font-size-base + 4px);
+        .icon {
+          vertical-align: -1px;
+        }
+    }
+    .round + span:before {
+        content: '\00a0';
+    }
+    .finished {
+        background-color: @stepsFinishedColor;
+        color: @stepsFinishedTextColor;
+         .triangle-right {
+            border-color: transparent transparent transparent @stepsFinishedColor;
+        }
+        .round {
+            background-color: @body-bg;
+            background-color: transparent\9;
+            color: @stepsFinishedColor;
+            > i {
+                color: @stepsFinishedColor;
+                font-size: @font-size-base;
+            }
+        }
+    }
+    .current {
+        background-color: @stepsCurrentColor;
+        color: @stepsCurrentTextColor;
+         .triangle-right {
+            border-color: transparent transparent transparent @stepsCurrentColor;
+        }
+        .round {
+            background-color: @body-bg;
+            color: @stepsCurrentColor;
+            color: #FFF\9;
+            background-color: transparent\9;
+        }
+    }
+    .todo {
+        background-color: @stepsTodoColor;
+        color : @stepsTodoTextColor;
+         .triangle-right {
+            border-color: transparent transparent transparent @stepsTodoColor;
+        }
+        .round {
+            background-color: @body-bg;
+            background-color: transparent\9;
+        }
+        
+    }
+    >:last-child {
+      .triangle-right,
+      .triangle-right-bg {
+        display: none;
+      }
+    }
+}
+
+.steps-lg {
+    .wrap > div {
+        font-size: @font-size-xlarge;
+        height: (@stepsBaseHeight * 1.25);
+        line-height: (@stepsBaseHeight * 1.25);
+        > label {
+            font-size: @font-size-xlarge;
+            margin-left: (@stepsBaseHeight * 1.25 / 2 + 10px);
+        }
+    }
+    .triangle-right {
+        border-width: (@stepsBaseHeight * 1.25 / 2);
+        right: (-@stepsBaseHeight * 1.25 + 1);
+    }
+    .triangle-right-bg {
+        border-width: (@stepsBaseHeight * 1.25 / 2 + 4);
+        right: (-@stepsBaseHeight * 1.25 -  4 * 2);
+    }
+    .round {
+        width: (@font-size-xlarge + 4);
+        height: (@font-size-xlarge + 4);
+        line-height: (@font-size-xlarge + 4);
+        border-radius: ((@font-size-xlarge + 4) / 2);
+
+    }
+}

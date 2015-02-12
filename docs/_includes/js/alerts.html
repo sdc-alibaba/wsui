@@ -55,18 +55,18 @@
       </thead>
       <tbody>
         <tr>
-          <td>close.bs.alert</td>
+          <td>close</td>
           <td>This event fires immediately when the <code>close</code> instance method is called.</td>
         </tr>
         <tr>
-          <td>closed.bs.alert</td>
+          <td>closed</td>
           <td>This event is fired when the alert has been closed (will wait for CSS transitions to complete).</td>
         </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
 {% highlight js %}
-$('#myAlert').on('closed.bs.alert', function () {
+$('#myAlert').on('closed', function () {
   // do something…
 })
 {% endhighlight %}

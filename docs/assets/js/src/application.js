@@ -10,6 +10,7 @@
  */
 
 /* global ZeroClipboard */
+//jscs:disable 
 
 !function ($) {
   'use strict';
@@ -84,21 +85,6 @@
     })();
 
     // Tooltip and popover demos
-    $('.tooltip-demo').tooltip({
-      selector: '[data-toggle="tooltip"]',
-      container: 'body'
-    })
-    $('.popover-demo').popover({
-      selector: '[data-toggle="popover"]',
-      container: 'body'
-    })
-
-    // Demos within modals
-    $('.tooltip-test').tooltip()
-    $('.popover-test').popover()
-
-    // Popover demos
-    $('.bs-docs-popover').popover()
 
     // Button state demo
     $('#loading-example-btn').on('click', function () {
@@ -110,7 +96,7 @@
     })
 
     // Modal relatedTarget demo
-    $('#exampleModal').on('show.bs.modal', function (event) {
+    $('#exampleModal').on('show', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var recipient = button.data('whatever') // Extract info from data-* attributes
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -123,6 +109,20 @@
     // Activate animated progress bar
     $('.bs-docs-activate-animated-progressbar').on('click', function () {
       $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
+    })
+
+    //
+    $('#datepicker-input-js').datepicker();
+    $('#datepicker-inline-1').datepicker();
+
+
+    // ac
+    $('#ac-js-input').autocomplete({
+      serviceUrl: '../json/ac-strings.json'
+    });
+    //intro
+    $(".btn-primary").click(function(){
+      $.introJs().start();
     })
 
     // Config ZeroClipboard
