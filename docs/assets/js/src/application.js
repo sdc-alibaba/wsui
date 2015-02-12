@@ -136,7 +136,7 @@
       serviceUrl: '../json/ac-strings.json'
     });
     //intro
-    $(".btn-primary").click(function(){
+    $(".btn-intro").click(function(){
       $.introJs().start();
     })
 
@@ -185,6 +185,36 @@
         .tooltip('fixTitle')
         .tooltip('show')
     })
+
+    //toast
+    $('#toast-topleft').click(function(event){
+      event.preventDefault();
+      $.noty({text:'button topleft danger',type:'danger',position:'top left'});
+    });
+    $('#toast-top').click(function(event){
+      event.preventDefault();
+      $.noty({text:'button top success',posititon:'top',type:'success'});
+    });
+    $('#toast-topright').click(function(event){
+      event.preventDefault();
+      $.noty({text:'button topright warning',type:'warning',position:'top right'});
+    });
+    $('#toast-center').click(function(event){
+      event.preventDefault();
+      $.noty({text:'button center danger',type:'danger',position:'center'});
+    });
+    $('#toast-bottomleft').click(function(event){
+      event.preventDefault();
+      $.noty({text:'button bottomleft danger',type:'danger',position:'bottom left'});
+    });
+    $('#toast-bottom').click(function(event){
+      event.preventDefault();
+      $.noty({text:'button bottom success',type:'success',position:'bottom'});
+    });
+    $('#toast-bottomright').click(function(event){
+      event.preventDefault();
+      $.noty('button bottomright warning','warning','bottom right');
+    });
 
   })
 
