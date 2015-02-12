@@ -121,7 +121,7 @@
       serviceUrl: '../json/ac-strings.json'
     });
     //intro
-    $(".btn-primary").click(function(){
+    $(".btn-intro").click(function(){
       $.introJs().start();
     })
 
