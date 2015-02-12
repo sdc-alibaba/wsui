@@ -60,7 +60,8 @@
     },
     hide : function(callback){  // hide : function(duration, callback);
       this.el.removeClass('toast-in');
-      this.el.remove();
+      var self = this.el;
+      setTimeout(function(){self.remove()},1000);
     },
     show : function(duration, callback){  // show : function(duration, callback);
       var classes = this.el.attr("class");
