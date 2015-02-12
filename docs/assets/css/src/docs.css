@@ -1596,9 +1596,9 @@ h1[id] {
 .bs-docs-sidebar {
   /*top: 0 !important;*/
   width: 263px;
-  padding: 40px 20px 800px;
   min-height: 100%;
   max-height: 100%;
+  padding: 40px 20px 800px;
 }
 
 .bs-docs-sidenav {
