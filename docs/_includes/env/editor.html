@@ -1,0 +1,55 @@
+<div class="bs-docs-section">
+  <h1 id="editor" class="">编辑器</h1>
+  <p class="lead">
+  首先需要选择一款编辑器，如果你已经有了自己偏好的编辑器，继续使用就可以。如果还没有，可以尝试下面这个轻量级的编辑器，Sublime Text。
+  </p>
+
+  <h3 id="editor-sublime">Sublime Text</h3>
+  <p>Sublime Text是一款跨平台代码编辑器（Code Editor），从最初的Sublime Text 1.0，到现在的Sublime Text 3.0，Sublime Text从一个不知名的编辑器演变到现在几乎是各平台首选的GUI编辑器，也是前端工程师使用比例最高的编辑器。</p>
+
+  <h4>安装</h4>
+  <p>
+    进入<a target="_blank" href="http://www.sublimetext.com/3">sublime text 官网</a>下载安装。
+  </p>
+  <p>这是一款收费软件，价格也不便宜，70美金。但是不付费也完全可以正常使用，只是偶尔会有弹窗询问是否购买。</p>
+
+  <h4>安装Package Control</h4>
+  <p>
+    Sublime Text支持大量插件，如何找到并管理这些插件就成了一个问题，Package Control正是为了解决这个问题而出现的，利用它我们可以很方便的浏览、安装和卸载Sublime Text中的插件。
+  </p>
+  <p>
+    进入Package Control的<a target="_blank" href="https://packagecontrol.io/">官网</a>，里面有详细的安装教程。Package Control支持Sublime Text 2和3，这里只给出3的安装流程：
+  </p>
+
+  <ul>
+    <li>使用<code>Ctrl + `</code>打开Sublime Text控制台。</li>
+    <li>将下面的代码粘贴到控制台里：</li>
+  </ul>
+
+{% highlight javascript %}
+import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+{% endhighlight %}
+
+  <ul>
+    <li>等待Package Control安装完成。之后使用<code>Ctrl + Shift + P</code>打开命令板，输入<code>install</code>应出现Package Control：</li>
+  </ul>
+
+  <p>成功安装Package Control之后，我们就可以方便的安装使用Sublime Text的各种插件。</p>
+
+  <h4>插件</h4>
+  <p>这里只推荐几个最常用的插件：</p>
+
+  <ul>
+    <li><a target="_blank" href="http://emmet.io/">Emmet</a> 前端必备，它可以极大的提高代码编写的效率，它提供了一种非常简练的语法规则，然后立刻生成对应的HTML 结构或者CSS 代码。</li>
+    <li><a target="_blank" href="https://github.com/titoBouzout/SideBarEnhancements">SideBar Enhancements</a>，顾名思义，增强侧边栏，给侧边栏邮件菜单添加"删除"，"浏览器中打开"等功能；</li>
+    <li><a target="_blank" href="https://github.com/spadgos/sublime-jsdocs">DocBlockr</a> 代码注释自动化工具，可以方便的写出清晰的注释。</li>
+  </ul>
+
+  <h4>参考资料</h4>
+  <ul>
+    <li><a target="_blank" href="http://www.sublimetext.com/">Sublime Text官网</a></li>
+    <li><a target="_blank" href="https://packagecontrol.io/">Package Control插件管理官网</a></li>
+    <li><a target="_blank" href="https://sublime-text-unofficial-documentation.readthedocs.org/en/latest/">Sublime Text文档</a></li>
+  </ul>
+
+</div>
