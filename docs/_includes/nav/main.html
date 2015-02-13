@@ -31,6 +31,9 @@
         <li{% if page.slug == "toolkit" %} class="active"{% endif %}>
           <a href="../toolkit/">页面搭建工具箱</a>
         </li>
+        <li{% if page.slug == "env" %} class="active"{% endif %}>
+          <a href="../env/">开发环境</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
