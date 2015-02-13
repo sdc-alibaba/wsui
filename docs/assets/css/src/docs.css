@@ -557,9 +557,9 @@ body {
  * sections of docs content.
  */
 
-.bs-docs-sidebar {
-  /*background: #2a3542;*/
-}
+/*.bs-docs-sidebar {
+  background: #2a3542;
+}*/
 
 /* By default it's not affixed in mobile views, so undo that */
 .bs-docs-sidebar.affix {
@@ -1609,15 +1609,15 @@ h1[id] {
 }
 
 body {
-  background: #FCFCF9;
+  background: #fcfcf9;
 }
 
 .bs-docs-featurette .btn-lg {
-    padding: 15px 30px;
-    font-size: 20px;
+  padding: 15px 30px;
+  font-size: 20px;
 }
 
-.bs-docs-inline-nav  {
+.bs-docs-inline-nav {
   width: 100%;
   margin: 30px 0 0;
 }
