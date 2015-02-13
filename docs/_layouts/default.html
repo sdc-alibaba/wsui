@@ -48,14 +48,18 @@
               Back to top
             </a>
             {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
-            <a href="#" class="bs-docs-theme-toggle" role="button">
+<!--             <a href="#" class="bs-docs-theme-toggle" role="button">
               Preview theme
-            </a>
+            </a> -->
             {% endif %}
           </nav>
         </div>
         {% endunless %}
         <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
+          {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
+            {% include nav/docs.html %}
+          {% endif %}
+          
           {{ content }}
         </div>
       </div>

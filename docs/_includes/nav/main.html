@@ -17,22 +17,14 @@
         <li{% if page.slug == "home" %} class="active"{% endif %}>
           <a href="../">首页</a>
         </li>
-        <li{% if page.slug == "css" %} class="active"{% endif %}>
-          <a href="../css/">文档</a>
-        </li>
-        <li{% if page.slug == "components" %} class="active"{% endif %}>
-          <a href="../components/">组件</a>
-        </li>
-        <li{% if page.slug == "js" %} class="active"{% endif %}>
-          <a href="../javascript/">JavaScript</a>
-        </li>
-        <!--<li{% if page.slug == "customize" %} class="active"{% endif %}>
-          <a href="../customize/">Customize</a>-->
-        <li{% if page.slug == "toolkit" %} class="active"{% endif %}>
-          <a href="../toolkit/">页面搭建工具箱</a>
-        </li>
         <li{% if page.slug == "env" %} class="active"{% endif %}>
-          <a href="../env/">开发环境</a>
+          <a href="../env">开发流程</a>
+        </li>
+        <li{% if page.slug == "css" or page.slug == "components" or page.slug == "js" %} class="active"{% endif %}>
+          <a href="../css/">文档中心</a>
+        </li>
+        <li{% if page.slug == "toolkit" %} class="active"{% endif %}>
+          <a href="http://g.alicdn.com/sj/sui-layout/0.0.2/">页面搭建工具箱</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
