@@ -557,9 +557,9 @@ body {
  * sections of docs content.
  */
 
-.bs-docs-sidebar {
-  /*background: #2a3542;*/
-}
+/*.bs-docs-sidebar {
+  background: #2a3542;
+}*/
 
 /* By default it's not affixed in mobile views, so undo that */
 .bs-docs-sidebar.affix {
