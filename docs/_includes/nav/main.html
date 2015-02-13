@@ -17,15 +17,18 @@
         <li{% if page.slug == "home" %} class="active"{% endif %}>
           <a href="../">首页</a>
         </li>
-        <li{% if page.slug == "css" %} class="active"{% endif %}>
-          <a href="../css/">CSS文档</a>
+        <li{% if page.slug == "develop" %} class="active"{% endif %}>
+          <a href="../">开发流程</a>
         </li>
-        <li{% if page.slug == "components" %} class="active"{% endif %}>
+        <li{% if page.slug == "css" or page.slug == "components" or page.slug == "js" %} class="active"{% endif %}>
+          <a href="../css/">文档中心</a>
+        </li>
+<!--         <li{% if page.slug == "components" %} class="active"{% endif %}>
           <a href="../components/">简单组件</a>
         </li>
         <li{% if page.slug == "js" %} class="active"{% endif %}>
           <a href="../javascript/">复杂组件</a>
-        </li>
+        </li> -->
         <li{% if page.slug == "toolkit" %} class="active"{% endif %}>
           <a href="http://g.alicdn.com/sj/sui-layout/0.0.2/">页面搭建工具箱</a>
         </li>

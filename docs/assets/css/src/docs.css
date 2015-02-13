@@ -447,7 +447,7 @@ body {
   margin: 40px auto;
 }
 .bs-docs-featurette h3 {
-  margin-bottom: 5px;
+  margin: 20px 0 5px;
   font-weight: normal;
   color: #333;
 }
@@ -1606,5 +1606,19 @@ h1[id] {
 }
 
 body {
-  background: #f1f2f7;
+  background: #FCFCF9;
+}
+
+.bs-docs-featurette .btn-lg {
+    padding: 15px 30px;
+    font-size: 20px;
+}
+
+.bs-docs-inline-nav  {
+  width: 100%;
+  margin: 30px 0 0;
+}
+
+.bs-docs-inline-nav .btn {
+  border-radius: 0 !important;
 }
