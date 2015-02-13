@@ -121,6 +121,9 @@ body {
   background-color: #fff;
   border-bottom: 0;
 }
+.bs-docs-nav .container {
+  margin: 0 20px;
+}
 .bs-home-nav .bs-nav-b {
   display: none;
 }
@@ -437,7 +440,7 @@ body {
 }
 
 .bs-docs-featurette-title {
-  margin-bottom: 5px;
+  margin: 20px 0;
   font-size: 30px;
   font-weight: normal;
   color: #333;
