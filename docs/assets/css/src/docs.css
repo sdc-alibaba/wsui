@@ -555,7 +555,7 @@ body {
  */
 
 .bs-docs-sidebar {
-  background: #2a3542;
+  /*background: #2a3542;*/
 }
 
 /* By default it's not affixed in mobile views, so undo that */
@@ -580,12 +580,12 @@ body {
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
-  color: #aeb2b7;
+  color: #888;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
   padding-left: 19px;
-  color: #fff;
+  color: #444;
   text-decoration: none;
   background-color: transparent;
   border-left: 1px solid #ff6c60;
@@ -595,7 +595,7 @@ body {
 .bs-docs-sidebar .nav > .active:focus > a {
   padding-left: 18px;
   font-weight: bold;
-  color: #fff;
+  color: #444;
   background-color: transparent;
   border-left: 2px solid #ff6c60;
 }
@@ -1621,4 +1621,8 @@ body {
 
 .bs-docs-inline-nav .btn {
   border-radius: 0 !important;
+}
+
+.bs-docs-featurette .thumbnail {
+  max-width: 800px;
 }
