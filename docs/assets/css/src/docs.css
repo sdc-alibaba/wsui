@@ -118,8 +118,8 @@ body {
 
 .bs-docs-nav {
   margin-bottom: 0;
-  background-color: #fff;
-  border-bottom: 0;
+  font-size: 15px;
+  color: white;
 }
 .bs-docs-nav .container {
   margin: 0 20px;
@@ -130,7 +130,6 @@ body {
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
   font-weight: 500;
-  color: #666;
 }
 .bs-docs-nav .navbar-brand {
   font-size: 26px;
@@ -142,7 +141,6 @@ body {
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
   color: #fff;
-  background-color: #f77b6f;
 }
 .bs-docs-nav .navbar-toggle .icon-bar {
   background-color: #39b5aa;
