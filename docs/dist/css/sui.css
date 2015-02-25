@@ -8027,6 +8027,9 @@ tr.introjs-showElement > th {
 .sui-msg.msg-large.toast_message > .msg-con {
   padding: 11px 31px 11px 44px;
 }
+/*.show-close-btn button{
+	display: block;
+}*/
 .clearfix:before,
 .clearfix:after,
 .dl-horizontal dd:before,
