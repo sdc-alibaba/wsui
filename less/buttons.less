@@ -14,7 +14,6 @@
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   white-space: nowrap;
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
@@ -87,42 +86,6 @@
 
 // Link buttons
 // -------------------------
-
-// Make a button look and behave like a link
-.btn-link {
-  color: @link-color;
-  font-weight: normal;
-  border-radius: 0;
-
-  &,
-  &:active,
-  &.active,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: transparent;
-    .box-shadow(none);
-  }
-  &,
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
-  &:hover,
-  &:focus {
-    color: @link-hover-color;
-    text-decoration: underline;
-    background-color: transparent;
-  }
-  &[disabled],
-  fieldset[disabled] & {
-    &:hover,
-    &:focus {
-      color: @btn-link-disabled-color;
-      text-decoration: none;
-    }
-  }
-}
 
 
 // Button Sizes

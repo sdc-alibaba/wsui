@@ -6,7 +6,7 @@
 // Normalize non-controls
 //
 // Restyle and baseline non-control form elements.
-
+/*
 fieldset {
   padding: 0;
   margin: 0;
@@ -28,6 +28,7 @@ legend {
   border: 0;
   border-bottom: 1px solid @legend-border-color;
 }
+*/
 
 label {
   display: inline-block;
@@ -81,6 +82,7 @@ input[type="checkbox"]:focus {
 }
 
 // Adjust output element
+/*
 output {
   display: block;
   padding-top: (@padding-base-vertical + 1);
@@ -88,7 +90,7 @@ output {
   line-height: @line-height-base;
   color: @input-color;
 }
-
+*/
 
 // Common form controls
 //
@@ -137,6 +139,7 @@ output {
   // HTML5 says that controls under a fieldset > legend:first-child won't be
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
   // don't honor that edge case; we style them as disabled anyway.
+  /*
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
@@ -145,6 +148,7 @@ output {
     background-color: @input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
   }
+  */
 
   // Reset height for `textarea`s
   textarea& {

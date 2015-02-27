@@ -14,11 +14,11 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #28a3ef;
-@brand-primary-hover:   #4cb9fc;
-@brand-success:         #43cd6e;
-@brand-info:            #5bc0de;
-@brand-warning:         #fac603;
+@brand-primary:         #f23f40;
+@brand-primary-hover:   #f00;
+@brand-success:         #21c19f;
+@brand-info:            #2daae1;
+@brand-warning:         #f5af08;
 @brand-danger:          #ea4a36;
 
 
@@ -41,25 +41,23 @@
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
+@font-family-base:        "Hiragino Sans GB","Microsoft YaHei","黑体",Helvetica,Arial,Tahoma,sans-serif;
 
-@font-family-sans-serif:  tahoma, "Microsoft Yahei", "SimSun", sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
 
 @font-size-small:         12px;
-@font-size-base:          12px;
-@font-size-large:         12px;
-@font-size-xlarge:        14px;
+@font-size-base:          14px;
+@font-size-large:         16px;
+@font-size-xlarge:        20px;
 
 //相比原SUI增加了一层h6
 @font-size-h1:            24px;
-@font-size-h2:            22px;
-@font-size-h3:            20px;
-@font-size-h4:            18px;
+@font-size-h2:            20px;
+@font-size-h3:            18px;
+@font-size-h4:            16px;
 @font-size-h5:            14px;
-@font-size-h6:            @font-size-base;
+@font-size-h6:            12px;
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.5;
@@ -853,8 +851,6 @@
 @blockquote-font-size:        (@font-size-base * 1.25);
 //** Blockquote border color
 @blockquote-border-color:     @gray-lighter;
-//** Page header border color
-@page-header-border-color:    @gray-lighter;
 //** Width of horizontal description list titles
 @dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
