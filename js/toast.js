@@ -95,8 +95,8 @@
   }
 
   Toast.prototype.defaults = {
-    position: 'top',
-    type: 'danger',
+    position: 'center',
+    type: 'primary',
     // speed: 500,
     timeout: 3000,
     // closeButton: false,
