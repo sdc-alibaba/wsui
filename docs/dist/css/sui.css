@@ -4751,15 +4751,15 @@ select[multiple].pagination-sm div .page-num {
 }
 .label {
   display: inline-block;
-  padding: 2px 10px .3em;
-  font-size: 84%;
-  line-height: 1;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 12px;
+  line-height: 1.83;
   color: #fff;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   cursor: default;
-  border-radius: 1px;
 }
 a.label:hover,
 a.label:focus {
@@ -4809,12 +4809,12 @@ a.label:focus {
 .label-warning[href]:focus {
   background-color: #c48c06;
 }
-.label-danger {
-  background-color: #ea4a36;
+.label-purple {
+  background-color: #9470ce;
 }
-.label-danger[href]:hover,
-.label-danger[href]:focus {
-  background-color: #d72c16;
+.label-purple[href]:hover,
+.label-purple[href]:focus {
+  background-color: #784ac1;
 }
 .badge {
   display: inline-block;
