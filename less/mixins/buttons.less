@@ -1,52 +1,46 @@
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
-// and disabled options for all buttons
-
-.button-variant(@color; @background; @border) {
-  color: @color;
-  background-color: @background;
-  border-color: @border;
-
-  &:hover,
-  &:focus,
-  &.focus,
-  &:active,
-  &.active,
-  .open > .dropdown-toggle& {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 12%);
-  }
-  &:active,
-  &.active,
-  .open > .dropdown-toggle& {
-    background-image: none;
-  }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &,
-    &:hover,
-    &:focus,
-    &.focus,
-    &:active,
-    &.active {
-      background-color: @background;
-          border-color: @border;
-    }
+.button-variant(@hover-color; @active-color) {
+  &:hover, &:focus, &.focus {
+    color: @hover-color;
+    border-color: @hover-color;
+    text-decoration: none;
   }
 
-  .badge {
-    color: @background;
-    background-color: @color;
+  &:active, &.active {
+    color: @active-color;
+    border-color: @active-color;
+  }
+
+}
+
+.button-variant-primary(@hover-bg; @active-bg) {
+  &:hover, &:focus, &.focus {
+    color: @btn-primary-color;
+    background: @hover-bg;
+    border-color: @hover-bg;
+    text-decoration: none;
+  }
+
+  &:active, &.active {
+    color: @btn-primary-color;
+    background: @active-bg;
+    border-color: @active-bg;
   }
 }
 
+.button-variant-inverse() {
+  &:hover, &:focus, &.focus {
+    .opacity(1);
+  }
+  &:active, &.active {
+    .opacity(0.8);
+  } 
+}
 // Button sizes
-.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height) {
   padding: @padding-vertical @padding-horizontal;
   font-size: @font-size;
   line-height: @line-height;
-  border-radius: @border-radius;
 }

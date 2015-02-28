@@ -2,90 +2,74 @@
 // Buttons
 // --------------------------------------------------
 
-
-// Base styles
+// Base styles   .btn和.btn.btn-bordered 的样式完全相同
 // --------------------------------------------------
 
-.btn {
+.btn, .btn-bordered{
   display: inline-block;
-  margin-bottom: 0; // For input.btn
+  margin: 0; // For input.btn
   font-weight: @btn-font-weight;
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
-  border: 1px solid transparent;
+  color: @btn-default-color;
+  background: transparent;
+  border: 2px solid @btn-default-border;
   white-space: nowrap;
-  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base);
+  .button-variant(@btn-default-hover-color; @btn-default-active-color);
   .user-select(none);
+  outline: 0;
 
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      .tab-focus();
+  &.disabled,
+  &[disabled] {
+    cursor: @cursor-disabled;
+    pointer-events: none; // Future-proof disabling of clicks
+    &, &:hover, &:focus, &.focus, &:active, &.active {
+      color: #999;
+      background-color: #e6e6e6;
+      border-color: #e6e6e6;
     }
   }
 
-  &:hover,
-  &:focus,
-  &.focus {
-    color: @btn-default-color;
-    text-decoration: none;
-  }
-
-  &:active,
-  &.active {
-    outline: 0;
-    background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: @cursor-disabled;
-    pointer-events: none; // Future-proof disabling of clicks
-    .opacity(.65);
-    .box-shadow(none);
+  .badge {
+    color: #fff;
+    background-color: @btn-default-color;
   }
 }
 
 
 // Alternate buttons
 // --------------------------------------------------
-.btn, .btn-default {
-  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
-}
-
-.btn-bordered {
-  border-color: @btn-bordered-default-border;
-}
 
 .btn-primary {
-  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-}
-// Success appears as green
-.btn-success {
-  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-}
-// Info appears as blue-green
-.btn-info {
-  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
-}
-// Warning appears as orange
-.btn-warning {
-  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
-}
-// Danger and error appear as red
-.btn-danger {
-  .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+  color: @btn-primary-color;
+  background: @btn-primary-bg;
+  border-color: @btn-primary-bg;
+
+  .button-variant-primary(@btn-primary-hover-bg; @btn-primary-active-bg);
+  .badge {
+    color: @btn-primary-bg;
+    background-color: @btn-primary-color;
+  }
 }
 
-
-// Link buttons
-// -------------------------
+//inverse btn 反色按钮，用于背景色是主色调（红）时
+.btn-inverse {
+  .opacity(0.9);
+  .button-variant-inverse();
+  &, &.btn-bordered {
+    color: @btn-primary-color;
+    background: @btn-primary-bg;
+    border-color: @btn-primary-color;
+  }
+  &.btn-primary {
+    color: @brand-primary;
+    background: @btn-primary-color;
+    border-color: @btn-primary-color;
+  }
+}
 
 
 // Button Sizes
@@ -93,18 +77,18 @@
 
 .btn-xl {
   // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-xlarge-vertical; @padding-xlarge-horizontal; @font-size-xlarge; @line-height-xlarge; @border-radius-xlarge);
+  .button-size(@padding-xlarge-vertical; @padding-xlarge-horizontal; @font-size-xlarge; @line-height-xlarge);
 }
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large);
 }
 .btn-sm {
   // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small);
 }
 .btn-xs {
-  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small);
 }
 
 
@@ -119,13 +103,6 @@
 // Vertically space out multiple block buttons
 .btn-block + .btn-block {
   margin-top: 5px;
-}
-
-
-//bordered btn
-.btn-bordered {
-  background: transparent;
-  color: @btn-default-color;
 }
 
 // Specificity overrides

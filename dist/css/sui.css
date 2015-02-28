@@ -1086,8 +1086,8 @@ a:focus {
 }
 a:focus {
   outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  outline: 2px auto;
+  outline-offset: -1px;
 }
 figure {
   margin: 0;
@@ -2476,8 +2476,8 @@ input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  outline: 2px auto;
+  outline-offset: -1px;
 }
 /*
 output {
@@ -2503,6 +2503,16 @@ output {
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  /*
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    background-color: @gray-lighter;  //rgba fallback
+    background-color: @input-bg-disabled;
+    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+  }
+  */
 }
 .form-control:focus {
   border-color: #f23f40;
@@ -2517,14 +2527,6 @@ output {
 }
 .form-control::-webkit-input-placeholder {
   color: #999;
-}
-.form-control[disabled],
-.form-control[readonly],
-fieldset[disabled] .form-control {
-  cursor: not-allowed;
-  background-color: #eee;
-  background-color: rgba(0, 0, 0, .1);
-  opacity: 1;
 }
 textarea.form-control {
   height: auto;
@@ -2927,13 +2929,15 @@ select[multiple].form-group-lg .form-control {
     padding-top: 1px;
   }
 }
-.btn {
+.btn,
+.btn-bordered {
   display: inline-block;
   padding: 2px 14px;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.5;
+  color: #333;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -2944,404 +2948,135 @@ select[multiple].form-group-lg .form-control {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 2px;
-}
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  background: transparent;
+  border: 2px solid #999;
+  outline: 0;
 }
 .btn:hover,
+.btn-bordered:hover,
 .btn:focus,
-.btn.focus {
-  color: #333;
+.btn-bordered:focus,
+.btn.focus,
+.btn-bordered.focus {
+  color: #f00;
   text-decoration: none;
+  border-color: #f00;
 }
 .btn:active,
-.btn.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+.btn-bordered:active,
+.btn.active,
+.btn-bordered.active {
+  color: #d93838;
+  border-color: #d93838;
 }
 .btn.disabled,
+.btn-bordered.disabled,
 .btn[disabled],
-fieldset[disabled] .btn {
+.btn-bordered[disabled] {
   pointer-events: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  opacity: .65;
-}
-.btn,
-.btn-default {
-  color: #333;
-  background-color: #eee;
-  border-color: #e1e1e1;
-}
-.btn:hover,
-.btn-default:hover,
-.btn:focus,
-.btn-default:focus,
-.btn.focus,
-.btn-default.focus,
-.btn:active,
-.btn-default:active,
-.btn.active,
-.btn-default.active,
-.open > .dropdown-toggle.btn,
-.open > .dropdown-toggle.btn-default {
-  color: #333;
-  background-color: #d5d5d5;
-  border-color: #c2c2c2;
-}
-.btn:active,
-.btn-default:active,
-.btn.active,
-.btn-default.active,
-.open > .dropdown-toggle.btn,
-.open > .dropdown-toggle.btn-default {
-  background-image: none;
 }
 .btn.disabled,
-.btn-default.disabled,
+.btn-bordered.disabled,
 .btn[disabled],
-.btn-default[disabled],
-fieldset[disabled] .btn,
-fieldset[disabled] .btn-default,
+.btn-bordered[disabled],
 .btn.disabled:hover,
-.btn-default.disabled:hover,
+.btn-bordered.disabled:hover,
 .btn[disabled]:hover,
-.btn-default[disabled]:hover,
-fieldset[disabled] .btn:hover,
-fieldset[disabled] .btn-default:hover,
+.btn-bordered[disabled]:hover,
 .btn.disabled:focus,
-.btn-default.disabled:focus,
+.btn-bordered.disabled:focus,
 .btn[disabled]:focus,
-.btn-default[disabled]:focus,
-fieldset[disabled] .btn:focus,
-fieldset[disabled] .btn-default:focus,
+.btn-bordered[disabled]:focus,
 .btn.disabled.focus,
-.btn-default.disabled.focus,
+.btn-bordered.disabled.focus,
 .btn[disabled].focus,
-.btn-default[disabled].focus,
-fieldset[disabled] .btn.focus,
-fieldset[disabled] .btn-default.focus,
+.btn-bordered[disabled].focus,
 .btn.disabled:active,
-.btn-default.disabled:active,
+.btn-bordered.disabled:active,
 .btn[disabled]:active,
-.btn-default[disabled]:active,
-fieldset[disabled] .btn:active,
-fieldset[disabled] .btn-default:active,
+.btn-bordered[disabled]:active,
 .btn.disabled.active,
-.btn-default.disabled.active,
+.btn-bordered.disabled.active,
 .btn[disabled].active,
-.btn-default[disabled].active,
-fieldset[disabled] .btn.active,
-fieldset[disabled] .btn-default.active {
-  background-color: #eee;
-  border-color: #e1e1e1;
+.btn-bordered[disabled].active {
+  color: #999;
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
 }
 .btn .badge,
-.btn-default .badge {
-  color: #eee;
+.btn-bordered .badge {
+  color: #fff;
   background-color: #333;
-}
-.btn-bordered {
-  border-color: #8c8c8c;
 }
 .btn-primary {
   color: #fff;
-  background-color: #f23f40;
-  border-color: #f02728;
+  background: #f23f40;
+  border-color: #f23f40;
 }
 .btn-primary:hover,
 .btn-primary:focus,
-.btn-primary.focus,
-.btn-primary:active,
-.btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
+.btn-primary.focus {
   color: #fff;
-  background-color: #ee1011;
-  border-color: #cc0e0f;
+  text-decoration: none;
+  background: #f00;
+  border-color: #f00;
 }
 .btn-primary:active,
-.btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
-  background-image: none;
-}
-.btn-primary.disabled,
-.btn-primary[disabled],
-fieldset[disabled] .btn-primary,
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
-fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled.focus,
-.btn-primary[disabled].focus,
-fieldset[disabled] .btn-primary.focus,
-.btn-primary.disabled:active,
-.btn-primary[disabled]:active,
-fieldset[disabled] .btn-primary:active,
-.btn-primary.disabled.active,
-.btn-primary[disabled].active,
-fieldset[disabled] .btn-primary.active {
-  background-color: #f23f40;
-  border-color: #f02728;
+.btn-primary.active {
+  color: #fff;
+  background: #d93838;
+  border-color: #d93838;
 }
 .btn-primary .badge {
   color: #f23f40;
   background-color: #fff;
 }
-.btn-success {
+.btn-inverse {
+  filter: alpha(opacity=90);
+  opacity: .9;
+}
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse.focus {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+.btn-inverse:active,
+.btn-inverse.active {
+  filter: alpha(opacity=80);
+  opacity: .8;
+}
+.btn-inverse,
+.btn-inverse.btn-bordered {
   color: #fff;
-  background-color: #21c19f;
-  border-color: #1dab8d;
+  background: #f23f40;
+  border-color: #fff;
 }
-.btn-success:hover,
-.btn-success:focus,
-.btn-success.focus,
-.btn-success:active,
-.btn-success.active,
-.open > .dropdown-toggle.btn-success {
-  color: #fff;
-  background-color: #1a957b;
-  border-color: #147762;
-}
-.btn-success:active,
-.btn-success.active,
-.open > .dropdown-toggle.btn-success {
-  background-image: none;
-}
-.btn-success.disabled,
-.btn-success[disabled],
-fieldset[disabled] .btn-success,
-.btn-success.disabled:hover,
-.btn-success[disabled]:hover,
-fieldset[disabled] .btn-success:hover,
-.btn-success.disabled:focus,
-.btn-success[disabled]:focus,
-fieldset[disabled] .btn-success:focus,
-.btn-success.disabled.focus,
-.btn-success[disabled].focus,
-fieldset[disabled] .btn-success.focus,
-.btn-success.disabled:active,
-.btn-success[disabled]:active,
-fieldset[disabled] .btn-success:active,
-.btn-success.disabled.active,
-.btn-success[disabled].active,
-fieldset[disabled] .btn-success.active {
-  background-color: #21c19f;
-  border-color: #1dab8d;
-}
-.btn-success .badge {
-  color: #21c19f;
-  background-color: #fff;
-}
-.btn-info {
-  color: #fff;
-  background-color: #2daae1;
-  border-color: #1f9ed6;
-}
-.btn-info:hover,
-.btn-info:focus,
-.btn-info.focus,
-.btn-info:active,
-.btn-info.active,
-.open > .dropdown-toggle.btn-info {
-  color: #fff;
-  background-color: #1b8dc0;
-  border-color: #1776a0;
-}
-.btn-info:active,
-.btn-info.active,
-.open > .dropdown-toggle.btn-info {
-  background-image: none;
-}
-.btn-info.disabled,
-.btn-info[disabled],
-fieldset[disabled] .btn-info,
-.btn-info.disabled:hover,
-.btn-info[disabled]:hover,
-fieldset[disabled] .btn-info:hover,
-.btn-info.disabled:focus,
-.btn-info[disabled]:focus,
-fieldset[disabled] .btn-info:focus,
-.btn-info.disabled.focus,
-.btn-info[disabled].focus,
-fieldset[disabled] .btn-info.focus,
-.btn-info.disabled:active,
-.btn-info[disabled]:active,
-fieldset[disabled] .btn-info:active,
-.btn-info.disabled.active,
-.btn-info[disabled].active,
-fieldset[disabled] .btn-info.active {
-  background-color: #2daae1;
-  border-color: #1f9ed6;
-}
-.btn-info .badge {
-  color: #2daae1;
-  background-color: #fff;
-}
-.btn-warning {
-  color: #fff;
-  background-color: #f5af08;
-  border-color: #dc9d07;
-}
-.btn-warning:hover,
-.btn-warning:focus,
-.btn-warning.focus,
-.btn-warning:active,
-.btn-warning.active,
-.open > .dropdown-toggle.btn-warning {
-  color: #fff;
-  background-color: #c48c06;
-  border-color: #a17305;
-}
-.btn-warning:active,
-.btn-warning.active,
-.open > .dropdown-toggle.btn-warning {
-  background-image: none;
-}
-.btn-warning.disabled,
-.btn-warning[disabled],
-fieldset[disabled] .btn-warning,
-.btn-warning.disabled:hover,
-.btn-warning[disabled]:hover,
-fieldset[disabled] .btn-warning:hover,
-.btn-warning.disabled:focus,
-.btn-warning[disabled]:focus,
-fieldset[disabled] .btn-warning:focus,
-.btn-warning.disabled.focus,
-.btn-warning[disabled].focus,
-fieldset[disabled] .btn-warning.focus,
-.btn-warning.disabled:active,
-.btn-warning[disabled]:active,
-fieldset[disabled] .btn-warning:active,
-.btn-warning.disabled.active,
-.btn-warning[disabled].active,
-fieldset[disabled] .btn-warning.active {
-  background-color: #f5af08;
-  border-color: #dc9d07;
-}
-.btn-warning .badge {
-  color: #f5af08;
-  background-color: #fff;
-}
-.btn-danger {
-  color: #fff;
-  background-color: #ea4a36;
-  border-color: #e8351f;
-}
-.btn-danger:hover,
-.btn-danger:focus,
-.btn-danger.focus,
-.btn-danger:active,
-.btn-danger.active,
-.open > .dropdown-toggle.btn-danger {
-  color: #fff;
-  background-color: #d72c16;
-  border-color: #b62513;
-}
-.btn-danger:active,
-.btn-danger.active,
-.open > .dropdown-toggle.btn-danger {
-  background-image: none;
-}
-.btn-danger.disabled,
-.btn-danger[disabled],
-fieldset[disabled] .btn-danger,
-.btn-danger.disabled:hover,
-.btn-danger[disabled]:hover,
-fieldset[disabled] .btn-danger:hover,
-.btn-danger.disabled:focus,
-.btn-danger[disabled]:focus,
-fieldset[disabled] .btn-danger:focus,
-.btn-danger.disabled.focus,
-.btn-danger[disabled].focus,
-fieldset[disabled] .btn-danger.focus,
-.btn-danger.disabled:active,
-.btn-danger[disabled]:active,
-fieldset[disabled] .btn-danger:active,
-.btn-danger.disabled.active,
-.btn-danger[disabled].active,
-fieldset[disabled] .btn-danger.active {
-  background-color: #ea4a36;
-  border-color: #e8351f;
-}
-.btn-danger .badge {
-  color: #ea4a36;
-  background-color: #fff;
-}
-.btn-link {
-  font-weight: normal;
+.btn-inverse.btn-primary {
   color: #f23f40;
-  border-radius: 0;
-}
-.btn-link,
-.btn-link:active,
-.btn-link.active,
-.btn-link[disabled],
-fieldset[disabled] .btn-link {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-.btn-link,
-.btn-link:hover,
-.btn-link:focus,
-.btn-link:active {
-  border-color: transparent;
-}
-.btn-link:hover,
-.btn-link:focus {
-  color: #f00;
-  text-decoration: underline;
-  background-color: transparent;
-}
-.btn-link[disabled]:hover,
-fieldset[disabled] .btn-link:hover,
-.btn-link[disabled]:focus,
-fieldset[disabled] .btn-link:focus {
-  color: #777;
-  text-decoration: none;
+  background: #fff;
+  border-color: #fff;
 }
 .btn-xl {
   padding: 5px 20px;
   font-size: 20px;
   line-height: 1.429;
-  border-radius: 4px;
 }
-.btn-lg,
-.btn-group-lg > .btn {
+.btn-lg {
   padding: 4px 14px;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
 }
-.btn-sm,
-.btn-group-sm > .btn {
+.btn-sm {
   padding: 0 6px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
-.btn-xs,
-.btn-group-xs > .btn {
+.btn-xs {
   padding: 0 6px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
 .btn-block {
   display: block;
@@ -3349,10 +3084,6 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-block + .btn-block {
   margin-top: 5px;
-}
-.btn-bordered {
-  color: #333;
-  background: transparent;
 }
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
@@ -3540,174 +3271,6 @@ tbody.collapse.in {
     right: auto;
     left: 0;
   }
-}
-.btn-group,
-.btn-group-vertical {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-}
-.btn-group > .btn,
-.btn-group-vertical > .btn {
-  position: relative;
-  float: left;
-}
-.btn-group > .btn:hover,
-.btn-group-vertical > .btn:hover,
-.btn-group > .btn:focus,
-.btn-group-vertical > .btn:focus,
-.btn-group > .btn:active,
-.btn-group-vertical > .btn:active,
-.btn-group > .btn.active,
-.btn-group-vertical > .btn.active {
-  z-index: 2;
-}
-.btn-group .btn + .btn,
-.btn-group .btn + .btn-group,
-.btn-group .btn-group + .btn,
-.btn-group .btn-group + .btn-group {
-  margin-left: -1px;
-}
-.btn-toolbar {
-  margin-left: -5px;
-}
-.btn-toolbar .btn-group,
-.btn-toolbar .input-group {
-  float: left;
-}
-.btn-toolbar > .btn,
-.btn-toolbar > .btn-group,
-.btn-toolbar > .input-group {
-  margin-left: 5px;
-}
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
-  border-radius: 0;
-}
-.btn-group > .btn:first-child {
-  margin-left: 0;
-}
-.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.btn-group > .btn:last-child:not(:first-child),
-.btn-group > .dropdown-toggle:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.btn-group > .btn-group {
-  float: left;
-}
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
-  border-radius: 0;
-}
-.btn-group > .btn-group:first-child > .btn:last-child,
-.btn-group > .btn-group:first-child > .dropdown-toggle {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.btn-group > .btn-group:last-child > .btn:first-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.btn-group .dropdown-toggle:active,
-.btn-group.open .dropdown-toggle {
-  outline: 0;
-}
-.btn-group > .btn + .dropdown-toggle {
-  padding-right: 8px;
-  padding-left: 8px;
-}
-.btn-group > .btn-lg + .dropdown-toggle {
-  padding-right: 12px;
-  padding-left: 12px;
-}
-.btn-group.open .dropdown-toggle {
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-}
-.btn-group.open .dropdown-toggle.btn-link {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-.btn .caret {
-  margin-left: 0;
-}
-.btn-lg .caret {
-  border-width: 5px 5px 0;
-  border-bottom-width: 0;
-}
-.dropup .btn-lg .caret {
-  border-width: 0 5px 5px;
-}
-.btn-group-vertical > .btn,
-.btn-group-vertical > .btn-group,
-.btn-group-vertical > .btn-group > .btn {
-  display: block;
-  float: none;
-  width: 100%;
-  max-width: 100%;
-}
-.btn-group-vertical > .btn-group > .btn {
-  float: none;
-}
-.btn-group-vertical > .btn + .btn,
-.btn-group-vertical > .btn + .btn-group,
-.btn-group-vertical > .btn-group + .btn,
-.btn-group-vertical > .btn-group + .btn-group {
-  margin-top: -1px;
-  margin-left: 0;
-}
-.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
-  border-radius: 0;
-}
-.btn-group-vertical > .btn:first-child:not(:last-child) {
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.btn-group-vertical > .btn:last-child:not(:first-child) {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 2px;
-}
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
-  border-radius: 0;
-}
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.btn-group-justified {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: separate;
-}
-.btn-group-justified > .btn,
-.btn-group-justified > .btn-group {
-  display: table-cell;
-  float: none;
-  width: 1%;
-}
-.btn-group-justified > .btn-group .btn {
-  width: 100%;
-}
-.btn-group-justified > .btn-group .dropdown-menu {
-  left: auto;
-}
-[data-toggle="buttons"] > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn input[type="checkbox"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  pointer-events: none;
 }
 .input-group {
   position: relative;
@@ -4727,7 +4290,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination div .page-num + .page-confirm {
   display: inline-block;
   padding: 2px 14px;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.5;
@@ -4744,123 +4307,63 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: #eee;
-  background-color: #f23f40;
-  background-image: none;
-  border: 1px solid transparent;
-  border-color: #e1e1e1;
-  border-color: #f02728;
-  border-radius: 2px;
+  background: transparent;
+  background: #f23f40;
+  border: 2px solid #999;
+  border-color: #f23f40;
   border-radius: 0;
-}
-.pagination div .page-num + .page-confirm:focus,
-.pagination div .page-num + .page-confirm:active:focus,
-.pagination div .page-num + .page-confirm.active:focus,
-.pagination div .page-num + .page-confirm.focus,
-.pagination div .page-num + .page-confirm:active.focus,
-.pagination div .page-num + .page-confirm.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  outline: 0;
 }
 .pagination div .page-num + .page-confirm:hover,
 .pagination div .page-num + .page-confirm:focus,
 .pagination div .page-num + .page-confirm.focus {
-  color: #333;
+  color: #f00;
   text-decoration: none;
+  border-color: #f00;
 }
 .pagination div .page-num + .page-confirm:active,
 .pagination div .page-num + .page-confirm.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  color: #d93838;
+  border-color: #d93838;
 }
 .pagination div .page-num + .page-confirm.disabled,
-.pagination div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination div .page-num + .page-confirm {
+.pagination div .page-num + .page-confirm[disabled] {
   pointer-events: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  opacity: .65;
-}
-.pagination div .page-num + .page-confirm:hover,
-.pagination div .page-num + .page-confirm:focus,
-.pagination div .page-num + .page-confirm.focus,
-.pagination div .page-num + .page-confirm:active,
-.pagination div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination div .page-num + .page-confirm {
-  color: #333;
-  background-color: #d5d5d5;
-  border-color: #c2c2c2;
-}
-.pagination div .page-num + .page-confirm:active,
-.pagination div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination div .page-num + .page-confirm {
-  background-image: none;
 }
 .pagination div .page-num + .page-confirm.disabled,
 .pagination div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination div .page-num + .page-confirm,
 .pagination div .page-num + .page-confirm.disabled:hover,
 .pagination div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination div .page-num + .page-confirm:hover,
 .pagination div .page-num + .page-confirm.disabled:focus,
 .pagination div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination div .page-num + .page-confirm:focus,
 .pagination div .page-num + .page-confirm.disabled.focus,
 .pagination div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination div .page-num + .page-confirm.focus,
 .pagination div .page-num + .page-confirm.disabled:active,
 .pagination div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination div .page-num + .page-confirm:active,
 .pagination div .page-num + .page-confirm.disabled.active,
-.pagination div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination div .page-num + .page-confirm.active {
-  background-color: #eee;
-  border-color: #e1e1e1;
+.pagination div .page-num + .page-confirm[disabled].active {
+  color: #999;
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
 }
 .pagination div .page-num + .page-confirm .badge {
-  color: #eee;
+  color: #fff;
   background-color: #333;
 }
 .pagination div .page-num + .page-confirm:hover,
 .pagination div .page-num + .page-confirm:focus,
-.pagination div .page-num + .page-confirm.focus,
-.pagination div .page-num + .page-confirm:active,
-.pagination div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination div .page-num + .page-confirm {
+.pagination div .page-num + .page-confirm.focus {
   color: #fff;
-  background-color: #ee1011;
-  border-color: #cc0e0f;
+  text-decoration: none;
+  background: #f00;
+  border-color: #f00;
 }
 .pagination div .page-num + .page-confirm:active,
-.pagination div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination div .page-num + .page-confirm {
-  background-image: none;
-}
-.pagination div .page-num + .page-confirm.disabled,
-.pagination div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination div .page-num + .page-confirm,
-.pagination div .page-num + .page-confirm.disabled:hover,
-.pagination div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination div .page-num + .page-confirm:hover,
-.pagination div .page-num + .page-confirm.disabled:focus,
-.pagination div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination div .page-num + .page-confirm:focus,
-.pagination div .page-num + .page-confirm.disabled.focus,
-.pagination div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination div .page-num + .page-confirm.focus,
-.pagination div .page-num + .page-confirm.disabled:active,
-.pagination div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination div .page-num + .page-confirm:active,
-.pagination div .page-num + .page-confirm.disabled.active,
-.pagination div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination div .page-num + .page-confirm.active {
-  background-color: #f23f40;
-  border-color: #f02728;
+.pagination div .page-num + .page-confirm.active {
+  color: #fff;
+  background: #d93838;
+  border-color: #d93838;
 }
 .pagination div .page-num + .page-confirm .badge {
   color: #f23f40;
@@ -4901,7 +4404,7 @@ select[multiple].pagination-lg div .page-num {
   display: inline-block;
   padding: 2px 14px;
   padding: 4px 14px;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 14px;
   font-size: 16px;
   font-weight: normal;
@@ -4919,124 +4422,63 @@ select[multiple].pagination-lg div .page-num {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: #eee;
-  background-color: #f23f40;
-  background-image: none;
-  border: 1px solid transparent;
-  border-color: #e1e1e1;
-  border-color: #f02728;
-  border-radius: 2px;
-  border-radius: 3px;
+  background: transparent;
+  background: #f23f40;
+  border: 2px solid #999;
+  border-color: #f23f40;
   border-radius: 0;
-}
-.pagination-lg div .page-num + .page-confirm:focus,
-.pagination-lg div .page-num + .page-confirm:active:focus,
-.pagination-lg div .page-num + .page-confirm.active:focus,
-.pagination-lg div .page-num + .page-confirm.focus,
-.pagination-lg div .page-num + .page-confirm:active.focus,
-.pagination-lg div .page-num + .page-confirm.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  outline: 0;
 }
 .pagination-lg div .page-num + .page-confirm:hover,
 .pagination-lg div .page-num + .page-confirm:focus,
 .pagination-lg div .page-num + .page-confirm.focus {
-  color: #333;
+  color: #f00;
   text-decoration: none;
+  border-color: #f00;
 }
 .pagination-lg div .page-num + .page-confirm:active,
 .pagination-lg div .page-num + .page-confirm.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  color: #d93838;
+  border-color: #d93838;
 }
 .pagination-lg div .page-num + .page-confirm.disabled,
-.pagination-lg div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm {
+.pagination-lg div .page-num + .page-confirm[disabled] {
   pointer-events: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  opacity: .65;
-}
-.pagination-lg div .page-num + .page-confirm:hover,
-.pagination-lg div .page-num + .page-confirm:focus,
-.pagination-lg div .page-num + .page-confirm.focus,
-.pagination-lg div .page-num + .page-confirm:active,
-.pagination-lg div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-lg div .page-num + .page-confirm {
-  color: #333;
-  background-color: #d5d5d5;
-  border-color: #c2c2c2;
-}
-.pagination-lg div .page-num + .page-confirm:active,
-.pagination-lg div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-lg div .page-num + .page-confirm {
-  background-image: none;
 }
 .pagination-lg div .page-num + .page-confirm.disabled,
 .pagination-lg div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm,
 .pagination-lg div .page-num + .page-confirm.disabled:hover,
 .pagination-lg div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm:hover,
 .pagination-lg div .page-num + .page-confirm.disabled:focus,
 .pagination-lg div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm:focus,
 .pagination-lg div .page-num + .page-confirm.disabled.focus,
 .pagination-lg div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm.focus,
 .pagination-lg div .page-num + .page-confirm.disabled:active,
 .pagination-lg div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm:active,
 .pagination-lg div .page-num + .page-confirm.disabled.active,
-.pagination-lg div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm.active {
-  background-color: #eee;
-  border-color: #e1e1e1;
+.pagination-lg div .page-num + .page-confirm[disabled].active {
+  color: #999;
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
 }
 .pagination-lg div .page-num + .page-confirm .badge {
-  color: #eee;
+  color: #fff;
   background-color: #333;
 }
 .pagination-lg div .page-num + .page-confirm:hover,
 .pagination-lg div .page-num + .page-confirm:focus,
-.pagination-lg div .page-num + .page-confirm.focus,
-.pagination-lg div .page-num + .page-confirm:active,
-.pagination-lg div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-lg div .page-num + .page-confirm {
+.pagination-lg div .page-num + .page-confirm.focus {
   color: #fff;
-  background-color: #ee1011;
-  border-color: #cc0e0f;
+  text-decoration: none;
+  background: #f00;
+  border-color: #f00;
 }
 .pagination-lg div .page-num + .page-confirm:active,
-.pagination-lg div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-lg div .page-num + .page-confirm {
-  background-image: none;
-}
-.pagination-lg div .page-num + .page-confirm.disabled,
-.pagination-lg div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm,
-.pagination-lg div .page-num + .page-confirm.disabled:hover,
-.pagination-lg div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm:hover,
-.pagination-lg div .page-num + .page-confirm.disabled:focus,
-.pagination-lg div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm:focus,
-.pagination-lg div .page-num + .page-confirm.disabled.focus,
-.pagination-lg div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm.focus,
-.pagination-lg div .page-num + .page-confirm.disabled:active,
-.pagination-lg div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm:active,
-.pagination-lg div .page-num + .page-confirm.disabled.active,
-.pagination-lg div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination-lg div .page-num + .page-confirm.active {
-  background-color: #f23f40;
-  border-color: #f02728;
+.pagination-lg div .page-num + .page-confirm.active {
+  color: #fff;
+  background: #d93838;
+  border-color: #d93838;
 }
 .pagination-lg div .page-num + .page-confirm .badge {
   color: #f23f40;
@@ -5062,7 +4504,7 @@ select[multiple].pagination-xl div .page-num {
   display: inline-block;
   padding: 2px 14px;
   padding: 5px 20px;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 14px;
   font-size: 20px;
   font-weight: normal;
@@ -5081,124 +4523,63 @@ select[multiple].pagination-xl div .page-num {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: #eee;
-  background-color: #f23f40;
-  background-image: none;
-  border: 1px solid transparent;
-  border-color: #e1e1e1;
-  border-color: #f02728;
-  border-radius: 2px;
-  border-radius: 4px;
+  background: transparent;
+  background: #f23f40;
+  border: 2px solid #999;
+  border-color: #f23f40;
   border-radius: 0;
-}
-.pagination-xl div .page-num + .page-confirm:focus,
-.pagination-xl div .page-num + .page-confirm:active:focus,
-.pagination-xl div .page-num + .page-confirm.active:focus,
-.pagination-xl div .page-num + .page-confirm.focus,
-.pagination-xl div .page-num + .page-confirm:active.focus,
-.pagination-xl div .page-num + .page-confirm.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  outline: 0;
 }
 .pagination-xl div .page-num + .page-confirm:hover,
 .pagination-xl div .page-num + .page-confirm:focus,
 .pagination-xl div .page-num + .page-confirm.focus {
-  color: #333;
+  color: #f00;
   text-decoration: none;
+  border-color: #f00;
 }
 .pagination-xl div .page-num + .page-confirm:active,
 .pagination-xl div .page-num + .page-confirm.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  color: #d93838;
+  border-color: #d93838;
 }
 .pagination-xl div .page-num + .page-confirm.disabled,
-.pagination-xl div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm {
+.pagination-xl div .page-num + .page-confirm[disabled] {
   pointer-events: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  opacity: .65;
-}
-.pagination-xl div .page-num + .page-confirm:hover,
-.pagination-xl div .page-num + .page-confirm:focus,
-.pagination-xl div .page-num + .page-confirm.focus,
-.pagination-xl div .page-num + .page-confirm:active,
-.pagination-xl div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-xl div .page-num + .page-confirm {
-  color: #333;
-  background-color: #d5d5d5;
-  border-color: #c2c2c2;
-}
-.pagination-xl div .page-num + .page-confirm:active,
-.pagination-xl div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-xl div .page-num + .page-confirm {
-  background-image: none;
 }
 .pagination-xl div .page-num + .page-confirm.disabled,
 .pagination-xl div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm,
 .pagination-xl div .page-num + .page-confirm.disabled:hover,
 .pagination-xl div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm:hover,
 .pagination-xl div .page-num + .page-confirm.disabled:focus,
 .pagination-xl div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm:focus,
 .pagination-xl div .page-num + .page-confirm.disabled.focus,
 .pagination-xl div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm.focus,
 .pagination-xl div .page-num + .page-confirm.disabled:active,
 .pagination-xl div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm:active,
 .pagination-xl div .page-num + .page-confirm.disabled.active,
-.pagination-xl div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm.active {
-  background-color: #eee;
-  border-color: #e1e1e1;
+.pagination-xl div .page-num + .page-confirm[disabled].active {
+  color: #999;
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
 }
 .pagination-xl div .page-num + .page-confirm .badge {
-  color: #eee;
+  color: #fff;
   background-color: #333;
 }
 .pagination-xl div .page-num + .page-confirm:hover,
 .pagination-xl div .page-num + .page-confirm:focus,
-.pagination-xl div .page-num + .page-confirm.focus,
-.pagination-xl div .page-num + .page-confirm:active,
-.pagination-xl div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-xl div .page-num + .page-confirm {
+.pagination-xl div .page-num + .page-confirm.focus {
   color: #fff;
-  background-color: #ee1011;
-  border-color: #cc0e0f;
+  text-decoration: none;
+  background: #f00;
+  border-color: #f00;
 }
 .pagination-xl div .page-num + .page-confirm:active,
-.pagination-xl div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-xl div .page-num + .page-confirm {
-  background-image: none;
-}
-.pagination-xl div .page-num + .page-confirm.disabled,
-.pagination-xl div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm,
-.pagination-xl div .page-num + .page-confirm.disabled:hover,
-.pagination-xl div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm:hover,
-.pagination-xl div .page-num + .page-confirm.disabled:focus,
-.pagination-xl div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm:focus,
-.pagination-xl div .page-num + .page-confirm.disabled.focus,
-.pagination-xl div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm.focus,
-.pagination-xl div .page-num + .page-confirm.disabled:active,
-.pagination-xl div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm:active,
-.pagination-xl div .page-num + .page-confirm.disabled.active,
-.pagination-xl div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination-xl div .page-num + .page-confirm.active {
-  background-color: #f23f40;
-  border-color: #f02728;
+.pagination-xl div .page-num + .page-confirm.active {
+  color: #fff;
+  background: #d93838;
+  border-color: #d93838;
 }
 .pagination-xl div .page-num + .page-confirm .badge {
   color: #f23f40;
@@ -5224,7 +4605,7 @@ select[multiple].pagination-sm div .page-num {
   display: inline-block;
   padding: 2px 14px;
   padding: 0 6px;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 14px;
   font-size: 12px;
   font-weight: normal;
@@ -5242,123 +4623,63 @@ select[multiple].pagination-sm div .page-num {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: #eee;
-  background-color: #f23f40;
-  background-image: none;
-  border: 1px solid transparent;
-  border-color: #e1e1e1;
-  border-color: #f02728;
-  border-radius: 2px;
+  background: transparent;
+  background: #f23f40;
+  border: 2px solid #999;
+  border-color: #f23f40;
   border-radius: 0;
-}
-.pagination-sm div .page-num + .page-confirm:focus,
-.pagination-sm div .page-num + .page-confirm:active:focus,
-.pagination-sm div .page-num + .page-confirm.active:focus,
-.pagination-sm div .page-num + .page-confirm.focus,
-.pagination-sm div .page-num + .page-confirm:active.focus,
-.pagination-sm div .page-num + .page-confirm.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  outline: 0;
 }
 .pagination-sm div .page-num + .page-confirm:hover,
 .pagination-sm div .page-num + .page-confirm:focus,
 .pagination-sm div .page-num + .page-confirm.focus {
-  color: #333;
+  color: #f00;
   text-decoration: none;
+  border-color: #f00;
 }
 .pagination-sm div .page-num + .page-confirm:active,
 .pagination-sm div .page-num + .page-confirm.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  color: #d93838;
+  border-color: #d93838;
 }
 .pagination-sm div .page-num + .page-confirm.disabled,
-.pagination-sm div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm {
+.pagination-sm div .page-num + .page-confirm[disabled] {
   pointer-events: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  opacity: .65;
-}
-.pagination-sm div .page-num + .page-confirm:hover,
-.pagination-sm div .page-num + .page-confirm:focus,
-.pagination-sm div .page-num + .page-confirm.focus,
-.pagination-sm div .page-num + .page-confirm:active,
-.pagination-sm div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-sm div .page-num + .page-confirm {
-  color: #333;
-  background-color: #d5d5d5;
-  border-color: #c2c2c2;
-}
-.pagination-sm div .page-num + .page-confirm:active,
-.pagination-sm div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-sm div .page-num + .page-confirm {
-  background-image: none;
 }
 .pagination-sm div .page-num + .page-confirm.disabled,
 .pagination-sm div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm,
 .pagination-sm div .page-num + .page-confirm.disabled:hover,
 .pagination-sm div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm:hover,
 .pagination-sm div .page-num + .page-confirm.disabled:focus,
 .pagination-sm div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm:focus,
 .pagination-sm div .page-num + .page-confirm.disabled.focus,
 .pagination-sm div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm.focus,
 .pagination-sm div .page-num + .page-confirm.disabled:active,
 .pagination-sm div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm:active,
 .pagination-sm div .page-num + .page-confirm.disabled.active,
-.pagination-sm div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm.active {
-  background-color: #eee;
-  border-color: #e1e1e1;
+.pagination-sm div .page-num + .page-confirm[disabled].active {
+  color: #999;
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
 }
 .pagination-sm div .page-num + .page-confirm .badge {
-  color: #eee;
+  color: #fff;
   background-color: #333;
 }
 .pagination-sm div .page-num + .page-confirm:hover,
 .pagination-sm div .page-num + .page-confirm:focus,
-.pagination-sm div .page-num + .page-confirm.focus,
-.pagination-sm div .page-num + .page-confirm:active,
-.pagination-sm div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-sm div .page-num + .page-confirm {
+.pagination-sm div .page-num + .page-confirm.focus {
   color: #fff;
-  background-color: #ee1011;
-  border-color: #cc0e0f;
+  text-decoration: none;
+  background: #f00;
+  border-color: #f00;
 }
 .pagination-sm div .page-num + .page-confirm:active,
-.pagination-sm div .page-num + .page-confirm.active,
-.open > .dropdown-toggle.pagination-sm div .page-num + .page-confirm {
-  background-image: none;
-}
-.pagination-sm div .page-num + .page-confirm.disabled,
-.pagination-sm div .page-num + .page-confirm[disabled],
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm,
-.pagination-sm div .page-num + .page-confirm.disabled:hover,
-.pagination-sm div .page-num + .page-confirm[disabled]:hover,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm:hover,
-.pagination-sm div .page-num + .page-confirm.disabled:focus,
-.pagination-sm div .page-num + .page-confirm[disabled]:focus,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm:focus,
-.pagination-sm div .page-num + .page-confirm.disabled.focus,
-.pagination-sm div .page-num + .page-confirm[disabled].focus,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm.focus,
-.pagination-sm div .page-num + .page-confirm.disabled:active,
-.pagination-sm div .page-num + .page-confirm[disabled]:active,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm:active,
-.pagination-sm div .page-num + .page-confirm.disabled.active,
-.pagination-sm div .page-num + .page-confirm[disabled].active,
-fieldset[disabled] .pagination-sm div .page-num + .page-confirm.active {
-  background-color: #f23f40;
-  border-color: #f02728;
+.pagination-sm div .page-num + .page-confirm.active {
+  color: #fff;
+  background: #d93838;
+  border-color: #d93838;
 }
 .pagination-sm div .page-num + .page-confirm .badge {
   color: #f23f40;
@@ -5506,7 +4827,7 @@ a.label:focus {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  background-color: #777;
+  background-color: #f23f40;
   border-radius: 10px;
 }
 .badge:empty {
@@ -7230,130 +6551,6 @@ button.close {
   background-color: #919191;
   border-color: #5e5e5e;
 }
-.datepicker table tr td.selected:hover,
-.datepicker table tr td.selected:hover:hover,
-.datepicker table tr td.selected.disabled:hover,
-.datepicker table tr td.selected.disabled:hover:hover,
-.datepicker table tr td.selected:focus,
-.datepicker table tr td.selected:hover:focus,
-.datepicker table tr td.selected.disabled:focus,
-.datepicker table tr td.selected.disabled:hover:focus,
-.datepicker table tr td.selected.focus,
-.datepicker table tr td.selected:hover.focus,
-.datepicker table tr td.selected.disabled.focus,
-.datepicker table tr td.selected.disabled:hover.focus,
-.datepicker table tr td.selected:active,
-.datepicker table tr td.selected:hover:active,
-.datepicker table tr td.selected.disabled:active,
-.datepicker table tr td.selected.disabled:hover:active,
-.datepicker table tr td.selected.active,
-.datepicker table tr td.selected:hover.active,
-.datepicker table tr td.selected.disabled.active,
-.datepicker table tr td.selected.disabled:hover.active,
-.open > .dropdown-toggle.datepicker table tr td.selected,
-.open > .dropdown-toggle.datepicker table tr td.selected:hover,
-.open > .dropdown-toggle.datepicker table tr td.selected.disabled,
-.open > .dropdown-toggle.datepicker table tr td.selected.disabled:hover {
-  color: #fff;
-  background-color: #777;
-  border-color: #3f3f3f;
-}
-.datepicker table tr td.selected:active,
-.datepicker table tr td.selected:hover:active,
-.datepicker table tr td.selected.disabled:active,
-.datepicker table tr td.selected.disabled:hover:active,
-.datepicker table tr td.selected.active,
-.datepicker table tr td.selected:hover.active,
-.datepicker table tr td.selected.disabled.active,
-.datepicker table tr td.selected.disabled:hover.active,
-.open > .dropdown-toggle.datepicker table tr td.selected,
-.open > .dropdown-toggle.datepicker table tr td.selected:hover,
-.open > .dropdown-toggle.datepicker table tr td.selected.disabled,
-.open > .dropdown-toggle.datepicker table tr td.selected.disabled:hover {
-  background-image: none;
-}
-.datepicker table tr td.selected.disabled,
-.datepicker table tr td.selected:hover.disabled,
-.datepicker table tr td.selected.disabled.disabled,
-.datepicker table tr td.selected.disabled:hover.disabled,
-.datepicker table tr td.selected[disabled],
-.datepicker table tr td.selected:hover[disabled],
-.datepicker table tr td.selected.disabled[disabled],
-.datepicker table tr td.selected.disabled:hover[disabled],
-fieldset[disabled] .datepicker table tr td.selected,
-fieldset[disabled] .datepicker table tr td.selected:hover,
-fieldset[disabled] .datepicker table tr td.selected.disabled,
-fieldset[disabled] .datepicker table tr td.selected.disabled:hover,
-.datepicker table tr td.selected.disabled:hover,
-.datepicker table tr td.selected:hover.disabled:hover,
-.datepicker table tr td.selected.disabled.disabled:hover,
-.datepicker table tr td.selected.disabled:hover.disabled:hover,
-.datepicker table tr td.selected[disabled]:hover,
-.datepicker table tr td.selected:hover[disabled]:hover,
-.datepicker table tr td.selected.disabled[disabled]:hover,
-.datepicker table tr td.selected.disabled:hover[disabled]:hover,
-fieldset[disabled] .datepicker table tr td.selected:hover,
-fieldset[disabled] .datepicker table tr td.selected:hover:hover,
-fieldset[disabled] .datepicker table tr td.selected.disabled:hover,
-fieldset[disabled] .datepicker table tr td.selected.disabled:hover:hover,
-.datepicker table tr td.selected.disabled:focus,
-.datepicker table tr td.selected:hover.disabled:focus,
-.datepicker table tr td.selected.disabled.disabled:focus,
-.datepicker table tr td.selected.disabled:hover.disabled:focus,
-.datepicker table tr td.selected[disabled]:focus,
-.datepicker table tr td.selected:hover[disabled]:focus,
-.datepicker table tr td.selected.disabled[disabled]:focus,
-.datepicker table tr td.selected.disabled:hover[disabled]:focus,
-fieldset[disabled] .datepicker table tr td.selected:focus,
-fieldset[disabled] .datepicker table tr td.selected:hover:focus,
-fieldset[disabled] .datepicker table tr td.selected.disabled:focus,
-fieldset[disabled] .datepicker table tr td.selected.disabled:hover:focus,
-.datepicker table tr td.selected.disabled.focus,
-.datepicker table tr td.selected:hover.disabled.focus,
-.datepicker table tr td.selected.disabled.disabled.focus,
-.datepicker table tr td.selected.disabled:hover.disabled.focus,
-.datepicker table tr td.selected[disabled].focus,
-.datepicker table tr td.selected:hover[disabled].focus,
-.datepicker table tr td.selected.disabled[disabled].focus,
-.datepicker table tr td.selected.disabled:hover[disabled].focus,
-fieldset[disabled] .datepicker table tr td.selected.focus,
-fieldset[disabled] .datepicker table tr td.selected:hover.focus,
-fieldset[disabled] .datepicker table tr td.selected.disabled.focus,
-fieldset[disabled] .datepicker table tr td.selected.disabled:hover.focus,
-.datepicker table tr td.selected.disabled:active,
-.datepicker table tr td.selected:hover.disabled:active,
-.datepicker table tr td.selected.disabled.disabled:active,
-.datepicker table tr td.selected.disabled:hover.disabled:active,
-.datepicker table tr td.selected[disabled]:active,
-.datepicker table tr td.selected:hover[disabled]:active,
-.datepicker table tr td.selected.disabled[disabled]:active,
-.datepicker table tr td.selected.disabled:hover[disabled]:active,
-fieldset[disabled] .datepicker table tr td.selected:active,
-fieldset[disabled] .datepicker table tr td.selected:hover:active,
-fieldset[disabled] .datepicker table tr td.selected.disabled:active,
-fieldset[disabled] .datepicker table tr td.selected.disabled:hover:active,
-.datepicker table tr td.selected.disabled.active,
-.datepicker table tr td.selected:hover.disabled.active,
-.datepicker table tr td.selected.disabled.disabled.active,
-.datepicker table tr td.selected.disabled:hover.disabled.active,
-.datepicker table tr td.selected[disabled].active,
-.datepicker table tr td.selected:hover[disabled].active,
-.datepicker table tr td.selected.disabled[disabled].active,
-.datepicker table tr td.selected.disabled:hover[disabled].active,
-fieldset[disabled] .datepicker table tr td.selected.active,
-fieldset[disabled] .datepicker table tr td.selected:hover.active,
-fieldset[disabled] .datepicker table tr td.selected.disabled.active,
-fieldset[disabled] .datepicker table tr td.selected.disabled:hover.active {
-  background-color: #919191;
-  border-color: #5e5e5e;
-}
-.datepicker table tr td.selected .badge,
-.datepicker table tr td.selected:hover .badge,
-.datepicker table tr td.selected.disabled .badge,
-.datepicker table tr td.selected.disabled:hover .badge {
-  color: #919191;
-  background-color: #fff;
-}
 .datepicker table tr td.active,
 .datepicker table tr td.active:hover,
 .datepicker table tr td.active.disabled,
@@ -7362,130 +6559,6 @@ fieldset[disabled] .datepicker table tr td.selected.disabled:hover.active {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
   background-color: #f23f40;
   border-color: #f27a3f;
-}
-.datepicker table tr td.active:hover,
-.datepicker table tr td.active:hover:hover,
-.datepicker table tr td.active.disabled:hover,
-.datepicker table tr td.active.disabled:hover:hover,
-.datepicker table tr td.active:focus,
-.datepicker table tr td.active:hover:focus,
-.datepicker table tr td.active.disabled:focus,
-.datepicker table tr td.active.disabled:hover:focus,
-.datepicker table tr td.active.focus,
-.datepicker table tr td.active:hover.focus,
-.datepicker table tr td.active.disabled.focus,
-.datepicker table tr td.active.disabled:hover.focus,
-.datepicker table tr td.active:active,
-.datepicker table tr td.active:hover:active,
-.datepicker table tr td.active.disabled:active,
-.datepicker table tr td.active.disabled:hover:active,
-.datepicker table tr td.active.active,
-.datepicker table tr td.active:hover.active,
-.datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active.disabled:hover.active,
-.open > .dropdown-toggle.datepicker table tr td.active,
-.open > .dropdown-toggle.datepicker table tr td.active:hover,
-.open > .dropdown-toggle.datepicker table tr td.active.disabled,
-.open > .dropdown-toggle.datepicker table tr td.active.disabled:hover {
-  color: #fff;
-  background-color: #ee1011;
-  border-color: #e4550f;
-}
-.datepicker table tr td.active:active,
-.datepicker table tr td.active:hover:active,
-.datepicker table tr td.active.disabled:active,
-.datepicker table tr td.active.disabled:hover:active,
-.datepicker table tr td.active.active,
-.datepicker table tr td.active:hover.active,
-.datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active.disabled:hover.active,
-.open > .dropdown-toggle.datepicker table tr td.active,
-.open > .dropdown-toggle.datepicker table tr td.active:hover,
-.open > .dropdown-toggle.datepicker table tr td.active.disabled,
-.open > .dropdown-toggle.datepicker table tr td.active.disabled:hover {
-  background-image: none;
-}
-.datepicker table tr td.active.disabled,
-.datepicker table tr td.active:hover.disabled,
-.datepicker table tr td.active.disabled.disabled,
-.datepicker table tr td.active.disabled:hover.disabled,
-.datepicker table tr td.active[disabled],
-.datepicker table tr td.active:hover[disabled],
-.datepicker table tr td.active.disabled[disabled],
-.datepicker table tr td.active.disabled:hover[disabled],
-fieldset[disabled] .datepicker table tr td.active,
-fieldset[disabled] .datepicker table tr td.active:hover,
-fieldset[disabled] .datepicker table tr td.active.disabled,
-fieldset[disabled] .datepicker table tr td.active.disabled:hover,
-.datepicker table tr td.active.disabled:hover,
-.datepicker table tr td.active:hover.disabled:hover,
-.datepicker table tr td.active.disabled.disabled:hover,
-.datepicker table tr td.active.disabled:hover.disabled:hover,
-.datepicker table tr td.active[disabled]:hover,
-.datepicker table tr td.active:hover[disabled]:hover,
-.datepicker table tr td.active.disabled[disabled]:hover,
-.datepicker table tr td.active.disabled:hover[disabled]:hover,
-fieldset[disabled] .datepicker table tr td.active:hover,
-fieldset[disabled] .datepicker table tr td.active:hover:hover,
-fieldset[disabled] .datepicker table tr td.active.disabled:hover,
-fieldset[disabled] .datepicker table tr td.active.disabled:hover:hover,
-.datepicker table tr td.active.disabled:focus,
-.datepicker table tr td.active:hover.disabled:focus,
-.datepicker table tr td.active.disabled.disabled:focus,
-.datepicker table tr td.active.disabled:hover.disabled:focus,
-.datepicker table tr td.active[disabled]:focus,
-.datepicker table tr td.active:hover[disabled]:focus,
-.datepicker table tr td.active.disabled[disabled]:focus,
-.datepicker table tr td.active.disabled:hover[disabled]:focus,
-fieldset[disabled] .datepicker table tr td.active:focus,
-fieldset[disabled] .datepicker table tr td.active:hover:focus,
-fieldset[disabled] .datepicker table tr td.active.disabled:focus,
-fieldset[disabled] .datepicker table tr td.active.disabled:hover:focus,
-.datepicker table tr td.active.disabled.focus,
-.datepicker table tr td.active:hover.disabled.focus,
-.datepicker table tr td.active.disabled.disabled.focus,
-.datepicker table tr td.active.disabled:hover.disabled.focus,
-.datepicker table tr td.active[disabled].focus,
-.datepicker table tr td.active:hover[disabled].focus,
-.datepicker table tr td.active.disabled[disabled].focus,
-.datepicker table tr td.active.disabled:hover[disabled].focus,
-fieldset[disabled] .datepicker table tr td.active.focus,
-fieldset[disabled] .datepicker table tr td.active:hover.focus,
-fieldset[disabled] .datepicker table tr td.active.disabled.focus,
-fieldset[disabled] .datepicker table tr td.active.disabled:hover.focus,
-.datepicker table tr td.active.disabled:active,
-.datepicker table tr td.active:hover.disabled:active,
-.datepicker table tr td.active.disabled.disabled:active,
-.datepicker table tr td.active.disabled:hover.disabled:active,
-.datepicker table tr td.active[disabled]:active,
-.datepicker table tr td.active:hover[disabled]:active,
-.datepicker table tr td.active.disabled[disabled]:active,
-.datepicker table tr td.active.disabled:hover[disabled]:active,
-fieldset[disabled] .datepicker table tr td.active:active,
-fieldset[disabled] .datepicker table tr td.active:hover:active,
-fieldset[disabled] .datepicker table tr td.active.disabled:active,
-fieldset[disabled] .datepicker table tr td.active.disabled:hover:active,
-.datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active:hover.disabled.active,
-.datepicker table tr td.active.disabled.disabled.active,
-.datepicker table tr td.active.disabled:hover.disabled.active,
-.datepicker table tr td.active[disabled].active,
-.datepicker table tr td.active:hover[disabled].active,
-.datepicker table tr td.active.disabled[disabled].active,
-.datepicker table tr td.active.disabled:hover[disabled].active,
-fieldset[disabled] .datepicker table tr td.active.active,
-fieldset[disabled] .datepicker table tr td.active:hover.active,
-fieldset[disabled] .datepicker table tr td.active.disabled.active,
-fieldset[disabled] .datepicker table tr td.active.disabled:hover.active {
-  background-color: #f23f40;
-  border-color: #f27a3f;
-}
-.datepicker table tr td.active .badge,
-.datepicker table tr td.active:hover .badge,
-.datepicker table tr td.active.disabled .badge,
-.datepicker table tr td.active.disabled:hover .badge {
-  color: #f23f40;
-  background-color: #fff;
 }
 .datepicker table tr td span {
   display: block;
@@ -7514,130 +6587,6 @@ fieldset[disabled] .datepicker table tr td.active.disabled:hover.active {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
   background-color: #f23f40;
   border-color: #f27a3f;
-}
-.datepicker table tr td span.active:hover,
-.datepicker table tr td span.active:hover:hover,
-.datepicker table tr td span.active.disabled:hover,
-.datepicker table tr td span.active.disabled:hover:hover,
-.datepicker table tr td span.active:focus,
-.datepicker table tr td span.active:hover:focus,
-.datepicker table tr td span.active.disabled:focus,
-.datepicker table tr td span.active.disabled:hover:focus,
-.datepicker table tr td span.active.focus,
-.datepicker table tr td span.active:hover.focus,
-.datepicker table tr td span.active.disabled.focus,
-.datepicker table tr td span.active.disabled:hover.focus,
-.datepicker table tr td span.active:active,
-.datepicker table tr td span.active:hover:active,
-.datepicker table tr td span.active.disabled:active,
-.datepicker table tr td span.active.disabled:hover:active,
-.datepicker table tr td span.active.active,
-.datepicker table tr td span.active:hover.active,
-.datepicker table tr td span.active.disabled.active,
-.datepicker table tr td span.active.disabled:hover.active,
-.open > .dropdown-toggle.datepicker table tr td span.active,
-.open > .dropdown-toggle.datepicker table tr td span.active:hover,
-.open > .dropdown-toggle.datepicker table tr td span.active.disabled,
-.open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
-  color: #fff;
-  background-color: #ee1011;
-  border-color: #e4550f;
-}
-.datepicker table tr td span.active:active,
-.datepicker table tr td span.active:hover:active,
-.datepicker table tr td span.active.disabled:active,
-.datepicker table tr td span.active.disabled:hover:active,
-.datepicker table tr td span.active.active,
-.datepicker table tr td span.active:hover.active,
-.datepicker table tr td span.active.disabled.active,
-.datepicker table tr td span.active.disabled:hover.active,
-.open > .dropdown-toggle.datepicker table tr td span.active,
-.open > .dropdown-toggle.datepicker table tr td span.active:hover,
-.open > .dropdown-toggle.datepicker table tr td span.active.disabled,
-.open > .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
-  background-image: none;
-}
-.datepicker table tr td span.active.disabled,
-.datepicker table tr td span.active:hover.disabled,
-.datepicker table tr td span.active.disabled.disabled,
-.datepicker table tr td span.active.disabled:hover.disabled,
-.datepicker table tr td span.active[disabled],
-.datepicker table tr td span.active:hover[disabled],
-.datepicker table tr td span.active.disabled[disabled],
-.datepicker table tr td span.active.disabled:hover[disabled],
-fieldset[disabled] .datepicker table tr td span.active,
-fieldset[disabled] .datepicker table tr td span.active:hover,
-fieldset[disabled] .datepicker table tr td span.active.disabled,
-fieldset[disabled] .datepicker table tr td span.active.disabled:hover,
-.datepicker table tr td span.active.disabled:hover,
-.datepicker table tr td span.active:hover.disabled:hover,
-.datepicker table tr td span.active.disabled.disabled:hover,
-.datepicker table tr td span.active.disabled:hover.disabled:hover,
-.datepicker table tr td span.active[disabled]:hover,
-.datepicker table tr td span.active:hover[disabled]:hover,
-.datepicker table tr td span.active.disabled[disabled]:hover,
-.datepicker table tr td span.active.disabled:hover[disabled]:hover,
-fieldset[disabled] .datepicker table tr td span.active:hover,
-fieldset[disabled] .datepicker table tr td span.active:hover:hover,
-fieldset[disabled] .datepicker table tr td span.active.disabled:hover,
-fieldset[disabled] .datepicker table tr td span.active.disabled:hover:hover,
-.datepicker table tr td span.active.disabled:focus,
-.datepicker table tr td span.active:hover.disabled:focus,
-.datepicker table tr td span.active.disabled.disabled:focus,
-.datepicker table tr td span.active.disabled:hover.disabled:focus,
-.datepicker table tr td span.active[disabled]:focus,
-.datepicker table tr td span.active:hover[disabled]:focus,
-.datepicker table tr td span.active.disabled[disabled]:focus,
-.datepicker table tr td span.active.disabled:hover[disabled]:focus,
-fieldset[disabled] .datepicker table tr td span.active:focus,
-fieldset[disabled] .datepicker table tr td span.active:hover:focus,
-fieldset[disabled] .datepicker table tr td span.active.disabled:focus,
-fieldset[disabled] .datepicker table tr td span.active.disabled:hover:focus,
-.datepicker table tr td span.active.disabled.focus,
-.datepicker table tr td span.active:hover.disabled.focus,
-.datepicker table tr td span.active.disabled.disabled.focus,
-.datepicker table tr td span.active.disabled:hover.disabled.focus,
-.datepicker table tr td span.active[disabled].focus,
-.datepicker table tr td span.active:hover[disabled].focus,
-.datepicker table tr td span.active.disabled[disabled].focus,
-.datepicker table tr td span.active.disabled:hover[disabled].focus,
-fieldset[disabled] .datepicker table tr td span.active.focus,
-fieldset[disabled] .datepicker table tr td span.active:hover.focus,
-fieldset[disabled] .datepicker table tr td span.active.disabled.focus,
-fieldset[disabled] .datepicker table tr td span.active.disabled:hover.focus,
-.datepicker table tr td span.active.disabled:active,
-.datepicker table tr td span.active:hover.disabled:active,
-.datepicker table tr td span.active.disabled.disabled:active,
-.datepicker table tr td span.active.disabled:hover.disabled:active,
-.datepicker table tr td span.active[disabled]:active,
-.datepicker table tr td span.active:hover[disabled]:active,
-.datepicker table tr td span.active.disabled[disabled]:active,
-.datepicker table tr td span.active.disabled:hover[disabled]:active,
-fieldset[disabled] .datepicker table tr td span.active:active,
-fieldset[disabled] .datepicker table tr td span.active:hover:active,
-fieldset[disabled] .datepicker table tr td span.active.disabled:active,
-fieldset[disabled] .datepicker table tr td span.active.disabled:hover:active,
-.datepicker table tr td span.active.disabled.active,
-.datepicker table tr td span.active:hover.disabled.active,
-.datepicker table tr td span.active.disabled.disabled.active,
-.datepicker table tr td span.active.disabled:hover.disabled.active,
-.datepicker table tr td span.active[disabled].active,
-.datepicker table tr td span.active:hover[disabled].active,
-.datepicker table tr td span.active.disabled[disabled].active,
-.datepicker table tr td span.active.disabled:hover[disabled].active,
-fieldset[disabled] .datepicker table tr td span.active.active,
-fieldset[disabled] .datepicker table tr td span.active:hover.active,
-fieldset[disabled] .datepicker table tr td span.active.disabled.active,
-fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
-  background-color: #f23f40;
-  border-color: #f27a3f;
-}
-.datepicker table tr td span.active .badge,
-.datepicker table tr td span.active:hover .badge,
-.datepicker table tr td span.active.disabled .badge,
-.datepicker table tr td span.active.disabled:hover .badge {
-  color: #f23f40;
-  background-color: #fff;
 }
 .datepicker table tr td span.old,
 .datepicker table tr td span.new {
@@ -8031,10 +6980,6 @@ tr.introjs-showElement > th {
 .row:after,
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after,
-.btn-toolbar:before,
-.btn-toolbar:after,
-.btn-group-vertical > .btn-group:before,
-.btn-group-vertical > .btn-group:after,
 .nav:before,
 .nav:after,
 .navbar:before,
@@ -8058,8 +7003,6 @@ tr.introjs-showElement > th {
 .container-fluid:after,
 .row:after,
 .form-horizontal .form-group:after,
-.btn-toolbar:after,
-.btn-group-vertical > .btn-group:after,
 .nav:after,
 .navbar:after,
 .navbar-header:after,
