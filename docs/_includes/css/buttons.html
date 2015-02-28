@@ -4,16 +4,16 @@
   <h2 id="buttons-tags">按钮HTML标签</h2>
   <p>按钮可以用在 <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, 或者 <code>&lt;input&gt;</code> 元素上.</p>
   <form class="bs-example" data-example-id="btn-tags">
-    <a class="btn btn-default" href="#" role="button">链接</a>
-    <button class="btn btn-default" type="submit">按钮</button>
-    <input class="btn btn-default" type="button" value="Input">
-    <input class="btn btn-default" type="submit" value="Submit">
+    <a class="btn" href="#" role="button">链接</a>
+    <button class="btn btn-primary" type="submit">按钮</button>
+    <input class="btn" type="button" value="Input">
+    <input class="btn btn-primary" type="submit" value="Submit">
   </form>
 {% highlight html %}
-<a class="btn btn-default" href="#" role="button">链接</a>
-<button class="btn btn-default" type="submit">按钮</button>
-<input class="btn btn-default" type="button" value="Input">
-<input class="btn btn-default" type="submit" value="Submit">
+<a class="btn" href="#" role="button">链接</a>
+<button class="btn btn-primary" type="submit">按钮</button>
+<input class="btn" type="button" value="Input">
+<input class="btn btn-primary" type="submit" value="Submit">
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-buttons-context-usage">
@@ -35,35 +35,16 @@
   <h2 id="buttons-options">不同样式的按钮</h2>
   <p>有一系列不同的class，可以让你的按钮有不同的样式</p>
   <div class="bs-example" data-example-id="btn-variants">
-    <button type="button" class="btn btn-default">默认</button>
+    <button type="button" class="btn">默认</button>
     <button type="button" class="btn btn-primary">首要</button>
-    <button type="button" class="btn btn-success">成功</button>
-    <button type="button" class="btn btn-info">提示</button>
-    <button type="button" class="btn btn-warning">警告</button>
-    <button type="button" class="btn btn-danger">危险</button>
-    <button type="button" class="btn btn-link">链接</button>
   </div>
 {% highlight html %}
 <!-- Standard button -->
-<button type="button" class="btn btn-default">默认</button>
+<button type="button" class="btn">默认</button>
 
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 <button type="button" class="btn btn-primary">首要</button>
 
-<!-- Indicates a successful or positive action -->
-<button type="button" class="btn btn-success">成功</button>
-
-<!-- Contextual button for informational alert messages -->
-<button type="button" class="btn btn-info">提示</button>
-
-<!-- Indicates caution should be taken with this action -->
-<button type="button" class="btn btn-warning">警告</button>
-
-<!-- Indicates a dangerous or potentially negative action -->
-<button type="button" class="btn btn-danger">危险</button>
-
-<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-<button type="button" class="btn btn-link">链接</button>
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-buttons-color-accessibility">
@@ -76,45 +57,45 @@
   <div class="bs-example" data-example-id="btn-sizes">
     <p>
       <button type="button" class="btn btn-primary btn-xl">超大按钮</button>
-      <button type="button" class="btn btn-default btn-xl">超大按钮</button>
+      <button type="button" class="btn btn-xl">超大按钮</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-lg">大按钮</button>
-      <button type="button" class="btn btn-default btn-lg">大按钮</button>
+      <button type="button" class="btn btn-lg">大按钮</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary">默认大小</button>
-      <button type="button" class="btn btn-default">默认大小</button>
+      <button type="button" class="btn">默认大小</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-sm">小按钮</button>
-      <button type="button" class="btn btn-default btn-sm">小按钮</button>
+      <button type="button" class="btn btn-sm">小按钮</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-xs">超小按钮</button>
-      <button type="button" class="btn btn-default btn-xs">超小按钮</button>
+      <button type="button" class="btn btn-xs">超小按钮</button>
     </p>
   </div>
 {% highlight html %}
 <p>
   <button type="button" class="btn btn-primary btn-xl">超大按钮</button>
-  <button type="button" class="btn btn-default btn-xl">超大按钮</button>
+  <button type="button" class="btn btn-xl">超大按钮</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-lg">大按钮</button>
-  <button type="button" class="btn btn-default btn-lg">大按钮</button>
+  <button type="button" class="btn btn-lg">大按钮</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary">默认大小</button>
-  <button type="button" class="btn btn-default">默认大小</button>
+  <button type="button" class="btn">默认大小</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-sm">小按钮</button>
-  <button type="button" class="btn btn-default btn-sm">小按钮</button>
+  <button type="button" class="btn btn-sm">小按钮</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-xs">超小按钮</button>
-  <button type="button" class="btn btn-default btn-xs">超小按钮</button>
+  <button type="button" class="btn btn-xs">超小按钮</button>
 </p>
 {% endhighlight %}
 
@@ -122,12 +103,12 @@
   <div class="bs-example" data-example-id="block-btns">
     <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
       <button type="button" class="btn btn-primary btn-lg btn-block">块级按钮</button>
-      <button type="button" class="btn btn-default btn-lg btn-block">块级按钮</button>
+      <button type="button" class="btn btn-lg btn-block">块级按钮</button>
     </div>
   </div>
 {% highlight html %}
 <button type="button" class="btn btn-primary btn-lg btn-block">块级按钮</button>
-<button type="button" class="btn btn-default btn-lg btn-block">块级按钮</button>
+<button type="button" class="btn btn-lg btn-block">块级按钮</button>
 {% endhighlight %}
 
 
@@ -138,22 +119,22 @@
   <p>我们需要给他添加一个 <code>:active</code> 伪类, 不过如果你想强制显示一个激活状态的样式，也可以增加 <code>.active</code>.</p>
   <p class="bs-example" data-example-id="active-button-btns">
     <button type="button" class="btn btn-primary btn-lg active">首要按钮</button>
-    <button type="button" class="btn btn-default btn-lg active">默认按钮</button>
+    <button type="button" class="btn btn-lg active">默认按钮</button>
   </p>
 {% highlight html %}
 <button type="button" class="btn btn-primary btn-lg active">首要按钮</button>
-<button type="button" class="btn btn-default btn-lg active">默认按钮</button>
+<button type="button" class="btn btn-lg active">默认按钮</button>
 {% endhighlight %}
 
   <h3>Anchor 元素</h3>
   <p><code>&lt;a&gt;</code> 元素的按钮上，只需要加上 <code>.active</code> 即可.</p>
   <p class="bs-example" data-example-id="active-anchor-btns">
     <a href="#" class="btn btn-primary btn-lg active" role="button">首要按钮</a>
-    <a href="#" class="btn btn-default btn-lg active" role="button">默认按钮</a>
+    <a href="#" class="btn btn-lg active" role="button">默认按钮</a>
   </p>
 {% highlight html %}
 <a href="#" class="btn btn-primary btn-lg active" role="button">首要按钮</a>
-<a href="#" class="btn btn-default btn-lg active" role="button">默认按钮</a>
+<a href="#" class="btn btn-lg active" role="button">默认按钮</a>
 {% endhighlight %}
 
 
@@ -164,11 +145,11 @@
   <p>在<code>&lt;button&gt;</code> 按钮上，添加 <code>disabled</code> 属性.</p>
   <p class="bs-example" data-example-id="disabled-button-btns">
     <button type="button" class="btn btn-primary btn-lg" disabled="disabled">首要按钮</button>
-    <button type="button" class="btn btn-default btn-lg" disabled="disabled">默认按钮</button>
+    <button type="button" class="btn btn-lg" disabled="disabled">默认按钮</button>
   </p>
 {% highlight html %}
 <button type="button" class="btn btn-lg btn-primary" disabled="disabled">首要按钮</button>
-<button type="button" class="btn btn-default btn-lg" disabled="disabled">默认按钮</button>
+<button type="button" class="btn btn-lg" disabled="disabled">默认按钮</button>
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-danger" id="callout-buttons-ie-disabled">
@@ -180,12 +161,12 @@
   <p>在<code>&lt;a&gt;</code> 按钮上，添加 <code>.disabled</code> 类。</p>
   <p class="bs-example" data-example-id="disabled-anchor-btns">
     <a href="#" class="btn btn-primary btn-lg disabled" role="button">首要按钮</a>
-    <a href="#" class="btn btn-default btn-lg disabled" role="button">默认按钮</a>
+    <a href="#" class="btn btn-lg disabled" role="button">默认按钮</a>
   </p>
 
 {% highlight html %}
 <a href="#" class="btn btn-primary btn-lg disabled" role="button">首要按钮</a>
-<a href="#" class="btn btn-default btn-lg disabled" role="button">默认按钮</a>
+<a href="#" class="btn btn-lg disabled" role="button">默认按钮</a>
 {% endhighlight %}
   <p>
     我们把 <code>.disabled</code> 当做一个工具类来用，就和常见的<code>.active</code> 一样, 所以没有添加一个 <code>btn-</code> 的前缀.
@@ -194,24 +175,4 @@
     <h4>链接按钮的警告</h4>
     <p>上面这个类，是通过 <code>pointer-events:none</code> 来阻止<code>&lt;a&gt;</code>按钮的行为。但是这个CSS属性不是标准属性，所以无法兼容全部浏览器，不日opera 18 或者 IE11 。而且，即使浏览器支持 <code>pointer-events: none</code>，也无法影响键盘事件，用户依然可以通过键盘来激活这个链接。所以为了安全起见，要用JS来禁用这些按钮。</p>
   </div>
-  <h2 id='buttons-bordered'>只有边框</h2>
-  <p>通过添加 <code>.btn-bordered</code> 让按钮只有边框而没有背景颜色。</p>
-  <div class="bs-example" data-example-id="btn-bordered">
-    <button type="button" class="btn btn-default btn-bordered">默认</button>
-    <button type="button" class="btn btn-primary btn-bordered">首要</button>
-    <button type="button" class="btn btn-success btn-bordered">成功</button>
-    <button type="button" class="btn btn-info btn-bordered">提示</button>
-    <button type="button" class="btn btn-warning btn-bordered">警告</button>
-    <button type="button" class="btn btn-danger btn-bordered">危险</button>
-    <button type="button" class="btn btn-link btn-bordered">链接</button>
-  </div>
-{% highlight html %}
-<button type="button" class="btn btn-default btn-bordered">默认</button>
-<button type="button" class="btn btn-primary btn-bordered">首要</button>
-<button type="button" class="btn btn-success btn-bordered">成功</button>
-<button type="button" class="btn btn-info btn-bordered">提示</button>
-<button type="button" class="btn btn-warning btn-bordered">警告</button>
-<button type="button" class="btn btn-danger btn-bordered">危险</button>
-<button type="button" class="btn btn-link btn-bordered">链接</button>
-{% endhighlight %}
 </div>
