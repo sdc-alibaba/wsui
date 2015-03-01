@@ -414,6 +414,7 @@
     bgcolor: '#000',
     keyboard: true,
     hasfoot: true,
+    cancelbtn: true,
     closebtn: true,
     transition: true
   }
@@ -516,7 +517,8 @@
     alert: function (customCfg) {
       var dialogCfg = {
         type: 'alert',
-        title: '注意'
+        title: '注意',
+        cancelbtn: false
       }
       return $._modal(dialogCfg, customCfg)
     },
