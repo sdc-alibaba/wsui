@@ -2928,15 +2928,14 @@ select[multiple].form-group-lg .form-control {
     padding-top: 1px;
   }
 }
-.btn,
-.btn-bordered {
+.btn {
   display: inline-block;
   padding: 4px 14px;
   margin: 0;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.5;
-  color: #333;
+  color: #777;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -2948,65 +2947,49 @@ select[multiple].form-group-lg .form-control {
       -ms-user-select: none;
           user-select: none;
   background: transparent;
-  border: 2px solid #999;
+  border: 2px solid #c9c9c9;
   outline: 0;
 }
+.btn.btn-bordered {
+  color: #333;
+  border: 2px solid #999;
+}
 .btn:hover,
-.btn-bordered:hover,
 .btn:focus,
-.btn-bordered:focus,
-.btn.focus,
-.btn-bordered.focus {
+.btn.focus {
   color: #f00;
   text-decoration: none;
   border-color: #f00;
 }
 .btn:active,
-.btn-bordered:active,
-.btn.active,
-.btn-bordered.active {
+.btn.active {
   color: #d93838;
   border-color: #d93838;
 }
 .btn.disabled,
-.btn-bordered.disabled,
-.btn[disabled],
-.btn-bordered[disabled] {
+.btn[disabled] {
   pointer-events: none;
   cursor: not-allowed;
 }
 .btn.disabled,
-.btn-bordered.disabled,
 .btn[disabled],
-.btn-bordered[disabled],
 .btn.disabled:hover,
-.btn-bordered.disabled:hover,
 .btn[disabled]:hover,
-.btn-bordered[disabled]:hover,
 .btn.disabled:focus,
-.btn-bordered.disabled:focus,
 .btn[disabled]:focus,
-.btn-bordered[disabled]:focus,
 .btn.disabled.focus,
-.btn-bordered.disabled.focus,
 .btn[disabled].focus,
-.btn-bordered[disabled].focus,
 .btn.disabled:active,
-.btn-bordered.disabled:active,
 .btn[disabled]:active,
-.btn-bordered[disabled]:active,
 .btn.disabled.active,
-.btn-bordered.disabled.active,
-.btn[disabled].active,
-.btn-bordered[disabled].active {
+.btn[disabled].active {
   color: #999;
   background-color: #e6e6e6;
   border-color: #e6e6e6;
 }
-.btn .badge,
-.btn-bordered .badge {
+.btn .badge {
   color: #fff;
-  background-color: #333;
+  background-color: #777;
 }
 .btn-primary {
   color: #fff;
@@ -4293,7 +4276,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   font-size: 14px;
   font-weight: normal;
   line-height: 1.5;
-  color: #333;
+  color: #777;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -4308,10 +4291,14 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
           user-select: none;
   background: transparent;
   background: #f23f40;
-  border: 2px solid #999;
+  border: 2px solid #c9c9c9;
   border-color: #f23f40;
   border-radius: 0;
   outline: 0;
+}
+.pagination div .page-num + .page-confirm.btn-bordered {
+  color: #333;
+  border: 2px solid #999;
 }
 .pagination div .page-num + .page-confirm:hover,
 .pagination div .page-num + .page-confirm:focus,
@@ -4348,7 +4335,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .pagination div .page-num + .page-confirm .badge {
   color: #fff;
-  background-color: #333;
+  background-color: #777;
 }
 .pagination div .page-num + .page-confirm:hover,
 .pagination div .page-num + .page-confirm:focus,
@@ -4407,7 +4394,7 @@ select[multiple].pagination-lg div .page-num {
   font-size: 16px;
   font-weight: normal;
   line-height: 1.5;
-  color: #333;
+  color: #777;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -4422,10 +4409,14 @@ select[multiple].pagination-lg div .page-num {
           user-select: none;
   background: transparent;
   background: #f23f40;
-  border: 2px solid #999;
+  border: 2px solid #c9c9c9;
   border-color: #f23f40;
   border-radius: 0;
   outline: 0;
+}
+.pagination-lg div .page-num + .page-confirm.btn-bordered {
+  color: #333;
+  border: 2px solid #999;
 }
 .pagination-lg div .page-num + .page-confirm:hover,
 .pagination-lg div .page-num + .page-confirm:focus,
@@ -4462,7 +4453,7 @@ select[multiple].pagination-lg div .page-num {
 }
 .pagination-lg div .page-num + .page-confirm .badge {
   color: #fff;
-  background-color: #333;
+  background-color: #777;
 }
 .pagination-lg div .page-num + .page-confirm:hover,
 .pagination-lg div .page-num + .page-confirm:focus,
@@ -4508,7 +4499,7 @@ select[multiple].pagination-xl div .page-num {
   font-weight: normal;
   line-height: 1.5;
   line-height: 1.429;
-  color: #333;
+  color: #777;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -4523,10 +4514,14 @@ select[multiple].pagination-xl div .page-num {
           user-select: none;
   background: transparent;
   background: #f23f40;
-  border: 2px solid #999;
+  border: 2px solid #c9c9c9;
   border-color: #f23f40;
   border-radius: 0;
   outline: 0;
+}
+.pagination-xl div .page-num + .page-confirm.btn-bordered {
+  color: #333;
+  border: 2px solid #999;
 }
 .pagination-xl div .page-num + .page-confirm:hover,
 .pagination-xl div .page-num + .page-confirm:focus,
@@ -4563,7 +4558,7 @@ select[multiple].pagination-xl div .page-num {
 }
 .pagination-xl div .page-num + .page-confirm .badge {
   color: #fff;
-  background-color: #333;
+  background-color: #777;
 }
 .pagination-xl div .page-num + .page-confirm:hover,
 .pagination-xl div .page-num + .page-confirm:focus,
@@ -4608,7 +4603,7 @@ select[multiple].pagination-sm div .page-num {
   font-size: 12px;
   font-weight: normal;
   line-height: 1.5;
-  color: #333;
+  color: #777;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -4623,10 +4618,14 @@ select[multiple].pagination-sm div .page-num {
           user-select: none;
   background: transparent;
   background: #f23f40;
-  border: 2px solid #999;
+  border: 2px solid #c9c9c9;
   border-color: #f23f40;
   border-radius: 0;
   outline: 0;
+}
+.pagination-sm div .page-num + .page-confirm.btn-bordered {
+  color: #333;
+  border: 2px solid #999;
 }
 .pagination-sm div .page-num + .page-confirm:hover,
 .pagination-sm div .page-num + .page-confirm:focus,
@@ -4663,7 +4662,7 @@ select[multiple].pagination-sm div .page-num {
 }
 .pagination-sm div .page-num + .page-confirm .badge {
   color: #fff;
-  background-color: #333;
+  background-color: #777;
 }
 .pagination-sm div .page-num + .page-confirm:hover,
 .pagination-sm div .page-num + .page-confirm:focus,
