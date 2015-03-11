@@ -1,10 +1,10 @@
 <div class="bs-docs-section">
-  <h1 id="dropdowns" class="page-header">Dropdowns</h1>
+  <h1 id="dropdowns" class="page-header">下拉菜单</h1>
 
-  <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="../javascript/#dropdowns">dropdown JavaScript plugin</a>.</p>
+  <p class="lead">下拉菜单，可以显示多个链接.需要 <a href="../javascript/#dropdowns">dropdown JavaScript 插件</a>.</p>
 
-  <h3 id="dropdowns-example">Example</h3>
-  <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
+  <h3 id="dropdowns-example">示例</h3>
+  <p>把触发元素和下拉菜单放入一个 <code>.dropdown</code> 或者任何声明为 <code>position: relative;</code> 的元素. 然后在菜单中添加你的HTML代码</p>
   <div class="bs-example" data-example-id="static-dropdown">
     <div class="dropdown clearfix">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -95,15 +95,16 @@
 </div>
 {% endhighlight %}
 
-<h3 id="dropdowns-alignment">Alignment</h3>
-  <p>By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+<h3 id="dropdowns-alignment">对齐</h3>
+  <p>默认情况下，菜单的左上角和按钮的右下角对其的。 在 <code>.dropdown-menu</code> 上增加一个 <code>.dropdown-menu-right</code> 可以变成右对齐。</p>
   <div class="bs-callout bs-callout-warning" id="callout-dropdown-positioning">
-    <h4>May require additional positioning</h4>
-    <p>Dropdowns are automatically positioned via CSS within the normal flow of the document. This means dropdowns may be cropped by parents with certain <code>overflow</code> properties or appear out of bounds of the viewport. Address these issues on your own as they arise.</p>
+    <h4>额外的定位</h4>
+    <p>因为下拉菜单是通过css自动定位的，所以如果你的容器设置了 <code>overflow: hidden;</code>的话，可能会无法显示出来。</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-dropdown-pull-right">
-    <h4>Deprecated <code>.pull-right</code> alignment</h4>
+    <h4>不建议使用 <code>.pull-right</code> 来实现右对齐</h4>
     <p>As of v3.1.0, we've deprecated <code>.pull-right</code> on dropdown menus. To right-align a menu, use <code>.dropdown-menu-right</code>. Right-aligned nav components in the navbar use a mixin version of this class to automatically align the menu. To override it, use <code>.dropdown-menu-left</code>.</p>
+    <p>从 v3.1.0 版本开始, 我们不建议使用 <code>.pull-right</code> ，而是通过 <code>.dropdown-menu-right</code> 来实现右对齐. 导航栏中的右对齐就是这样实现的。 可以通过 <code>.dropdown-menu-left</code>来覆盖它。</p>
   </div>
 {% highlight html %}
 <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
@@ -111,8 +112,8 @@
 </ul>
 {% endhighlight %}
 
-  <h3 id="dropdowns-headers">Headers</h3>
-  <p>Add a header to label sections of actions in any dropdown menu.</p>
+  <h3 id="dropdowns-headers">标题</h3>
+  <p>在菜单中可以增加标题</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
@@ -137,8 +138,8 @@
 </ul>
 {% endhighlight %}
 
-  <h3 id="dropdowns-divider">Divider</h3>
-  <p>Add a divider to separate series of links in a dropdown menu.</p>
+  <h3 id="dropdowns-divider">分割线</h3>
+  <p>在菜单中可以增加分割线</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-expanded="true">
@@ -162,8 +163,8 @@
 </ul>
 {% endhighlight %}
 
-  <h3 id="dropdowns-disabled">Disabled menu items</h3>
-  <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
+  <h3 id="dropdowns-disabled">禁用下拉菜单</h3>
+  <p>在<code>&lt;li&gt;</code> 上增加一个 <code>.disabled</code> 可以让这一条变为禁用。</p>
   <div class="bs-example">
     <div class="dropdown clearfix">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="true">
