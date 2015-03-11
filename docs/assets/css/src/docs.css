@@ -137,6 +137,11 @@ body {
 
   -webkit-font-smoothing: antialiased;
 }
+
+.bs-docs-nav .navbar-brand img {
+  width: 80px;
+  margin-top: -26px;
+}
 .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
