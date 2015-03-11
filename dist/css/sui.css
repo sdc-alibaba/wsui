@@ -5726,7 +5726,7 @@ a.list-group-item-danger.active:focus {
   float: right;
   font-size: 32px;
   line-height: 1;
-  color: #666;
+  color: #999;
   text-shadow: 0 1px 0 #fff;
 }
 .close:hover,
@@ -5885,6 +5885,7 @@ button.close {
   display: none;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
+  border: none;
   outline: 0;
 }
 .modal.fade .modal-dialog {
@@ -5911,13 +5912,7 @@ button.close {
   width: auto;
   margin: 10px;
   background-color: #fff;
-  -webkit-background-clip: padding-box;
-          background-clip: padding-box;
-  border: 5px solid #b2b2b2;
-  border: 5px solid rgba(178, 178, 178, .3);
   outline: 0;
-  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
-          box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
 }
 .modal-content {
   position: relative;
@@ -5934,34 +5929,36 @@ button.close {
   opacity: 0;
 }
 .modal-backdrop.in {
-  filter: alpha(opacity=40);
-  opacity: .4;
+  filter: alpha(opacity=60);
+  opacity: .6;
 }
 .modal-header {
-  padding: 6px 0;
-  margin: 0 10px;
-  border-bottom: 1px solid #b7b7b7;
+  padding: 18px 0 18px 5px;
+  margin: 0 25px;
+  border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .close {
-  margin-top: -2px;
+  margin: -28px -26px 0 0;
+  font-size: 40px;
+  line-height: normal;
+  outline: 0;
 }
 .modal-title {
   margin: 0;
-  line-height: 1.5;
+  color: #666;
 }
 .modal-body {
   position: relative;
   min-height: 50px;
-  padding: 10px 15px;
+  padding: 20px 30px;
 }
 .modal-footer {
-  padding: 5px 10px;
+  padding: 0 30px 30px 30px;
   text-align: right;
-  background-color: #f1f4f5;
 }
 .modal-footer .btn + .btn {
   margin-bottom: 0;
-  margin-left: 5px;
+  margin-left: 15px;
 }
 .modal-footer .btn-group .btn + .btn {
   margin-left: -1px;

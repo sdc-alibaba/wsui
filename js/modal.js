@@ -42,13 +42,13 @@
         + '<div class="modal-content">'
           + '<div class="modal-header">'
             + '<button type="button" class="' + CLASSMAP.close + '" data-dismiss="modal" aria-hidden="true">&times;</button>'
-            + '<h5 class="modal-title"><%=title%></h5>'
+            + '<h4 class="modal-title"><%=title%></h4>'
           + '</div>'
           + '<div class="modal-body"><%=body%></div>'
           + '<div class="modal-footer">'
             // 增加data-ok="modal"参数
+            + '<button type="button" class="' + CLASSMAP.btn + ' btn-lg" data-dismiss="modal"><%=cancelbtn%></button>'
             + '<button type="button" class="' + CLASSMAP.btn + ' btn-primary btn-lg" data-ok="modal"><%=okbtn%></button>'
-            + '<button type="button" class="' + CLASSMAP.btn + ' btn-default btn-lg" data-dismiss="modal"><%=cancelbtn%></button>'
           + '</div>'
         + '</div>'
       + '</div>'
@@ -72,7 +72,7 @@
     // 是否显示关闭按钮
     !options.closebtn && $dialog.find('.' + CLASSMAP.close).remove()
     // 是否显示取消按钮
-    !options.cancelbtn && $dialog.find('.modal-footer .btn-default').remove()
+    !options.cancelbtn && $dialog.find('.modal-footer [data-dismiss]').remove()
     // 设置是否指定宽度类型
     if (optWidth) {
       var widthMap = {
@@ -414,6 +414,7 @@
     bgcolor: '#000',
     keyboard: true,
     hasfoot: true,
+    cancelbtn: true,
     closebtn: true,
     transition: true
   }
@@ -516,7 +517,8 @@
     alert: function (customCfg) {
       var dialogCfg = {
         type: 'alert',
-        title: '注意'
+        title: '注意',
+        cancelbtn: false
       }
       return $._modal(dialogCfg, customCfg)
     },
