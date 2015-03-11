@@ -1,0 +1,49 @@
+//
+// Tag
+// --------------------------------------------------
+
+
+// Base class
+.tag{
+	padding: 0 12px;
+	display: inline-block;
+	font-size: 14px;
+	color: #666;
+	line-height: 28px;
+	border: 1px solid #999;
+	.user-select(none);
+	i{
+		margin-left: 16px;
+		font:normal 12px tahoma;
+		line-height: 28px;
+	}
+	&:hover{
+		border-color: #f23f40;
+		i{
+			color: #f23f40;
+		}
+	}
+	&.tag-disabled:hover{
+		border-color: #999;
+		i{
+			color: #e6e6e6;
+		}
+	}
+}
+
+.tag-active{
+	position: relative;
+	border-color: #f23f40;
+	&:after{
+		width: 18px;
+		height: 18px;
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		background: url(http://gtms02.alicdn.com/tps/i2/TB1KjbvGFXXXXbMaXXXoq9FFpXX-18-18.png) no-repeat 0 0;
+	}
+}
+.tag-disabled{
+	color: #e6e6e6;
+}
