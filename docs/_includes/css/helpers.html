@@ -1,8 +1,9 @@
 <div class="bs-docs-section">
-  <h1 id="helper-classes" class="page-header">Helper classes</h1>
+  <h1 id="helper-classes" class="page-header">辅助类</h1>
 
-  <h3 id="helper-classes-colors">Contextual colors</h3>
-  <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
+  <h3 id="helper-classes-colors">情境文本颜色</h3>
+  <p>通过颜色来展示意图，我们 提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可以加深，就像默认的链接一样。</p>
+
   <div class="bs-example" data-example-id="contextual-colors-helpers">
     <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
     <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -20,16 +21,12 @@
 <p class="text-danger">...</p>
 {% endhighlight %}
   <div class="bs-callout bs-callout-info" id="callout-helper-context-color-specificity">
-    <h4>Dealing with specificity</h4>
-    <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
-  </div>
-  <div class="bs-callout bs-callout-warning" id="callout-helper-context-color-accessibility">
-    <h4>Conveying meaning to assistive technologies</h4>
-    <p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the contextual colors are only used to reinforce meaning that is already present in the text/markup), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
+    <h4>处理特例</h4>
+    <p>有时这些强调用的类不能正常工作，通常是因为对应的选择器被特殊指定了样式。大多数情况下足够有效的方案就将他们放在<code>&lt;span&gt;</code> 标签里.</p>
   </div>
 
-  <h3 id="helper-classes-backgrounds">Contextual backgrounds</h3>
-  <p>Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.</p>
+  <h3 id="helper-classes-backgrounds">情境背景色</h3>
+  <p>和情境文本颜色类一样，使用任意情境背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，就像上面所讲的情境文本颜色类一样。</p>
   <div class="bs-example bs-example-bg-classes" data-example-id="contextual-backgrounds-helpers">
     <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
     <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
@@ -44,17 +41,9 @@
 <p class="bg-warning">...</p>
 <p class="bg-danger">...</p>
 {% endhighlight %}
-  <div class="bs-callout bs-callout-info" id="callout-helper-bg-specificity">
-    <h4>Dealing with specificity</h4>
-    <p>Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a <code>&lt;div&gt;</code> with the class.</p>
-  </div>
-  <div class="bs-callout bs-callout-warning" id="callout-helper-bg-accessibility">
-    <h4>Conveying meaning to assistive technologies</h4>
-    <p>As with <a href="#helper-classes-colors">contextual colors</a>, ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.</p>
-  </div>
 
-  <h3 id="helper-classes-close">Close icon</h3>
-  <p>Use the generic close icon for dismissing content like modals and alerts.</p>
+  <h3 id="helper-classes-close">关闭按钮</h3>
+  <p>通过使用一个象征关闭的图标，可以让模态框和警告框消失。</p>
   <div class="bs-example" data-example-id="close-icon">
     <p><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
   </div>
@@ -63,8 +52,8 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-carets">Carets</h3>
-  <p>Use carets to indicate dropdown functionality and direction. Note that the default caret will reverse automatically in <a href="../components/#btn-dropdowns-dropup">dropup menus</a>.</p>
+  <h3 id="helper-classes-carets">三角符号</h3>
+  <p>通过使用三角符号可以指示某个元素具有下拉菜单的功能。注意，<a href="../components/#btn-dropdowns-dropup">向上弹出式菜单</a>中的三角符号是反方向的。</p>
   <div class="bs-example" data-example-id="caret">
     <span class="caret"></span>
   </div>
@@ -73,8 +62,8 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-floats">Quick floats</h3>
-  <p>Float an element to the left or right with a class. <code>!important</code> is included to avoid specificity issues. Classes can also be used as mixins.</p>
+  <h3 id="helper-classes-floats">快速浮动</h3>
+  <p>通过添加一个类，可以将任意元素向左或向右浮动。<code>!important</code> 被用来明确 CSS 样式的优先级。这些类还可以作为 mixin（参见 less 文档） 使用。</p>
 {% highlight html %}
 <div class="pull-left">...</div>
 <div class="pull-right">...</div>
@@ -98,13 +87,12 @@
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-helper-pull-navbar">
-    <h4>Not for use in navbars</h4>
-    <p>To align components in navbars with utility classes, use <code>.navbar-left</code> or <code>.navbar-right</code> instead. <a href="../components/#navbar-component-alignment">See the navbar docs</a> for details.</p>
+    <h4>不能用于导航条组件中</h4>
+    <p>排列导航条中的组件时可以使用这些工具类：<code>.navbar-left</code> 或 <code>.navbar-right</code> 。 <a href="../components/#navbar-component-alignment">参见导航条文档</a>以获取更多信息。</p>
   </div>
 
-
-  <h3 id="helper-classes-center">Center content blocks</h3>
-  <p>Set an element to <code>display: block</code> and center via <code>margin</code>. Available as a mixin and class.</p>
+  <h3 id="helper-classes-center">让内容块居中</h3>
+  <p>为任意元素设置 <code>display: block</code> 属性并通过 <code>margin</code> 属性让其中的内容居中。下面列出的类还可以作为 mixin 使用。</p>
 {% highlight html %}
 <div class="center-block">...</div>
 {% endhighlight %}
@@ -123,8 +111,8 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-clearfix">Clearfix</h3>
-  <p>Easily clear <code>float</code>s by adding <code>.clearfix</code> <strong>to the parent element</strong>. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
+  <h3 id="helper-classes-clearfix">清除浮动</h3>
+  <p><strong>通过为父元素</strong>添加 <code>.clearfix</code> 类可以很容易地清除浮动（<code>float</code>）。这里所使用的是 Nicolas Gallagher 创造的 <a href="http://nicolasgallagher.com/micro-clearfix-hack/">micro clearfix</a> 方式。此类还可以作为 mixin 使用。</p>
 {% highlight html %}
 <!-- Usage as a class -->
 <div class="clearfix">...</div>
@@ -148,11 +136,11 @@
 }
 {% endhighlight %}
 
+  <h3 id="helper-classes-show-hide">显示或隐藏内容</h3>
+  <p><code>.show</code> 和 <code>.hidden</code> 类可以强制任意元素显示或隐藏(<strong>对于屏幕阅读器也能起效</strong>)。这些类通过 <code>!important</code> 来避免 CSS 样式优先级问题，就像 <a href="#helper-classes-floats">quick floats</a> 一样的做法。注意，这些类只对块级元素起作用，另外，还可以作为 mixin 使用。</p>
+  <p><code>.hide</code> 类仍然可用，但是它不能对屏幕阅读器起作用，并且从 v3.0.1 版本开始就<strong>不建议使用</strong>了。请使用 <code>.hidden</code> 或 <code>.sr-only</code> 。</p>
+  <p>另外，<code>.invisible</code> 类可以被用来仅仅影响元素的可见性，也就是所，元素的 <code>display</code> 属性不被改变，并且这个元素仍然能够影响文档流的排布。</p>
 
-  <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
-  <p>Force an element to be shown or hidden (<strong>including for screen readers</strong>) with the use of <code>.show</code> and <code>.hidden</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
-  <p><code>.hide</code> is available, but it does not always affect screen readers and is <strong>deprecated</strong> as of v3.0.1. Use <code>.hidden</code> or <code>.sr-only</code> instead.</p>
-  <p>Furthermore, <code>.invisible</code> can be used to toggle only the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 {% highlight html %}
 <div class="show">...</div>
 <div class="hidden">...</div>
@@ -180,8 +168,8 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-screen-readers">Screen reader and keyboard navigation content</h3>
-  <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Combine <code>.sr-only</code> with <code>.sr-only-focusable</code> to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as mixins.</p>
+  <h3 id="helper-classes-screen-readers">屏幕阅读器和键盘导航</h3>
+  <p><code>.sr-only</code> 类可以对<strong>屏幕阅读器以外</strong>的设备隐藏内容。<code>.sr-only</code> 和 <code>.sr-only-focusable</code> 联合使用的话可以在元素有焦点的时候再次显示出来（例如，使用键盘导航的用户）。对于遵循 <a href="../getting-started/#accessibility">可访问性的最佳实践</a> 很有必要。这个类也可以作为 mixin 使用。</p>
 {% highlight html %}
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 {% endhighlight %}
@@ -193,9 +181,8 @@
 }
 {% endhighlight %}
 
-
-  <h3 id="helper-classes-image-replacement">Image replacement</h3>
-  <p>Utilize the <code>.text-hide</code> class or mixin to help replace an element's text content with a background image.</p>
+  <h3 id="helper-classes-image-replacement">图片替换</h3>
+  <p>使用 <code>.text-hide</code> 类或对应的 mixin 可以用来将元素的文本内容替换为一张背景图。</p>
 {% highlight html %}
 <h1 class="text-hide">Custom heading</h1>
 {% endhighlight %}
