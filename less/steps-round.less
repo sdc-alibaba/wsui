@@ -1,0 +1,126 @@
+.steps-round {
+	list-style-type: none;
+    margin: @line-height-computed 0px;
+	padding: 0px;
+	.clearfix;
+	> li {
+		float: left;
+		padding: 0px;
+		position: relative;
+		&:before {
+			content: '';
+			width: 100%;
+			height: 6px;
+			margin: 12px 0px;
+			display:block;
+			float: left;
+			background-color: @stepsTodoColor;
+		}
+		&:first-child {
+			&:before {
+				.border-left-radius(4px);
+			}
+		}
+		&:last-child {
+			&:before {
+				.border-right-radius(4px);
+			}
+		}
+		.wrap {
+			position:absolute;
+			left: 50%;
+			margin-left: -25px;	
+			width: 50px;
+			text-align: center;
+			background: #FFF;
+		}
+		.round {
+			width: 30px;
+			height: 30px;
+			.border-radius(15px);
+			display: inline-block;
+			vertical-align: middle;
+			font-size: @font-size-base;
+			color: #FFF;
+			line-height: 22px;
+			text-align: center;
+			border: 4px @stepsRoundTodoBorderColor solid;
+			background-color: #FFF;
+			color: @stepsTodoTextColor;
+
+			> i {
+				color: @stepsFinishedColor;
+				font-size: @font-size-base;
+			}
+		}
+		label {
+			width: 100%;
+			text-align: center;
+			color: @stepsTodoTextColor;
+			margin: 10px 0px 0px;
+			.text-overflow;
+
+		}
+
+	}
+	//default color is todocolor	
+	> .finished {
+		&:before {
+			background-color: @stepsFinishedColor;
+		}
+		.round {
+			border: 4px @stepsFinishedColor solid;
+			background-color: @stepsFinishedColor;
+			color: @stepsFinishedTextColor;
+		}
+		label {
+			color: @stepsRoundFinishedTextColor;
+		}
+	}
+	> .current {
+		&:before {
+			background-color: @stepsCurrentColor;
+		}
+
+		.round {
+			border: 4px @stepsCurrentColor solid;
+			background-color: @stepsCurrentColor;
+			color: @stepsFinishedTextColor;
+		}
+		label {
+			color: @stepsRoundFinishedTextColor;
+		}
+	}
+
+}
+//auto-steps
+.steps-round.step-2 {
+	> li {
+		width: 50%;
+	}
+}
+.steps-round.step-3 {
+	> li {
+		width: 33.33%;
+	}
+}
+.steps-round.step-4 {
+	> li {
+		width: 25%;
+	}
+}
+.steps-round.step-5 {
+	> li {
+		width: 20%;
+	}
+}
+.steps-round.step-6 {
+	> li {
+		width: 16.66%;
+	}
+}
+.steps-round.step-7 {
+	> li {
+		width: 14.28%;
+	}
+}

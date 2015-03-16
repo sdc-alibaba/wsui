@@ -8,7 +8,7 @@ permalink:        pretty
 # Server
 source:           docs
 destination:      _gh_pages
-host:             0.0.0.0
+host:             127.0.0.1
 port:             9001
 url:              http://sui.taobao.org
 encoding:         UTF-8
