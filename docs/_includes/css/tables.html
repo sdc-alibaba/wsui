@@ -1,8 +1,8 @@
 <div class="bs-docs-section">
-  <h1 id="tables" class="page-header">Tables</h1>
+  <h1 id="tables" class="page-header">表格</h1>
 
-  <h2 id="tables-example">Basic example</h2>
-  <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>. It may seem super redundant, but given the widespread use of tables for other plugins like calendars and date pickers, we've opted to isolate our custom table styles.</p>
+  <h2 id="tables-example">基本实例</h2>
+  <p>为任意 <code>&lt;table&gt;</code> 标签添加 <code>.table</code> 类可以为其赋予基本的样式 — 少量的内补（padding）和水平方向的分隔线。这种方式看起来很多余！？但是我们觉得，表格元素使用的很广泛，如果我们为其赋予默认样式可能会影响例如日历和日期选择之类的插件，所以我们选择将此样式独立出来。</p>
   <div class="bs-example" data-example-id="simple-table">
     <table class="table">
       <caption>Optional table caption.</caption>
@@ -43,11 +43,11 @@
 {% endhighlight %}
 
 
-  <h2 id="tables-striped">Striped rows</h2>
-  <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
+  <h2 id="tables-striped">条纹状表格</h2>
+  <p>通过 <code>.table-striped</code> 类可以给 <code>&lt;tbody&gt;</code> 之内的每一行增加斑马条纹样式。</p>
   <div class="bs-callout bs-callout-danger" id="callout-tables-striped-ie8">
-    <h4>Cross-browser compatibility</h4>
-    <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in Internet Explorer 8.</p>
+    <h4>跨浏览器兼容性</h4>
+    <p>条纹状表格是依赖 <code>:nth-child</code> CSS 选择器实现的，而这一功能不被 Internet Explorer 8 支持。</p>
   </div>
   <div class="bs-example" data-example-id="striped-table">
     <table class="table table-striped">
@@ -118,8 +118,8 @@
 {% endhighlight %}
 
 
-  <h2 id="tables-bordered">Bordered table</h2>
-  <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p>
+  <h2 id="tables-bordered">带边框的表格</h2>
+  <p>添加 <code>.table-bordered</code> 类为表格和其中的每个单元格增加边框。</p>
   <div class="bs-example" data-example-id="bordered-table">
     <table class="table table-bordered">
       <thead>
@@ -159,8 +159,8 @@
 {% endhighlight %}
 
 
-  <h2 id="tables-hover-rows">Hover rows</h2>
-  <p>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
+  <h2 id="tables-hover-rows">鼠标悬停</h2>
+  <p>通过添加 <code>.table-hover</code> 类可以让 <code>&lt;tbody&gt;</code> 中的每一行对鼠标悬停状态作出响应。</p>
   <div class="bs-example" data-example-id="hoverable-table">
     <table class="table table-hover">
       <thead>
@@ -239,8 +239,8 @@
 </table>
 {% endhighlight %}
 
-  <h2 id="tables-condensed">Condensed table</h2>
-  <p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
+  <h2 id="tables-condensed">紧缩表格</h2>
+  <p>通过添加 <code>.table-condensed</code> 类可以让表格更加紧凑，单元格中的内补（padding）均会减半。</p>
   <div class="bs-example" data-example-id="condensed-table">
     <table class="table table-condensed">
       <thead>
@@ -279,8 +279,8 @@
 {% endhighlight %}
 
 
-  <h2 id="tables-contextual-classes">Contextual classes</h2>
-  <p>Use contextual classes to color table rows or individual cells.</p>
+  <h2 id="tables-contextual-classes">状态类</h2>
+  <p>通过这些状态类可以为行或单元格设置颜色。</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <colgroup>
@@ -412,27 +412,27 @@
   <td class="info">...</td>
 </tr>
 {% endhighlight %}
-  <div class="bs-callout bs-callout-warning" id="callout-tables-context-accessibility">
-    <h4>Conveying meaning to assistive technologies</h4>
-    <p>Using color to add meaning to a table row or individual cell only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text in the relevant table row/cell), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
+  <div class="bs-callout bs-callout-warning">
+    <h4>向使用辅助技术的用户传达用意</h4>
+    <p>通过为表格中的一行或一个单元格添加颜色而赋予不同的意义只是提供了一种视觉上的表现，并不能为使用辅助技术 -- 例如屏幕阅读器 -- 浏览网页的用户提供更多信息。因此，请确保通过颜色而赋予的不同意义可以通过内容本身来表达（即在相应行或单元格中的可见的文本内容）；或者通过包含额外的方式 -- 例如应用了 <code>.sr-only</code> 类而隐藏的文本 -- 来表达出来。 </p>
   </div>
 
-  <h2 id="tables-responsive">Responsive tables</h2>
-  <p>Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code> to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
+  <h2 id="tables-responsive">响应式表格</h2>
+  <p>将任何 <code>.table</code> 元素包裹在 <code>.table-responsive</code> 元素内，即可创建响应式表格，其会在小屏幕设备上（小于768px）水平滚动。当屏幕大于 768px 宽度时，水平滚动条消失。</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-tables-responsive-overflow">
-    <h4>Vertical clipping/truncation</h4>
-    <p>Responsive tables make use of <code>overflow-y: hidden</code>, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.</p>
+    <h4>垂直方向的内容截断</h4>
+    <p>响应式表格使用了 <code>overflow-y: hidden</code> 属性，这样就能将超出表格底部和顶部的内容截断。特别是，也可以截断下拉菜单和其他第三方组件。 </p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-tables-responsive-ff-fieldset">
-    <h4>Firefox and fieldsets</h4>
-    <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we <strong>don't</strong> provide in Bootstrap:</p>
+    <h4>Firefox 和 <code>fieldset</code> 元素</h4>
+    <p>Firefox 浏览器对 <code>fieldset</code> 元素设置了一些影响 <code>width</code> 属性的样式，导致响应式表格出现问题。除非使用我们下面提供的针对 Firefox 的 hack 代码，否则无解：</p>
 {% highlight css %}
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
 }
 {% endhighlight %}
-    <p>For more information, read <a href="http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
+    <p>更多信息请参考 <a href="http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
   </div>
 
   <div class="bs-example" data-example-id="simple-responsive-table">

@@ -1,258 +1,258 @@
 <div class="bs-docs-section">
-  <h1 id="responsive-utilities" class="page-header">Responsive utilities</h1>
+  <h1 id="responsive-utilities" class="page-header">响应式工具</h1>
 
-  <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
-  <p>Try to use these on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation.</p>
+  <p class="lead">为了加快对移动设备友好的页面开发工作，利用媒体查询功能并使用这些工具类可以方便的针对不同设备展示或隐藏页面内容。另外还包含了针对打印机显示或隐藏内容的工具类。</p>
+  <p>有针对性的使用这类工具类，从而避免为同一个网站创建完全不同的版本。相反，通过使用这些工具类可以在不同设备上提供不同的展现形式。</p>
 
 
-  <h2 id="responsive-utilities-classes">Available classes</h2>
-  <p>Use a single or combination of the available classes for toggling content across viewport breakpoints.</p>
+  <h2 id="responsive-utilities-classes">可用的类</h2>
+  <p>通过单独或联合使用以下列出的类，可以针对不同屏幕尺寸隐藏或显示页面内容。</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped responsive-utilities">
       <thead>
         <tr>
           <th></th>
           <th>
-            Extra small devices
-            <small>Phones (&lt;768px)</small>
+            超小屏幕
+            <small>手机 (&lt;768px)</small>
           </th>
           <th>
-            Small devices
-            <small>Tablets (&ge;768px)</small>
+            小屏幕
+            <small>平板 (≥768px)</small>
           </th>
           <th>
-            Medium devices
-            <small>Desktops (&ge;992px)</small>
+            中等屏幕
+            <small>桌面 (≥992px)</small>
           </th>
           <th>
-            Large devices
-            <small>Desktops (&ge;1200px)</small>
+            大屏幕
+            <small>桌面 (≥1200px)</small>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row"><code>.visible-xs-*</code></th>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-hidden">Hidden</td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.visible-sm-*</code></th>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-hidden">Hidden</td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.visible-md-*</code></th>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.visible-lg-*</code></th>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-        </tr>
+      <tr>
+        <th scope="row"><code>.visible-xs-*</code></th>
+        <td class="is-visible">可见</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-hidden">隐藏</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.visible-sm-*</code></th>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-visible">可见</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-hidden">隐藏</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.visible-md-*</code></th>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-visible">可见</td>
+        <td class="is-hidden">隐藏</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.visible-lg-*</code></th>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-visible">可见</td>
+      </tr>
       </tbody>
       <tbody>
-        <tr>
-          <th scope="row"><code>.hidden-xs</code></th>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-visible">Visible</td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.hidden-sm</code></th>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-visible">Visible</td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.hidden-md</code></th>
-          <td class="is-visible">Visible</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.hidden-lg</code></th>
-          <td class="is-visible">Visible</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-        </tr>
+      <tr>
+        <th scope="row"><code>.hidden-xs</code></th>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-visible">可见</td>
+        <td class="is-visible">可见</td>
+        <td class="is-visible">可见</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.hidden-sm</code></th>
+        <td class="is-visible">可见</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-visible">可见</td>
+        <td class="is-visible">可见</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.hidden-md</code></th>
+        <td class="is-visible">可见</td>
+        <td class="is-visible">可见</td>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-visible">可见</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.hidden-lg</code></th>
+        <td class="is-visible">可见</td>
+        <td class="is-visible">可见</td>
+        <td class="is-visible">可见</td>
+        <td class="is-hidden">隐藏</td>
+      </tr>
       </tbody>
     </table>
   </div>
 
-  <p>As of v3.2.0, the <code>.visible-*-*</code> classes for each breakpoint come in three variations, one for each CSS <code>display</code> property value listed below.</p>
+  <p>从 v3.2.0 版本起，形如 <code>.visible-*-*</code> 的类针对每种屏幕大小都有了三种变体，每个针对 CSS 中不同的 <code>display</code> 属性，列表如下：</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Group of classes</th>
+          <th>类组</th>
           <th>CSS <code>display</code></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row"><code>.visible-*-block</code></th>
-          <td><code>display: block;</code></td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.visible-*-inline</code></th>
-          <td><code>display: inline;</code></td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.visible-*-inline-block</code></th>
-          <td><code>display: inline-block;</code></td>
-        </tr>
+      <tr>
+        <th scope="row"><code>.visible-*-block</code></th>
+        <td><code>display: block;</code></td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.visible-*-inline</code></th>
+        <td><code>display: inline;</code></td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.visible-*-inline-block</code></th>
+        <td><code>display: inline-block;</code></td>
+      </tr>
       </tbody>
     </table>
   </div>
-  <p>So, for extra small (<code>xs</code>) screens for example, the available <code>.visible-*-*</code> classes are: <code>.visible-xs-block</code>, <code>.visible-xs-inline</code>, and <code>.visible-xs-inline-block</code>.</p>
-  <p>The classes <code>.visible-xs</code>, <code>.visible-sm</code>, <code>.visible-md</code>, and <code>.visible-lg</code> also exist, but are <strong>deprecated as of v3.2.0</strong>. They are approximately equivalent to <code>.visible-*-block</code>, except with additional special cases for toggling <code>&lt;table&gt;</code>-related elements.</p>
+  <p>因此，以超小屏幕（<code>xs</code>）为例，可用的 <code>.visible-*-*</code> 类是：<code>.visible-xs-block</code>、<code>.visible-xs-inline</code> 和 <code>.visible-xs-inline-block</code>。</p>
+  <p><code>.visible-xs</code>、<code>.visible-sm</code>、<code>.visible-md</code> 和 <code>.visible-lg</code> 类也同时存在。但是<strong>从 v3.2.0 版本开始不再建议使用</strong>。除了 <code>&lt;table&gt;</code> 相关的元素的特殊情况外，它们与 <code>.visible-*-block</code> 大体相同。</p>
 
-  <h2 id="responsive-utilities-print">Print classes</h2>
-  <p>Similar to the regular responsive classes, use these for toggling content for print.</p>
+  <h2 id="responsive-utilities-print">打印类</h2>
+  <p>和常规的响应式类一样，使用下面的类可以针对打印机隐藏或显示某些内容。</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped responsive-utilities">
       <thead>
         <tr>
-          <th>Classes</th>
-          <th>Browser</th>
-          <th>Print</th>
+          <th>class</th>
+          <th>浏览器</th>
+          <th>打印机</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">
-            <code>.visible-print-block</code><br>
-            <code>.visible-print-inline</code><br>
-            <code>.visible-print-inline-block</code>
-          </th>
-          <td class="is-hidden">Hidden</td>
-          <td class="is-visible">Visible</td>
-        </tr>
-        <tr>
-          <th scope="row"><code>.hidden-print</code></th>
-          <td class="is-visible">Visible</td>
-          <td class="is-hidden">Hidden</td>
-        </tr>
+      <tr>
+        <th scope="row">
+          <code>.visible-print-block</code><br>
+          <code>.visible-print-inline</code><br>
+          <code>.visible-print-inline-block</code>
+        </th>
+        <td class="is-hidden">隐藏</td>
+        <td class="is-visible">可见</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>.hidden-print</code></th>
+        <td class="is-visible">可见</td>
+        <td class="is-hidden">隐藏</td>
+      </tr>
       </tbody>
     </table>
   </div>
-  <p>The class <code>.visible-print</code> also exists but is <strong>deprecated</strong> as of v3.2.0. It is approximately equivalent to <code>.visible-print-block</code>, except with additional special cases for <code>&lt;table&gt;</code>-related elements.</p>
+  <p><code>.visible-print</code> 类也是存在的，但是从 v3.2.0 版本开始<strong>不建议使用</strong>。它与 <code>.visible-print-block</code> 类大致相同，除了 <code>&lt;table&gt;</code> 相关元素的特殊情况外。</p>
 
 
-  <h2 id="responsive-utilities-tests">Test cases</h2>
-  <p>Resize your browser or load on different devices to test the responsive utility classes.</p>
+  <h2 id="responsive-utilities-tests">测试用例</h2>
+  <p>调整你的浏览器大小，或者用其他设备打开页面，都可以测试这些响应式工具类。</p>
 
-  <h3>Visible on...</h3>
-  <p>Green checkmarks indicate the element <strong>is visible</strong> in your current viewport.</p>
-  <div class="row responsive-utilities-test visible-on">
-    <div class="col-xs-6 col-sm-3">
-      <span class="hidden-xs">Extra small</span>
-      <span class="visible-xs-block">&#10004; Visible on x-small</span>
-    </div>
-    <div class="col-xs-6 col-sm-3">
-      <span class="hidden-sm">Small</span>
-      <span class="visible-sm-block">&#10004; Visible on small</span>
-    </div>
-    <div class="clearfix visible-xs-block"></div>
-    <div class="col-xs-6 col-sm-3">
-      <span class="hidden-md">Medium</span>
-      <span class="visible-md-block">&#10004; Visible on medium</span>
-    </div>
-    <div class="col-xs-6 col-sm-3">
-      <span class="hidden-lg">Large</span>
-      <span class="visible-lg-block">&#10004; Visible on large</span>
-    </div>
-  </div>
+  <h3>在...上可见</h3>
+  <p>带有绿色标记的元素表示其在当前浏览器视口（viewport）中是<strong>可见的</strong>。</p>
   <div class="row responsive-utilities-test visible-on">
     <div class="col-xs-6">
-      <span class="hidden-xs hidden-sm">Extra small and small</span>
-      <span class="visible-xs-block visible-sm-block">&#10004; Visible on x-small and small</span>
+      <span class="hidden-xs">超小屏幕</span>
+      <span class="visible-xs-block">✔ 在超小屏幕上可见</span>
     </div>
     <div class="col-xs-6">
-      <span class="hidden-md hidden-lg">Medium and large</span>
-      <span class="visible-md-block visible-lg-block">&#10004; Visible on medium and large</span>
-    </div>
-    <div class="clearfix visible-xs-block"></div>
-    <div class="col-xs-6">
-      <span class="hidden-xs hidden-md">Extra small and medium</span>
-      <span class="visible-xs-block visible-md-block">&#10004; Visible on x-small and medium</span>
-    </div>
-    <div class="col-xs-6">
-      <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm-block visible-lg-block">&#10004; Visible on small and large</span>
+      <span class="hidden-sm">小屏幕</span>
+      <span class="visible-sm-block">✔ 在小屏幕上可见</span>
     </div>
     <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6">
-      <span class="hidden-xs hidden-lg">Extra small and large</span>
-      <span class="visible-xs-block visible-lg-block">&#10004; Visible on x-small and large</span>
+      <span class="hidden-md">中等屏幕</span>
+      <span class="visible-md-block">✔ 在中等屏幕上可见</span>
     </div>
     <div class="col-xs-6">
-      <span class="hidden-sm hidden-md">Small and medium</span>
-      <span class="visible-sm-block visible-md-block">&#10004; Visible on small and medium</span>
+      <span class="hidden-lg">大屏幕</span>
+      <span class="visible-lg-block">✔ 在大屏幕上可见</span>
+    </div>
+  </div>
+  <div class="row responsive-utilities-test visible-on">
+    <div class="col-xs-6 col-sm-6">
+      <span class="hidden-xs hidden-sm">超小屏幕和小屏幕</span>
+      <span class="visible-xs-block visible-sm-block">✔ 在超小屏幕和小屏幕上可见</span>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+      <span class="hidden-md hidden-lg">中等屏幕和大屏幕</span>
+      <span class="visible-md-block visible-lg-block">✔ 在中等屏幕和大屏幕上可见</span>
+    </div>
+    <div class="clearfix visible-xs-block"></div>
+    <div class="col-xs-6 col-sm-6">
+      <span class="hidden-xs hidden-md">超小屏幕和中等屏幕</span>
+      <span class="visible-xs-block visible-md-block">✔ 在超小屏幕和中等屏幕上可见</span>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+      <span class="hidden-sm hidden-lg">小屏幕和大屏幕</span>
+      <span class="visible-sm-block visible-lg-block">✔ 在小屏幕和大屏幕上可见</span>
+    </div>
+    <div class="clearfix visible-xs-block"></div>
+    <div class="col-xs-6 col-sm-6">
+      <span class="hidden-xs hidden-lg">超小屏幕和大屏幕</span>
+      <span class="visible-xs-block visible-lg-block">✔ 在超小屏幕和大屏幕上可见</span>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+      <span class="hidden-sm hidden-md">小屏幕和中等屏幕</span>
+      <span class="visible-sm-block visible-md-block">✔ 在小屏幕和中等屏幕上可见</span>
     </div>
   </div>
 
-  <h3>Hidden on...</h3>
-  <p>Here, green checkmarks also indicate the element <strong>is hidden</strong> in your current viewport.</p>
+  <h3>在...上隐藏</h3>
+  <p>带有绿色标记的元素表示其在当前浏览器视口（viewport）中是<strong>隐藏的</strong>。</p>
   <div class="row responsive-utilities-test hidden-on">
     <div class="col-xs-6 col-sm-3">
-      <span class="hidden-xs">Extra small</span>
-      <span class="visible-xs-block">&#10004; Hidden on x-small</span>
+      <span class="hidden-xs">超小屏幕</span>
+      <span class="visible-xs-block">✔ 在超小屏幕上隐藏</span>
     </div>
     <div class="col-xs-6 col-sm-3">
-      <span class="hidden-sm">Small</span>
-      <span class="visible-sm-block">&#10004; Hidden on small</span>
+      <span class="hidden-sm">小屏幕</span>
+      <span class="visible-sm-block">✔ 在小屏幕上隐藏</span>
     </div>
     <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6 col-sm-3">
-      <span class="hidden-md">Medium</span>
-      <span class="visible-md-block">&#10004; Hidden on medium</span>
+      <span class="hidden-md">中等屏幕</span>
+      <span class="visible-md-block">✔ 在中等屏幕上隐藏</span>
     </div>
     <div class="col-xs-6 col-sm-3">
-      <span class="hidden-lg">Large</span>
-      <span class="visible-lg-block">&#10004; Hidden on large</span>
+      <span class="hidden-lg">大屏幕</span>
+      <span class="visible-lg-block">✔ 在大屏幕上隐藏</span>
     </div>
   </div>
   <div class="row responsive-utilities-test hidden-on">
     <div class="col-xs-6">
-      <span class="hidden-xs hidden-sm">Extra small and small</span>
-      <span class="visible-xs-block visible-sm-block">&#10004; Hidden on x-small and small</span>
+      <span class="hidden-xs hidden-sm">超小屏幕与小屏幕</span>
+      <span class="visible-xs-block visible-sm-block">✔ 在超小屏幕和小屏幕上隐藏</span>
     </div>
     <div class="col-xs-6">
-      <span class="hidden-md hidden-lg">Medium and large</span>
-      <span class="visible-md-block visible-lg-block">&#10004; Hidden on medium and large</span>
-    </div>
-    <div class="clearfix visible-xs-block"></div>
-    <div class="col-xs-6">
-      <span class="hidden-xs hidden-md">Extra small and medium</span>
-      <span class="visible-xs-block visible-md-block">&#10004; Hidden on x-small and medium</span>
-    </div>
-    <div class="col-xs-6">
-      <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm-block visible-lg-block">&#10004; Hidden on small and large</span>
+      <span class="hidden-md hidden-lg">中等屏幕和大屏幕</span>
+      <span class="visible-md-block visible-lg-block">✔ 在 medium 和 large 上隐藏</span>
     </div>
     <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6">
-      <span class="hidden-xs hidden-lg">Extra small and large</span>
-      <span class="visible-xs-block visible-lg-block">&#10004; Hidden on x-small and large</span>
+      <span class="hidden-xs hidden-md">超小屏幕和中等屏幕</span>
+      <span class="visible-xs-block visible-md-block">✔ 在超小屏幕和中等屏幕上隐藏</span>
     </div>
     <div class="col-xs-6">
-      <span class="hidden-sm hidden-md">Small and medium</span>
-      <span class="visible-sm-block visible-md-block">&#10004; Hidden on small and medium</span>
+      <span class="hidden-sm hidden-lg">小屏幕和大屏幕</span>
+      <span class="visible-sm-block visible-lg-block">✔ 在小屏幕和大屏幕上隐藏</span>
+    </div>
+    <div class="clearfix visible-xs-block"></div>
+    <div class="col-xs-6">
+      <span class="hidden-xs hidden-lg">超小屏幕和大屏幕</span>
+      <span class="visible-xs-block visible-lg-block">✔ 在超小屏幕和大屏幕上隐藏</span>
+    </div>
+    <div class="col-xs-6">
+      <span class="hidden-sm hidden-md">小屏幕和中等屏幕</span>
+      <span class="visible-sm-block visible-md-block">✔ 在小屏幕和中等屏幕上隐藏</span>
     </div>
   </div>
 </div>
