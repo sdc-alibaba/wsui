@@ -106,7 +106,8 @@ module.exports = function (grunt) {
       },
       sui: {
         src: [
-          'js/classmap.js',
+          // 'js/classmap.js',
+          'js/classmap-sui.js',
           'js/template.js',
           'js/transition.js',
           'js/alert.js',

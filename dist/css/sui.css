@@ -6511,6 +6511,7 @@ button.sui-close {
 }
 .sui-steps .finished .round {
   color: #28a3ef;
+  color: #fff\9;
   background-color: #fff;
   background-color: transparent\9;
 }
@@ -6573,6 +6574,22 @@ button.sui-close {
   padding: 0;
   margin: 18px 0;
   list-style-type: none;
+  /*
+	> .current {
+		&:before {
+			background-color: @stepsCurrentColor;
+		}
+
+		.round {
+			border: 4px @stepsCurrentColor solid;
+			background-color: @stepsCurrentColor;
+			color: @stepsFinishedTextColor;
+		}
+		label {
+			color: @stepsRoundFinishedTextColor;
+		}
+	}
+	*/
 }
 .sui-steps-round:before,
 .sui-steps-round:after {
@@ -6614,6 +6631,7 @@ button.sui-close {
 }
 .sui-steps-round > li .wrap {
   position: absolute;
+  top: 0;
   left: 50%;
   width: 50px;
   margin-left: -25px;
@@ -6647,26 +6665,18 @@ button.sui-close {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.sui-steps-round > .finished:before {
+.sui-steps-round > .finished:before,
+.sui-steps-round .current:before {
   background-color: #28a3ef;
 }
-.sui-steps-round > .finished .round {
+.sui-steps-round > .finished .round,
+.sui-steps-round .current .round {
   color: #fff;
   background-color: #28a3ef;
   border: 4px #28a3ef solid;
 }
-.sui-steps-round > .finished label {
-  color: #28a3ef;
-}
-.sui-steps-round > .current:before {
-  background-color: #4cb9fc;
-}
-.sui-steps-round > .current .round {
-  color: #fff;
-  background-color: #4cb9fc;
-  border: 4px #4cb9fc solid;
-}
-.sui-steps-round > .current label {
+.sui-steps-round > .finished label,
+.sui-steps-round .current label {
   color: #28a3ef;
 }
 .sui-steps-round.step-2 > li {
@@ -7880,7 +7890,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .datepicker.datepicker-small .timepicker .picker-con span {
   height: 24px;
 }
-.sui-introjs-overlay {
+.introjs-overlay {
   position: absolute;
   z-index: 999999;
   background-color: #000;
@@ -7905,7 +7915,7 @@ tr.introjs-showElement > td,
 tr.introjs-showElement > th {
   position: relative;
 }
-.sui-introjs-helperLayer {
+.introjs-helperLayer {
   position: absolute;
   z-index: 9999998;
   background-color: #fff;
@@ -8143,12 +8153,6 @@ tr.introjs-showElement > th {
 }
 .toast-danger {
   background: #ea4a36;
-}
-/*.modal-out {
-  
-}*/
-.sui-msg.msg-large.toast_message > .msg-con {
-  padding: 11px 31px 11px 44px;
 }
 .clearfix:before,
 .clearfix:after,

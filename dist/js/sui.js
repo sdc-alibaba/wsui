@@ -1,18 +1,18 @@
 // classmapstart
 
 window.CLASSMAP = {
-  alert: 'alert',
-  close: 'close',
-  modal: 'modal',
-  btn: 'btn',
-  carousel: 'carousel',
-  panel: 'panel',
-  dropdown: 'dropdown',
-  dropdownMenu: 'dropdown-menu',
-  popover: 'popover',
-  tooltip: 'tooltip',
-  nav: 'nav',
-  pagination: 'pagination'
+  alert: 'sui-alert',
+  close: 'sui-close',
+  btn: 'sui-btn',
+  modal: 'sui-modal',
+  carousel: 'sui-carousel',
+  panel: 'sui-panel',
+  dropdown: 'sui-dropdown',
+  dropdownMenu: 'sui-dropdown-menu',
+  popover: 'sui-popover',
+  tooltip: 'sui-tooltip',
+  nav: 'sui-nav',
+  pagination: 'sui-pagination'
 }
 
 /*jshint -W054 */
@@ -1611,7 +1611,7 @@ window.CLASSMAP = {
       options = $.extend({}, $.fn[this.type].defaults, this.$element.data(), options)
 
       // 根据tooltip的type类型构造tip模版
-      options.template = '<div class="sui-tooltip tooltip-' + options.type + '"><div class="tooltip-arrow">' + (options.type == 'default' ? '<div class="tooltip-arrow cover"></div>' : '') + '</div><div class="tooltip-inner"></div></div>'
+      options.template = '<div class="' + CLASSMAP.tooltip + ' tooltip-' + options.type + '"><div class="tooltip-arrow">' + (options.type == 'default' ? '<div class="tooltip-arrow cover"></div>' : '') + '</div><div class="tooltip-inner"></div></div>'
 
       if (options.delay && typeof options.delay == 'number') {
         options.delay = {
@@ -2005,9 +2005,9 @@ window.CLASSMAP = {
     // mousedown外部可消失tooltip(为了在click回调执行前处理好dom状态)
     $(document).on('mousedown', function (e) {
       var tgt = $(e.target),
-          tip = $('.sui-tooltip'),
+          tip = $('.' + CLASSMAP.tooltip),
           switchTgt = tip.prev(),
-          tipContainer = tgt.parents('.sui-tooltip')
+          tipContainer = tgt.parents('.' + CLASSMAP.tooltip)
       /* 逻辑执行条件一次注释：
        * 1、存在tip
        * 2、点击的不是tip内的某区域
@@ -3613,7 +3613,7 @@ window.CLASSMAP = {
 		this.element = $(element);
 		this.isInline = false;
 		this.isInput = this.element.is('input');
-		this.component = this.element.is('.date') ? this.element.find('.add-on, .input-group-addon, .sui-btn') : false;
+		this.component = this.element.is('.date') ? this.element.find('.add-on, .input-group-addon, .' + CLASSMAP.btn) : false;
 		this.hasInput = this.component && this.element.find('input').length;
 		if (this.component && this.component.length === 0)
 			this.component = false;
@@ -4226,7 +4226,7 @@ window.CLASSMAP = {
 				$.each(arguments, $.proxy(function(i, date) {
 					//获取第一个的时间,用来update 时间
 					if (this.o.timepicker&&i === 0) {
-						
+
 						this.timepicker.update(this._getTime(date)); //不要更新input
 					}
 					if (date instanceof Date)
@@ -4239,7 +4239,7 @@ window.CLASSMAP = {
 				fromArgs = true;
 
 
-				
+
 			} else {
 				dates = this.isInput ? this.element.val() : this.element.data('date') || this.element.find('input').val();
 				if (dates&&this.o.timepicker) {//合体模式
@@ -6907,7 +6907,7 @@ $('[data-toggle="validate"]').validate();
       };
 
       self._onResize = function(e) {
-        _setHelperLayerPosition.call(self, document.querySelector('.sui-introjs-helperLayer'));
+        _setHelperLayerPosition.call(self, document.querySelector('.introjs-helperLayer'));
       };
 
       if (window.addEventListener) {
@@ -7019,7 +7019,7 @@ $('[data-toggle="validate"]').validate();
    */
   function _exitIntro(targetElement) {
     //remove overlay layer from the page
-    var overlayLayer = targetElement.querySelector('.sui-introjs-overlay');
+    var overlayLayer = targetElement.querySelector('.introjs-overlay');
 
     //return if intro already completed or skipped
     if (overlayLayer === null) {
@@ -7035,7 +7035,7 @@ $('[data-toggle="validate"]').validate();
     }, 500);
 
     //remove all helper layers
-    var helperLayer = targetElement.querySelector('.sui-introjs-helperLayer');
+    var helperLayer = targetElement.querySelector('.introjs-helperLayer');
     if (helperLayer) {
       helperLayer.parentNode.removeChild(helperLayer);
     }
@@ -7214,7 +7214,7 @@ $('[data-toggle="validate"]').validate();
     }
 
     var self = this,
-        oldHelperLayer = document.querySelector('.sui-introjs-helperLayer'),
+        oldHelperLayer = document.querySelector('.introjs-helperLayer'),
         elementPosition = _getOffset(targetElement.element);  
 
     if (oldHelperLayer !== null) {
@@ -7282,7 +7282,7 @@ $('[data-toggle="validate"]').validate();
           bulletsLayer      = document.createElement('div'),
           buttonsLayer      = document.createElement('div');
 
-      helperLayer.className = 'sui-introjs-helperLayer';
+      helperLayer.className = 'introjs-helperLayer';
 
       //set new position to helper layer
       _setHelperLayerPosition.call(self, helperLayer);
@@ -7369,7 +7369,7 @@ $('[data-toggle="validate"]').validate();
 
       //skip button
       var skipTooltipButton = document.createElement('a');
-      skipTooltipButton.className = 'btn btn-default introjs-skipbutton';
+      skipTooltipButton.className = CLASSMAP.btn + ' btn-default introjs-skipbutton';
       skipTooltipButton.href = 'javascript:void(0);';
       skipTooltipButton.innerHTML = this._options.skipLabel;
 
@@ -7400,16 +7400,16 @@ $('[data-toggle="validate"]').validate();
     }
 
     if (this._currentStep === 0 && this._introItems.length > 1) {
-      prevTooltipButton.className = 'btn btn-default introjs-prevbutton disabled';
-      nextTooltipButton.className = 'btn btn-default introjs-nextbutton';
+      prevTooltipButton.className = CLASSMAP.btn + ' btn-default introjs-prevbutton disabled';
+      nextTooltipButton.className = CLASSMAP.btn + ' btn-default introjs-nextbutton';
       skipTooltipButton.innerHTML = this._options.skipLabel;
     } else if (this._introItems.length - 1 === this._currentStep || this._introItems.length === 1) {
       skipTooltipButton.innerHTML = this._options.doneLabel;
-      prevTooltipButton.className = 'btn btn-default introjs-prevbutton';
-      nextTooltipButton.className = 'btn btn-default introjs-nextbutton disabled';
+      prevTooltipButton.className = CLASSMAP.btn + ' btn-default introjs-prevbutton';
+      nextTooltipButton.className = CLASSMAP.btn + ' btn-default introjs-nextbutton disabled';
     } else {
-      prevTooltipButton.className = 'btn btn-default introjs-prevbutton';
-      nextTooltipButton.className = 'btn btn-default introjs-nextbutton';
+      prevTooltipButton.className = CLASSMAP.btn + ' btn-default introjs-prevbutton';
+      nextTooltipButton.className = CLASSMAP.btn + ' btn-default introjs-nextbutton';
       skipTooltipButton.innerHTML = this._options.skipLabel;
     }
 
@@ -7537,7 +7537,7 @@ $('[data-toggle="validate"]').validate();
         self = this;
 
     //set css class name
-    overlayLayer.className = 'sui-introjs-overlay';
+    overlayLayer.className = 'introjs-overlay';
 
     //check if the target element is body, we should calculate the size of overlay layer in a better way
     if (targetElm.tagName.toLowerCase() === 'body') {
@@ -7713,7 +7713,7 @@ $('[data-toggle="validate"]').validate();
       _exitIntro.call(this, this._targetElement);
     },
     refresh: function() {
-      _setHelperLayerPosition.call(this, document.querySelector('.sui-introjs-helperLayer'));
+      _setHelperLayerPosition.call(this, document.querySelector('.introjs-helperLayer'));
       return this;
     },
     onbeforechange: function(providedCallback) {
