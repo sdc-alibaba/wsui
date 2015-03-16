@@ -180,7 +180,7 @@
       };
 
       self._onResize = function(e) {
-        _setHelperLayerPosition.call(self, document.querySelector('.sui-introjs-helperLayer'));
+        _setHelperLayerPosition.call(self, document.querySelector('.introjs-helperLayer'));
       };
 
       if (window.addEventListener) {
@@ -292,7 +292,7 @@
    */
   function _exitIntro(targetElement) {
     //remove overlay layer from the page
-    var overlayLayer = targetElement.querySelector('.sui-introjs-overlay');
+    var overlayLayer = targetElement.querySelector('.introjs-overlay');
 
     //return if intro already completed or skipped
     if (overlayLayer === null) {
@@ -308,7 +308,7 @@
     }, 500);
 
     //remove all helper layers
-    var helperLayer = targetElement.querySelector('.sui-introjs-helperLayer');
+    var helperLayer = targetElement.querySelector('.introjs-helperLayer');
     if (helperLayer) {
       helperLayer.parentNode.removeChild(helperLayer);
     }
@@ -487,7 +487,7 @@
     }
 
     var self = this,
-        oldHelperLayer = document.querySelector('.sui-introjs-helperLayer'),
+        oldHelperLayer = document.querySelector('.introjs-helperLayer'),
         elementPosition = _getOffset(targetElement.element);  
 
     if (oldHelperLayer !== null) {
@@ -555,7 +555,7 @@
           bulletsLayer      = document.createElement('div'),
           buttonsLayer      = document.createElement('div');
 
-      helperLayer.className = 'sui-introjs-helperLayer';
+      helperLayer.className = 'introjs-helperLayer';
 
       //set new position to helper layer
       _setHelperLayerPosition.call(self, helperLayer);
@@ -810,7 +810,7 @@
         self = this;
 
     //set css class name
-    overlayLayer.className = 'sui-introjs-overlay';
+    overlayLayer.className = 'introjs-overlay';
 
     //check if the target element is body, we should calculate the size of overlay layer in a better way
     if (targetElm.tagName.toLowerCase() === 'body') {
@@ -986,7 +986,7 @@
       _exitIntro.call(this, this._targetElement);
     },
     refresh: function() {
-      _setHelperLayerPosition.call(this, document.querySelector('.sui-introjs-helperLayer'));
+      _setHelperLayerPosition.call(this, document.querySelector('.introjs-helperLayer'));
       return this;
     },
     onbeforechange: function(providedCallback) {
