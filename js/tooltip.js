@@ -51,7 +51,7 @@
       options = $.extend({}, $.fn[this.type].defaults, this.$element.data(), options)
 
       // 根据tooltip的type类型构造tip模版
-      options.template = '<div class="sui-tooltip tooltip-' + options.type + '"><div class="tooltip-arrow">' + (options.type == 'default' ? '<div class="tooltip-arrow cover"></div>' : '') + '</div><div class="tooltip-inner"></div></div>'
+      options.template = '<div class="' + CLASSMAP.tooltip + ' tooltip-' + options.type + '"><div class="tooltip-arrow">' + (options.type == 'default' ? '<div class="tooltip-arrow cover"></div>' : '') + '</div><div class="tooltip-inner"></div></div>'
 
       if (options.delay && typeof options.delay == 'number') {
         options.delay = {
@@ -445,9 +445,9 @@
     // mousedown外部可消失tooltip(为了在click回调执行前处理好dom状态)
     $(document).on('mousedown', function (e) {
       var tgt = $(e.target),
-          tip = $('.sui-tooltip'),
+          tip = $('.' + CLASSMAP.tooltip),
           switchTgt = tip.prev(),
-          tipContainer = tgt.parents('.sui-tooltip')
+          tipContainer = tgt.parents('.' + CLASSMAP.tooltip)
       /* 逻辑执行条件一次注释：
        * 1、存在tip
        * 2、点击的不是tip内的某区域
