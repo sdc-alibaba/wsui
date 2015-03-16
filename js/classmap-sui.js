@@ -2,7 +2,7 @@
 
 window.CLASSMAP = {
   alert: 'sui-alert',
-  close: 'close',
+  close: 'sui-close',
   btn: 'sui-btn',
   modal: 'sui-modal',
   carousel: 'sui-carousel',

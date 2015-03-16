@@ -1605,6 +1605,7 @@ h1[id] {
   min-height: 100%;
   max-height: 100%;
   padding: 40px 20px 800px;
+  overflow: scroll;
 }
 
 .bs-docs-sidenav {
