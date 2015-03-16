@@ -42,7 +42,7 @@
 
 }
 // Base class
-.sui-tooltip {
+.tooltip {
   position: absolute;
   z-index: @zindex-tooltip;
   display: block;
@@ -76,7 +76,7 @@
 
   .type-style();
 }
-.sui-tooltip ,.tooltip-only-arrow{
+.tooltip ,.tooltip-only-arrow{
   &.tooltip-default {
     border: @tipBorderWidth solid @tooltipBorderColor;
     border-radius: 2px;
@@ -203,7 +203,7 @@
       border-bottom-color: @state-info-bg;
     }
   }
-  // ---- end 
+  // ---- end
   .tooltip-arrow.cover {
     border-width: (@tooltipArrowWidth - 2);
   }
