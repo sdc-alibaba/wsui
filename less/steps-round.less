@@ -64,7 +64,8 @@
 
 	}
 	//default color is todocolor	
-	> .finished {
+	//为了美观，finished和current颜色暂时设成一致
+	> .finished, .current {
 		&:before {
 			background-color: @stepsFinishedColor;
 		}
@@ -77,6 +78,7 @@
 			color: @stepsRoundFinishedTextColor;
 		}
 	}
+	/*
 	> .current {
 		&:before {
 			background-color: @stepsCurrentColor;
@@ -91,6 +93,7 @@
 			color: @stepsRoundFinishedTextColor;
 		}
 	}
+	*/
 
 }
 //auto-steps
