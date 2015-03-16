@@ -1,22 +1,22 @@
 <div class="bs-docs-section">
-  <h1 id="btn-groups" class="page-header">Button groups</h1>
+  <h1 id="btn-groups" class="page-header">按钮组</h1>
 
-  <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with <a href="../javascript/#buttons">our buttons plugin</a>.</p>
+  <p class="lead">把多个按钮放在同一行变成按钮组，并且可以通过额外的JS结合单选/复选框来实现选中效果<a href="../javascript/#buttons">按钮插件</a>.</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-btn-group-tooltips">
-    <h4>Tooltips &amp; popovers in button groups require special setting</h4>
-    <p>When using tooltips or popovers on elements within a <code>.btn-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
+    <h4>按钮组中显示 Tooltips &amp; popovers </h4>
+    <p>在按钮组中显示 tooltip 或者 popover 的时候，你需要设置额外的 <code>container: "body"</code>来防止触发的时候产生一些副作用（比如大小变化，或者圆角不见了）</p>
   </div>
 
   <div class="bs-callout bs-callout-warning" id="callout-btn-group-accessibility">
-    <h4>Ensure correct <code>role</code> and provide a label</h4>
-    <p>In order for assistive technologies – such as screen readers – to convey that a series of buttons is grouped, an appropriate <code>role</code> attribute needs to be provided. For button groups, this would be <code>role="group"</code>, while toolbars should have a <code>role="toolbar"</code>.</p>
-    <p>One exception are groups which only contain a single control (for instance the <a href="#btn-groups-justified">justified button groups</a> with <code>&lt;button&gt;</code> elements) or a dropdown.</p>
-    <p>In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct <code>role</code> attribute. In the examples provided here, we use <code>aria-label</code>, but alternatives such as <code>aria-labelledby</code> can also be used.</p>
+    <h4>保证正确的 <code>role</code> 并且要提供一个label</h4>
+    <p>为了保证辅助技术 - 比如屏幕阅读器 - 能正确理解按钮组，需要提供一个正确的 <code>role</code> 属性。对按钮组来说，需要提供 <code>role='group'</code>，对工具栏来说，需要提供 <code>role='toolbar'</code></p>
+    <p>有一种例外情况就是按钮组里面只有一个按钮(比如 <a href="#btn-groups-justified">justified button groups</a> with <code>&lt;button&gt;</code> elements) 或者 下拉菜单.</p>
+    <p>并且，按钮组和工具栏需要有额外的具体的明确的label，否则即使设置了正确的role，很多辅助技术还是不会显示他们。在这里的例子中，我们使用了 <code>aria-label</code>，不过你也可以用 <code>aria-labelledby</code>。</p>
   </div>
 
-  <h3 id="btn-groups-single">Basic example</h3>
-  <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+  <h3 id="btn-groups-single">基本用法</h3>
+  <p>把多个 <code>.btn</code> 放入 <code>.btn-group</code> 中。</p>
   <div class="bs-example" data-example-id="simple-button-group">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-default">Left</button>
@@ -32,8 +32,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="btn-groups-toolbar">Button toolbar</h3>
-  <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
+  <h3 id="btn-groups-toolbar">按钮工具栏</h3>
+  <p>在 <code>&lt;div class="btn-toolbar"&gt;</code> 中组合使用多个 <code>&lt;div class="btn-group"&gt;</code> 可以变成更复杂的组件。</p>
   <div class="bs-example" data-example-id="simple-button-toolbar">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group" role="group" aria-label="First group">
@@ -60,8 +60,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="btn-groups-sizing">Sizing</h3>
-  <p>Instead of applying button sizing classes to every button in a group, just add <code>.btn-group-*</code> to each <code>.btn-group</code>, including when nesting multiple groups.</p>
+  <h3 id="btn-groups-sizing">大小</h3>
+  <p>在每一个 <code>.btn-group</code> 上加 <code>.btn-group-*</code> 就好了。</p>
   <div class="bs-example" data-example-id="button-group-sizing">
     <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
       <button type="button" class="btn btn-default">Left</button>
@@ -94,8 +94,8 @@
 <div class="btn-group btn-group-xs" role="group" aria-label="...">...</div>
 {% endhighlight %}
 
-  <h3 id="btn-groups-nested">Nesting</h3>
-  <p>Place a <code>.btn-group</code> within another <code>.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
+  <h3 id="btn-groups-nested">嵌套</h3>
+  <p>当你想在按钮组中显示下拉菜单的时候，在 <code>.btn-group</code> 中嵌套另一个 <code>.btn-group</code> 就可以了。</p>
   <div class="bs-example" data-example-id="button-group-nesting">
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
       <button type="button" class="btn btn-default">1</button>
@@ -131,8 +131,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="btn-groups-vertical">Vertical variation</h3>
-  <p>Make a set of buttons appear vertically stacked rather than horizontally. <strong class="text-danger">Split button dropdowns are not supported here.</strong></p>
+  <h3 id="btn-groups-vertical">垂直排列</h3>
+  <p>垂直排列一个按钮组. <strong class="text-danger">注意，这里不支持下拉菜单.</strong></p>
   <div class="bs-example" data-example-id="vertical-button-group">
     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
       <button type="button" class="btn btn-default">Button</button>
@@ -187,21 +187,21 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="btn-groups-justified">Justified button groups</h3>
-  <p>Make a group of buttons stretch at equal sizes to span the entire width of its parent. Also works with button dropdowns within the button group.</p>
+  <h3 id="btn-groups-justified">自适应宽度</h3>
+  <p>让按钮组自适应父容器的宽度。也兼容下拉菜单。</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-btn-group-justified-dbl-border">
-    <h4>Handling borders</h4>
-    <p>Due to the specific HTML and CSS used to justify buttons (namely <code>display: table-cell</code>), the borders between them are doubled. In regular button groups, <code>margin-left: -1px</code> is used to stack the borders instead of removing them. However, <code>margin</code> doesn't work with <code>display: table-cell</code>. As a result, depending on your customizations to Bootstrap, you may wish to remove or re-color the borders.</p>
+    <h4>边框</h4>
+    <p>我们是用 <code>display: table-cell</code>来实现自适应宽度的，这样会导致他们之间的边框有两个。正常情况下，我们是通过 <code>margin: -1px</code> 来解决这个问题的。但是 <code>display: table-cell</code> 是不支持设置 <code>margin</code> 的。所以你可能需要自己来重新设置边框。</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-btn-group-ie8-border">
-    <h4>IE8 and borders</h4>
-    <p>Internet Explorer 8 doesn't render borders on buttons in a justified button group, whether it's on <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. To get around that, wrap each button in another <code>.btn-group</code>.</p>
-    <p>See <a href="https://github.com/twbs/bootstrap/issues/12476">#12476</a> for more information.</p>
+    <h4>IE8 边框</h4>
+    <p>IE 8 下无法在自适应布局下设置边框，无论是 <code>&lt;a&gt;</code> 还是 <code>&lt;button&gt;</code>。你可以把每一个按钮都放入 <code>.btn-group</code> 来解决这个问题。</p>
+    <p>请参考这里 <a href="https://github.com/twbs/bootstrap/issues/12476">#12476</a>.</p>
   </div>
 
-  <h4>With <code>&lt;a&gt;</code> elements</h4>
-  <p>Just wrap a series of <code>.btn</code>s in <code>.btn-group.btn-group-justified</code>.</p>
+  <h4><code>&lt;a&gt;</code> 按钮</h4>
+  <p>和 <code>button</code> 一样，只需要把 <code>.btn</code> 放入 <code>.btn-group.btn-group-justified</code> 中即可.</p>
   <div class="bs-example" data-example-id="simple-justified-button-group">
     <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
       <a href="#" class="btn btn-default" role="button">Left</a>
@@ -233,12 +233,12 @@
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-btn-group-anchor-btn">
-    <h4>Links acting as buttons</h4>
-    <p>If the <code>&lt;a&gt;</code> elements are used to act as buttons – triggering in-page functionality, rather than navigating to another document or section within the current page – they should also be given an appropriate <code>role="button"</code>.</p>
+    <h4>链接按钮</h4>
+    <p>如果一个 <code>&lt;a&gt;</code> 当做按钮来用 - 用来触发页面的一些功能，而不是用来跳转页面 - 那么你需要设置一个 <code>role='button'</code> 属性.</p>
   </div>
 
-  <h4>With <code>&lt;button&gt;</code> elements</h4>
-  <p>To use justified button groups with <code>&lt;button&gt;</code> elements, <strong class="text-danger">you must wrap each button in a button group</strong>. Most browsers don't properly apply our CSS for justification to <code>&lt;button&gt;</code> elements, but since we support button dropdowns, we can work around that.</p>
+  <h4>使用 &lt;button&gt; 按钮</h4>
+  <p>如果你想把  <code>&lt;button&gt;</code> 组成的按钮组做自适应， <strong class="text-danger">那么你需要把每一个按钮都放入按钮组中</strong>。因为很多浏览器不支持在自适应情况下设置  <code>&lt;button&gt;</code> 的边框。</p>
   <div class="bs-example" data-example-id="button-tag-button-group-justified">
     <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
       <div class="btn-group" role="group">
