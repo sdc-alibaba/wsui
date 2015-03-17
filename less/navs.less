@@ -215,6 +215,76 @@
   }
 }
 
+//wraped类型标签页
+@navTabsBorderColor:  #ddd;
+.tab-wraped {
+  border: 1px solid @navTabsBorderColor;
+  border-top: 0;
+  > li {
+    padding: 0;
+    > a {
+      color: #666;
+      padding: 20px;
+      border-radius: 0;
+      background: #fcfcfc;
+      margin: 0;
+      border: 0;
+      border-top: 1px solid @navTabsBorderColor;
+      border-bottom: 1px solid @navTabsBorderColor;
+      &:hover,&:focus {
+        background: #fff;
+        border-color: @navTabsBorderColor;
+      }
+    }
+    + li {
+      > a {
+        border-left: 1px solid @navTabsBorderColor;
+      }
+    }
+    &.active > a {
+      background: #fff;
+      font-weight: normal;
+      border-bottom: 1px solid #fff;
+      border-top: 3px solid @brand-primary !important;
+      padding-top: 18px; //和其他标签对齐
+      margin: 0 -1px;
+    }
+
+    h3 {
+      text-align: center;
+      color: #333;
+    }
+
+    ul {
+      margin: auto;
+    }
+    li {
+      margin: 5px 0;
+    }
+    strong {
+      font-size: 120%;
+      vertical-align: middle;
+    }
+    label {
+      color: #999;
+      display: inline-block;
+      width: 70px;
+      text-align: right;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+  &.column3 {
+    > li {
+      width: 33.333%;
+    }
+  }
+  &.column5 {
+    > li {
+      width: 20%;
+    }
+  }
+}
 
 // Tabbable tabs
 // -------------------------
@@ -228,6 +298,11 @@
   > .active {
     display: block;
     visibility: visible;
+  }
+  &.tab-wraped {
+    border: 1px solid @navTabsBorderColor;
+    border-top: 0;
+    padding: @line-height-computed;
   }
 }
 
