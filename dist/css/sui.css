@@ -2854,6 +2854,7 @@ select[multiple].form-group-lg .form-control {
   z-index: 10;
   -webkit-appearance: none;
   margin: -1px 0;
+  cursor: pointer;
   background: transparent;
   border: none;
   -webkit-box-shadow: none;
