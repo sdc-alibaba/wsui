@@ -124,6 +124,11 @@ body {
 .bs-docs-nav .container {
   margin: 0 20px;
 }
+@media (min-width: 1600px) {
+  .container {
+    width: 1400px;
+  }
+}
 .bs-home-nav .bs-nav-b {
   display: none;
 }
