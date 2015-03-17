@@ -4050,6 +4050,67 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
     border-bottom-color: #fff;
   }
 }
+.tab-wraped {
+  border: 1px solid #ddd;
+  border-top: 0;
+}
+.tab-wraped > li {
+  padding: 0;
+}
+.tab-wraped > li > a {
+  padding: 20px;
+  margin: 0;
+  color: #666;
+  background: #fcfcfc;
+  border: 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+}
+.tab-wraped > li > a:hover,
+.tab-wraped > li > a:focus {
+  background: #fff;
+  border-color: #ddd;
+}
+.tab-wraped > li + li > a {
+  border-left: 1px solid #ddd;
+}
+.tab-wraped > li.active > a {
+  padding-top: 18px;
+  margin: 0 -1px;
+  font-weight: normal;
+  background: #fff;
+  border-top: 3px solid #28a3ef !important;
+  border-bottom: 1px solid #fff;
+}
+.tab-wraped > li h3 {
+  color: #333;
+  text-align: center;
+}
+.tab-wraped > li ul {
+  margin: auto;
+}
+.tab-wraped > li li {
+  margin: 5px 0;
+}
+.tab-wraped > li strong {
+  font-size: 120%;
+  vertical-align: middle;
+}
+.tab-wraped > li label {
+  display: inline-block;
+  width: 70px;
+  margin-right: 10px;
+  color: #999;
+  text-align: right;
+  cursor: pointer;
+}
+.tab-wraped.column3 > li {
+  width: 33.333%;
+}
+.tab-wraped.column5 > li {
+  width: 20%;
+}
 .tab-content > .tab-pane {
   display: none;
   visibility: hidden;
@@ -4057,6 +4118,11 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
 .tab-content > .active {
   display: block;
   visibility: visible;
+}
+.tab-content.tab-wraped {
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-top: 0;
 }
 .nav-tabs .sui-dropdown-menu {
   margin-top: -1px;
