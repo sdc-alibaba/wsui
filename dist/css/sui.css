@@ -2731,13 +2731,13 @@ select[multiple].form-group-lg .form-control {
   color: #43cd6e;
 }
 .has-success .form-control,
-.has-success .select,
-.has-success .select:after {
+.has-success .sui-select,
+.has-success .sui-select:after {
   border-color: #43cd6e;
 }
 .has-success .form-control:focus,
-.has-success .select:focus,
-.has-success .select:after:focus {
+.has-success .sui-select:focus,
+.has-success .sui-select:after:focus {
   border-color: #2eaf56;
 }
 .has-success .input-group-addon {
@@ -2761,13 +2761,13 @@ select[multiple].form-group-lg .form-control {
   color: #ee9f28;
 }
 .has-warning .form-control,
-.has-warning .select,
-.has-warning .select:after {
+.has-warning .sui-select,
+.has-warning .sui-select:after {
   border-color: #ee9f28;
 }
 .has-warning .form-control:focus,
-.has-warning .select:focus,
-.has-warning .select:after:focus {
+.has-warning .sui-select:focus,
+.has-warning .sui-select:after:focus {
   border-color: #d28511;
 }
 .has-warning .input-group-addon {
@@ -2791,13 +2791,13 @@ select[multiple].form-group-lg .form-control {
   color: #ea4a36;
 }
 .has-error .form-control,
-.has-error .select,
-.has-error .select:after {
+.has-error .sui-select,
+.has-error .sui-select:after {
   border-color: #ea4a36;
 }
 .has-error .form-control:focus,
-.has-error .select:focus,
-.has-error .select:after:focus {
+.has-error .sui-select:focus,
+.has-error .sui-select:after:focus {
   border-color: #d72c16;
 }
 .has-error .input-group-addon {
@@ -2826,7 +2826,7 @@ select[multiple].form-group-lg .form-control {
 .form-group-lg .help-block {
   margin: 5px 0;
 }
-.select {
+.sui-select {
   position: relative;
   width: 100%;
   margin: 0;
@@ -2835,7 +2835,7 @@ select[multiple].form-group-lg .form-control {
   border: 1px solid #ccc;
   border-radius: 2px;
 }
-.select:after {
+.sui-select:after {
   position: absolute;
   top: 50%;
   right: 10px;
@@ -2849,7 +2849,7 @@ select[multiple].form-group-lg .form-control {
   border-bottom: 4px solid transparent!important;
   border-left: 4px solid transparent!important;
 }
-.select select {
+.sui-select select {
   position: relative;
   z-index: 10;
   -webkit-appearance: none;
