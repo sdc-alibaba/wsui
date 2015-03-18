@@ -13,20 +13,21 @@
 	border: 1px solid #999;
 	cursor: default;
 	.user-select(none);
-	i{
-		margin-left: 16px;
-		font:normal 12px tahoma;
+	.close{
+		margin:0 -4px 0 12px;
+		font-size: 16px;
+		color: #999;
 		line-height: 28px;
 	}
 	&:hover{
 		border-color: #f23f40;
-		i{
+		.close{
 			color: #f23f40;
 		}
 	}
 	&.tag-disabled:hover{
-		border-color: #999;
-		i{
+		border-color: #e6e6e6;
+		.close{
 			color: #e6e6e6;
 		}
 	}
@@ -46,5 +47,9 @@
 	}
 }
 .tag-disabled{
-	color: #e6e6e6;
+	color: #999;
+	border-color: #e6e6e6;
+	.close{
+		color: #e6e6e6;
+	}
 }

@@ -4878,21 +4878,22 @@ a.badge:focus {
           user-select: none;
   border: 1px solid #999;
 }
-.tag i {
-  margin-left: 16px;
-  font: normal 12px tahoma;
+.tag .close {
+  margin: 0 -4px 0 12px;
+  font-size: 16px;
   line-height: 28px;
+  color: #999;
 }
 .tag:hover {
   border-color: #f23f40;
 }
-.tag:hover i {
+.tag:hover .close {
   color: #f23f40;
 }
 .tag.tag-disabled:hover {
-  border-color: #999;
+  border-color: #e6e6e6;
 }
-.tag.tag-disabled:hover i {
+.tag.tag-disabled:hover .close {
   color: #e6e6e6;
 }
 .tag-active {
@@ -4909,6 +4910,10 @@ a.badge:focus {
   background: url(http://gtms02.alicdn.com/tps/i2/TB1KjbvGFXXXXbMaXXXoq9FFpXX-18-18.png) no-repeat 0 0;
 }
 .tag-disabled {
+  color: #999;
+  border-color: #e6e6e6;
+}
+.tag-disabled .close {
   color: #e6e6e6;
 }
 .jumbotron {
