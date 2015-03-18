@@ -283,6 +283,10 @@ module.exports = function (grunt) {
       docs: {
         src: ['dist/*/*', 'download/**/*'],
         dest: 'docs/'
+      },
+      old: {
+        src: ['old/*/*'],
+        dest: 'dist/'
       }
     },
 
