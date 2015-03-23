@@ -5,30 +5,37 @@
 
   <h2 id="validate-examples">示例</h2>
 
-  <p>在 <code>input</code> 通过 <code>data-toggle='validate'</code> 可以自动初始化。错误信息的展示，可以通过响应式栅格系统来控制。如下例所示，如果当前输入框所在的 <code>form-group</code> 中有 <code>.error-container</code>，则会自动把错误信息填写到这个元素中。如果没有，则会直接追加到input后面。 </p>
+  <p>在 <code>form</code>  上加上 <code>data-toggle='validate'</code> 可以自动初始化。错误信息的展示，可以通过响应式栅格系统来控制。如下例所示，如果当前输入框所在的 <code>form-group</code> 中有 <code>.error-container</code>，则会自动把错误信息填写到这个元素中。如果没有，则会直接追加到input后面。 </p>
+  <p>我们希望更多的配置是通过HTML标签来实现，而不是通过JS代码来实现（除非是类似回调函数这种无法通过HTML标签来配置的），所以下面的示例都会以HTML标签配置为主。</p>
+
+  <div class="bs-callout bs-callout-danger" id="callout-buttons-ff-autocomplete">
+    <h4>一定要加上 name 属性</h4>
+    <p>注意一定要给每一个input加上 <code>name</code> 属性，因为validate是以 <code>name</code> 作为每一个input的唯一标示的。</p>
+  </div>
 
   <div class="bs-example">
     <form class='form-horizontal' data-toggle='validate'>
       <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <label for="validate-email-example" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-6">
-          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+          <input type="text" class="form-control" id="validate-email-example" placeholder="Email" data-rule-email='true' data-rule-required='true' name='validate-email-example'>
         </div>
         <div class="col-sm-4 error-container"></div>
       </div>
       <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <label for="validate-password-example" class="col-sm-2 control-label">Password</label>
         <div class="col-sm-6">
-          <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required minlength="6" maxlength='12'>
+          <input type="password" class="form-control" name="validate-password-example" id="validate-password-example" placeholder="Password" data-rule-required='true' data-rule-minlength="6" data-rule-maxlength='12'>
         </div>
         <div class="col-sm-4 error-container"></div>
       </div>
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-2 col-sm-6">
           <div class="checkbox">
             <label>
-              <input type="checkbox"> Remember me
+              <input type="checkbox" data-rule-required='true' name='validate-checkbox-example'> Remember me
             </label>
+            <span class="error-container"></span>
           </div>
         </div>
       </div>
@@ -42,25 +49,26 @@
 {% highlight html %}
 <form class='form-horizontal' data-toggle='validate'>
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="validate-email-example" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="text" class="form-control" id="validate-email-example" placeholder="Email" data-rule-email='true' data-rule-required='true' name='validate-email-example'>
     </div>
     <div class="col-sm-4 error-container"></div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <label for="validate-password-example" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-6">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required minlength="6" maxlength='12'>
+      <input type="password" class="form-control" name="validate-password-example" id="validate-password-example" placeholder="Password" data-rule-required='true' data-rule-minlength="6" data-rule-maxlength='12'>
     </div>
     <div class="col-sm-4 error-container"></div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-2 col-sm-6">
       <div class="checkbox">
         <label>
-          <input type="checkbox"> Remember me
+          <input type="checkbox" data-rule-required='true' name='validate-checkbox-example'> Remember me
         </label>
+        <span class="error-container"></span>
       </div>
     </div>
   </div>
@@ -72,6 +80,7 @@
 </form>
 {% endhighlight %}
   <h2 id="validate-js">通过JS初始化</h2>
+  <p>注意，如果你在表单上加上了 <code>data-toggle='validate'</code>，那么会自动进行初始化，此时再次调用 <code>.validate</code> 方法是无效的。</p>
 {% highlight js %}
 $("form").validate({
 //config here
@@ -79,6 +88,165 @@ $("form").validate({
 {% endhighlight %}
   <h2 id="validate-rules">内置校验规则</h2>
   <p>jQuery validation 内置了常用的校验规则，参见 <a href="http://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods" target='_blank'>内置校验规则</a></p>
+  <p>下面列出了所有内置校验规则的示例：</p>
+  <form class='form-horizontal' data-toggle='validate'>
+    <div class="form-group">
+      <label for="input-rule-demo-required" class="col-sm-2 control-label">必填项</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-required" name='input-rule-demo-required' placeholder="rule" data-rule-required='true' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-minlength" class="col-sm-2 control-label">最少6个字符</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-minlength" name='input-rule-demo-minlength' placeholder="rule" data-rule-minlength='6' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-maxlength" class="col-sm-2 control-label">最大6个字符</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-maxlength" name='input-rule-demo-maxlength' placeholder="rule" data-rule-maxlength='6' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-rangelength" class="col-sm-2 control-label">2~6 个字符</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-rangelength" name='input-rule-demo-rangelength' placeholder="rule" data-rule-rangelength='[2,6]' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-min" class="col-sm-2 control-label">不能小于100</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-min" name='input-rule-demo-min' placeholder="rule" data-rule-min='100' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-max" class="col-sm-2 control-label">不能大于200</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-max" name='input-rule-demo-max' placeholder="rule" data-rule-max='200' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-range" class="col-sm-2 control-label">100~200 之间</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-range" name='input-rule-demo-range' placeholder="rule" data-rule-range='[100,200]' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-email" class="col-sm-2 control-label">邮箱</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-email" name='input-rule-demo-email' placeholder="rule" data-rule-email='true' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-url" class="col-sm-2 control-label">网址</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-url" name='input-rule-demo-url' placeholder="rule" data-rule-url='true' />
+        <div class="help-block color-danger">这里必须带上协议，即必须以 http:// 或者 https:// 开头</div>
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-date" class="col-sm-2 control-label">日期</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-date" name='input-rule-demo-date' placeholder="rule" data-rule-date='true' />
+        <div class="help-block color-danger">注意，最好用下面的dateISO规则，因为这个date规则不会校验日期是否真的合法，比如 2012-99-99 在date规则下是合法的，但是在 dateISO 规则下是非法的。</div>
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-dateISO" class="col-sm-2 control-label">日期</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-dateISO" name='input-rule-demo-dateISO' placeholder="rule" data-rule-dateISO='true' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-number" class="col-sm-2 control-label">数字</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-number" name='input-rule-demo-number' placeholder="rule" data-rule-number='true' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-digits" class="col-sm-2 control-label">整数</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-digits" name='input-rule-demo-digits' placeholder="rule" data-rule-digits='true' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-creditcard" class="col-sm-2 control-label">信用卡号</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-creditcard" name='input-rule-demo-creditcard' placeholder="rule" data-rule-creditcard='true' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <label for="input-rule-demo-equalTo" class="col-sm-2 control-label">等于另一个输入框的值(必须和上面的信用卡卡号相同)</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-rule-demo-equalTo" name='input-rule-demo-equalTo' placeholder="rule" data-rule-equalTo='#input-rule-demo-creditcard' />
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-6 col-sm-offset-2">
+        <input type="submit" value='提交' class='btn btn-primary'>
+      </div>
+    </div>
+  </form>
+  <h2 id="validate-message">自定义错误消息</h2>
+  <p>你可以非常灵活的定义显示出的错误消息。有两种方式可以自定义：</p>
+
+  <p>第一种方式是在每一个input上定义自己的错误消息，只对当前input有效。具体的做法是在 <code>input</code> 上增加一个 <code>data-msg-<% rulename %></code>，如 <code>data-rule-required</code>：</p>
+  <div class="bs-example">
+    <form class='form-horizontal' data-toggle='validate'>
+      <div class="form-group">
+        <label for="input-msg-demo-required" class="col-sm-2 control-label">邮箱</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="input-msg-demo-required" name='input-msg-demo-required' placeholder="rule" data-rule-required='true' data-rule-email="true" data-msg-required="亲，邮箱是必填项哦" data-msg-email="亲，你的邮箱地址好像不对哦~"/>
+        </div>
+        <div class="col-sm-4 error-container"></div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+          <input type="submit" value='提交' class='btn btn-primary'>
+        </div>
+      </div>
+    </form>
+  </div>
+
+{% highlight html %}
+  <form class='form-horizontal' data-toggle='validate'>
+    <div class="form-group">
+      <label for="input-msg-demo-required" class="col-sm-2 control-label">邮箱</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="input-msg-demo-required" name='input-msg-demo-required' placeholder="rule" data-rule-required='true' data-rule-email="true" data-msg-required="亲，邮箱是必填项哦" data-msg-email="亲，你的邮箱地址好像不对哦~"/>
+      </div>
+      <div class="col-sm-4 error-container"></div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-6 col-sm-offset-2">
+        <input type="submit" value='提交' class='btn btn-primary'>
+      </div>
+    </div>
+  </form>
+{% endhighlight %}
+  <p>第二种方式是修改某一规则的默认错误消息，所有的默认错误消息都是存储在 <code>$.validator.messages</code> 对象上，这种改动会影响所有这种错误的报错：</p>
+{% highlight js %}
+$.validator.messages.required = '别忘记填了'; //这里填你自定义的错误消息
+{% endhighlight %}
+
+  <h2 id="validate-handler">异步提交表单</h2>
   <h2 id="validate-config">配置说明</h2>
   <p>参见 <a href="http://jqueryvalidation.org/validate" target='_blank'>配置参数说明</a></p>
 </div>
