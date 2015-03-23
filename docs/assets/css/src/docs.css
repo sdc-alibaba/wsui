@@ -1638,3 +1638,7 @@ body {
 .bs-docs-featurette .thumbnail {
   max-width: 800px;
 }
+
+#disqus_thread {
+  margin-top: 100px;
+}
