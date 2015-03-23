@@ -45,13 +45,13 @@ module.exports = function (grunt) {
     prefix: {
       options: {
         // 均有默认配置
-        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'icon', 'carousel', 'close', 'form', 'row-fluid', 'tag', 'label', 'container', 'container-fluid', 'row', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
+        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'select', 'icon', 'carousel', 'close', 'form',  'tag', 'label', 'container', 'container-fluid', 'row', 'row-fluid', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
         prefix: 'sui-'
       },
       sui: {
         expand: true,
         cwd: './',
-        src: ['dist/css/**/*.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css', 'docs/assets/css/**/*.css'],
+        src: ['dist/css/**/*.css', 'dist/css/**/*.min.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css', 'docs/assets/css/**/*.css'],
         dest: './'
       }
     },
@@ -106,7 +106,8 @@ module.exports = function (grunt) {
       },
       sui: {
         src: [
-          'js/classmap.js',
+          // 'js/classmap.js',
+          'js/classmap-sui.js',
           'js/template.js',
           'js/transition.js',
           'js/alert.js',
@@ -126,7 +127,7 @@ module.exports = function (grunt) {
           'js/datepicker.js',
           'js/validate.js',
           'js/datepicker.js',
-          'js/intro.js',
+          // 'js/intro.js',
           'js/toast.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
