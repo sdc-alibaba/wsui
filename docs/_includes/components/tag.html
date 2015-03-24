@@ -2,23 +2,31 @@
   <h1 id="tag" class="page-header">tag</h1>
   <h2>常规tag</h2>
   <div class="bs-example" data-example-id="simple-tag">
-      <span class="tag">自定义文案</span>
-      <span class="tag tag-active">自定义文案</span>
-      <span class="tag tag-disabled">自定义文案</span>
+    <ul class="tag">
+      <li>自定义文案</li>
+      <li class="tag-active">自定义文案<i class="sui-icon icon-tb-check"></i></li>
+      <li class="tag-disabled">自定义文案</li>
+    </ul>
   </div>
 {% highlight html %}
-<span class="tag">自定义文案</span>
-<span class="tag tag-active">自定义文案</span>
-<span class="tag tag-disabled">自定义文案</span>
+<ul class="tag">
+  <li>自定义文案</li>
+  <li class="tag-active">自定义文案</li>
+  <li class="tag-disabled">自定义文案</li>
+</ul>
 {% endhighlight %}
 
   <h2>右侧带叉tag</h2>
   <div class="bs-example" data-example-id="simple-tag">
-    <span class="tag">自定义文案<span class="close">&times;</span></span>
-    <span class="tag tag-disabled">自定义文案<span class="close">&times;</span></span>
+    <ul class="tag">
+      <li class="tag-close">自定义文案<i class="sui-icon icon-tb-close"></i></li>
+      <li class="tag-hoverClose">自定义文案<i class="sui-icon icon-tb-close"></i></li>
+    </ul>
   </div>
 {% highlight html %}
-<span class="tag">自定义文案<span class="close">&times;</span></span>
-<span class="tag tag-disabled">自定义文案<span class="close">&times;</span></span>
+<ul class="tag">
+  <li class="tag-close">自定义文案<i class="sui-icon icon-tb-close"></i></li>
+  <li class="tag-hoverClose">自定义文案<i class="sui-icon icon-tb-close"></i></li>
+</ul>
 {% endhighlight %}
 </div>

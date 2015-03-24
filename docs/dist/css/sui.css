@@ -4865,7 +4865,7 @@ a.badge:focus {
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
-.tag {
+.tag > li {
   display: inline-block;
   padding: 0 12px;
   font-size: 14px;
@@ -4877,44 +4877,82 @@ a.badge:focus {
       -ms-user-select: none;
           user-select: none;
   border: 1px solid #999;
+  -webkit-transition: border-color .3s linear;
+       -o-transition: border-color .3s linear;
+          transition: border-color .3s linear;
 }
-.tag .close {
-  margin: 0 -4px 0 12px;
-  font-size: 16px;
-  line-height: 28px;
-  color: #999;
-}
-.tag:hover {
+.tag > li:hover {
   border-color: #f23f40;
 }
-.tag:hover .close {
-  color: #f23f40;
+.tag > li.tag-close {
+  position: relative;
+  cursor: pointer;
 }
-.tag.tag-disabled:hover {
-  border-color: #e6e6e6;
+.tag > li.tag-close i {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  padding: 4px 3px 2px 3px;
+  font-size: 8px;
+  color: #fff;
+  background-color: #999;
+  border-radius: 9px;
+  -webkit-transition: background-color .3s linear;
+       -o-transition: background-color .3s linear;
+          transition: background-color .3s linear;
 }
-.tag.tag-disabled:hover .close {
-  color: #e6e6e6;
+.tag > li.tag-close:hover i {
+  background-color: #f23f40;
 }
-.tag-active {
+.tag > li.tag-active {
   position: relative;
   border-color: #f23f40;
 }
-.tag-active:after {
+.tag > li.tag-active i {
   position: absolute;
   right: 0;
   bottom: 0;
   width: 18px;
   height: 18px;
-  content: '';
-  background: url(http://gtms02.alicdn.com/tps/i2/TB1KjbvGFXXXXbMaXXXoq9FFpXX-18-18.png) no-repeat 0 0;
+  padding: 4px 2px 2px 4px;
+  font-size: 10px;
+  color: #fff;
+  background-color: #f23f40;
 }
-.tag-disabled {
+.tag > li.tag-disabled {
   color: #999;
   border-color: #e6e6e6;
 }
-.tag-disabled .close {
-  color: #e6e6e6;
+.tag > li.tag-disabled:hover {
+  border-color: #e6e6e6;
+}
+.tag > li.tag-hoverClose {
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: border-color 0;
+       -o-transition: border-color 0;
+          transition: border-color 0;
+}
+.tag > li.tag-hoverClose i {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  padding: 4px 3px 2px 3px;
+  font-size: 8px;
+  color: #fff;
+  background-color: #f23f40;
+  border-radius: 9px;
+  opacity: 0;
+  -webkit-transition: -webkit-transform .3s linear;
+       -o-transition:      -o-transform .3s linear;
+          transition:         transform .3s linear;
+}
+.tag > li.tag-hoverClose:hover i {
+  opacity: 1;
+  -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
 .jumbotron {
   padding: 30px 15px;

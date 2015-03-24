@@ -4,7 +4,7 @@
 
 
 // Base class
-.tag{
+.tag > li{
 	padding: 0 12px;
 	display: inline-block;
 	font-size: 14px;
@@ -13,43 +13,70 @@
 	border: 1px solid #999;
 	cursor: default;
 	.user-select(none);
-	.close{
-		margin:0 -4px 0 12px;
-		font-size: 16px;
-		color: #999;
-		line-height: 28px;
-	}
+	.transition(border-color .3s linear);
 	&:hover{
-		border-color: #f23f40;
-		.close{
-			color: #f23f40;
+		border-color: @brand-primary;
+	}
+	&.tag-close{
+		position: relative;
+	  	cursor: pointer;
+		i{
+	  		padding: 4px 3px 2px 3px;
+	  		font-size: 8px;
+	  		color: #FFF;
+	  		background-color: #999;
+	  		border-radius: 9px;
+	  		position: absolute;
+	  		top: -6px;
+	  		right: -6px;
+  			.transition(background-color .3s linear);
+	  	}
+  		&:hover i{
+  			background-color: @brand-primary;
+  		}
+	}
+	&.tag-active{
+		position: relative;
+		border-color: @brand-primary;
+		i{
+			width: 18px;
+			height: 18px;
+			font-size: 10px;
+			padding: 4px 2px 2px 4px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			color: #FFF;
+	  		background-color: @brand-primary;
 		}
 	}
-	&.tag-disabled:hover{
+	&.tag-disabled{
+		color: #999;
 		border-color: #e6e6e6;
-		.close{
-			color: #e6e6e6;
+		&:hover{
+			border-color: #e6e6e6;
 		}
+	}
+	&.tag-hoverClose{
+		position: relative;
+	  	cursor: pointer;
+		.transition(border-color 0);
+		i{
+	  		padding: 4px 3px 2px 3px;
+	  		font-size: 8px;
+	  		color: #FFF;
+	  		background-color: @brand-primary;
+	  		border-radius: 9px;
+	  		position: absolute;
+	  		top: -6px;
+	  		right: -6px;
+  			opacity: 0;
+			.transition(transform .3s linear);	
+	  	}
+  		&:hover i{
+  			opacity: 1;
+  			.rotate(360deg);
+  		}
 	}
 }
 
-.tag-active{
-	position: relative;
-	border-color: #f23f40;
-	&:after{
-		width: 18px;
-		height: 18px;
-		content: '';
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		background: url(http://gtms02.alicdn.com/tps/i2/TB1KjbvGFXXXXbMaXXXoq9FFpXX-18-18.png) no-repeat 0 0;
-	}
-}
-.tag-disabled{
-	color: #999;
-	border-color: #e6e6e6;
-	.close{
-		color: #e6e6e6;
-	}
-}
