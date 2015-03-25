@@ -121,6 +121,7 @@ module.exports = function (grunt) {
           'js/scrollspy.js',
           'js/tab.js',
           'js/autocomplete.js',
+          'js/tagsinput.js',
           'js/affix.js',
           'js/pagination.js',
           'js/datepicker.js',

@@ -1,0 +1,190 @@
+<div class="bs-docs-section">
+  <h1 id="tagsinput" class="page-header">标签输入框</h1>
+
+  <p class="lead">可以把普通的纯文本输入框变成一个可以输入多个标签内容的输入框，并且它还支持自动补全。</p>
+  <h2 id="tagsinput-simple">基本用法</h2>
+  <p>在任何一个 <code>input</code> 元素上加上 <code>data-role='tagsinput'</code> 就可以变成一个标签输入框.这时候支支持纯文本输入，如果你想有自动补全，请往下看。 </p>
+  <div class="bs-example">
+    <input type="text" data-role='tagsinput' />
+  </div>
+{% highlight html %}
+<input type="text" data-role='tagsinput' />
+{% endhighlight %}
+  <h2 id="tagsinput-simple">带自动补全</h2>
+  <p>一般情况下你可能都需要打开自动补全功能，可以通过 <code>data-use-autocomplete='true'</code> 来打开自动补全，此时可以通过 <code>data-autocomplete-<% key%></code> 来配置自动补全相关的内容。</p>
+  <p>如果你希望用户只能填写通过自动补全的内容出来的内容，而不能随意输入，你应该设置 <code>data-free-input='false'</code></p>
+  <div class="bs-example">
+    <input type="text" data-role='tagsinput' name='tag' data-use-autocomplete='true' data-autocomplete-service-url='../json/ac-strings.json' data-free-input='false'/>
+  </div>
+{% highlight html %}
+<input type="text" data-role='tagsinput' name='tag' data-use-autocomplete='true' data-autocomplete-service-url='../json/ac-strings.json' data-free-input='false'/>
+{% endhighlight %}
+  <h2 id='tagsinput-value'>获取输入内容</h2>
+  <p>你有两种方式可以取到用户的输入内容。</p>
+  <p>第一种方式是通过 <code>val</code> 方法直接从你的输入框上取值。这种方式取到的是一个字符串，这个字符串以逗号分隔用户的输入内容。</p>
+{% highlight js %}
+$("[name='tag']").val();  //'xxx,dasdsa,xdddd'
+{% endhighlight %}
+  <p>第二种方式是通过我们提供的 <code>.tagsinput("items")</code>方法来取值，这样取到的是一个字符串数组，其中每一项都是用户输入的一个标签。</p>
+{% highlight js %}
+$("[name='tag']").tagsinput("items");  //['xxx', 'dasdsa', 'xdddd']
+{% endhighlight %}
+
+  <h2 id='tagsinput-config'>配置项</h2>
+  <p>我们对 tagsInput 进行了改造，使他可以支持通过 html 属性来配置一些常用参数。</p>
+  <p>你可以在 <code>input</code> 上通过HTML配置这些选项：</p>
+  
+  <table class="table table-bordered">
+    <tr>
+      <th class='col-md-2'>属性</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>data-class-name</td>
+      <td>tagsinput form-control</td>
+      <td>类名，因为我们会重新创建一个div容器，因此如果你在 input 上写的 class 是无效的，需要通过这个参数来配置类名，比如你需要一个更大的输入框可以这样：
+        <code>data-class-name='tagsinput form-control input-lg'</code>
+      </td>
+    </tr>
+    <tr>
+      <td>data-tag-name</td>
+      <td>label label-primary</td>
+      <td>生成的标签的类名</td>
+    </tr>
+    <tr>
+      <td>data-max-tags</td>
+      <td>undefined</td>
+      <td>最大标签数</td>
+    </tr>
+    <tr>
+      <td>data-max-chars</td>
+      <td>undefined</td>
+      <td>每个标签的最多输入字数</td>
+    </tr>
+    <tr>
+      <td>data-use-autocomplete</td>
+      <td>1</td>
+      <td>打开自动补全</td>
+    </tr>
+    <tr>
+      <td>data-autocomplete-*</td>
+      <td>无</td>
+      <td>你可以通过这种方式配置任何自动补全的参数，比如 <code>data-autocomplete-service-url</code></td>
+    </tr>
+  </table>
+
+  <p>如果你需要配置一些非字符串或者数字的参数，那么你可以通过JS初始化并传入你的参数：</p>
+
+
+  <table class="table table-bordered">
+    <tr>
+      <th class='col-md-2'>属性</th>
+      <th class='col-md-2'>默认值</th>
+      <th class='col-md-3'>说明</th>
+      <th class='col-md-5'>示例</th>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>tagsinput form-control</td>
+      <td>类名，因为我们会重新创建一个div容器，因此如果你在 input 上写的 class 是无效的，需要通过这个参数来配置类名</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>tagName</td>
+      <td>label label-primary</td>
+      <td>标签的类名</td>
+      <td>
+{% highlight js %}
+$('input').tagsinput({
+  tagClass: function(item) {
+    return (item.length > 10 ? 'big' : 'small');
+  }
+});
+{% endhighlight %}
+      </td>
+    </tr>
+    <tr>
+      <td>itemValue</td>
+      <td>
+<pre>
+function(item) {
+  return item ? item.toString() : item;
+}
+</pre>
+      </td>
+      <td>当用户添加一个标签后，通过这个函数对标签进行处理，并返回标签的值。</td>
+      <td>
+{% highlight js %}
+$('input').tagsinput({
+  itemValue: function(item) {
+    return item.id;
+  }
+});
+{% endhighlight %}
+      </td>
+    </tr>
+    <tr>
+      <td>itemText</td>
+      <td>
+<pre>
+itemText: function(item) {
+  return this.itemValue(item);
+}
+</pre>
+      </td>
+      <td>当用户添加一个标签后，通过这个函数对标签进行处理，返回在标签上需要显示的文案。</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>maxTags</td>
+      <td>undefined</td>
+      <td>最多允许添加的标签数</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>maxChars</td>
+      <td>undefined</td>
+      <td>每个标签允许的最多字数</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>maxChars</td>
+      <td>undefined</td>
+      <td>每个标签允许的最多字数</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>trimValue</td>
+      <td>false</td>
+      <td>对value进行trim处理</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>trimValue</td>
+      <td>false</td>
+      <td>对value进行trim处理</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>useAutocomplete</td>
+      <td>1</td>
+      <td>使用自动补全</td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>autocomplete</td>
+      <td>undefined</td>
+      <td>自动补全的配置，一个对象，具体请参见上面的自动补全配置说明.</td>
+      <td>
+      </td>
+    </tr>
+  </table>
