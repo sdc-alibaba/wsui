@@ -1,3 +1,4 @@
+//jscs:disable
 /* jshint shadow:true, unused:false, funcscope:true*/
 (function ($) {
   "use strict";
