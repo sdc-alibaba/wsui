@@ -10,7 +10,7 @@
 {% highlight html %}
 <input type="text" data-role='tagsinput' />
 {% endhighlight %}
-  <h2 id="tagsinput-simple">带自动补全</h2>
+  <h2 id="tagsinput-ac">带自动补全</h2>
   <p>一般情况下你可能都需要打开自动补全功能，可以通过 <code>data-use-autocomplete='true'</code> 来打开自动补全，此时可以通过 <code>data-autocomplete-<% key%></code> 来配置自动补全相关的内容。</p>
   <p>如果你希望用户只能填写通过自动补全的内容出来的内容，而不能随意输入，你应该设置 <code>data-free-input='false'</code></p>
   <div class="bs-example">
@@ -18,6 +18,14 @@
   </div>
 {% highlight html %}
 <input type="text" data-role='tagsinput' name='tag' data-use-autocomplete='true' data-autocomplete-service-url='../json/ac-strings.json' data-free-input='false'/>
+{% endhighlight %}
+
+  <h2 id="tagsinput-ac-config">设置自动补全</h2>
+  <p>你可以通过 <code>data-autocomplete-<% key%></code> 来配置自动补全的参数，如果你通过JS初始化，则直接传入一个 autcomplete 对象为配置即可。</p>
+  <p>下面通过设置 <code>data-autocomplete-lookup</code> 来使自动补全使用本地数据。</p>
+  <input type="text" data-role='tagsinput' name='tag' data-use-autocomplete='true' data-free-input='false' data-autocomplete-lookup="[&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;, &quot;ddd&quot;, &quot;edfa&quot;, &quot;wdasda&quot;, &quot;tueiyhgk&quot;, &quot;vjflcjx&quot;]" >
+{% highlight html %}
+<input type="text" data-role='tagsinput' name='tag' data-use-autocomplete='true' data-free-input='false' data-autocomplete-lookup="[&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;, &quot;ddd&quot;, &quot;edfa&quot;, &quot;wdasda&quot;, &quot;tueiyhgk&quot;, &quot;vjflcjx&quot;]" >
 {% endhighlight %}
   <h2 id='tagsinput-value'>获取输入内容</h2>
   <p>你有两种方式可以取到用户的输入内容。</p>
@@ -64,7 +72,7 @@ $("[name='tag']").tagsinput("items");  //['xxx', 'dasdsa', 'xdddd']
     </tr>
     <tr>
       <td>data-use-autocomplete</td>
-      <td>1</td>
+      <td>true</td>
       <td>打开自动补全</td>
     </tr>
     <tr>

@@ -20,6 +20,9 @@
     maxTags: undefined,
     maxChars: undefined,
     useAutocomplete: 0,  //自动补全
+    autocomplete: {
+      autoSelectFirst: true
+    },
     confirmKeys: [13, 44],
     onTagExists: function(item, $tag) {
       $tag.hide().fadeIn();
@@ -267,7 +270,7 @@
 
       if(this.options.useAutocomplete) {
         //取出ac 设置
-        var acOptions = {};
+        var acOptions = $.extend({}, this.options.autocomplete);
         var uncapitalizeFirstLetter = function (string) {
             return string.charAt(0).toLowerCase() + string.slice(1);
         }
@@ -277,7 +280,6 @@
           }
         }
         self.$ac = this.$input.autocomplete($.extend({
-          autoSelectFirst: true,
           onSelect: function(suggestion) {
             self.add(suggestion);
             self.$input.val("");
