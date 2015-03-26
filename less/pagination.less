@@ -1,88 +1,229 @@
 //
 // Pagination (multiple pages)
 // --------------------------------------------------
+// Space out pagination from surrounding content
 .pagination {
-  display: inline-block;
-  padding-left: 0;
   margin: @line-height-computed 0;
-  border-radius: @border-radius-base;
+}
 
-  > li {
-    display: inline; // Remove list-style and block-level defaults
-    > a,
-    > span {
-      position: relative;
-      float: left; // Collapse white-space
-      padding: @padding-base-vertical @padding-base-horizontal;
-      line-height: @line-height-base;
-      text-decoration: none;
-      color: @pagination-color;
-      background-color: @pagination-bg;
-      border: 1px solid @pagination-border;
-      margin-left: -1px;
-    }
-    &:first-child {
-      > a,
-      > span {
-        margin-left: 0;
-        .border-left-radius(@border-radius-base);
-      }
-    }
-    &:last-child {
-      > a,
-      > span {
-        .border-right-radius(@border-radius-base);
-      }
-    }
-  }
+.pagination ul {
+  // Allow for text-based alignment
+  display: inline-block;
+  // Reset default ul styles
+  margin-left: 0;
+  margin-bottom: 0;
+  vertical-align: middle;
+  // Visuals
+  //.box-shadow(0 1px 2px rgba(0,0,0,.05));
+}
+.pagination li {
+  display: inline; // Remove list-style and block-level defaults
+}
+.pagination li > a,
+.pagination li > span {
 
-  > li > a,
-  > li > span {
-    &:hover,
-    &:focus {
-      color: @pagination-hover-color;
-      background-color: @pagination-hover-bg;
-      border-color: @pagination-hover-border;
-    }
-  }
+  position: relative;
+  float: left; // Collapse white-space
+  padding: @paginationPadding;
+  line-height: @line-height-computed;
+  text-decoration: none;
+  color: @brand-primary;
+  background-color: @paginationBackground;
+  border: 1px solid @paginationBorder;
+  margin-left: -1px; //Collapse the border
+   > i.icon {
+        line-height: @line-height-computed;
+   }
+}
+.pagination li > a:hover,
+.pagination li > a:focus {
+  color: @btn-primary-color;
+  background-color: @brand-primary-hover;
+  border-color: @brand-primary-hover;
 
-  > .active > a,
-  > .active > span {
-    &,
-    &:hover,
-    &:focus {
-      z-index: 2;
-      color: @pagination-active-color;
-      background-color: @pagination-active-bg;
-      border-color: @pagination-active-border;
-      cursor: default;
-    }
-  }
-
-  > .disabled {
-    > span,
-    > span:hover,
-    > span:focus,
-    > a,
-    > a:hover,
-    > a:focus {
-      color: @pagination-disabled-color;
-      background-color: @pagination-disabled-bg;
-      border-color: @pagination-disabled-border;
-      cursor: @cursor-disabled;
-    }
+}
+.pagination .active > a,
+.pagination .active > span {
+  background-color: @paginationActiveBackground;
+  color: @btn-primary-color;
+  border-color: @paginationActiveBackground;
+  cursor: default;
+  &:hover, &:focus {
+      //reset a:hover, do not change if active
+      background-color: @paginationActiveBackground;
+      color: @btn-primary-color;
+      border-color: @paginationActiveBackground;
   }
 }
+
+.pagination .dotted > span,
+.pagination .dotted > a {
+  border-top: none;
+  border-bottom: none;
+}
+.pagination .disabled > span,
+.pagination .disabled > a,
+.pagination .disabled > a:hover,
+.pagination .disabled > a:focus {
+  color: @gray-light;
+  background-color: transparent;
+  cursor: default;
+}
+//next&prev btn, depends on the disabled attribute
+.pagination {
+    .prev, > .next {
+        > span, > a {
+            background-color: @paginationBtnColor;
+        }
+    }
+    .disabled.prev, .disabled.next {
+        > span:hover, > span:focus, > a:hover, > a:focus {
+            background-color: @paginationBtnColor; //do not change backgroundColor if is disabled
+            border-color: @paginationBorder;
+        }
+    }
+}
+
+.pagination {
+    //非主流分页器
+    .prev + .prev,.next + .next {
+        a {
+            margin-left: 5px;
+        }
+    }
+    //输入框拉长
+    div {
+        display: inline-block;
+        color: @paginationExPageStatus;
+        .page-num {
+            //.input-default;
+            margin: 0px;
+            width: 25px;
+            border-radius: 0;
+            outline: none;
+            .transition(width 0.1s linear 0.1s);
+            + .page-confirm {
+                .btn;
+                .btn-primary;
+                border-radius: 0;
+                vertical-align: top;
+            }
+        }
+        .page-num:focus {
+            width: 50px;
+            + .page-confirm {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+
+// Alignment
+// --------------------------------------------------
+
+.pagination-centered {
+  text-align: center;
+}
+.pagination-right {
+  text-align: right;
+}
+
 
 // Sizing
 // --------------------------------------------------
 
 // Large
 .pagination-lg {
-  .pagination-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @border-radius-large);
+  li > a,
+  li > span {
+    padding: @paginationPaddingLarge;
+    font-size: @font-size-xlarge;
+  }
+  div {
+    font-size: @font-size-xlarge;
+      .page-num {
+          .input-lg;
+          + .page-confirm {
+              .btn;
+              .btn-lg;
+              .btn-primary;
+              vertical-align: top;
+              border-radius: 0;
+          }
+      }
+  }
+}
+// xlarge
+
+.pagination-xl {
+  li > a,
+  li > span {
+    padding: @paginationPaddingXLarge;
+    font-size: @font-size-xlarge;
+  }
+  div {
+      .page-num {
+          .input-lg;
+          + .page-confirm {
+              .btn;
+              .btn-xl;
+              .btn-primary;
+              border-radius: 0;
+              vertical-align: top;
+          }
+      }
+  }
 }
 
 // Small
 .pagination-sm {
-  .pagination-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @border-radius-small);
+  li > a,
+  li > span {
+    padding: @paginationPaddingSmall;
+    font-size: @font-size-small;
+  }
+  div {
+      .page-num {
+          .input-sm;
+          + .page-confirm {
+              .btn;
+              .btn-sm;
+              .btn-primary;
+              vertical-align: top;
+              border-radius: 0;
+          }
+      }
+  }
 }
+//非主流分页器
+
+.pagination-naked {
+    li {
+        > a,span {
+            border: none;
+            background-color: transparent !important;
+            padding: @paginationNakedPadding;
+            font-size: @font-size-small;
+            &:hover {
+                color: @brand-primary;
+            }
+            > i {
+                line-height: @line-height-computed;
+            }
+        }
+    }
+}
+.pagination-naked.pagination-lg {
+    li {
+        > a,span {
+            padding: @paginationNakedPaddingLarge;
+            font-size: @font-size-xlarge;
+            &.ex-page-status {
+                padding: 4px 10px;
+                color: @paginationExPageStatus;
+            }
+        }
+    }
+}
+

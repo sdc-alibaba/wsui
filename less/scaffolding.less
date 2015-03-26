@@ -5,12 +5,10 @@
 
 // Reset the box-sizing
 //
-// Heads up! This reset may cause conflicts with some third-party widgets.
-// For recommendations on resolving such conflicts, see
+// 注意！这里重置了全局元素的box-sizing，会为实现交互带来便利性，但可能会使三方插件产生冲突
+// 为消除全局盒模型所带来的影响，可以重置单个页面元素或覆盖整个区域的盒模型
 // http://getbootstrap.com/getting-started/#third-box-sizing
-* {
-  .box-sizing(border-box);
-}
+*,
 *:before,
 *:after {
   .box-sizing(border-box);
@@ -19,12 +17,8 @@
 
 // Body reset
 
-html {
-  font-size: 10px;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
 body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
   font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: @line-height-base;
@@ -93,7 +87,7 @@ img {
 .img-thumbnail {
   padding: @thumbnail-padding;
   line-height: @line-height-base;
-  background-color: @thumbnail-bg;
+  background-color: @body-bg;
   border: 1px solid @thumbnail-border;
   border-radius: @thumbnail-border-radius;
   .transition(all .2s ease-in-out);

@@ -1,15 +1,15 @@
 <div class="bs-docs-section">
-  <h1 id="progress" class="page-header">Progress bars</h1>
+  <h1 id="progress" class="page-header">进度条</h1>
 
-  <p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
+  <p class="lead">用来显示进度，比如上传文件等.</p>
 
   <div class="bs-callout bs-callout-danger" id="callout-progress-animation-css3">
-    <h4>Cross-browser compatibility</h4>
-    <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.</p>
+    <h4>不同浏览器的兼容性问题</h4>
+    <p>进度条使用了CSS动画，所以在IE9以及低版本的火狐上无法看到动画效果。</p>
   </div>
 
-  <h3 id="progress-basic">Basic example</h3>
-  <p>Default progress bar.</p>
+  <h3 id="progress-basic">基本用法</h3>
+  <p>默认的样式.</p>
   <div class="bs-example" data-example-id="simple-progress-bar">
     <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
@@ -24,9 +24,36 @@
   </div>
 </div>
 {% endhighlight %}
+  <h3 id="progress-size">不同大小</h3>
+  <p>加上 <code>.progress-lg</code> 或者 <code>.progress-sm</code> 可以改变进度条的高度。</p>
+  <div class="bs-example" data-example-id="simple-progress-bar">
+    <div class="progress progress-sm">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        <span class="sr-only">60% Complete</span>
+      </div>
+    </div>
+    <div class="progress progress-lg">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        <span class="sr-only">60% Complete</span>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="progress progress-sm">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    <span class="sr-only">60% Complete</span>
+  </div>
+</div>
+<div class="progress progress-lg">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    <span class="sr-only">60% Complete</span>
+  </div>
+</div>
+{% endhighlight %}
 
-  <h3 id="progress-label">With label</h3>
-  <p>Remove the <code>&lt;span&gt;</code> with <code>.sr-only</code> class from within the progress bar to show a visible percentage.</p>
+
+  <h3 id="progress-label">带标签</h3>
+  <p>把 <code>&lt;span&gt;</code> 上的 <code>.sr-only</code> 类去掉，就可以显示出文案来。</p>
   <div class="bs-example" data-example-id="progress-bar-with-label">
     <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
@@ -41,7 +68,7 @@
   </div>
 </div>
 {% endhighlight %}
-  <p>To ensure that the label text remains legible even for low percentages, consider adding a <code>min-width</code> to the progress bar.</p>
+  <p>因为文案需要占一定的宽度，所以你可能需要加一个 <code>min-width</code> 来防止文案溢出。</p>
   <div class="bs-example" data-example-id="progress-bar-at-low-percentage">
     <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
@@ -68,8 +95,8 @@
 {% endhighlight %}
 
 
-  <h3 id="progress-alternatives">Contextual alternatives</h3>
-  <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
+  <h3 id="progress-alternatives">上下文颜色</h3>
+  <p>和按钮以及提示消息用的是一样的样式。</p>
   <div class="bs-example" data-example-id="contextual-progress-bar">
     <div class="progress">
       <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -115,8 +142,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="progress-striped">Striped</h3>
-  <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
+  <h3 id="progress-striped">带条纹</h3>
+  <p>用 gradient 实现了条纹，IE8不支持。</p>
   <div class="bs-example" data-example-id="striped-progress-bar">
     <div class="progress">
       <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -162,8 +189,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="progress-animated">Animated</h3>
-  <p>Add <code>.active</code> to <code>.progress-bar-striped</code> to animate the stripes right to left. Not available in IE9 and below.</p>
+  <h3 id="progress-animated">动画</h3>
+  <p>在 <code>.progress-bar-striped</code> 上加上一个 <code>.active</code> 类就可以显示出滚动动画。IE9及以下的浏览器不支持。</p>
   <div class="bs-example" data-example-id="animated-progress-bar">
     <div class="progress">
       <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span class="sr-only">45% Complete</span></div>
@@ -178,8 +205,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="progress-stacked">Stacked</h3>
-  <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
+  <h3 id="progress-stacked">堆栈进度条</h3>
+  <p>你可以把多个进度条以堆栈形式放进同一个 <code>.progress</code> 中。</p>
   <div class="bs-example" data-example-id="stacked-progress-bar">
     <div class="progress">
       <div class="progress-bar progress-bar-success" style="width: 35%">

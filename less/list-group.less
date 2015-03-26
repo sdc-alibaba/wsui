@@ -9,7 +9,7 @@
 
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
-  margin-bottom: 20px;
+  margin-bottom: @line-height-computed;
   padding-left: 0; // reset padding because ul and ol
 }
 
@@ -21,7 +21,7 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: (@font-size-base/2) @font-size-base;
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -1px;
   background-color: @list-group-bg;
@@ -48,6 +48,7 @@ a.list-group-item {
 
   .list-group-item-heading {
     color: @list-group-link-heading-color;
+    font-size: @font-size-xlarge;
   }
 
   // Hover state

@@ -1,31 +1,31 @@
 <div class="bs-docs-section">
-  <h1 id="navbar" class="page-header">Navbar</h1>
+  <h1 id="navbar" class="page-header">导航栏</h1>
 
-  <h2 id="navbar-default">Default navbar</h2>
-  <p>Navbars are responsive meta components that serve as navigation headers for your application or site. They begin collapsed (and are toggleable) in mobile views and become horizontal as the available viewport width increases.</p>
-  <p><strong class="text-danger">Justified navbar nav links are currently not supported.</strong></p>
+  <h2 id="navbar-default">默认导航栏</h2>
+  <p>导航栏可以是一个响应式的组件，可以用来放在你的网站的顶部。它在移动设备上会折叠，在宽屏设备上会水平显示</p>
+  <p><strong class="text-danger">导航栏中的链接目前不支持自适应宽度.</strong></p>
 
   <div class="bs-callout bs-callout-warning" id="callout-navbar-overflow">
-    <h4>Overflowing content</h4>
-    <p>Since Bootstrap doesn't know how much space the content in your navbar needs, you might run into issues with content wrapping into a second row. To resolve this, you can:</p>
+    <h4>内容溢出</h4>
+    <p>因为我们不知道你的导航栏中到底有多少内容，所以有可能会变成两行。你可以这样解决这个问题：</p>
     <ol type="a">
-      <li>Reduce the amount or width of navbar items.</li>
-      <li>Hide certain navbar items at certain screen sizes using <a href="../css/#responsive-utilities">responsive utility classes</a>.</li>
-      <li>Change the point at which your navbar switches between collapsed and horizontal mode. Customize the <code>@grid-float-breakpoint</code> variable or add your own media query.</li>
+      <li>减少里面的内容</li>
+      <li>用 <a href="../css/#responsive-utilities">响应式工具类</a> 在不同的宽度下隐藏一部分内容</li>
+      <li>改变导航栏在折叠模式和水平模式的切换点。你可以定制<code>@grid-float-breakpoint</code>变量或者增加自己的媒体查询代码</li>
     </ol>
   </div>
   <div class="bs-callout bs-callout-danger" id="callout-navbar-js">
-    <h4>Requires JavaScript plugin</h4>
-    <p>If JavaScript is disabled and the viewport is narrow enough that the navbar collapses, it will be impossible to expand the navbar and view the content within the <code>.navbar-collapse</code>.</p>
-    <p>The responsive navbar requires the <a href="../javascript/#collapse">collapse plugin</a> to be included in your version of Bootstrap.</p>
+    <h4>需要JS插件</h4>
+    <p>如果JS被禁用了，在窄屏上是无法自动折叠的。</p>
+    <p>自动折叠功能需要 <a href="../javascript/#collapse">折叠插件</a>.</p>
   </div>
   <div class="bs-callout bs-callout-info" id="callout-navbar-breakpoint">
-    <h4>Changing the collapsed mobile navbar breakpoint</h4>
-    <p>The navbar collapses into its vertical mobile view when the viewport is narrower than <code>@grid-float-breakpoint</code>, and expands into its horizontal non-mobile view when the viewport is at least <code>@grid-float-breakpoint</code> in width. Adjust this variable in the Less source to control when the navbar collapses/expands. The default value is <code>768px</code> (the smallest "small" or "tablet" screen).</p>
+    <h4>修改折叠点</h4>
+    <p>当viewport宽度小于 <code>@grid-float-breakpoint</code> 时，导航栏会折叠。当大于等于 <code></code> 时，导航栏会展开成水平模式。你可以通过修改less代码来修改这个值。默认的值是 <code>768px</code> （最小的平板电脑的屏幕宽度）</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-navbar-role">
-    <h4>Make navbars accessible</h4>
-    <p>Be sure to use a <code>&lt;nav&gt;</code> element or, if using a more generic element such as a <code>&lt;div&gt;</code>, add a <code>role="navigation"</code> to every navbar to explicitly identify it as a landmark region for users of assistive technologies.</p>
+    <h4>可访问性</h4>
+    <p>请确保导航栏的容器是 <code>&lt;nav&gt;</code> 元素。如果你用了一个更通用的容器，比如 <code>&lt;div&gt;</code>, 那么你需要显式加上 <code>role="navigation"</code> 属性，不然屏幕阅读器会无法理解。</p>
   </div>
 
   <div class="bs-example" data-example-id="default-navbar">
@@ -140,8 +140,8 @@
 {% endhighlight %}
 
 
-  <h2 id="navbar-brand-image">Brand image</h2>
-  <p>Replace the navbar brand with your own image by swapping the text for an <code>&lt;img&gt;</code>. Since the <code>.navbar-brand</code> has its own padding and height, you may need to override some CSS depending on your image.</p>
+  <h2 id="navbar-brand-image">大图标</h2>
+  <p>你可以把 brand 换成你自己的图片。而且，<code>.navbar-brand</code> 有自己的padding，所以你可能会根据你的图片的不同来覆盖这些样式。</p>
   <div class="bs-example" data-example-id="navbar-with-image-brand">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -166,9 +166,9 @@
 {% endhighlight %}
 
 
-  <h2 id="navbar-forms">Forms</h2>
-  <p>Place form content within <code>.navbar-form</code> for proper vertical alignment and collapsed behavior in narrow viewports. Use the alignment options to decide where it resides within the navbar content.</p>
-  <p>As a heads up, <code>.navbar-form</code> shares much of its code with <code>.form-inline</code> via mixin. <strong class="text-danger">Some form controls, like input groups, may require fixed widths to be show up properly within a navbar.</strong></p>
+  <h2 id="navbar-forms">表单</h2>
+  <p>把表单放在一个 <code>.navbar-form</code> 容器中，以确保正确的上下对齐和折叠。</p>
+  <p>注意， <code>.navbar-form</code> 通过mixin使用了很多 <code>.form-inline</code> 的代码。 <strong class="text-danger">一些表单控件，比如input，可能需要设置固定的宽度。</strong></p>
   <div class="bs-example" data-example-id="navbar-form">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -202,18 +202,18 @@
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-navbar-mobile-caveats">
-    <h4>Mobile device caveats</h4>
+    <h4>移动设备上的一些警告</h4>
     <p>There are some caveats regarding using form controls within fixed elements on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
   </div>
 
   <div class="bs-callout bs-callout-warning" id="callout-navbar-form-labels">
-    <h4>Always add labels</h4>
+    <h4>总是使用label</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class. There are further alternative methods of providing a label for assistive technologies, such as the <code>aria-label</code>, <code>aria-labelledby</code> or <code>title</code> attribute. If none of these is present, screen readers may resort to using the <code>placeholder</code> attribute, if present, but note that use of <code>placeholder</code> as a replacement for other labelling methods is not advised.</p>
   </div>
 
 
-  <h2 id="navbar-buttons">Buttons</h2>
-  <p>Add the <code>.navbar-btn</code> class to <code>&lt;button&gt;</code> elements not residing in a <code>&lt;form&gt;</code> to vertically center them in the navbar.</p>
+  <h2 id="navbar-buttons">按钮</h2>
+  <p>在按钮上加上 <code>.navbar-btn</code> 类可以在导航栏中上下居中，而不需要把他们放在 <code>&lt;form&gt;</code> 中。</p>
   <div class="bs-example" data-example-id="navbar-button">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -237,12 +237,12 @@
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-navbar-btn-context">
-    <h4>Context-specific usage</h4>
-    <p>Like the standard <a href="../css/#buttons">button classes</a>, <code>.navbar-btn</code> can be used on <code>&lt;a&gt;</code> and <code>&lt;input&gt;</code> elements. However, neither <code>.navbar-btn</code> nor the standard button classes should be used on <code>&lt;a&gt;</code> elements within <code>.navbar-nav</code>.</p>
+    <h4>上下文</h4>
+    <p>就像标准的 <a href="../css/#buttons">按钮类</a>， <code>.navbar-btn</code> 也可以用在 <code>&lt;a&gt;</code> 和 <code>&lt;input&gt;</code> 元素上。不过，他们都不能用在 <code>.navbar-nav</code> 中的 <code>&lt;a&gt;</code> 元素上</p>
   </div>
 
-  <h2 id="navbar-text">Text</h2>
-  <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
+  <h2 id="navbar-text">文案</h2>
+  <p>把文案放在 <code>.navbar-text</code>中，通常是一个 <code>&lt;p&gt;</code> 标签以确保正确的样式。</p>
   <div class="bs-example" data-example-id="navbar-text">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -266,8 +266,8 @@
 {% endhighlight %}
 
 
-  <h2 id="navbar-links">Non-nav links</h2>
-  <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
+  <h2 id="navbar-links">非导航的链接</h2>
+  <p>对于普通的一个链接，也需要加上一个 <code>.navbar-link</code> 来保证他的样式是正确的</p>
   <div class="bs-example" data-example-id="navbar-link">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -291,18 +291,18 @@
 {% endhighlight %}
 
 
-  <h2 id="navbar-component-alignment">Component alignment</h2>
-  <p>Align nav links, forms, buttons, or text, using the <code>.navbar-left</code> or <code>.navbar-right</code> utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate <code>&lt;ul&gt;</code> with the respective utility class applied.</p>
-  <p>These classes are mixin-ed versions of <code>.pull-left</code> and <code>.pull-right</code>, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
+  <h2 id="navbar-component-alignment">组件对齐</h2>
+  <p>使用 <code>.navbar-left</code> 或者 <code>.navbar-right</code> 工具类来对齐链接、表单、按钮或者文字。这些类通过CSS 浮动来实现特定方向的对齐。比如你想对齐几个链接，把它们放到 <code>&lt;ul&gt;</code> 中并且加上工具类即可</p>
+  <p>这两个类是 <code>.pull-left</code> 和 <code>.pull-right</code> 的mixin，但是，他们通过媒体查询限制在了特定的屏幕尺寸内。</p>
   <div class="bs-callout bs-callout-warning" id="callout-navbar-right-align">
-    <h4>Right aligning multiple components</h4>
-    <p>Navbars currently have a limitation with multiple <code>.navbar-right</code> classes. To properly space content, we use negative margin on the last <code>.navbar-right</code> element. When there are multiple elements using that class, these margins don't work as intended.</p>
-    <p>We'll revisit this when we can rewrite that component in v4.</p>
+    <h4>右对齐多个元素</h4>
+    <p>导航栏现在如果有多个 <code>.navbar-right</code> 类，可能会导致问题。因为我们在最后一个 <code>.navbar-right</code> 元素上用了负margin。所以如果有多个元素用了这个类，可能会导致问题</p>
+    <p>我们会在 v4 版本中修复这个问题</p>
   </div>
 
 
-  <h2 id="navbar-fixed-top">Fixed to top</h2>
-  <p>Add <code>.navbar-fixed-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
+  <h2 id="navbar-fixed-top">固定顶部</h2>
+  <p>加上 <code>.navbar-fixed-top</code> 类，并且在里面加入一个 <code>.container</code> 或者 <code>.container-fluid</code> 容器来保证正确的边距和居中</p>
   <div class="bs-example bs-navbar-top-example" data-example-id="navbar-fixed-to-top">
     <nav class="navbar navbar-default navbar-fixed-top">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
@@ -336,17 +336,17 @@
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-danger" id="callout-navbar-fixed-top-padding">
-    <h4>Body padding required</h4>
-    <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the top of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
+    <h4>body上需要增加padding</h4>
+    <p>固定布局会盖住你的其他内容，所以你需要在你的body上增加一个padding，你可以设置你自己的值，也可以用下面的代码（我们默认是50px)：</p>
 {% highlight scss %}
 body { padding-top: 70px; }
 {% endhighlight %}
-    <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    <p>确保在我们的代码之<strong>后</strong>引入这一段代码</p>
   </div>
 
 
-  <h2 id="navbar-fixed-bottom">Fixed to bottom</h2>
-  <p>Add <code>.navbar-fixed-bottom</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
+  <h2 id="navbar-fixed-bottom">固定底部</h2>
+  <p>加上 <code>.navbar-fixed-bottom</code> 类，并且在里面加入一个 <code>.container</code> 或者 <code>.container-fluid</code> 容器来保证正确的边距和居中</p>
   <div class="bs-example bs-navbar-bottom-example" data-example-id="navbar-fixed-to-bottom">
     <nav class="navbar navbar-default navbar-fixed-bottom">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
@@ -380,18 +380,18 @@ body { padding-top: 70px; }
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-danger" id="callout-navbar-fixed-bottom-padding">
-    <h4>Body padding required</h4>
-    <p>The fixed navbar will overlay your other content, unless you add <code>padding</code> to the bottom of the <code>&lt;body&gt;</code>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.</p>
+    <h4>body上需要增加padding</h4>
+    <p>固定布局会盖住你的其他内容，所以你需要在你的body上增加一个padding，你可以设置你自己的值，也可以用下面的代码（我们默认是50px)：</p>
 {% highlight scss %}
 body { padding-bottom: 70px; }
 {% endhighlight %}
-    <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    <p>确保在我们的代码之<strong>后</strong>引入这一段代码</p>
   </div>
 
 
-  <h2 id="navbar-static-top">Static top</h2>
-  <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
-  <p>Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
+  <h2 id="navbar-static-top">静态放在顶部</h2>
+  <p>可以创建一个铺满屏幕的导航栏，并且随其他内容滚动。你可以在导航栏上增加一个 <code>.navbar-static-top</code> 并且在里面加入一个 <code>.container</code> 或者 <code>.container-fluid</code> 容器来正确布局</p>
+  <p>不像 <code>.navbar-fixed-*</code> 类，你不需要在 <code>body</code> 上增加padding。</p>
   <div class="bs-example bs-navbar-top-example" data-example-id="navbar-static-top">
     <nav class="navbar navbar-default navbar-static-top">
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
@@ -426,8 +426,8 @@ body { padding-bottom: 70px; }
 {% endhighlight %}
 
 
-  <h2 id="navbar-inverted">Inverted navbar</h2>
-  <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
+  <h2 id="navbar-inverted">反色</h2>
+  <p>加上 <code>.navbar-inverse</code> 变成反色</p>
   <div class="bs-example" data-example-id="inverted-navbar">
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">

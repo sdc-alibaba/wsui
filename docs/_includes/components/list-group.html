@@ -1,10 +1,10 @@
 <div class="bs-docs-section">
-  <h1 id="list-group" class="page-header">List group</h1>
+  <h1 id="list-group" class="page-header">列表组</h1>
 
-  <p class="lead">List groups are a flexible and powerful component for displaying not only simple lists of elements, but complex ones with custom content.</p>
+  <p class="lead">列表组是一个灵活强大的组件，既可以用来显示简单的元素，也可以用来显示复杂的自定义内容</p>
 
-  <h3 id="list-group-basic">Basic example</h3>
-  <p>The most basic list group is simply an unordered list with list items, and the proper classes. Build upon it with the options that follow, or your own CSS as needed.</p>
+  <h3 id="list-group-basic">基本用法</h3>
+  <p>最简单的用法是显示一坨无序的元素。</p>
   <div class="bs-example" data-example-id="simple-list-group">
     <ul class="list-group">
       <li class="list-group-item">Cras justo odio</li>
@@ -24,8 +24,8 @@
 </ul>
 {% endhighlight %}
 
-  <h3 id="list-group-badges">Badges</h3>
-  <p>Add the badges component to any list group item and it will automatically be positioned on the right.</p>
+  <h3 id="list-group-badges">徽章</h3>
+  <p>可以在列表项中增加徽章，徽章会自动定位到右侧</p>
   <div class="bs-example" data-example-id="list-group-badges">
     <ul class="list-group">
       <li class="list-group-item">
@@ -51,8 +51,8 @@
 </ul>
 {% endhighlight %}
 
-  <h3 id="list-group-linked">Linked items</h3>
-  <p>Linkify list group items by using anchor tags instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>). No need for individual parents around each element.</p>
+  <h3 id="list-group-linked">链接</h3>
+  <p>可以把列表项的 <code>&lt;div&gt;</code> 换成一个链接（同时，父容器 <code>&lt;div&gl;</code> 也需要换成 <code>&lt;ul&gt;</code>）。</p>
   <div class="bs-example" data-example-id="list-group-anchors">
     <div class="list-group">
       <a href="#" class="list-group-item active">
@@ -76,8 +76,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="list-group-disabled">Disabled items</h3>
-  <p>Add <code>.disabled</code> to a <code>.list-group-item</code> to gray it out to appear disabled.</p>
+  <h3 id="list-group-disabled">禁用列表项</h3>
+  <p>在 <code>.list-group-item</code> 上增加 <code>.disabled</code> 类会变成禁用样式。</p>
   <div class="bs-example" data-example-id="list-group-disabled">
     <div class="list-group">
       <a href="#" class="list-group-item disabled">
@@ -101,8 +101,9 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="list-group-contextual-classes">Contextual classes</h3>
+  <h3 id="list-group-contextual-classes">不同颜色</h3>
   <p>Use contextual classes to style list items, default or linked. Also includes <code>.active</code> state.</p>
+  <p>可以加上不同的类来显示不同的颜色。同时也支持 <code>.active</code> 状态。</p>
   <div class="bs-example" data-example-id="list-group-variants">
     <div class="row">
       <div class="col-sm-6">
@@ -138,8 +139,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="list-group-custom-content">Custom content</h3>
-  <p>Add nearly any HTML within, even for linked list groups like the one below.</p>
+  <h3 id="list-group-custom-content">自定义内容</h3>
+  <p>可以在里面放入任何HTML代码，比如下面这样</p>
   <div class="bs-example" data-example-id="list-group-custom-content">
     <div class="list-group">
       <a href="#" class="list-group-item active">

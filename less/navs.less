@@ -20,10 +20,13 @@
       position: relative;
       display: block;
       padding: @nav-link-padding;
+      color: @gray-light;
       &:hover,
       &:focus {
         text-decoration: none;
+        color: @brand-primary;
         background-color: @nav-link-hover-bg;
+        border-color: @nav-link-hover-bg;
       }
     }
 
@@ -86,9 +89,6 @@
       line-height: @line-height-base;
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
-      &:hover {
-        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
-      }
     }
 
     // Active state, and its :hover to override normal :hover
@@ -215,6 +215,76 @@
   }
 }
 
+//wraped类型标签页
+@navTabsBorderColor:  #ddd;
+.tab-wraped {
+  border: 1px solid @navTabsBorderColor;
+  border-top: 0;
+  > li {
+    padding: 0;
+    > a {
+      color: #666;
+      padding: 20px;
+      border-radius: 0;
+      background: #fcfcfc;
+      margin: 0;
+      border: 0;
+      border-top: 1px solid @navTabsBorderColor;
+      border-bottom: 1px solid @navTabsBorderColor;
+      &:hover,&:focus {
+        background: #fff;
+        border-color: @navTabsBorderColor;
+      }
+    }
+    + li {
+      > a {
+        border-left: 1px solid @navTabsBorderColor;
+      }
+    }
+    &.active > a {
+      background: #fff;
+      font-weight: normal;
+      border-bottom: 1px solid #fff;
+      border-top: 3px solid @brand-primary !important;
+      padding-top: 18px; //和其他标签对齐
+      margin: 0 -1px;
+    }
+
+    h3 {
+      text-align: center;
+      color: #333;
+    }
+
+    ul {
+      margin: auto;
+    }
+    li {
+      margin: 5px 0;
+    }
+    strong {
+      font-size: 120%;
+      vertical-align: middle;
+    }
+    label {
+      color: #999;
+      display: inline-block;
+      width: 70px;
+      text-align: right;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+  &.column3 {
+    > li {
+      width: 33.333%;
+    }
+  }
+  &.column5 {
+    > li {
+      width: 20%;
+    }
+  }
+}
 
 // Tabbable tabs
 // -------------------------
@@ -229,6 +299,11 @@
     display: block;
     visibility: visible;
   }
+  &.tab-wraped {
+    border: 1px solid @navTabsBorderColor;
+    border-top: 0;
+    padding: @line-height-computed;
+  }
 }
 
 
@@ -242,3 +317,53 @@
   // Remove the top rounded corners here since there is a hard edge above the menu
   .border-top-radius(0);
 }
+
+//primary
+.nav-tabs.nav-primary {
+  li > {
+    margin-bottom: 0;
+  }
+  border-bottom: 2px solid @brand-primary;
+  li > a {
+    &,
+    &:focus,
+    &:hover {
+      border-bottom: 0;
+    }
+  }
+  .active > a {
+    &,
+    &:hover,
+    &:focus {
+      background: @brand-primary;
+      border-color: @brand-primary;
+      color: white;
+      border-bottom: 0;
+    }
+  }
+  &.nav-stacked {
+    border-bottom: 0;
+    border-right: 2px solid @brand-primary;
+
+    > li > a {
+      border-radius: @border-radius-base 0 0 @border-radius-base;
+      margin-right: 0;
+    }
+  }
+
+  .open > a {
+    background-color: @brand-primary;
+    color: white;
+  }
+}
+
+//size
+.nav-lg > li > a {
+  padding: 4px 13px;
+}
+.nav-xl > li > a {
+  padding: 6px 16px;
+  font-size: 16.1px;
+}
+
+

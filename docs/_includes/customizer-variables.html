@@ -31,24 +31,28 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@brand-primary">@brand-primary</label>
-    <input id="input-@brand-primary" type="text" value="darken(#428bca, 6.5%)" data-var="@brand-primary" class="form-control"/>
+    <input id="input-@brand-primary" type="text" value="#28a3ef" data-var="@brand-primary" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@brand-primary-hover">@brand-primary-hover</label>
+    <input id="input-@brand-primary-hover" type="text" value="#4cb9fc" data-var="@brand-primary-hover" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@brand-success">@brand-success</label>
-    <input id="input-@brand-success" type="text" value="#5cb85c" data-var="@brand-success" class="form-control"/>
+    <input id="input-@brand-success" type="text" value="#43cd6e" data-var="@brand-success" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@brand-info">@brand-info</label>
     <input id="input-@brand-info" type="text" value="#5bc0de" data-var="@brand-info" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@brand-warning">@brand-warning</label>
-    <input id="input-@brand-warning" type="text" value="#f0ad4e" data-var="@brand-warning" class="form-control"/>
+    <input id="input-@brand-warning" type="text" value="#fac603" data-var="@brand-warning" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@brand-danger">@brand-danger</label>
-    <input id="input-@brand-danger" type="text" value="#d9534f" data-var="@brand-danger" class="form-control"/>
+    <input id="input-@brand-danger" type="text" value="#ea4a36" data-var="@brand-danger" class="form-control"/>
   </div>
 </div>
 <h2 id="scaffolding">Scaffolding</h2>
@@ -72,8 +76,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@link-hover-color">@link-hover-color</label>
-    <input id="input-@link-hover-color" type="text" aria-describedby="help-block-@link-hover-color" value="darken(@link-color, 15%)" data-var="@link-hover-color" class="form-control"/>
-    <p id="help-block-@link-hover-color" class="help-block">Link hover color set via <code>darken()</code> function.</p>
+    <input id="input-@link-hover-color" type="text" value="@brand-primary-hover" data-var="@link-hover-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@link-hover-decoration">@link-hover-decoration</label>
@@ -86,7 +89,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@font-family-sans-serif">@font-family-sans-serif</label>
-    <input id="input-@font-family-sans-serif" type="text" value="&quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif" data-var="@font-family-sans-serif" class="form-control"/>
+    <input id="input-@font-family-sans-serif" type="text" value="tahoma, &quot;Microsoft Yahei&quot;, &quot;SimSun&quot;, sans-serif" data-var="@font-family-sans-serif" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@font-family-serif">@font-family-serif</label>
@@ -94,7 +97,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@font-family-monospace">@font-family-monospace</label>
-    <input id="input-@font-family-monospace" type="text" aria-describedby="help-block-@font-family-monospace" value="Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace" data-var="@font-family-monospace" class="form-control"/>
+    <input id="input-@font-family-monospace" type="text" aria-describedby="help-block-@font-family-monospace" value="Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace" data-var="@font-family-monospace" class="form-control"/>
     <p id="help-block-@font-family-monospace" class="help-block">Default monospace fonts for <code>&lt;code&gt;</code>, <code>&lt;kbd&gt;</code>, and <code>&lt;pre&gt;</code>.</p>
   </div>
   <div class="clearfix"></div>
@@ -103,55 +106,59 @@
     <input id="input-@font-family-base" type="text" value="@font-family-sans-serif" data-var="@font-family-base" class="form-control"/>
   </div>
   <div class="col-xs-4">
-    <label for="input-@font-size-base">@font-size-base</label>
-    <input id="input-@font-size-base" type="text" value="14px" data-var="@font-size-base" class="form-control"/>
+    <label for="input-@font-size-small">@font-size-small</label>
+    <input id="input-@font-size-small" type="text" value="12px" data-var="@font-size-small" class="form-control"/>
   </div>
   <div class="col-xs-4">
-    <label for="input-@font-size-large">@font-size-large</label>
-    <input id="input-@font-size-large" type="text" value="ceil((@font-size-base * 1.25))" data-var="@font-size-large" class="form-control"/>
+    <label for="input-@font-size-base">@font-size-base</label>
+    <input id="input-@font-size-base" type="text" value="12px" data-var="@font-size-base" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
-    <label for="input-@font-size-small">@font-size-small</label>
-    <input id="input-@font-size-small" type="text" value="ceil((@font-size-base * 0.85))" data-var="@font-size-small" class="form-control"/>
+    <label for="input-@font-size-large">@font-size-large</label>
+    <input id="input-@font-size-large" type="text" value="12px" data-var="@font-size-large" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@font-size-xlarge">@font-size-xlarge</label>
+    <input id="input-@font-size-xlarge" type="text" value="14px" data-var="@font-size-xlarge" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@font-size-h1">@font-size-h1</label>
-    <input id="input-@font-size-h1" type="text" value="floor((@font-size-base * 2.6))" data-var="@font-size-h1" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@font-size-h2">@font-size-h2</label>
-    <input id="input-@font-size-h2" type="text" value="floor((@font-size-base * 2.15))" data-var="@font-size-h2" class="form-control"/>
+    <input id="input-@font-size-h1" type="text" value="24px" data-var="@font-size-h1" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@font-size-h2">@font-size-h2</label>
+    <input id="input-@font-size-h2" type="text" value="22px" data-var="@font-size-h2" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@font-size-h3">@font-size-h3</label>
-    <input id="input-@font-size-h3" type="text" value="ceil((@font-size-base * 1.7))" data-var="@font-size-h3" class="form-control"/>
+    <input id="input-@font-size-h3" type="text" value="20px" data-var="@font-size-h3" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@font-size-h4">@font-size-h4</label>
-    <input id="input-@font-size-h4" type="text" value="ceil((@font-size-base * 1.25))" data-var="@font-size-h4" class="form-control"/>
+    <input id="input-@font-size-h4" type="text" value="18px" data-var="@font-size-h4" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@font-size-h5">@font-size-h5</label>
     <input id="input-@font-size-h5" type="text" value="@font-size-base" data-var="@font-size-h5" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@font-size-h6">@font-size-h6</label>
-    <input id="input-@font-size-h6" type="text" value="ceil((@font-size-base * 0.85))" data-var="@font-size-h6" class="form-control"/>
+    <input id="input-@font-size-h6" type="text" value="12px" data-var="@font-size-h6" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@line-height-base">@line-height-base</label>
-    <input id="input-@line-height-base" type="text" aria-describedby="help-block-@line-height-base" value="1.428571429" data-var="@line-height-base" class="form-control"/>
+    <input id="input-@line-height-base" type="text" aria-describedby="help-block-@line-height-base" value="1.5" data-var="@line-height-base" class="form-control"/>
     <p id="help-block-@line-height-base" class="help-block">Unit-less <code>line-height</code> for use in components like buttons.</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@line-height-computed">@line-height-computed</label>
     <input id="input-@line-height-computed" type="text" aria-describedby="help-block-@line-height-computed" value="floor((@font-size-base * @line-height-base))" data-var="@line-height-computed" class="form-control"/>
     <p id="help-block-@line-height-computed" class="help-block">Computed &quot;line-height&quot; (<code>font-size</code> * <code>line-height</code>) for use with <code>margin</code>, <code>padding</code>, etc.</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@headings-font-family">@headings-font-family</label>
     <input id="input-@headings-font-family" type="text" aria-describedby="help-block-@headings-font-family" value="inherit" data-var="@headings-font-family" class="form-control"/>
@@ -160,10 +167,6 @@
   <div class="col-xs-4">
     <label for="input-@headings-font-weight">@headings-font-weight</label>
     <input id="input-@headings-font-weight" type="text" value="500" data-var="@headings-font-weight" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@headings-line-height">@headings-line-height</label>
-    <input id="input-@headings-line-height" type="text" value="1.1" data-var="@headings-line-height" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -195,41 +198,54 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@padding-base-vertical">@padding-base-vertical</label>
-    <input id="input-@padding-base-vertical" type="text" value="6px" data-var="@padding-base-vertical" class="form-control"/>
+    <input id="input-@padding-base-vertical" type="text" value="2px" data-var="@padding-base-vertical" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@padding-base-horizontal">@padding-base-horizontal</label>
-    <input id="input-@padding-base-horizontal" type="text" value="12px" data-var="@padding-base-horizontal" class="form-control"/>
+    <input id="input-@padding-base-horizontal" type="text" value="14px" data-var="@padding-base-horizontal" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@padding-xlarge-vertical">@padding-xlarge-vertical</label>
+    <input id="input-@padding-xlarge-vertical" type="text" value="5px" data-var="@padding-xlarge-vertical" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@padding-xlarge-horizontal">@padding-xlarge-horizontal</label>
+    <input id="input-@padding-xlarge-horizontal" type="text" value="20px" data-var="@padding-xlarge-horizontal" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@padding-large-vertical">@padding-large-vertical</label>
-    <input id="input-@padding-large-vertical" type="text" value="10px" data-var="@padding-large-vertical" class="form-control"/>
+    <input id="input-@padding-large-vertical" type="text" value="4px" data-var="@padding-large-vertical" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@padding-large-horizontal">@padding-large-horizontal</label>
+    <input id="input-@padding-large-horizontal" type="text" value="14px" data-var="@padding-large-horizontal" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
-    <label for="input-@padding-large-horizontal">@padding-large-horizontal</label>
-    <input id="input-@padding-large-horizontal" type="text" value="16px" data-var="@padding-large-horizontal" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
     <label for="input-@padding-small-vertical">@padding-small-vertical</label>
-    <input id="input-@padding-small-vertical" type="text" value="5px" data-var="@padding-small-vertical" class="form-control"/>
+    <input id="input-@padding-small-vertical" type="text" value="0px" data-var="@padding-small-vertical" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@padding-small-horizontal">@padding-small-horizontal</label>
-    <input id="input-@padding-small-horizontal" type="text" value="10px" data-var="@padding-small-horizontal" class="form-control"/>
+    <input id="input-@padding-small-horizontal" type="text" value="6px" data-var="@padding-small-horizontal" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@padding-xs-vertical">@padding-xs-vertical</label>
+    <input id="input-@padding-xs-vertical" type="text" value="0px" data-var="@padding-xs-vertical" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
-    <label for="input-@padding-xs-vertical">@padding-xs-vertical</label>
-    <input id="input-@padding-xs-vertical" type="text" value="1px" data-var="@padding-xs-vertical" class="form-control"/>
+    <label for="input-@padding-xs-horizontal">@padding-xs-horizontal</label>
+    <input id="input-@padding-xs-horizontal" type="text" value="6px" data-var="@padding-xs-horizontal" class="form-control"/>
   </div>
   <div class="col-xs-4">
-    <label for="input-@padding-xs-horizontal">@padding-xs-horizontal</label>
-    <input id="input-@padding-xs-horizontal" type="text" value="5px" data-var="@padding-xs-horizontal" class="form-control"/>
+    <label for="input-@line-height-xlarge">@line-height-xlarge</label>
+    <input id="input-@line-height-xlarge" type="text" value="1.429" data-var="@line-height-xlarge" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@line-height-large">@line-height-large</label>
-    <input id="input-@line-height-large" type="text" value="1.33" data-var="@line-height-large" class="form-control"/>
+    <input id="input-@line-height-large" type="text" value="1.5" data-var="@line-height-large" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -238,28 +254,32 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@border-radius-base">@border-radius-base</label>
-    <input id="input-@border-radius-base" type="text" value="4px" data-var="@border-radius-base" class="form-control"/>
+    <input id="input-@border-radius-base" type="text" value="2px" data-var="@border-radius-base" class="form-control"/>
   </div>
   <div class="col-xs-4">
-    <label for="input-@border-radius-large">@border-radius-large</label>
-    <input id="input-@border-radius-large" type="text" value="6px" data-var="@border-radius-large" class="form-control"/>
+    <label for="input-@border-radius-xlarge">@border-radius-xlarge</label>
+    <input id="input-@border-radius-xlarge" type="text" value="4px" data-var="@border-radius-xlarge" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@border-radius-large">@border-radius-large</label>
+    <input id="input-@border-radius-large" type="text" value="3px" data-var="@border-radius-large" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@border-radius-small">@border-radius-small</label>
-    <input id="input-@border-radius-small" type="text" value="3px" data-var="@border-radius-small" class="form-control"/>
+    <input id="input-@border-radius-small" type="text" value="2px" data-var="@border-radius-small" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@component-active-color">@component-active-color</label>
     <input id="input-@component-active-color" type="text" aria-describedby="help-block-@component-active-color" value="#fff" data-var="@component-active-color" class="form-control"/>
     <p id="help-block-@component-active-color" class="help-block">Global color for active items (e.g., navs or dropdowns).</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@component-active-bg">@component-active-bg</label>
     <input id="input-@component-active-bg" type="text" aria-describedby="help-block-@component-active-bg" value="@brand-primary" data-var="@component-active-bg" class="form-control"/>
     <p id="help-block-@component-active-bg" class="help-block">Global background color for active items (e.g., navs or dropdowns).</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@caret-width-base">@caret-width-base</label>
     <input id="input-@caret-width-base" type="text" aria-describedby="help-block-@caret-width-base" value="4px" data-var="@caret-width-base" class="form-control"/>
@@ -324,12 +344,12 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-default-bg">@btn-default-bg</label>
-    <input id="input-@btn-default-bg" type="text" value="#fff" data-var="@btn-default-bg" class="form-control"/>
+    <input id="input-@btn-default-bg" type="text" value="#eee" data-var="@btn-default-bg" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@btn-default-border">@btn-default-border</label>
-    <input id="input-@btn-default-border" type="text" value="#ccc" data-var="@btn-default-border" class="form-control"/>
+    <input id="input-@btn-default-border" type="text" value="#e1e1e1" data-var="@btn-default-border" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-primary-color">@btn-primary-color</label>
@@ -400,9 +420,30 @@
     <label for="input-@btn-link-disabled-color">@btn-link-disabled-color</label>
     <input id="input-@btn-link-disabled-color" type="text" value="@gray-light" data-var="@btn-link-disabled-color" class="form-control"/>
   </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-bordered-default-border">@btn-bordered-default-border</label>
+    <input id="input-@btn-bordered-default-border" type="text" value="#8c8c8c" data-var="@btn-bordered-default-border" class="form-control"/>
+  </div>
 </div>
 <h2 id="forms">Forms</h2>
 <div class="row">
+  <div class="col-xs-4">
+    <label for="input-@form-padding-base-horizontal">@form-padding-base-horizontal</label>
+    <input id="input-@form-padding-base-horizontal" type="text" value="4px" data-var="@form-padding-base-horizontal" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@form-padding-xlarge-horizontal">@form-padding-xlarge-horizontal</label>
+    <input id="input-@form-padding-xlarge-horizontal" type="text" value="8px" data-var="@form-padding-xlarge-horizontal" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@form-padding-large-horizontal">@form-padding-large-horizontal</label>
+    <input id="input-@form-padding-large-horizontal" type="text" value="8px" data-var="@form-padding-large-horizontal" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@form-padding-small-horizontal">@form-padding-small-horizontal</label>
+    <input id="input-@form-padding-small-horizontal" type="text" value="4px" data-var="@form-padding-small-horizontal" class="form-control"/>
+  </div>
   <div class="col-xs-4">
     <label for="input-@input-bg">@input-bg</label>
     <input id="input-@input-bg" type="text" aria-describedby="help-block-@input-bg" value="#fff" data-var="@input-bg" class="form-control"/>
@@ -413,12 +454,12 @@
     <input id="input-@input-bg-disabled" type="text" aria-describedby="help-block-@input-bg-disabled" value="@gray-lighter" data-var="@input-bg-disabled" class="form-control"/>
     <p id="help-block-@input-bg-disabled" class="help-block"><code>&lt;input disabled&gt;</code> background color</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-color">@input-color</label>
     <input id="input-@input-color" type="text" aria-describedby="help-block-@input-color" value="@gray" data-var="@input-color" class="form-control"/>
     <p id="help-block-@input-color" class="help-block">Text color for <code>&lt;input&gt;</code>s</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-border">@input-border</label>
     <input id="input-@input-border" type="text" aria-describedby="help-block-@input-border" value="#ccc" data-var="@input-border" class="form-control"/>
@@ -429,12 +470,12 @@
     <input id="input-@input-border-radius" type="text" aria-describedby="help-block-@input-border-radius" value="@border-radius-base" data-var="@input-border-radius" class="form-control"/>
     <p id="help-block-@input-border-radius" class="help-block">Default <code>.form-control</code> border radius</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius-large">@input-border-radius-large</label>
     <input id="input-@input-border-radius-large" type="text" aria-describedby="help-block-@input-border-radius-large" value="@border-radius-large" data-var="@input-border-radius-large" class="form-control"/>
     <p id="help-block-@input-border-radius-large" class="help-block">Large <code>.form-control</code> border radius</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius-small">@input-border-radius-small</label>
     <input id="input-@input-border-radius-small" type="text" aria-describedby="help-block-@input-border-radius-small" value="@border-radius-small" data-var="@input-border-radius-small" class="form-control"/>
@@ -442,15 +483,15 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@input-border-focus">@input-border-focus</label>
-    <input id="input-@input-border-focus" type="text" aria-describedby="help-block-@input-border-focus" value="#66afe9" data-var="@input-border-focus" class="form-control"/>
+    <input id="input-@input-border-focus" type="text" aria-describedby="help-block-@input-border-focus" value="@brand-primary" data-var="@input-border-focus" class="form-control"/>
     <p id="help-block-@input-border-focus" class="help-block">Border color for inputs on focus</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-color-placeholder">@input-color-placeholder</label>
     <input id="input-@input-color-placeholder" type="text" aria-describedby="help-block-@input-color-placeholder" value="#999" data-var="@input-color-placeholder" class="form-control"/>
     <p id="help-block-@input-color-placeholder" class="help-block">Placeholder text color</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-height-base">@input-height-base</label>
     <input id="input-@input-height-base" type="text" aria-describedby="help-block-@input-height-base" value="(@line-height-computed + (@padding-base-vertical * 2) + 2)" data-var="@input-height-base" class="form-control"/>
@@ -458,15 +499,15 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@input-height-large">@input-height-large</label>
-    <input id="input-@input-height-large" type="text" aria-describedby="help-block-@input-height-large" value="(ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2)" data-var="@input-height-large" class="form-control"/>
+    <input id="input-@input-height-large" type="text" aria-describedby="help-block-@input-height-large" value="(ceil(@font-size-xlarge * @line-height-large) + (@padding-large-vertical * 2) + 2)" data-var="@input-height-large" class="form-control"/>
     <p id="help-block-@input-height-large" class="help-block">Large <code>.form-control</code> height</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-height-small">@input-height-small</label>
     <input id="input-@input-height-small" type="text" aria-describedby="help-block-@input-height-small" value="(floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2)" data-var="@input-height-small" class="form-control"/>
     <p id="help-block-@input-height-small" class="help-block">Small <code>.form-control</code> height</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@legend-color">@legend-color</label>
     <input id="input-@legend-color" type="text" value="@gray-dark" data-var="@legend-color" class="form-control"/>
@@ -475,12 +516,12 @@
     <label for="input-@legend-border-color">@legend-border-color</label>
     <input id="input-@legend-border-color" type="text" value="#e5e5e5" data-var="@legend-border-color" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-group-addon-bg">@input-group-addon-bg</label>
     <input id="input-@input-group-addon-bg" type="text" aria-describedby="help-block-@input-group-addon-bg" value="@gray-lighter" data-var="@input-group-addon-bg" class="form-control"/>
     <p id="help-block-@input-group-addon-bg" class="help-block">Background color for textual input addons</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-group-addon-border-color">@input-group-addon-border-color</label>
     <input id="input-@input-group-addon-border-color" type="text" aria-describedby="help-block-@input-group-addon-border-color" value="@input-border" data-var="@input-group-addon-border-color" class="form-control"/>
@@ -1759,8 +1800,13 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@close-color">@close-color</label>
-    <input id="input-@close-color" type="text" value="#000" data-var="@close-color" class="form-control"/>
+    <input id="input-@close-color" type="text" value="#666" data-var="@close-color" class="form-control"/>
   </div>
+  <div class="col-xs-4">
+    <label for="input-@close-hover-color">@close-hover-color</label>
+    <input id="input-@close-hover-color" type="text" value="#ff5050" data-var="@close-hover-color" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@close-text-shadow">@close-text-shadow</label>
     <input id="input-@close-text-shadow" type="text" value="0 1px 0 #fff" data-var="@close-text-shadow" class="form-control"/>
@@ -1770,11 +1816,11 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@code-color">@code-color</label>
-    <input id="input-@code-color" type="text" value="#c7254e" data-var="@code-color" class="form-control"/>
+    <input id="input-@code-color" type="text" value="#d14" data-var="@code-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@code-bg">@code-bg</label>
-    <input id="input-@code-bg" type="text" value="#f9f2f4" data-var="@code-bg" class="form-control"/>
+    <input id="input-@code-bg" type="text" value="#f7f7f9" data-var="@code-bg" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@kbd-color">@kbd-color</label>

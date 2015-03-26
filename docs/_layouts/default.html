@@ -22,9 +22,6 @@
     <div class="container bs-docs-container">
 
       <div class="row">
-        <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
-          {{ content }}
-        </div>
         {% unless page.fullwidth == true %}
         <div class="col-md-3" role="complementary">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
@@ -39,6 +36,8 @@
                 {% include nav/javascript.html %}
               {% elsif page.slug == "customize" %}
                 {% include nav/customize.html %}
+              {% elsif page.slug == "env" %}
+                {% include nav/env.html %}
               {% elsif page.slug == "about" %}
                 {% include nav/about.html %}
               {% elsif page.slug == "migration" %}
@@ -49,13 +48,20 @@
               Back to top
             </a>
             {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
-            <a href="#" class="bs-docs-theme-toggle" role="button">
+<!--             <a href="#" class="bs-docs-theme-toggle" role="button">
               Preview theme
-            </a>
+            </a> -->
             {% endif %}
           </nav>
         </div>
         {% endunless %}
+        <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
+          {% if page.slug == "getting-started" or page.slug == "css" or page.slug == "components" or page.slug == "js" %}
+            {% include nav/docs.html %}
+          {% endif %}
+          
+          {{ content }}
+        </div>
       </div>
     </div>
 

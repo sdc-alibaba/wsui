@@ -1,8 +1,8 @@
 <div class="bs-docs-section">
-  <h1 id="forms" class="page-header">Forms</h1>
+  <h1 id="forms" class="page-header">表单</h1>
 
-  <h2 id="forms-example">Basic example</h2>
-  <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
+  <h2 id="forms-example">基本例子</h2>
+  <p>单独的表单控件会被自动赋予一些全局样式。所有设置了 <code>.form-control</code> 类的 <code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code> 和 <code>&lt;select&gt;</code> 元素都将被默认设置宽度属性为 <code>width: 100%;</code>。 将 <code>label</code> 元素和前面提到的控件包裹在 <code>.form-group</code> 中可以获得最好的排列。</p>
   <div class="bs-example" data-example-id="basic-forms">
     <form>
       <div class="form-group">
@@ -49,22 +49,24 @@
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 {% endhighlight %}
+
   <div class="bs-callout bs-callout-warning" id="callout-formgroup-inputgroup">
-    <h4>Don't mix form groups with input groups</h4>
-    <p>Do not mix form groups directly with <a href="/components/#input-groups">input groups</a>. Instead, nest the input group inside of the form group.</p>
+    <h4>不要将表单组合输入框组混合使用</h4>
+    <p>不要将表单组直接和<a href="/components/#input-groups">输入框组</a>混合使用。建议将输入框组嵌套到表单组中使用。</p>
   </div>
 
-
-  <h2 id="forms-inline">Inline form</h2>
-  <p>Add <code>.form-inline</code> to your <code>&lt;form&gt;</code> for left-aligned and inline-block controls. <strong>This only applies to forms within viewports that are at least 768px wide.</strong></p>
+  <h2 id="forms-inline">内联表单</h2>
+  <p>为 <code>&lt;form&gt;</code> 元素添加 <code>.form-inline</code> 类可使其内容左对齐并且表现为 <code>inline-block</code> 级别的控件。<strong>只适用于视口（viewport）至少在 768px 宽度时（视口宽度再小的话就会使表单折叠）。</strong></p>
   <div class="bs-callout bs-callout-danger" id="callout-inline-form-width">
-    <h4>Requires custom widths</h4>
-    <p>Inputs and selects have <code>width: 100%;</code> applied by default in Bootstrap. Within inline forms, we reset that to <code>width: auto;</code> so multiple controls can reside on the same line. Depending on your layout, additional custom widths may be required.</p>
+    <h4>可能需要手动设置宽度</h4>
+    <p>在 Bootstrap 中，输入框和单选/多选框控件默认被设置为 <code>width: 100%;</code> 宽度。在内联表单，我们将这些元素的宽度设置为 <code>width: auto;</code>，因此，多个控件可以排列在同一行。根据你的布局需求，可能需要一些额外的定制化组件。</p>
   </div>
+
   <div class="bs-callout bs-callout-warning" id="callout-inline-form-labels">
-    <h4>Always add labels</h4>
-    <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class. There are further alternative methods of providing a label for assistive technologies, such as the <code>aria-label</code>, <code>aria-labelledby</code> or <code>title</code> attribute. If none of these is present, screen readers may resort to using the <code>placeholder</code> attribute, if present, but note that use of <code>placeholder</code> as a replacement for other labelling methods is not advised.</p>
+    <h4>一定要添加 <code>label</code> 标签</h4>
+    <p>如果你没有为每个输入控件设置 <code>label</code> 标签，屏幕阅读器将无法正确识别。对于这些内联表单，你可以通过为 <code>label</code> 设置 <code>.sr-only</code> 类将其隐藏。 也有进一步的替代方法,为辅助技术提供一个标签,比如 <code>aria-label</code>, <code>aria-labelledby</code> 或 <code>title</code> 属性. 如果这些都没有，屏幕阅读器可能会使用<code>placeholder</code> 属性。如果提供了则使用，但是请注意,使用<code>placeholder</code>代替其他标签方法不建议。 </p>
   </div>
+
   <div class="bs-example" data-example-id="simple-form-inline">
     <form class="form-inline">
       <div class="form-group">
@@ -129,8 +131,8 @@
 </form>
 {% endhighlight %}
 
-  <h2 id="forms-horizontal">Horizontal form</h2>
-  <p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p>
+  <h2 id="forms-horizontal">水平排列的表单</h2>
+  <p>通过为表单添加 <code>.form-horizontal</code> 类，并联合使用 Bootstrap 预置的栅格类，可以将 <code>label</code> 标签和控件组水平并排布局。这样做将改变 <code>.form-group</code> 的行为，使其表现为栅格系统中的行（row），因此就无需再额外添加 <code>.row</code> 了。</p>
   <div class="bs-example" data-example-id="simple-horizontal-form">
     <form class="form-horizontal">
       <div class="form-group">
@@ -193,15 +195,16 @@
 {% endhighlight %}
 
 
-  <h2 id="forms-controls">Supported controls</h2>
-  <p>Examples of standard form controls supported in an example form layout.</p>
+  <h2 id="forms-controls">被支持的控件</h2>
+  <p>表单布局实例中展示了其所支持的标准表单控件。</p>
 
-  <h3>Inputs</h3>
-  <p>Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.</p>
+  <h3>输入框</h3>
+  <p>包括大部分表单控件、文本输入域控件，还支持所有 HTML5 类型的输入控件： <code>text</code>、<code>password</code>、<code>datetime</code>、<code>datetime-local</code>、<code>date</code>、<code>month</code>、<code>time</code>、<code>week</code>、<code>number</code>、<code>email</code>、<code>url</code>、<code>search</code>、<code>tel</code> 和 <code>color</code>。</p>
   <div class="bs-callout bs-callout-danger" id="callout-input-needs-type">
-    <h4>Type declaration required</h4>
-    <p>Inputs will only be fully styled if their <code>type</code> is properly declared.</p>
+    <h4>必须添加类型声明</h4>
+    <p>只有正确设置了 <code>type</code> 属性的输入控件才能被赋予正确的样式。</p>
   </div>
+
   <div class="bs-example" data-example-id="text-form-control">
     <form>
       <input type="text" class="form-control" placeholder="Text input">
@@ -211,12 +214,12 @@
 <input type="text" class="form-control" placeholder="Text input">
 {% endhighlight %}
   <div class="bs-callout bs-callout-info" id="callout-xref-input-group">
-    <h4>Input groups</h4>
-    <p>To add integrated text or buttons before and/or after any text-based <code>&lt;input&gt;</code>, <a href="../components/#input-groups">check out the input group component</a>.</p>
+    <h4>输入控件组</h4>
+    <p>如需在文本输入域 <code>&lt;input&gt;</code> 前面或后面添加文本内容或按钮控件，请参考<a href="../components/#input-groups">输入控件组</a>。</p>
   </div>
 
   <h3>Textarea</h3>
-  <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
+  <p>支持多行文本的表单控件。可根据需要改变 <code>rows</code> 属性。</p>
   <div class="bs-example" data-example-id="textarea-form-control">
     <form>
       <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
@@ -227,9 +230,9 @@
 {% endhighlight %}
 
   <h3>Checkboxes and radios</h3>
-  <p>Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.</p>
-  <p>A checkbox or radio with the <code>disabled</code> attribute will be styled appropriately. To have the <code>&lt;label&gt;</code> for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the <code>.disabled</code> class to your <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, <code>.checkbox-inline</code>, or <code>&lt;fieldset&gt;</code>.</p>
-  <h4>Default (stacked)</h4>
+  <p>多选框（checkbox）用于选择列表中的一个或多个选项，而单选框（radio）用于从多个选项中只选择一个。</p>
+  <p>设置了 <code>disabled</code> 属性的单选或多选框都能被赋予合适的样式。对于和多选或单选框联合使用的 <code>&lt;label&gt;</code> 标签，如果也希望将悬停于上方的鼠标设置为“禁止点击”的样式，请将 <code>.disabled</code> 类赋予 <code>.radio</code>、<code>.radio-inline</code>、<code>.checkbox</code>、<code>.checkbox-inline</code> 或 <code>&lt;fieldset&gt;</code>。</p>
+  <h4>默认外观（堆叠在一起）</h4>
   <div class="bs-example" data-example-id="block-checkboxes-radios">
     <form>
       <div class="checkbox">
@@ -299,8 +302,8 @@
 </div>
 {% endhighlight %}
 
-  <h4>Inline checkboxes and radios</h4>
-  <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
+  <h4>内联单选和多选框</h4>
+  <p>通过将 <code>.checkbox-inline</code> 或 <code>.radio-inline</code> 类应用到一系列的多选框（checkbox）或单选框（radio）控件上，可以使这些控件排列在一行。</p>
   <div class="bs-example" data-example-id="inline-checkboxes-radios">
     <form>
       <label class="checkbox-inline">
@@ -348,8 +351,8 @@
 </label>
 {% endhighlight %}
 
-  <h4>Checkboxes and radios without label text</h4>
-  <p>Should you have no text within the <code>&lt;label&gt;</code>, the input is positioned as you'd expect. <strong>Currently only works on non-inline checkboxes and radios.</strong> Remember to still provide some form of label for assistive technologies (for instance, using <code>aria-label</code>).</p>
+  <h4>没有label文案的Checkboxes 和 radios</h4>
+  <p>如果没有label文案，input元素仍会按预期布局， <strong>目前只在非内联排布的 checkboxes 和 radios场景有效.</strong> 请注意仍然为元素添加一些辅助说明文案方便辅助工具阅读,比如 <code>aria-label</code></p>
   <div class="bs-example" data-example-id="checkboxes-radios-without-labels">
     <form>
       <div class="checkbox">
@@ -377,30 +380,82 @@
 </div>
 {% endhighlight %}
 
-  <h3>Selects</h3>
-  <p>Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via <code>border-radius</code> properties.</p>
+  <h3>下拉列表（select）</h3>
+  <p>注意，很多原生选择菜单单 - 即在 Safari 和 Chrome 中 - 的圆角是无法通过修改 <code>border-radius</code> 属性来改变的。</p>
   <div class="bs-example" data-example-ids="select-form-control">
     <form>
-      <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control input-lg">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="select">
+          <select class="form-control input-sm">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<select class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control input-lg">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
+<div class="form-group">
+  <label class="select">
+    <select class="form-control input-sm">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </label>
+</div>
 {% endhighlight %}
 
-  <p>For <code>&lt;select&gt;</code> controls with the <code>multiple</code> attribute, multiple options are shown by default.</p>
+  <p>对于标记了 <code>multiple</code> 属性的 <code>&lt;select&gt;</code> 控件来说，默认显示多选项。</p>
 
   <div class="bs-example" data-example-ids="select-multiple-form-control">
     <form>
@@ -425,8 +480,8 @@
 {% endhighlight %}
 
 
-  <h2 id="forms-controls-static">Static control</h2>
-  <p>When you need to place plain text next to a form label within a form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
+  <h2 id="forms-controls-static">静态控件</h2>
+  <p>如果需要在表单中将一行纯文本和 <code>label</code> 元素放置于同一行，为 <code>&lt;p&gt;</code> 元素添加 <code>.form-control-static</code> 类即可。</p>
   <div class="bs-example" data-example-id="horizontal-static-form-control">
     <form class="form-horizontal">
       <div class="form-group">
@@ -486,21 +541,20 @@
 </form>
 {% endhighlight %}
 
-  <h2 id="forms-control-focus">Focus state</h2>
-  <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
+  <h2 id="forms-control-focus">焦点状态</h2>
+  <p>我们将某些表单控件的默认 <code>outline</code> 样式移除，然后对 <code>:focus</code> 状态赋予 <code>box-shadow</code> 属性。</p>
   <div class="bs-example">
     <form>
       <input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
     </form>
   </div>
   <div class="bs-callout bs-callout-info" id="callout-focus-demo">
-    <h4>Demo <code>:focus</code> state</h4>
-    <p>The above example input uses custom styles in our documentation to demonstrate the <code>:focus</code> state on a <code>.form-control</code>.</p>
+    <h4>演示<code>:focus</code> 状态</h4>
+    <p>在本文档中，我们为上面实例中的输入框赋予了自定义的样式，用于演示 <code>.form-control</code> 元素的 <code>:focus</code> 状态。</p>
   </div>
 
-
-  <h2 id="forms-control-disabled">Disabled state</h2>
-  <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
+  <h2 id="forms-control-disabled">禁用状态</h2>
+  <p>为输入框设置 <code>disabled</code> 属性可以防止用户输入，并能对外观做一些修改，使其更直观。</p>
   <div class="bs-example" data-example-id="text-form-control-disabled">
     <form>
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
@@ -510,19 +564,17 @@
 <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
 {% endhighlight %}
 
-  <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
-  <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once.</p>
-
+  <h3 id="forms-disabled-fieldsets">被禁用的 <code>fieldset</code></h3>
+  <p>为<code>&lt;fieldset&gt;</code> 设置 <code>disabled</code> 属性,可以禁用 <code>&lt;fieldset&gt;</code> 中包含的所有控件。</p>
   <div class="bs-callout bs-callout-warning" id="callout-fieldset-disabled-pointer-events">
-    <h4>Caveat about link functionality of <code>&lt;a&gt;</code></h4>
+    <h4><code>&lt;a&gt;</code> 标签的链接功能不受影响</h4>
     <p>By default, browsers will treat all native form controls (<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code> and <code>&lt;button&gt;</code> elements) inside a <code>&lt;fieldset disabled&gt;</code> as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes <code>&lt;a ... class="btn btn-*"&gt;</code> elements, these will only be given a style of <code>pointer-events: none</code>. As noted in the section about <a href="#buttons-disabled">disabled state for buttons</a> (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.</p>
   </div>
 
   <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie">
-    <h4>Cross-browser compatibility</h4>
-    <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
+    <h4>跨浏览器兼容性</h4>
+    <p>虽然 Bootstrap 会将这些样式应用到所有浏览器上，Internet Explorer 11 及以下浏览器中的 <code>&lt;fieldset&gt;</code> 元素并不完全支持 <code>disabled</code> 属性。因此建议在这些浏览器上通过 JavaScript 代码来禁用 <code>&lt;fieldset&gt;</code>。</p>
   </div>
-
   <div class="bs-example" data-example-id="disabled-fieldset">
     <form>
       <fieldset disabled>
@@ -532,9 +584,11 @@
         </div>
         <div class="form-group">
           <label for="disabledSelect">Disabled select menu</label>
-          <select id="disabledSelect" class="form-control">
-            <option>Disabled select</option>
-          </select>
+          <label class="select">
+            <select id="disabledSelect" class="form-control">
+              <option>Disabled select</option>
+            </select>
+          </label>
         </div>
         <div class="checkbox">
           <label>
@@ -554,9 +608,11 @@
     </div>
     <div class="form-group">
       <label for="disabledSelect">Disabled select menu</label>
-      <select id="disabledSelect" class="form-control">
-        <option>Disabled select</option>
-      </select>
+      <label class="select">
+        <select id="disabledSelect" class="form-control">
+          <option>Disabled select</option>
+        </select>
+      </label>
     </div>
     <div class="checkbox">
       <label>
@@ -569,8 +625,8 @@
 {% endhighlight %}
 
 
-  <h2 id="forms-control-readonly">Readonly state</h2>
-  <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
+  <h2 id="forms-control-readonly">只读状态</h2>
+  <p>为输入框设置 <code>readonly</code> 属性可以禁止用户输入，并且输入框的样式也是禁用状态。</p>
   <div class="bs-example" data-example-id="readonly-text-form-control">
     <form>
       <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
@@ -581,9 +637,8 @@
 {% endhighlight %}
 
 
-  <h2 id="forms-control-validation">Validation states</h2>
-  <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
-
+  <h2 id="forms-control-validation">校验状态</h2>
+  <p>Bootstrap 对表单控件的校验状态，如 error、warning 和 success 状态，都定义了样式。使用时，添加 <code>.has-warning</code>、<code>.has-error</code> 或 <code>.has-success</code> 类到这些控件的父元素即可。任何包含在此元素之内的 <code>.control-label</code>、<code>.form-control</code> 和 <code>.help-block</code> 元素都将接受这些校验状态的样式。</p>
   <div class="bs-callout bs-callout-warning" id="callout-form-validation-state-accessibility">
     <h4>Conveying validation state to assistive technologies</h4>
     <p>Using these validation styles to denote the state of a form control only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers.</p>
@@ -628,6 +683,33 @@
           </label>
         </div>
       </div>
+      <div class="has-success">
+        <label class='control-label' for="selectSuccess">select with success</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectSuccess'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
+      <div class="has-warning">
+        <label class='control-label' for="selectWarning">select with warning</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectWarning'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
+      <div class="has-error">
+        <label class='control-label' for="selectError">select with error</label>
+        <label class="select">
+          <select class='form-control' name="" id='selectError'>
+            <option value="1" checked='checked'>杭州</option>
+            <option value="2">上海</option>
+          </select>
+        </label>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
@@ -669,13 +751,14 @@
 </div>
 {% endhighlight %}
 
-  <h3>With optional icons</h3>
-  <p>You can also add optional feedback icons with the addition of <code>.has-feedback</code> and the right icon.</p>
+  <h3>添加额外的图标</h3>
+  <p>你还可以针对校验状态为输入框添加额外的图标。只需设置相应的 <code>.has-feedback</code> 类并添加正确的图标即可。</p>
   <p><strong class="text-danger">Feedback icons only work with textual <code>&lt;input class="form-control"&gt;</code> elements.</strong></p>
   <div class="bs-callout bs-callout-warning" id="callout-has-feedback-icon-positioning">
-    <h4>Icons, labels, and input groups</h4>
-    <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the <code>.sr-only</code> class. If you must do without labels, adjust the <code>top</code> value of the feedback icon. For input groups, adjust the <code>right</code> value to an appropriate pixel value depending on the width of your addon.</p>
+    <h4>图标、<code>label</code>  和输入控件组</h4>
+    <p>对于不带有 <code>label</code> 标签的输入框以及右侧带有附加组件的<a href="../components#input-groups">输入框组</a>，需要手动为其图标定位。为了让所有用户都能访问你的网站，我们强烈建议为所有输入框添加 <code>label</code> 标签。如果你不希望将 <code>label</code> 标签展示出来，可以通过添加 <code>.sr-only</code> 类来实现。如果的确不能添加 <code>label</code> 标签，请调整图标的 <code>top</code> 值。对于输入框组，请根据你的实际情况调整 <code>right</code> 值。</p>
   </div>
+
   <div class="bs-callout bs-callout-warning" id="callout-has-feedback-icon-accessibility">
     <h4>Conveying the icon's meaning to assistive technologies</h4>
     <p>To ensure that assistive technologies – such as screen readers – correctly convey the meaning of an icon, additional hidden text should be included with the <code>.sr-only</code> class and explicitly associated with the form control it relates to using <code>aria-describedby</code>. Alternatively, ensure that the meaning (for instance, the fact that there is a warning for a particular text entry field) is conveyed in some other form, such as changing the text of the actual <code>&lt;label&gt;</code> associated with the form control.</p>
@@ -724,7 +807,7 @@
 </div>
 {% endhighlight %}
 
-  <h4>Optional icons in horizontal and inline forms</h4>
+  <h4>为水平排列的表单和内联表单设置可选的图标</h4>
   <div class="bs-example" data-example-id="horizontal-form-validation-state-with-icon">
     <form class="form-horizontal">
       <div class="form-group has-success has-feedback">
@@ -791,27 +874,33 @@
 {% endhighlight %}
 
 
-  <h2 id="forms-control-sizes">Control sizing</h2>
-  <p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like <code>.col-lg-*</code>.</p>
+  <h2 id="forms-control-sizes">控件尺寸</h2>
+  <p>通过 <code>.input-lg</code> 类似的类可以为控件设置高度，通过 <code>.col-lg-*</code> 类似的类可以为控件设置宽度。</p>
 
-  <h3>Height sizing</h3>
-  <p>Create taller or shorter form controls that match button sizes.</p>
-  <div class="bs-example bs-example-control-sizing" data-example-id="form-control-height-sizes">
+  <h3>高度尺寸</h3>
+  <p>创建大一些或小一些的表单控件以匹配按钮尺寸。</p>
+  <div class="bs-example" data-example-id="form-control-height-sizes">
     <form>
       <div class="controls">
         <input class="form-control input-lg" type="text" placeholder=".input-lg">
         <input type="text" class="form-control" placeholder="Default input">
         <input class="form-control input-sm" type="text" placeholder=".input-sm">
 
-        <select class="form-control input-lg">
-          <option value="">.input-lg</option>
-        </select>
-        <select class="form-control">
-          <option value="">Default select</option>
-        </select>
-        <select class="form-control input-sm">
-          <option value="">.input-sm</option>
-        </select>
+        <label class="select">
+          <select class="form-control input-lg">
+            <option value="">.input-lg</option>
+          </select>
+        </label>
+        <label class="select">
+          <select class="form-control">
+            <option value="">Default select</option>
+          </select>
+        </label>
+        <label class="select">
+          <select class="form-control input-sm">
+            <option value="">.input-sm</option>
+          </select>
+        </label>
       </div>
     </form>
   </div><!-- /.bs-example -->
@@ -819,14 +908,25 @@
 <input class="form-control input-lg" type="text" placeholder=".input-lg">
 <input class="form-control" type="text" placeholder="Default input">
 <input class="form-control input-sm" type="text" placeholder=".input-sm">
-
-<select class="form-control input-lg">...</select>
-<select class="form-control">...</select>
-<select class="form-control input-sm">...</select>
+<label class="select">
+  <select class="form-control input-lg">
+    <option value="">.input-lg</option>
+  </select>
+</label>
+<label class="select">
+  <select class="form-control">
+    <option value="">Default select</option>
+  </select>
+</label>
+<label class="select">
+  <select class="form-control input-sm">
+    <option value="">.input-sm</option>
+  </select>
+</label>
 {% endhighlight %}
 
-  <h3>Horizontal form group sizes</h3>
-  <p>Quickly size labels and form controls within <code>.form-horizontal</code> by adding <code>.form-group-lg</code> or <code>.form-group-sm</code>.</p>
+  <h3>水平排列的表单组的尺寸</h3>
+  <p>通过添加 <code>.form-group-lg</code> 或 <code>.form-group-sm</code> 类，为 <code>.form-horizontal</code> 包裹的 <code>label</code> 元素和表单控件快速设置尺寸。</p>
   <div class="bs-example" data-example-id="form-group-height-sizes">
     <form class="form-horizontal">
       <div class="form-group form-group-lg">
@@ -861,8 +961,8 @@
 {% endhighlight %}
 
 
-  <h3>Column sizing</h3>
-  <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
+  <h3>调整列（column）尺寸</h3>
+  <p>用栅格系统中的列（column）包裹输入框或其任何父元素，都可很容易的为其设置宽度。</p>
   <div class="bs-example" data-example-id="form-control-column-sizing">
     <form>
       <div class="row">
@@ -892,8 +992,8 @@
 </div>
 {% endhighlight %}
 
-  <h2 id="forms-help-text">Help text</h2>
-  <p>Block level help text for form controls.</p>
+  <p>针对表单控件的“块（block）”级辅助文本。</p>
+  <p>针对表单控件的“块（block）”级辅助文本。</p>
   <div class="bs-callout bs-callout-info" id="callout-help-text-accessibility">
     <h4>Associating help text with form controls</h4>
     <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
@@ -904,7 +1004,18 @@
         <label for="inputHelpBlock">Input with help text</label>
         <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
       </div>
-      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+      <span id="helpBlock" class="help-block">这是一大段的帮助文案，独占一行。好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案好多文案</span>
+    </form>
+    <form class="form-horizontal">
+      <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="helpBlockSmall">Large label</label>
+        <div class="col-sm-5">
+          <input class="form-control" type="text" id="helpBlockSmall" placeholder="input">
+        </div>
+        <div class="col-sm-5">
+          <span class="help-block">通过栅格添加内联的小段文案.</span>
+        </div>
+      </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}

@@ -175,26 +175,26 @@ $('.dropdown-toggle').dropdown()
       </thead>
       <tbody>
         <tr>
-          <td>show.bs.dropdown</td>
+          <td>show</td>
           <td>This event fires immediately when the show instance method is called.</td>
         </tr>
         <tr>
-          <td>shown.bs.dropdown</td>
+          <td>shown</td>
           <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
         </tr>
         <tr>
-          <td>hide.bs.dropdown</td>
+          <td>hide</td>
           <td>This event is fired immediately when the hide instance method has been called.</td>
         </tr>
         <tr>
-          <td>hidden.bs.dropdown</td>
+          <td>hidden</td>
           <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
         </tr>
       </tbody>
     </table>
   </div><!-- ./bs-table-responsive -->
 {% highlight js %}
-$('#myDropdown').on('show.bs.dropdown', function () {
+$('#myDropdown').on('show', function () {
   // do something…
 })
 {% endhighlight %}

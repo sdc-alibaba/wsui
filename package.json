@@ -1,5 +1,5 @@
 {
-  "name": "bootstrap",
+  "name": "sui",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "3.3.1",
   "keywords": [
@@ -11,24 +11,24 @@
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
+  "homepage": "http://sui.taobao.org",
   "author": "Twitter, Inc.",
   "scripts": {
     "test": "grunt test"
   },
-  "style": "dist/css/bootstrap.css",
-  "less": "less/bootstrap.less",
+  "style": "dist/css/sui.css",
+  "less": "less/sui.less",
   "main": "./dist/js/npm",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twbs/bootstrap.git"
+    "url": "https://github.com/sdc-alibaba/sui3.git"
   },
   "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
+    "url": "https://github.com/sdc-alibaba/sui3/issues"
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
+    "url": "https://github.com/sdc-alibaba/sui3/blob/master/LICENSE"
   },
   "devDependencies": {
     "btoa": "~1.1.2",
@@ -59,19 +59,21 @@
     "load-grunt-tasks": "~2.0.0",
     "npm-shrinkwrap": "^200.0.0",
     "remarkable": "~1.6.0",
+    "prefix-cssclass": "~0.3.0",
+    "grunt-newer": "^1.1.0",
     "time-grunt": "~1.0.0"
   },
   "engines": {
     "node": "~0.10.1"
   },
   "jspm": {
-    "main": "js/bootstrap",
+    "main": "js/sui",
     "directories": {
       "example": "examples",
       "lib": "dist"
     },
     "shim": {
-      "js/bootstrap": {
+      "js/sui": {
         "imports": "jquery",
         "exports": "$"
       }

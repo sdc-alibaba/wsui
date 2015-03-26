@@ -2063,9 +2063,6 @@ select[multiple].form-group-lg .form-control {
   border: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-
-     -moz-appearance: none;
-          appearance: none;
 }
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -7293,7 +7290,7 @@ tr.introjs-showElement > th {
 }
 .introjs-tooltip {
   position: absolute;
-  min-width: 265px;
+  min-width: 250px;
   max-width: 300px;
   padding: 10px;
   background-color: white;
@@ -7377,7 +7374,7 @@ tr.introjs-showElement > th {
   z-index: 500;
   display: inline-block;
   padding: 2px 25px .3em;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -7411,8 +7408,7 @@ tr.introjs-showElement > th {
   opacity: 1;
 }
 .toast-default {
-  background-color: black;
-  background-color: rgba(0, 0, 0, .8);
+  background: #777;
 }
 .toast-primary {
   background: #28a3ef;
@@ -7428,48 +7424,6 @@ tr.introjs-showElement > th {
 }
 .toast-danger {
   background: #ea4a36;
-}
-.tagsinput {
-  max-width: 100%;
-  cursor: text;
-}
-.tagsinput input {
-  width: auto !important;
-  min-width: 4em;
-  max-width: inherit;
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-.tagsinput input:focus {
-  border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-.tagsinput .tag {
-  margin-right: 2px;
-  color: white;
-  vertical-align: 1px;
-}
-.tagsinput .tag [data-role="remove"] {
-  margin-left: 8px;
-  cursor: pointer;
-}
-.tagsinput .tag [data-role="remove"]:after {
-  padding: 0 2px;
-  content: "x";
-}
-.tagsinput .tag [data-role="remove"]:hover {
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
-}
-.tagsinput .tag [data-role="remove"]:hover:active {
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .clearfix:before,
 .clearfix:after,

@@ -1,10 +1,10 @@
 <div class="bs-docs-section">
-  <h1 id="media" class="page-header">Media object</h1>
+  <h1 id="media" class="page-header">多媒体列表</h1>
 
-  <p class="lead">Abstract object styles for building various types of components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.</p>
+  <p class="lead">一个抽象的组件，可以用来放一些评论或者微博等在左边或者有标一个图标的内容。</p>
 
-  <h3 id="media-default">Default media</h3>
-  <p>The default media displays a media object (images, video, audio) to the left or right of a content block.</p>
+  <h3 id="media-default">默认样式</h3>
+  <p>默认情况下在内容区块的左边或者右边显示一个媒体对象（图片，视屏，音频）</p>
   <div class="bs-example" data-example-id="default-media">
     <div class="media">
       <div class="media-left">
@@ -81,9 +81,9 @@
 </div>
 {% endhighlight %}
 
-  <p>The classes <code>.pull-left</code> and <code>.pull-right</code> also exist and were previously used as part of the media component, but are deprecated for that use as of v3.3.0. They are approximately equivalent to <code>.media-left</code> and <code>.media-right</code>, except that <code>.media-right</code> should be placed after the <code>.media-body</code> in the html.</p>
-  <h3 id="media-alignment">Media alignment</h3>
-  <p>The images or other media can be aligned top, middle, or bottom. The default is top aligned.</p>
+  <p>从 v3.3.0 开始不建议使用 <code>.pull-left</code> 或者 <code>.pull-right</code> 类。而是应该在 <code>.media-body</code> 后面放一个 <code>.media-left</code> 或者 <code>.media-right</code>。</p>
+  <h3 id="media-alignment">对齐</h3>
+  <p>图片可以有上中下三种对齐方式，默认是上对齐。</p>
   <div class="bs-example" data-example-id="media-alignment">
     <div class="media">
       <div class="media-left">
@@ -136,8 +136,8 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="media-list">Media list</h3>
-  <p>With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).</p>
+  <h3 id="media-list">多媒体列表</h3>
+  <p>只需要一点点额外的代码，你就可以在列表中嵌入多媒体。</p>
   <div class="bs-example" data-example-id="media-list">
     <ul class="media-list">
       <li class="media">

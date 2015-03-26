@@ -1,144 +1,197 @@
 <div class="bs-docs-section">
-  <h1 id="pagination" class="page-header">Pagination</h1>
+  <h1 id="pagination" class="page-header">分页器</h1>
 
-  <p class="lead">Provide pagination links for your site or app with the multi-page pagination component, or the simpler <a href="#pagination-pager">pager alternative</a>.</p>
+  <p class="lead">默认的分页器是有多个页码的，这里还有一种简单的只有上一页和下一页的样式<a href="#pagination-pager">简易分页器</a>.</p>
+  <p class="lead">JS方法使用文档<a href="http://sui.taobao.org/sui/docs/pagination-js.html" target="_blank">详见原SUI文档页</a></p>
 
-  <h2 id="pagination-default">Default pagination</h2>
-  <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+  <h2 id="pagination-default">默认分页器</h2>
   <div class="bs-example" data-example-id="simple-pagination">
     <nav>
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
+      <div class="pagination">
+        <ul>
+          <li class="prev">
+            <a href="#">&laquo;</a>
+          </li>
+          <li><a href="#">1</a></li>
+          <li class="active"><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next">
+            <a href="#">&raquo;</a>
+          </li>
+        </ul>
+      </div>
     </nav>
+    <nav>
+      <div class="pagination">
+        <ul>
+          <li class="disabled prev"><a href="#">&laquo;上一页</a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">下一页&raquo;</a></li>
+        </ul>
+        <div>
+          <span>共10页&nbsp;</span><span> 到 <input type="text" class="page-num"><button class="page-confirm" onclick="alert(1)">确定</button> 页</span>
+        </div>
+      </div>
+    </nav>
+
   </div>
 {% highlight html %}
 <nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+  <div class="pagination">
+    <ul>
+      <li class="prev">
+        <a href="#">&laquo;</a>
+      </li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li class="active"><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li class="next">
+        <a href="#">&raquo;</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+<nav>
+  <div class="pagination">
+    <ul>
+      <li class="disabled prev"><a href="#">&laquo;上一页</a></li>
+      <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li class="next"><a href="#">下一页&raquo;</a></li>
+    </ul>
+    <div>
+      <span>共10页&nbsp;</span><span> 到 <input type="text" class="page-num"><button class="page-confirm" onclick="alert(1)">确定</button> 页</span>
+    </div>
+  </div>
+</nav>
+
 {% endhighlight %}
 
-  <h3>Disabled and active states</h3>
-  <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
+  <h3>禁用和激活状态</h3>
+  <p>所有的链接都可以自己定义状态。加上 <code>.disabled</code> 会变成禁用样式，加上 <code>.active</code> 变成激活状态.</p>
   <div class="bs-example" data-example-id="disabled-active-pagination">
     <nav>
-      <ul class="pagination">
-        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-     </ul>
-   </nav>
+      <div class="pagination">
+        <ul>
+          <li class="disabled prev"><a href="#">&laquo;</a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
+    </nav>
+
   </div>
 {% highlight html %}
 <nav>
-  <ul class="pagination">
-    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-    ...
-  </ul>
+  <div class="pagination">
+    <ul>
+      <li class="disabled prev"><a href="#">&laquo;</a></li>
+      <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+      ...
+    </ul>
+  </div>
 </nav>
 {% endhighlight %}
-  <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code>, or omit the anchor in the case of the previous/next arrows, to remove click functionality while retaining intended styles.</p>
+  <p>你可以把激活/禁用状态下的链接换成 <code>&lt;span&gt;</code>，或者直接省略链接，这样可以保证用户无法点击。</p>
 {% highlight html %}
 <nav>
-  <ul class="pagination">
-    <li class="disabled">
-      <span>
-        <span aria-hidden="true">&laquo;</span>
-      </span>
-    </li>
-    <li class="active">
-      <span>1 <span class="sr-only">(current)</span></span>
-    </li>
-    ...
-  </ul>
+  <div class="pagination">
+    <ul>
+      <li class="disabled">
+        <span>&laquo;</span>
+      </li>
+      <li class="active">
+        <span>1 <span class="sr-only">(current)</span></span>
+      </li>
+      ...
+    </ul>
+  </div>
 </nav>
 {% endhighlight %}
 
 
-  <h3>Sizing</h3>
-  <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
+  <h3>大小</h3>
+  <p>加上 <code>.pagination-lg</code> 变成大尺寸的分页器，或者 <code>.pagination-sm</code> 变成小尺寸的分页器。</p>
   <div class="bs-example" data-example-id="pagination-sizing">
     <nav>
-      <ul class="pagination pagination-lg">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-      </ul>
+      <div class="pagination pagination-lg">
+        <ul>
+          <li class="prev"><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li class="active"><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
     </nav>
     <nav>
-      <ul class="pagination">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-      </ul>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li class="active"><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
     </nav>
     <nav>
-      <ul class="pagination pagination-sm">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-      </ul>
+      <div class="pagination pagination-sm">
+        <ul>
+          <li class="prev"><a href="#">&laquo;</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
     </nav>
   </div>
 {% highlight html %}
-<nav><ul class="pagination pagination-lg">...</ul></nav>
-<nav><ul class="pagination">...</ul></nav>
-<nav><ul class="pagination pagination-sm">...</ul></nav>
+<nav>
+  <div class="pagination pagination-lg">
+    <ul>...</ul>
+  </div>
+</nav>
+<nav>
+  <div class="pagination">
+    <ul>...</ul>
+  </div>
+</nav>
+<nav>
+  <div class="pagination pagination-sm">
+    <ul>...</ul>
+  </div>
+</nav>
 {% endhighlight %}
 
 
-  <h2 id="pagination-pager">Pager</h2>
-  <p>Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</p>
+  <h2 id="pagination-pager">简易分页器</h2>
+  <p>简易形式的分页器，只包含上一页和下一页。</p>
 
-  <h3>Default example</h3>
-  <p>By default, the pager centers links.</p>
+  <h3>默认样式</h3>
+  <p>默认情况下是居中的。</p>
   <div class="bs-example" data-example-id="simple-pager">
     <nav>
       <ul class="pager">
@@ -156,8 +209,8 @@
 </nav>
 {% endhighlight %}
 
-  <h3>Aligned links</h3>
-  <p>Alternatively, you can align each link to the sides:</p>
+  <h3>对齐方式</h3>
+  <p>你可以把按钮放在页面的两侧</p>
   <div class="bs-example" data-example-id="aligned-pager-links">
     <nav>
       <ul class="pager">
@@ -176,8 +229,8 @@
 {% endhighlight %}
 
 
-  <h3>Optional disabled state</h3>
-  <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
+  <h3>禁用状态</h3>
+  <p>加上 <code>.disabled</code> 变成禁用状态</p>
   <div class="bs-example" data-example-id="disabled-pager">
     <nav>
       <ul class="pager">

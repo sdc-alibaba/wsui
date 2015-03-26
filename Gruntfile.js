@@ -1,10 +1,3 @@
-/*!
- * Bootstrap's Gruntfile
- * http://getbootstrap.com
- * Copyright 2013-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
 module.exports = function (grunt) {
   'use strict';
 
@@ -41,18 +34,26 @@ module.exports = function (grunt) {
 
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*!\n' +
-            ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-            ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
-            ' */\n',
-    jqueryCheck: configBridge.config.jqueryCheck.join('\n'),
-    jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
+    // jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
 
     // Task configuration.
     clean: {
       dist: 'dist',
       docs: 'docs/dist'
+    },
+
+    prefix: {
+      options: {
+        // 均有默认配置
+        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'select', 'icon', 'carousel', 'close', 'form',  'tag', 'label', 'container', 'container-fluid', 'row', 'row-fluid', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
+        prefix: 'sui-'
+      },
+      sui: {
+        expand: true,
+        cwd: './',
+        src: ['dist/css/**/*.css', 'dist/css/**/*.min.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css', 'docs/assets/css/**/*.css'],
+        dest: './'
+      }
     },
 
     jshint: {
@@ -66,7 +67,7 @@ module.exports = function (grunt) {
         src: ['Gruntfile.js', 'grunt/*.js']
       },
       core: {
-        src: 'js/*.js'
+        src: ['js/*.js', '!js/template.js']
       },
       test: {
         options: {
@@ -102,11 +103,12 @@ module.exports = function (grunt) {
 
     concat: {
       options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
-        stripBanners: false
       },
-      bootstrap: {
+      sui: {
         src: [
+          // 'js/classmap.js',
+          'js/classmap-sui.js',
+          'js/template.js',
           'js/transition.js',
           'js/alert.js',
           'js/button.js',
@@ -115,10 +117,18 @@ module.exports = function (grunt) {
           'js/dropdown.js',
           'js/modal.js',
           'js/tooltip.js',
-          'js/popover.js',
+          // SUI不需要bootstrap里的popover
+          // 'js/popover.js',
           'js/scrollspy.js',
           'js/tab.js',
-          'js/affix.js'
+          'js/autocomplete.js',
+          'js/affix.js',
+          'js/pagination.js',
+          'js/datepicker.js',
+          'js/validate.js',
+          'js/datepicker.js',
+          // 'js/intro.js',
+          'js/toast.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
@@ -129,7 +139,7 @@ module.exports = function (grunt) {
         preserveComments: 'some'
       },
       core: {
-        src: '<%= concat.bootstrap.dest %>',
+        src: '<%= concat.sui.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
       customize: {
@@ -158,7 +168,7 @@ module.exports = function (grunt) {
           sourceMapURL: '<%= pkg.name %>.css.map',
           sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
         },
-        src: 'less/bootstrap.less',
+        src: 'less/sui.less',
         dest: 'dist/css/<%= pkg.name %>.css'
       },
       compileTheme: {
@@ -206,8 +216,8 @@ module.exports = function (grunt) {
         csslintrc: 'less/.csslintrc'
       },
       dist: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
+        'dist/css/sui.css',
+        'dist/css/sui-theme.css'
       ],
       examples: [
         'docs/examples/**/*.css'
@@ -244,16 +254,6 @@ module.exports = function (grunt) {
       }
     },
 
-    usebanner: {
-      options: {
-        position: 'top',
-        banner: '<%= banner %>'
-      },
-      files: {
-        src: 'dist/css/*.css'
-      }
-    },
-
     csscomb: {
       options: {
         config: 'less/.csscomb.json'
@@ -282,8 +282,12 @@ module.exports = function (grunt) {
         dest: 'dist/'
       },
       docs: {
-        src: 'dist/*/*',
+        src: ['dist/*/*', 'download/**/*'],
         dest: 'docs/'
+      },
+      old: {
+        src: ['old/*/*'],
+        dest: 'dist/'
       }
     },
 
@@ -344,7 +348,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:src', 'qunit', 'concat']
+        tasks: ['newer:jshint:core', 'concat', 'newer:copy:docs']
       },
       test: {
         files: '<%= jshint.test.src %>',
@@ -352,7 +356,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/**/*.less',
-        tasks: 'less'
+        tasks: ['less', 'newer:copy:docs']
       }
     },
 
@@ -389,7 +393,7 @@ module.exports = function (grunt) {
     compress: {
       main: {
         options: {
-          archive: 'bootstrap-<%= pkg.version %>-dist.zip',
+          archive: 'sui-<%= pkg.version %>-dist.zip',
           mode: 'zip',
           level: 9,
           pretty: true
@@ -399,7 +403,7 @@ module.exports = function (grunt) {
             expand: true,
             cwd: 'dist/',
             src: ['**'],
-            dest: 'bootstrap-<%= pkg.version %>-dist'
+            dest: 'sui-<%= pkg.version %>-dist'
           }
         ]
       }
@@ -413,7 +417,8 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
+  // grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll:docs']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -453,15 +458,19 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test']);
 
-  // Version numbering task.
+  // 自动为产出文件和文档补全sui-前缀
+  grunt.loadNpmTasks('prefix-cssclass');
+  grunt.registerTask('addprefix', ['prefix:sui']);
+
+ // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
@@ -472,12 +481,11 @@ module.exports = function (grunt) {
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
   grunt.registerTask('build-customizer-html', 'jade');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
-    var banner = grunt.template.process('<%= banner %>');
-    generateRawFiles(grunt, banner);
+    generateRawFiles(grunt, '');
   });
 
   grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var srcFiles = grunt.config.get('concat.bootstrap.src');
+    var srcFiles = grunt.config.get('concat.sui.src');
     var destFilepath = 'dist/js/npm.js';
     generateCommonJSModule(grunt, srcFiles, destFilepath);
   });
@@ -485,9 +493,12 @@ module.exports = function (grunt) {
   // Docs task.
   grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
-  grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  // 关闭自定义下载相关的任务执行
+  // grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+  // grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data']);
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 

@@ -7,7 +7,7 @@
     <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
-    <h4>Modal markup placement</h4>
+  <h4>Modal markup placement</h4>
     <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-modal-mobile-caveats">
@@ -17,7 +17,7 @@
 
   <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong> To achieve the same effect, use some custom JavaScript:</p>
   {% highlight js %}
-  $('#myModal').on('shown.bs.modal', function () {
+  $('#myModal').on('shown', function () {
     $('#myInput').focus()
   })
   {% endhighlight %}
@@ -32,14 +32,14 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal title</h4>
+            <h5 class="modal-title">Modal title</h5>
           </div>
           <div class="modal-body">
             <p>One fine body&hellip;</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
+            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -51,14 +51,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h5 class="modal-title">Modal title</h5>
       </div>
       <div class="modal-body">
         <p>One fine body&hellip;</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -74,7 +74,7 @@
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h5 class="modal-title" id="myModalLabel">Modal title</h5>
         </div>
         <div class="modal-body">
           <h4>Text in a modal</h4>
@@ -100,8 +100,8 @@
           <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
+          <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
         </div>
 
       </div><!-- /.modal-content -->
@@ -109,13 +109,13 @@
   </div><!-- /.modal -->
 
   <div class="bs-example" style="padding-bottom: 24px;">
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
       Launch demo modal
     </button>
   </div><!-- /example -->
 {% highlight html %}
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
   Launch demo modal
 </button>
 
@@ -125,14 +125,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
       </div>
       <div class="modal-body">
         ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Save changes</button>
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -187,7 +187,7 @@
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+          <h5 class="modal-title" id="myLargeModalLabel">Large modal</h5>
         </div>
         <div class="modal-body">
           ...
@@ -201,7 +201,7 @@
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
+          <h5 class="modal-title" id="mySmallModalLabel">Small modal</h5>
         </div>
         <div class="modal-body">
           ...
@@ -231,7 +231,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
           </div>
           <div class="modal-body">
             <form>
@@ -246,8 +246,8 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Send message</button>
+            <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Send message</button>
+            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -264,7 +264,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
       </div>
       <div class="modal-body">
         <form>
@@ -279,15 +279,15 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary btn-lg" data-ok="modal">Send message</button>
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 {% endhighlight %}
 {% highlight js %}
-$('#exampleModal').on('show.bs.modal', function (event) {
+$('#exampleModal').on('show', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -314,48 +314,41 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   <h3 id="modals-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead>
-       <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 50px;">type</th>
-         <th style="width: 50px;">default</th>
-         <th>description</th>
-       </tr>
-      </thead>
-      <tbody>
-       <tr>
-         <td>backdrop</td>
-         <td>boolean or the string <code>'static'</code></td>
-         <td>true</td>
-         <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
-       </tr>
-       <tr>
-         <td>keyboard</td>
-         <td>boolean</td>
-         <td>true</td>
-         <td>Closes the modal when escape key is pressed</td>
-       </tr>
-       <tr>
-         <td>show</td>
-         <td>boolean</td>
-         <td>true</td>
-         <td>Shows the modal when initialized.</td>
-       </tr>
-       <tr>
-         <td>remote</td>
-         <td>path</td>
-         <td>false</td>
-         <td>
-          <p><strong class="text-danger">This option is deprecated since v3.3.0 and will be removed in v4.</strong> We recommend instead using client-side templating or a data binding framework, or calling <a href="http://api.jquery.com/load/">jQuery.load</a> yourself.</p>
-          <p>If a remote URL is provided, <strong>content will be loaded one time</strong> via jQuery's <code>load</code> method and injected into the <code>.modal-content</code> div. If you're using the data-api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
-{% highlight html %}
-<a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>
-{% endhighlight %}
-         </td>
-       </tr>
-      </tbody>
-    </table>
+    <pre><code>
+   /* 弹层静态方法，用于很少重复，不需记住状态的弹层，可方便的直接调用，最简单形式就是$.alert('我是alert') 或$.confirm('我是confirm') 或 $.confirm(options)
+   * 若弹层内容是复杂的Dom结构， 建议将弹层html结构写到模版里，用$(xx).modal(options) 或无js的方式调用
+   *
+   * example
+   * 一下参数均可以data-xx 的形式在无js调用模式里配置在html模板.modal元素的data属性里(有些属性如okbtn cancelbtn没必要这么用，直接改html模板就行了)
+   * $.alert({
+   *  title: '自定义标题'
+   *  body: 'html' // 必填
+   *  okbtn : '好的'
+   *  cancelbtn : '雅达'
+   *  closebtn: true
+   *  keyboard: true   是否可由esc按键关闭
+   *  backdrop: true   决定是否为模态对话框添加一个背景遮罩层。另外，该属性指定'static'时，表示添加遮罩层，同时点击模态对话框的外部区域不会将其关闭。
+   *  bgcolor : '#123456'  背景遮罩层颜色
+   *  width: {number|string(px)|'small'|'normal'|'large'}推荐优先使用后三个描述性字符串，统一样式
+   *  timeout: {number} 1000    单位毫秒ms ,dialog打开后多久自动关闭
+   *  transition: {Boolean} 是否以动画弹出对话框，默认为true。HTML使用方式只需把模板里的fade的class去掉即可
+   *  hasfoot: {Boolean}  是否显示脚部  默认true
+   *  remote: {string} 如果提供了远程url地址，就会加载远端内容,之后触发loaded事件
+   *  show:     fn --------------function(e) {}
+   *  shown:    fn
+   *  hide:     fn
+   *  hidden:   fn
+   *  okHide:   function(e) {alert('点击确认后、dialog消失前的逻辑,
+   *            函数返回true（默认）则dialog关闭，反之不关闭;若不传入则默认是直接返回true的函数
+   *            注意不要人肉返回undefined！！')}
+   *  okHidden: function(e) {alert('点击确认后、dialog消失后的逻辑')}
+   *  cancelHide: fn
+   *  cancelHidden: fn
+   * })
+   *
+   */
+    </code></pre>
+
   </div><!-- /.table-responsive -->
 
   <h3 id="modals-methods">Methods</h3>
@@ -369,16 +362,24 @@ $('#myModal').modal({
 {% endhighlight %}
 
   <h4>.modal('toggle')</h4>
-  <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.modal</code> or <code>hidden.bs.modal</code> event occurs).</p>
+  <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown</code> or <code>hidden</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
 
   <h4>.modal('show')</h4>
-  <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown.bs.modal</code> event occurs).</p>
+  <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
   <h4>.modal('hide')</h4>
-  <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden.bs.modal</code> event occurs).</p>
+  <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
+
+  <h4>.modal('okHide')</h4>
+  <p>手动关闭弹层并触发okHide逻辑. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
+  {% highlight js %}$('#myModal').modal('okHide'){% endhighlight %}
+
+  <h4>.modal('selfAdapt')</h4>
+  <p>执行一次自适应。用于弹层高度发生较大变化时。</p>
+  {% highlight js %}$('#myModal').modal('selfAdapt'){% endhighlight %}
 
   <h3 id="modals-events">Events</h3>
   <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
@@ -392,30 +393,46 @@ $('#myModal').modal({
       </thead>
       <tbody>
        <tr>
-         <td>show.bs.modal</td>
+         <td>show</td>
          <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
        </tr>
        <tr>
-         <td>shown.bs.modal</td>
+         <td>shown</td>
          <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
        </tr>
        <tr>
-         <td>hide.bs.modal</td>
+         <td>hide</td>
          <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
        </tr>
        <tr>
-         <td>hidden.bs.modal</td>
+         <td>hidden</td>
          <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
        </tr>
        <tr>
-         <td>loaded.bs.modal</td>
-         <td>This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
+         <td>okHide</td>
+         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
+       </tr>
+       <tr>
+         <td>okHidden</td>
+         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击“确认”按钮后弹层已经关闭后的回调</td>
+       </tr>
+       <tr>
+         <td>okHide</td>
+         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了除“确认”按钮外其他原因导致弹层关闭时执行的回调</td>
+       </tr>
+       <tr>
+         <td>okHidden</td>
+         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击了除“确认”按钮外其他原因导致弹层关闭完毕后执行的回调</td>
+       </tr>
+       <tr>
+         <td>loaded</td>
+         <td><code>new</code> This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
        </tr>
       </tbody>
     </table>
   </div><!-- /.table-responsive -->
 {% highlight js %}
-$('#myModal').on('hidden.bs.modal', function (e) {
+$('#myModal').on('hidden', function (e) {
   // do something...
 })
 {% endhighlight %}

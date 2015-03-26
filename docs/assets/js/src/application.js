@@ -10,6 +10,7 @@
  */
 
 /* global ZeroClipboard */
+//jscs:disable 
 
 !function ($) {
   'use strict';
@@ -84,21 +85,6 @@
     })();
 
     // Tooltip and popover demos
-    $('.tooltip-demo').tooltip({
-      selector: '[data-toggle="tooltip"]',
-      container: 'body'
-    })
-    $('.popover-demo').popover({
-      selector: '[data-toggle="popover"]',
-      container: 'body'
-    })
-
-    // Demos within modals
-    $('.tooltip-test').tooltip()
-    $('.popover-test').popover()
-
-    // Popover demos
-    $('.bs-docs-popover').popover()
 
     // Button state demo
     $('#loading-example-btn').on('click', function () {
@@ -110,7 +96,7 @@
     })
 
     // Modal relatedTarget demo
-    $('#exampleModal').on('show.bs.modal', function (event) {
+    $('#exampleModal').on('show', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var recipient = button.data('whatever') // Extract info from data-* attributes
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -123,6 +109,20 @@
     // Activate animated progress bar
     $('.bs-docs-activate-animated-progressbar').on('click', function () {
       $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('active')
+    })
+
+    //
+    $('#datepicker-input-js').datepicker();
+    $('#datepicker-inline-1').datepicker();
+
+
+    // ac
+    $('#ac-js-input').autocomplete({
+      serviceUrl: '../json/ac-strings.json'
+    });
+    //intro
+    $(".btn-intro").click(function(){
+      $.introJs().start();
     })
 
     // Config ZeroClipboard
@@ -170,6 +170,37 @@
         .tooltip('fixTitle')
         .tooltip('show')
     })
+
+    //toast
+    $('#toast-topleft').click(function(event){
+      event.preventDefault();
+      $.toast({text:'button topleft danger',type:'danger',position:'top left'});
+    });
+    $('#toast-top').click(function(event){
+      event.preventDefault();
+      $.toast({text:'button top success',posititon:'top',type:'success'});
+    });
+    $('#toast-topright').click(function(event){
+      event.preventDefault();
+      $.toast({text:'button topright warning',type:'warning',position:'top right'});
+    });
+    $('#toast-center').click(function(event){
+      event.preventDefault();
+      $.toast({text:'button center danger',type:'danger',position:'center'});
+    });
+    $('#toast-bottomleft').click(function(event){
+      event.preventDefault();
+      $.toast({text:'button bottomleft danger',type:'danger',position:'bottom left'});
+    });
+    $('#toast-bottom').click(function(event){
+      event.preventDefault();
+      $.toast({text:'button bottom success',type:'success',position:'bottom'});
+    });
+    $('#toast-bottomright').click(function(event){
+      event.preventDefault();
+      $.toast('button bottomright warning','warning','bottom right');
+    });
+
 
   })
 
