@@ -927,9 +927,9 @@
   IntroJs.prototype = {
     defaults: {
       /* Next button label in tooltip box */
-      nextLabel: '下一步 <i class="sui-icon icon-double-angle-right"></i> ',
+      nextLabel: '下一步 &gt;',
       /* Previous button label in tooltip box */
-      prevLabel: '<i class="sui-icon icon-double-angle-left"></i> 上一步',
+      prevLabel: '&lt; 上一步',
       /* Skip button label in tooltip box */
       skipLabel: '知道了',
       /* Done button label in tooltip box */

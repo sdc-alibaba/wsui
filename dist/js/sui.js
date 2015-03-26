@@ -1538,22 +1538,61 @@ window.CLASSMAP = {
       return $ele
     },
     // 为最常见的alert，confirm建立$.modal的快捷方式，
-    alert: function (customCfg) {
-      var dialogCfg = {
+    alert: function (title, content, hidden) {
+      var defaults = {
         type: 'alert',
         title: '注意',
         cancelbtn: false
       }
-      return $._modal(dialogCfg, customCfg)
+      var config;
+      if ($.isPlainObject(title)) {
+        config = title;
+      } else {
+        if ($.isFunction(content)) {
+          config = {
+            title: '注意',
+            body: title,
+            hidden: content
+          }
+        } else {
+          config = {
+            title: title,
+            body: content,
+            hidden: hidden
+          };
+        }
+      }
+      return $._modal(defaults, config);
     },
-    confirm: function (customCfg) {
-      var dialogCfg = {
+    confirm: function (title, content, okHidden, cancelHidden) {
+      var defaults = {
         type: 'confirm',
         title: '提示',
         cancelbtn: '取消'
       }
-      return $._modal(dialogCfg, customCfg)
+      var config;
+      if ($.isPlainObject(title)) {
+        config = title;
+      } else {
+        if ($.isFunction(content)) {
+          config = {
+            title: '提示',
+            body: title,
+            okHidden: content,
+            cancelHidden: okHidden
+          };
+        } else {
+          config = {
+            title: title,
+            body: content,
+            okHidden: okHidden,
+            cancelHidden: cancelHidden
+          };
+        }
+      }
+      return $._modal(defaults, config);
     }
+
   })
 
 }(jQuery);
@@ -6731,11 +6770,6 @@ $('[data-toggle="validate"]').each(function() {
 
  /**
  * toast.js
- * https://github.com/usablica/intro.js
- * MIT licensed
- *
- * Copyright (C) 2013 usabli.ca - A weekend project by Afshin Mehrabani (@afshinme
-
  /*jshint scripturl:true */
  /*jshint funcscope:true */
  /*jshint -W004 */
@@ -6825,7 +6859,7 @@ $('[data-toggle="validate"]').each(function() {
 
   Toast.prototype.defaults = {
     position: 'center',
-    type: 'primary',
+    type: 'default',
     // speed: 500,
     timeout: 3000,
     // closeButton: false,
@@ -6840,7 +6874,7 @@ $('[data-toggle="validate"]').each(function() {
 
   $.toast.noConflict = function () {
     $.toast = old;
-    return this
+    return this;
   }
 
  /* BUTTON DATA-API

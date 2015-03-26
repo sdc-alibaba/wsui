@@ -9,11 +9,11 @@
    <!--  <p data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">4.更好的介绍网站和功,以便逐步为您指导项目。</p> -->
     <div class="introjs-content">
       <div data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">
-        <p>4.更好的介绍网站和功,以便逐步为您指导项目。</p>
+        <p>4.可以用来一步一步引导用户了解您的网站的功能。</p>
       </div>
       <div data-step="2" data-intro="第二步:Ok, wasn't that fun?" data-position="right" class="divcont">
         <h4>2.容易使用</h4>
-        <p>包括js和css文件， 调价"data-step" 和 "data-intro" 到你的代码。</p>
+        <p>引用js和css文件， 然后只需要在HTML代码中设置 "data-step" 和 "data-intro" 即可。</p>
       </div>
       <div data-step="3" data-intro="第三步：More features, more fun." data-position="left" class="divcont">
         <h4>3.键盘 + 鼠标 控制 </h4>
@@ -25,35 +25,33 @@
       </div>
       <div data-step="6" data-intro="第六步:Last step." class="divcont">
         <h4>6.跨浏览器兼容性</h4>
-        <p>它兼容最近版本的火狐,Chrome和IE8，更好的兼容性需要进一步开发。</p>
+        <p>它兼容最近版本的火狐,Chrome和IE8+，动画效果在不支持CSS动画的浏览器上（如 IE8）会自动降级为没有动画。</p>
       </div><a href="javascript:void(0);" class="btn btn-primary btn-intro">展示操作</a>
     </div>
   </div><!-- /example -->
 {% highlight html %}
-<div>
-  <h1 data-step="1" data-intro="Hello all! :) 第一步：This project's called Intro.js." style="text-align:center">1.Intro.js</h1>
-   <!--  <p data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">4.更好的介绍网站和功,以便逐步为您指导项目。</p> -->
-    <div class="introjs-content">
-      <div data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">
-        <p>4.更好的介绍网站和功,以便逐步为您指导项目。</p>
-      </div>
-      <div data-step="2" data-intro="第二步:Ok, wasn't that fun?" data-position="right" class="divcont">
-        <h4>2.容易使用</h4>
-        <p>包括js和css文件， 调价"data-step" 和 "data-intro" 到你的代码。</p>
-      </div>
-      <div data-step="3" data-intro="第三步：More features, more fun." data-position="left" class="divcont">
-        <h4>3.键盘 + 鼠标 控制 </h4>
-        <p>用鼠标, 或键盘  "←"控制后退, "→"控制前进, "ENTER" 和 "ESC" 控制退出.</p>
-      </div>
-      <div data-step="5" data-intro="第五步:Get it, use it." class="divcont">
-        <h4>5.快 &amp; 小</h4>
-        <p>仅需4 KB JavaScript 和 2.5 KB CSS (gzip).</p>
-      </div>
-      <div data-step="6" data-intro="第六步:Last step." class="divcont">
-        <h4>6.跨浏览器兼容性</h4>
-        <p>它兼容最近版本的火狐,Chrome和IE8，更好的兼容性需要进一步开发。</p>
-      </div><a href="javascript:void(0);" class="btn btn-primary btn-intro">展示操作</a>
-    </div>
+<h1 data-step="1" data-intro="Hello all! :) 第一步：This project's called Intro.js." style="text-align:center">1.Intro.js</h1>
+<!--  <p data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">4.更好的介绍网站和功,以便逐步为您指导项目。</p> -->
+<div class="introjs-content">
+  <div data-step="4" data-intro="第四步:Let's try it. It's free and open-source." class="lead">
+    <p>4.可以用来一步一步引导用户了解您的网站的功能。</p>
+  </div>
+  <div data-step="2" data-intro="第二步:Ok, wasn't that fun?" data-position="right" class="divcont">
+    <h4>2.容易使用</h4>
+    <p>引用js和css文件， 然后只需要在HTML代码中设置 "data-step" 和 "data-intro" 即可。</p>
+  </div>
+  <div data-step="3" data-intro="第三步：More features, more fun." data-position="left" class="divcont">
+    <h4>3.键盘 + 鼠标 控制 </h4>
+    <p>用鼠标, 或键盘  "←"控制后退, "→"控制前进, "ENTER" 和 "ESC" 控制退出.</p>
+  </div>
+  <div data-step="5" data-intro="第五步:Get it, use it." class="divcont">
+    <h4>5.快 &amp; 小</h4>
+    <p>仅需4 KB JavaScript 和 2.5 KB CSS (gzip).</p>
+  </div>
+  <div data-step="6" data-intro="第六步:Last step." class="divcont">
+    <h4>6.跨浏览器兼容性</h4>
+    <p>它兼容最近版本的火狐,Chrome和IE8+，动画效果在不支持CSS动画的浏览器上（如 IE8）会自动降级为没有动画。</p>
+  </div><a href="javascript:void(0);" class="btn btn-primary btn-intro">展示操作</a>
 </div>
 {% endhighlight %}
 {% highlight js %}
@@ -84,12 +82,12 @@ $(".btn-intro").click(function(){
       <tbody>
         <tr>
           <td>nextLabel</td>
-          <td>下一步 <i class="sui-icon icon-double-angle-right"></i> </td>
+          <td>下一步 &gt; </td>
           <td>下一步按钮上的显示文字</td>
         </tr>
         <tr>
           <td>prevLabel</td>
-          <td><i class="sui-icon icon-double-angle-left"></i> 上一步</td>
+          <td>&lt; 上一步</td>
           <td>上一步按钮上的显示文字</td>
         </tr>
         <tr>
