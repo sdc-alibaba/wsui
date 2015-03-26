@@ -72,11 +72,12 @@ module.exports = function (grunt) {
         keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'icon', 'carousel', 'close', 'form', 'row-fluid', 'tag', 'label', 'container', 'container-fluid', 'row', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
         prefix: 'sui-'
       },
-      sui: {
+      css: {
         expand: true,
         cwd: './',
-        src: ['dist/css/**/*.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css', 'docs/assets/css/**/*.css'],
-        dest: './'
+        src: ['dist/css/**/*.css'],
+        dest: './',
+        ext: '-prefixed.css'
       }
     },
 
@@ -252,6 +253,14 @@ module.exports = function (grunt) {
       minifyTheme: {
         src: 'dist/css/<%= pkg.name %>-theme.css',
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      minifyCorePrefixed: {
+        src: 'dist/css/<%= pkg.name %>-prefixed.css',
+        dest: 'dist/css/<%= pkg.name %>-prefixed.min.css'
+      },
+      minifyThemePrefixed: {
+        src: 'dist/css/<%= pkg.name %>-theme-prefixed.css',
+        dest: 'dist/css/<%= pkg.name %>-theme-prefixed.min.css'
       },
       docs: {
         src: [
@@ -465,8 +474,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'prefix:css']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js']);
@@ -476,7 +485,6 @@ module.exports = function (grunt) {
 
   // 自动为产出文件和文档补全sui-前缀
   grunt.loadNpmTasks('prefix-cssclass');
-  grunt.registerTask('addprefix', ['prefix:sui']);
 
  // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
