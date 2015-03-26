@@ -29,6 +29,30 @@ module.exports = function (grunt) {
     });
   });
 
+  var jsList = [
+    'js/template.js',
+    'js/transition.js',
+    'js/alert.js',
+    'js/button.js',
+    'js/carousel.js',
+    'js/collapse.js',
+    'js/dropdown.js',
+    'js/modal.js',
+    'js/tooltip.js',
+    // SUI不需要bootstrap里的popover
+    // 'js/popover.js',
+    'js/scrollspy.js',
+    'js/tab.js',
+    'js/autocomplete.js',
+    'js/affix.js',
+    'js/pagination.js',
+    'js/datepicker.js',
+    'js/validate.js',
+    'js/datepicker.js',
+    'js/intro.js',
+    'js/toast.js'
+  ];
+
   // Project configuration.
   grunt.initConfig({
 
@@ -48,11 +72,12 @@ module.exports = function (grunt) {
         keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'select', 'icon', 'carousel', 'close', 'form',  'tag', 'label', 'container', 'container-fluid', 'row', 'row-fluid', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
         prefix: 'sui-'
       },
-      sui: {
+      css: {
         expand: true,
         cwd: './',
-        src: ['dist/css/**/*.css', 'dist/css/**/*.min.css', '_gh_pages/**/*.html', '_gh_pages/dist/**/*.css', 'docs/assets/css/**/*.css'],
-        dest: './'
+        src: ['dist/css/**/*.css'],
+        dest: './',
+        ext: '-prefixed.css'
       }
     },
 
@@ -105,32 +130,12 @@ module.exports = function (grunt) {
       options: {
       },
       sui: {
-        src: [
-          // 'js/classmap.js',
-          'js/classmap-sui.js',
-          'js/template.js',
-          'js/transition.js',
-          'js/alert.js',
-          'js/button.js',
-          'js/carousel.js',
-          'js/collapse.js',
-          'js/dropdown.js',
-          'js/modal.js',
-          'js/tooltip.js',
-          // SUI不需要bootstrap里的popover
-          // 'js/popover.js',
-          'js/scrollspy.js',
-          'js/tab.js',
-          'js/autocomplete.js',
-          'js/affix.js',
-          'js/pagination.js',
-          'js/datepicker.js',
-          'js/validate.js',
-          'js/datepicker.js',
-          // 'js/intro.js',
-          'js/toast.js'
-        ],
+        src: ['js/classmap.js'].concat(jsList),
         dest: 'dist/js/<%= pkg.name %>.js'
+      },
+      suiPrefixed: {
+        src: ['js/classmap-sui.js'].concat(jsList),
+        dest: 'dist/js/<%= pkg.name %>-prefixed.js'
       }
     },
 
@@ -141,6 +146,10 @@ module.exports = function (grunt) {
       core: {
         src: '<%= concat.sui.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
+      },
+      corePrefixed: {
+        src: '<%= concat.suiPrefixed.dest %>',
+        dest: 'dist/js/<%= pkg.name %>-prefixed.min.js'
       },
       customize: {
         src: configBridge.paths.customizerJs,
@@ -244,6 +253,14 @@ module.exports = function (grunt) {
       minifyTheme: {
         src: 'dist/css/<%= pkg.name %>-theme.css',
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      minifyCorePrefixed: {
+        src: 'dist/css/<%= pkg.name %>-prefixed.css',
+        dest: 'dist/css/<%= pkg.name %>-prefixed.min.css'
+      },
+      minifyThemePrefixed: {
+        src: 'dist/css/<%= pkg.name %>-theme-prefixed.css',
+        dest: 'dist/css/<%= pkg.name %>-theme-prefixed.min.css'
       },
       docs: {
         src: [
@@ -454,21 +471,20 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'prefix:css']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'addprefix']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test']);
 
   // 自动为产出文件和文档补全sui-前缀
   grunt.loadNpmTasks('prefix-cssclass');
-  grunt.registerTask('addprefix', ['prefix:sui']);
 
  // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z

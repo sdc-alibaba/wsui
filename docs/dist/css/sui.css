@@ -7433,6 +7433,12 @@ tr.introjs-showElement > th {
 .toast-danger {
   background: #ea4a36;
 }
+/*.modal-out {
+
+}*/
+/*.show-close-btn button{
+	display: block;
+}*/
 .clearfix:before,
 .clearfix:after,
 .dl-horizontal dd:before,

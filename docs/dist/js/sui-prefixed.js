@@ -1,18 +1,18 @@
 // classmapstart
 
 window.CLASSMAP = {
-  alert: 'alert',
-  close: 'close',
-  modal: 'modal',
-  btn: 'btn',
-  carousel: 'carousel',
-  panel: 'panel',
-  dropdown: 'dropdown',
-  dropdownMenu: 'dropdown-menu',
-  popover: 'popover',
-  tooltip: 'tooltip',
-  nav: 'nav',
-  pagination: 'pagination'
+  alert: 'sui-alert',
+  close: 'sui-close',
+  btn: 'sui-btn',
+  modal: 'sui-modal',
+  carousel: 'sui-carousel',
+  panel: 'sui-panel',
+  dropdown: 'sui-dropdown',
+  dropdownMenu: 'sui-dropdown-menu',
+  popover: 'sui-popover',
+  tooltip: 'sui-tooltip',
+  nav: 'sui-nav',
+  pagination: 'sui-pagination'
 }
 
 /*jshint -W054 */
