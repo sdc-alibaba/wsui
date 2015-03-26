@@ -436,4 +436,34 @@ $('#myModal').on('hidden', function (e) {
   // do something...
 })
 {% endhighlight %}
+
+  <h3 id="modals-shortcat">快捷方式</h3>
+  <p>我们为常用的两种对话框 <code>$.alert</code> 和 <code>$.confirm</code>建立了快捷方式。使用方式如下所示:</p>
+{% highlight js %}
+//弹出一条消息
+$.alert("消息内容");  
+
+//弹出一条消息并设置回调
+$.alert("这里消息内容", function() {
+  //关闭alert的回调
+});
+
+//弹出一条消息，同时设置了消息标题，消息内容，和回调函数
+$.alert("消息标题", "这是消息内容", function() {
+  //关闭alert的回调
+});
+
+//显示一个确认框
+$.confirm("这是消息内容", function() {
+  //这里是点击确定按钮的回调
+  }, function() {
+  //这里是点击取消按钮的回调
+  });
+
+$.confirm("消息标题", "这是消息内容", function() {
+  //这里是点击确定按钮的回调
+  }, function() {
+  //这里是点击取消按钮的回调
+  });
+{% endhighlight %}
 </div>
