@@ -29,6 +29,30 @@ module.exports = function (grunt) {
     });
   });
 
+  var jsList = [
+    'js/template.js',
+    'js/transition.js',
+    'js/alert.js',
+    'js/button.js',
+    'js/carousel.js',
+    'js/collapse.js',
+    'js/dropdown.js',
+    'js/modal.js',
+    'js/tooltip.js',
+    // SUI不需要bootstrap里的popover
+    // 'js/popover.js',
+    'js/scrollspy.js',
+    'js/tab.js',
+    'js/autocomplete.js',
+    'js/affix.js',
+    'js/pagination.js',
+    'js/datepicker.js',
+    'js/validate.js',
+    'js/datepicker.js',
+    'js/intro.js',
+    'js/toast.js'
+  ];
+
   // Project configuration.
   grunt.initConfig({
 
@@ -105,31 +129,12 @@ module.exports = function (grunt) {
       options: {
       },
       sui: {
-        src: [
-          'js/classmap.js',
-          'js/template.js',
-          'js/transition.js',
-          'js/alert.js',
-          'js/button.js',
-          'js/carousel.js',
-          'js/collapse.js',
-          'js/dropdown.js',
-          'js/modal.js',
-          'js/tooltip.js',
-          // SUI不需要bootstrap里的popover
-          // 'js/popover.js',
-          'js/scrollspy.js',
-          'js/tab.js',
-          'js/autocomplete.js',
-          'js/affix.js',
-          'js/pagination.js',
-          'js/datepicker.js',
-          'js/validate.js',
-          'js/datepicker.js',
-          'js/intro.js',
-          'js/toast.js'
-        ],
+        src: ['js/classmap.js'].concat(jsList),
         dest: 'dist/js/<%= pkg.name %>.js'
+      },
+      suiPrefixed: {
+        src: ['js/classmap-sui.js'].concat(jsList),
+        dest: 'dist/js/<%= pkg.name %>-prefixed.js'
       }
     },
 
@@ -140,6 +145,10 @@ module.exports = function (grunt) {
       core: {
         src: '<%= concat.sui.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
+      },
+      corePrefixed: {
+        src: '<%= concat.suiPrefixed.dest %>',
+        dest: 'dist/js/<%= pkg.name %>-prefixed.min.js'
       },
       customize: {
         src: configBridge.paths.customizerJs,
@@ -453,7 +462,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'commonjs']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
