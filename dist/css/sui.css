@@ -2067,6 +2067,10 @@ select[multiple].form-group-lg .form-control {
      -moz-appearance: none;
           appearance: none;
 }
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
 @media (min-width: 768px) {
   .form-inline .form-group {
     display: inline-block;
