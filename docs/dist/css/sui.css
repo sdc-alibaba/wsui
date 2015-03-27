@@ -4910,8 +4910,8 @@ a.badge:focus {
 }
 .tag > li.tag-active i {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: -.2px;
+  bottom: -.2px;
   font-size: 18px;
   line-height: 18px;
   color: #f23f40;
