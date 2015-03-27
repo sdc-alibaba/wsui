@@ -1,3 +1,5 @@
+/* global __picPlugin__ */
+// jscs:disable
 /**
  * @file picPlugin.js
  * @brief 快速调用图片空间插件实现选择/上传图片
@@ -36,10 +38,26 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
   pp._bindEvents = function(triggerEle) {
     var self = this,
       options = this[triggerEle]
-    pic.on('heightUpdated', function(h) {
-      $picDlg.modal('resize');
+
+    //高度自适应，第一个参数是iframe高度
+    pic.on('heightUpdated', function() {
+      $picDlg.modal('handleUpdate');
     })
     pic.on('picInserted', function(url) {
+
+      //如果不需要裁剪，选完图片后就关闭iframe
+      //如果需要裁剪，选完图片后只隐藏picDlg弹层，校验图片尺寸（如有需求），再弹出裁剪框，裁剪流程任意一处都可以返回到选择图片的弹层（即重新显示picDlg）
+      function doCropOrSuccess() {
+        if (options.needCrop) {
+          $picDlg.hide()
+          //弹出图片裁剪弹层。
+          self._initJcrop(url, triggerEle)
+        } else {
+          options.successCallback && options.successCallback.call(self, url)
+          pic.close();
+        }
+      }
+
       //如果对在图片空间选择的图片尺寸有限制：获取图片尺寸校验，再进行后续逻辑
       //如果没有限制：直接执行后续逻辑
       if (options.picMinSize || options.picMaxSize) {
@@ -72,18 +90,6 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
         return true
       }
 
-      //如果不需要裁剪，选完图片后就关闭iframe
-      //如果需要裁剪，选完图片后只隐藏picDlg弹层，校验图片尺寸（如有需求），再弹出裁剪框，裁剪流程任意一处都可以返回到选择图片的弹层（即重新显示picDlg）
-      function doCropOrSuccess() {
-        if (options.needCrop) {
-          $picDlg.hide()
-          //弹出图片裁剪弹层。
-          self._initJcrop(url, triggerEle)
-        } else {
-          options.successCallback && options.successCallback.call(self, url)
-          pic.close();
-        }
-      }
     })
     pic.on('close', function() {
       $picDlg.modal('okHide');
@@ -159,18 +165,6 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       needCrop: true
     }, opt)
 
-    //如果需要裁剪，且Jcrop尚未被加载进来，load it
-    if (this[opt.triggerEle].needCrop && !$.fn.Jcrop) {
-      $("head").append("<link rel='stylesheet' type='text/css' href='//g.alicdn.com/sj/lib/jcrop/css/jquery.Jcrop.min.css' />")
-
-      $.ajax('//g.alicdn.com/sj/lib/jcrop/js/jquery.Jcrop.min.js', {dataType: 'script', cache: true})
-      .done(function(){
-        bindTriggerClick()
-      })
-    } else {
-      bindTriggerClick()
-    }
-
     function bindTriggerClick() {
       $(opt.triggerEle).off('click.pp').on('click.pp', function(e){
         e.preventDefault()
@@ -196,6 +190,26 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
         })
       })
     }
+
+    //如果需要裁剪，且Jcrop尚未被加载进来，load it
+    if (this[opt.triggerEle].needCrop && !$.fn.Jcrop) {
+      $("head").append("<link rel='stylesheet' type='text/css' href='//g.alicdn.com/sj/lib/jcrop/css/jquery.Jcrop.min.css' />")
+
+      $.ajax('//g.alicdn.com/sj/lib/jcrop/js/jquery.Jcrop.min.js', {dataType: 'script', cache: true})
+      .done(function(){
+        bindTriggerClick()
+      })
+    } else {
+      bindTriggerClick()
+    }
+
   }
+
+  // 单例扩展到jQuery静态方法上,修正this
+  $.extend({
+    picPlugin: function (opt) {
+      pp.init.call(pp, opt)
+    }
+  })
 
 }(jQuery)

@@ -1,0 +1,99 @@
+<div class="bs-docs-section">
+  <h1 id="picplugin" class="page-header">图片上传&裁剪组件 <small>picplugin.js</small></h1>
+
+  <h2 id="picplugin-examples">示例</h2>
+  <div class="bs-example bs-example-picplugin" role="picplugin" data-example-id="">
+    <!--
+    <div class="cover-con">
+        <div class="cover">
+            <div class="crossv"> </div>
+            <div class="crossh"> </div>
+            <a class="add-cover" id="J_addnewArrivalImg"></a>
+            <input type="hidden" value="" name="coverUrl">
+        </div>
+    </div>
+    -->
+    <a class="btn btn-primary" id="J_addnewArrivalImg"> 上 传</a>
+    <div id="imgwrap"></div>
+
+    <script>
+    window.onload = function() {
+      var sizeArr = [400, 200]
+      $.picPlugin({
+        triggerEle: '#J_addnewArrivalImg',
+        minSize: [800, 400],
+        cropOptions: {
+          allowSelect: false,
+
+          minSize: sizeArr
+
+          //maxSize: sizeArr,
+          //aspectRatio: sizeArr[0] / sizeArr[1]
+          //aspectRatio: 6
+        },
+        cropInitCallback: function(instance) {
+          //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
+          instance.setSelect([0, 0].concat(sizeArr))
+        },
+        beforeSend: function(data) {
+          console.log(data)
+          //return false
+        },
+        successCallback: function(url) {
+
+          console.log('finally:   ' + url)
+          $('#imgwrap').html('<img src="' + url + '">')
+        },
+        cancelCallback: function(t) {
+          console.log(t + '1')
+        }
+      })
+
+    }
+    </script>
+  </div><!-- /example -->
+{% highlight html %}
+<div class="box-content" style="display: block;">
+    <div class="cover-con">
+        <div class="cover">
+            <div class="crossv"> </div>
+            <div class="crossh"> </div>
+            <a class="add-cover" id="J_addnewArrivalImg"></a>
+            <input type="hidden" value="" name="coverUrl">
+        </div>
+    </div>
+    <div id="imgwrap"></div>
+    <script>
+      window.onload = function() {
+        var sizeArr = [400, 200]
+        $.picPlugin({
+          triggerEle: '#J_addnewArrivalImg',
+          minSize: [800, 400],
+          cropOptions: {
+            allowSelect: false,
+            minSize: sizeArr
+          },
+          cropInitCallback: function(instance) {
+            //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
+            instance.setSelect([0, 0].concat(sizeArr))
+          },
+          beforeSend: function(data) {
+            console.log(data)
+            //return false
+          },
+          successCallback: function(url) {
+            console.log('finally:   ' + url)
+            $('#imgwrap').html('<img src="' + url + '">')
+          },
+          cancelCallback: function(t) {
+            console.log(t + '1')
+          }
+        })
+    </script>
+
+    }
+
+</div>
+{% endhighlight %}
+
+
