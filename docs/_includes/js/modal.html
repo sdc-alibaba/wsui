@@ -377,9 +377,9 @@ $('#myModal').modal({
   <p>手动关闭弹层并触发okHide逻辑. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('okHide'){% endhighlight %}
 
-  <h4>.modal('selfAdapt')</h4>
-  <p>执行一次自适应。用于弹层高度发生较大变化时。</p>
-  {% highlight js %}$('#myModal').modal('selfAdapt'){% endhighlight %}
+  <h4>.modal('handleUpdate')</h4>
+  <p>执行一次自适应。用于弹层高度发生变化时。(当浏览器窗口resize时会自动自适应)</p>
+  {% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
 
   <h3 id="modals-events">Events</h3>
   <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
