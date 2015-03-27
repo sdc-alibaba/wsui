@@ -4136,6 +4136,93 @@ a.badge:focus {
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+.tag > li {
+  display: inline-block;
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 28px;
+  color: #666;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 1px solid #999;
+  -webkit-transition: border-color .3s linear;
+       -o-transition: border-color .3s linear;
+          transition: border-color .3s linear;
+}
+.tag > li:hover {
+  border-color: #f23f40;
+}
+.tag > li.tag-close {
+  position: relative;
+  cursor: pointer;
+}
+.tag > li.tag-close i {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 18px;
+  line-height: 18px;
+  color: #999;
+  background-color: #fff;
+  border-radius: 9px;
+  -webkit-transition: color .3s linear;
+       -o-transition: color .3s linear;
+          transition: color .3s linear;
+}
+.tag > li.tag-close:hover i {
+  color: #f23f40;
+}
+.tag > li.tag-active {
+  position: relative;
+  border-color: #f23f40;
+}
+.tag > li.tag-active i {
+  position: absolute;
+  right: -.3px;
+  bottom: 0;
+  font-size: 18px;
+  line-height: 18px;
+  color: #f23f40;
+  background-color: #fff;
+}
+.tag > li.tag-disabled {
+  color: #999;
+  border-color: #e6e6e6;
+}
+.tag > li.tag-disabled:hover {
+  border-color: #e6e6e6;
+}
+.tag > li.tag-hoverClose {
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: border-color 0;
+       -o-transition: border-color 0;
+          transition: border-color 0;
+}
+.tag > li.tag-hoverClose i {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 18px;
+  line-height: 18px;
+  color: #f23f40;
+  background-color: #fff;
+  border-radius: 9px;
+  opacity: 0;
+  -webkit-transition: -webkit-transform .3s linear;
+       -o-transition:      -o-transform .3s linear;
+          transition:         transform .3s linear;
+}
+.tag > li.tag-hoverClose:hover i {
+  opacity: 1;
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+       -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
 .jumbotron {
   padding: 30px 15px;
   margin-bottom: 30px;
