@@ -82,7 +82,7 @@
 		this.element = $(element);
 		this.isInline = false;
 		this.isInput = this.element.is('input');
-		this.component = this.element.is('.date') ? this.element.find('.add-on, .input-group-addon, .sui-btn') : false;
+		this.component = this.element.is('.date') ? this.element.find('.add-on, .input-group-addon, .' + CLASSMAP.btn) : false;
 		this.hasInput = this.component && this.element.find('input').length;
 		if (this.component && this.component.length === 0)
 			this.component = false;
@@ -695,7 +695,7 @@
 				$.each(arguments, $.proxy(function(i, date) {
 					//获取第一个的时间,用来update 时间
 					if (this.o.timepicker&&i === 0) {
-						
+
 						this.timepicker.update(this._getTime(date)); //不要更新input
 					}
 					if (date instanceof Date)
@@ -708,7 +708,7 @@
 				fromArgs = true;
 
 
-				
+
 			} else {
 				dates = this.isInput ? this.element.val() : this.element.data('date') || this.element.find('input').val();
 				if (dates&&this.o.timepicker) {//合体模式

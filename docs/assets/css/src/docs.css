@@ -124,6 +124,11 @@ body {
 .bs-docs-nav .container {
   margin: 0 20px;
 }
+@media (min-width: 1600px) {
+  .container {
+    width: 1400px;
+  }
+}
 .bs-home-nav .bs-nav-b {
   display: none;
 }
@@ -1605,6 +1610,7 @@ h1[id] {
   min-height: 100%;
   max-height: 100%;
   padding: 40px 20px 800px;
+  overflow: scroll;
 }
 
 .bs-docs-sidenav {
@@ -1631,4 +1637,8 @@ body {
 
 .bs-docs-featurette .thumbnail {
   max-width: 800px;
+}
+
+#disqus_thread {
+  margin-top: 100px;
 }

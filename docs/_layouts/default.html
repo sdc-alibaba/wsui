@@ -56,11 +56,25 @@
         </div>
         {% endunless %}
         <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
-          {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
+          {% if page.slug == "getting-started" or page.slug == "css" or page.slug == "components" or page.slug == "js" %}
             {% include nav/docs.html %}
           {% endif %}
           
           {{ content }}
+
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'ali-eve';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
         </div>
       </div>
     </div>

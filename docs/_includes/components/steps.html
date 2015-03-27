@@ -153,5 +153,122 @@
   </div>
 </div>
 {% endhighlight %}
+  <h3 id="steps-round">前台步骤条</h3>
+  <p>您可以通过栅格来控制步骤条的宽度，也可以直接在外层直接加一个'step-x'来告诉我们有几个步骤，就像下面这样</p>
+  <div class="bs-example" data-example-id="steps-round">
+    <ul class="steps-round step-3">
+      <li class="finished">
+          <div class="wrap">
+            <div class="round">1</div>
+          </div>
+          <label>即使这里是一个长长的描述文字也没有关系</label>
+      </li>
+      <li class="current">
+          <div class="wrap">
+            <div class="round">2</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+      <li>
+          <div class="wrap">
+            <div class="round">3</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+    </ul> 
+  </div>
+  {% highlight html %}
+  <ul class="steps-round step-3">
+    <li class="finished">
+      <div class="wrap">
+        <div class="round">1</div>
+      </div>
+      <label>即使这里是一个长长的描述文字也没有关系</label>
+    </li>
+    <li class="current">
+      <div class="wrap">
+        <div class="round">2</div>
+      </div>
+      <label>这里是文字描述</label>
+    </li>
+    <li>
+      <div class="wrap">
+        <div class="round">3</div>
+      </div>
+      <label>这里是文字描述</label>
+    </li>
+  </ul>
+  {% endhighlight %}
+
+  <p>如果您希望单独通过栅格来控制步骤条的宽度，请看下面的例子</p>
+  <div class="bs-example" data-example-id="steps-round">
+    <ul class="steps-round">
+      <li class="finished col-md-4">
+          <div class="wrap">
+            <div class="round">1</div>
+          </div>
+          <label>即使这里是一个长长的描述文字也没有关系</label>
+      </li>
+      <li class="current col-md-2">
+          <div class="wrap">
+            <div class="round">2</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+      <li class="col-md-2">
+          <div class="wrap">
+            <div class="round">3</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+      <li class="col-md-2">
+          <div class="wrap">
+            <div class="round">4</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+      <li class="col-md-2">
+          <div class="wrap">
+            <div class="round">5</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+    </ul> 
+  </div>
+  {% highlight html %}
+    <ul class="steps-round">
+      <li class="finished col-md-4">
+          <div class="wrap">
+            <div class="round">1</div>
+          </div>
+          <label>即使这里是一个长长的描述文字也没有关系</label>
+      </li>
+      <li class="current col-md-2">
+          <div class="wrap">
+            <div class="round">2</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+      <li class="col-md-2">
+          <div class="wrap">
+            <div class="round">3</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+      <li class="col-md-2">
+          <div class="wrap">
+            <div class="round">4</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+      <li class="col-md-2">
+          <div class="wrap">
+            <div class="round">5</div>
+          </div>
+          <label>这里是文字描述</label>
+      </li>
+    </ul> 
+  
+  {% endhighlight %}
 </div>
 
