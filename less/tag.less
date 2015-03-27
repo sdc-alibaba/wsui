@@ -7,7 +7,7 @@
 .tag > li{
 	padding: 0 12px;
 	display: inline-block;
-	font-size: 14px;
+	font-size: @font-size-h5;
 	color: #666;
 	line-height: 28px;
 	border: 1px solid #999;
@@ -21,33 +21,31 @@
 		position: relative;
 	  	cursor: pointer;
 		i{
-	  		padding: 4px 3px 2px 3px;
-	  		font-size: 8px;
-	  		color: #FFF;
-	  		background-color: #999;
-	  		border-radius: 9px;
 	  		position: absolute;
 	  		top: -6px;
 	  		right: -6px;
-  			.transition(background-color .3s linear);
+	  		font-size: @font-size-h3;
+	  		line-height: @font-size-h3;
+	  		border-radius: 9px;
+	  		color: #999;
+	  		background-color: #FFF;
+  			.transition(color .3s linear);
 	  	}
   		&:hover i{
-  			background-color: @brand-primary;
+  			color: @brand-primary;
   		}
 	}
 	&.tag-active{
 		position: relative;
 		border-color: @brand-primary;
 		i{
-			width: 18px;
-			height: 18px;
-			font-size: 10px;
-			padding: 4px 2px 2px 4px;
 			position: absolute;
 			right: 0;
 			bottom: 0;
-			color: #FFF;
-	  		background-color: @brand-primary;
+			font-size: @font-size-h3;
+			line-height: @font-size-h3;
+			color: @brand-primary;
+	  		background-color: #FFF;
 		}
 	}
 	&.tag-disabled{
@@ -62,14 +60,14 @@
 	  	cursor: pointer;
 		.transition(border-color 0);
 		i{
-	  		padding: 4px 3px 2px 3px;
-	  		font-size: 8px;
-	  		color: #FFF;
-	  		background-color: @brand-primary;
-	  		border-radius: 9px;
 	  		position: absolute;
 	  		top: -6px;
 	  		right: -6px;
+	  		font-size: @font-size-h3;
+	  		line-height: @font-size-h3;
+	  		color: @brand-primary;
+	  		border-radius: 9px;
+	  		background-color: #FFF;
   			opacity: 0;
 			.transition(transform .3s linear);	
 	  	}

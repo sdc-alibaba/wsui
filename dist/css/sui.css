@@ -4892,17 +4892,17 @@ a.badge:focus {
   position: absolute;
   top: -6px;
   right: -6px;
-  padding: 4px 3px 2px 3px;
-  font-size: 8px;
-  color: #fff;
-  background-color: #999;
+  font-size: 18px;
+  line-height: 18px;
+  color: #999;
+  background-color: #fff;
   border-radius: 9px;
-  -webkit-transition: background-color .3s linear;
-       -o-transition: background-color .3s linear;
-          transition: background-color .3s linear;
+  -webkit-transition: color .3s linear;
+       -o-transition: color .3s linear;
+          transition: color .3s linear;
 }
 .tag > li.tag-close:hover i {
-  background-color: #f23f40;
+  color: #f23f40;
 }
 .tag > li.tag-active {
   position: relative;
@@ -4912,12 +4912,10 @@ a.badge:focus {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 18px;
-  height: 18px;
-  padding: 4px 2px 2px 4px;
-  font-size: 10px;
-  color: #fff;
-  background-color: #f23f40;
+  font-size: 18px;
+  line-height: 18px;
+  color: #f23f40;
+  background-color: #fff;
 }
 .tag > li.tag-disabled {
   color: #999;
@@ -4937,10 +4935,10 @@ a.badge:focus {
   position: absolute;
   top: -6px;
   right: -6px;
-  padding: 4px 3px 2px 3px;
-  font-size: 8px;
-  color: #fff;
-  background-color: #f23f40;
+  font-size: 18px;
+  line-height: 18px;
+  color: #f23f40;
+  background-color: #fff;
   border-radius: 9px;
   opacity: 0;
   -webkit-transition: -webkit-transform .3s linear;
