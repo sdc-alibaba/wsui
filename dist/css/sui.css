@@ -4910,8 +4910,8 @@ a.badge:focus {
 }
 .tag > li.tag-active i {
   position: absolute;
-  right: -.2px;
-  bottom: -.2px;
+  right: -.3px;
+  bottom: 0;
   font-size: 18px;
   line-height: 18px;
   color: #f23f40;
@@ -4947,10 +4947,10 @@ a.badge:focus {
 }
 .tag > li.tag-hoverClose:hover i {
   opacity: 1;
-  -webkit-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-       -o-transform: rotate(360deg);
-          transform: rotate(360deg);
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+       -o-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 .jumbotron {
   padding: 30px 15px;
