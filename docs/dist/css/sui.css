@@ -4139,6 +4139,7 @@ a.badge:focus {
 .tag > li {
   display: inline-block;
   padding: 0 12px;
+  margin: 10px 10px 0 0;
   font-size: 14px;
   line-height: 28px;
   color: #666;
@@ -4155,31 +4156,35 @@ a.badge:focus {
 .tag > li:hover {
   border-color: #f23f40;
 }
+.tag > li:hover > i {
+  color: #f23f40;
+}
+.tag > li > i {
+  margin-left: 5px;
+  color: #999;
+  cursor: pointer;
+}
 .tag > li.tag-close {
   position: relative;
   cursor: pointer;
 }
-.tag > li.tag-close i {
+.tag > li.tag-close > i {
   position: absolute;
   top: -6px;
   right: -6px;
   font-size: 18px;
   line-height: 18px;
-  color: #999;
   background-color: #fff;
   border-radius: 9px;
   -webkit-transition: color .3s linear;
        -o-transition: color .3s linear;
           transition: color .3s linear;
 }
-.tag > li.tag-close:hover i {
-  color: #f23f40;
-}
 .tag > li.tag-active {
   position: relative;
   border-color: #f23f40;
 }
-.tag > li.tag-active i {
+.tag > li.tag-active > i {
   position: absolute;
   right: -.3px;
   bottom: 0;
@@ -4202,7 +4207,7 @@ a.badge:focus {
        -o-transition: border-color 0;
           transition: border-color 0;
 }
-.tag > li.tag-hoverClose i {
+.tag > li.tag-hoverClose > i {
   position: absolute;
   top: -6px;
   right: -6px;

@@ -6,6 +6,7 @@
 // Base class
 .tag > li{
 	padding: 0 12px;
+  margin: 10px 10px 0 0;
 	display: inline-block;
 	font-size: @font-size-h5;
 	color: #666;
@@ -16,29 +17,33 @@
 	.transition(border-color .3s linear);
 	&:hover{
 		border-color: @brand-primary;
+    &>i{
+      color: @brand-primary;
+    }
 	}
+  &>i {
+    margin-left: 5px;
+	  color: #999;
+	  cursor: pointer;
+  }
 	&.tag-close{
 		position: relative;
 	  	cursor: pointer;
-		i{
+		&>i{
 	  		position: absolute;
 	  		top: -6px;
 	  		right: -6px;
 	  		font-size: @font-size-h3;
 	  		line-height: @font-size-h3;
 	  		border-radius: 9px;
-	  		color: #999;
 	  		background-color: #FFF;
   			.transition(color .3s linear);
 	  	}
-  		&:hover i{
-  			color: @brand-primary;
-  		}
 	}
 	&.tag-active{
 		position: relative;
 		border-color: @brand-primary;
-		i{
+		&>i{
 			position: absolute;
 			right: -0.3px;
 			bottom: 0;
@@ -59,7 +64,7 @@
 		position: relative;
 	  	cursor: pointer;
 		.transition(border-color 0);
-		i{
+		&>i{
 	  		position: absolute;
 	  		top: -6px;
 	  		right: -6px;
