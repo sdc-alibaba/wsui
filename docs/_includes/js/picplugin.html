@@ -2,30 +2,52 @@
   <h1 id="picplugin" class="page-header">图片上传&裁剪组件 <small>picplugin.js</small></h1>
 
   <h2 id="picplugin-examples">示例</h2>
-  <div class="bs-example bs-example-picplugin" role="picplugin" data-example-id="">
+  <p class="text-danger">
+  注意！因为该插件接入了集团统一的图片空间，所以查看demo时需要登录一个线上卖家账号。所传图片会真实传到其图片空间里，请不要传太多无意义图片。<br>
+  如果域名里包含 taobao.net,则会使用daily环境账号
+  </p>
+  <p class="text-info">
+    告示：裁剪后的图片URL也是集团通用cdn地址，外部均可正常访问，但是裁剪后图片不会落入图片空间存储。如果需要，需要图片空间后端提供接口支持
+  </p>
+  <pre><code>
+/**
+ * @file picPlugin.js
+ * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
+ * @param opt.triggerEle {string} 触发弹出图片空间插件弹层的元素的css选择器，通常是一些按钮、文字链
+ * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
+ * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+ * @param opt.cancelCallback {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+ * @param opt.needCrop {boolean} 是否需要在图片空间插件关闭后弹出图片裁剪弹层
+ * @param opt.cropOptions {json}裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
+ * @param opt.cropInitCallback {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
+ * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到successCallback），否则会向后端发送裁剪的数据。
+ * @param opt.successCallback {function} 主流程完全顺利走完后的回调，第一个参数是图片url
+ */
+  </code></pre>
+  <div class="bs-example bs-example-picplugin" role="picplugin">
     <!--
     <div class="cover-con">
         <div class="cover">
             <div class="crossv"> </div>
             <div class="crossh"> </div>
-            <a class="add-cover" id="J_addnewArrivalImg"></a>
+            <a class="add-cover" id="pp"></a>
             <input type="hidden" value="" name="coverUrl">
         </div>
     </div>
     -->
-    <a class="btn btn-primary" id="J_addnewArrivalImg"> 上 传</a>
+    <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
     <div id="imgwrap"></div>
 
     <script>
     window.onload = function() {
-      var sizeArr = [400, 200]
+      var sizeArr = [200, 100]
       $.picPlugin({
-        triggerEle: '#J_addnewArrivalImg',
-        minSize: [800, 400],
+        triggerEle: '#pp',
+        picMinSize: [400, 200],
         cropOptions: {
-          allowSelect: false,
+          //allowSelect: false,
 
-          minSize: sizeArr
+          //minSize: sizeArr
 
           //maxSize: sizeArr,
           //aspectRatio: sizeArr[0] / sizeArr[1]
@@ -33,7 +55,7 @@
         },
         cropInitCallback: function(instance) {
           //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
-          instance.setSelect([0, 0].concat(sizeArr))
+          //instance.setSelect([0, 0].concat(sizeArr))
         },
         beforeSend: function(data) {
           console.log(data)
@@ -53,29 +75,23 @@
     </script>
   </div><!-- /example -->
 {% highlight html %}
-<div class="box-content" style="display: block;">
-    <div class="cover-con">
-        <div class="cover">
-            <div class="crossv"> </div>
-            <div class="crossh"> </div>
-            <a class="add-cover" id="J_addnewArrivalImg"></a>
-            <input type="hidden" value="" name="coverUrl">
-        </div>
-    </div>
+    <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
     <div id="imgwrap"></div>
     <script>
       window.onload = function() {
-        var sizeArr = [400, 200]
+        var sizeArr = [200, 100]
         $.picPlugin({
-          triggerEle: '#J_addnewArrivalImg',
-          minSize: [800, 400],
+          triggerEle: '#pp',
+          picMinSize: [400, 200],
+          // 下面传入的都是Jcrop插件的可用参数，详见http://deepliquid.com/content/Jcrop_Manual.html
           cropOptions: {
-            allowSelect: false,
-            minSize: sizeArr
+            //allowSelect: false,
+            //裁剪的最新尺寸
+            //minSize: sizeArr
           },
           cropInitCallback: function(instance) {
             //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
-            instance.setSelect([0, 0].concat(sizeArr))
+            //instance.setSelect([0, 0].concat(sizeArr))
           },
           beforeSend: function(data) {
             console.log(data)
@@ -90,10 +106,6 @@
           }
         })
     </script>
-
-    }
-
-</div>
 {% endhighlight %}
 
 

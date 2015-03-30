@@ -2,7 +2,7 @@
 // jscs:disable
 /**
  * @file picPlugin.js
- * @brief 快速调用图片空间插件实现选择/上传图片
+ * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
  * @author banbian, zangtao.zt@alibaba-inc.com
  * @param opt.triggerEle {string} 触发弹出图片空间插件弹层的元素的css选择器，通常是一些按钮、文字链
  * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
@@ -66,11 +66,11 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
           if (validateSelectedImg(tmpImg.width, tmpImg.height)) {
             doCropOrSuccess()
           } else {
-            $.msgTip('亲所选的图片不满足尺寸要求，请重新选择')
+            $.toast('亲所选的图片不满足尺寸要求，请重新选择', 'danger')
           }
         }
         tmpImg.onerror = function(){
-            $.msgTip('图片无效，请重新选择')
+            $.toast('图片无效，请重新选择', 'danger')
         }
         tmpImg.src = url
       } else {
@@ -107,11 +107,13 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       //使用图片空间弹层的遮罩层即可
       backdrop: 'static',
       bgColor: 'rgba(0, 0, 0, 0)',
+      width: 450,
       keyboard: false,
       body: '<img class="originpic" src="' + imgurl + '"/>',
       show: function() {
         //裁剪组件初始化参数
         var cropOptions = $.extend({
+          keySupport: false,
           boxWidth: 400,
           boxHeight: 400
         }, options.cropOptions)
@@ -144,7 +146,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
             //把之前隐藏的图片空间iframe和弹层关闭
             pic.close()
           } else {
-            $.msgTip(res.msg)
+            $.toast(res.msg, 'danger')
           }
         })
         //阻止默认关闭弹层逻辑
@@ -152,6 +154,9 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       },
       cancelHide: function() {
         $picDlg.show()
+      },
+      cancelHidden: function() {
+        $('body').addClass('modal-open')
       },
       hidden: function() {
         jcrop.destroy()
@@ -168,7 +173,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     function bindTriggerClick() {
       $(opt.triggerEle).off('click.pp').on('click.pp', function(e){
         e.preventDefault()
-        $picDlg = $.alert({
+        $picDlg = $.confirm({
           title: '选择图片',
           body: '<div id="picPluginWrap"></div>',
           hasfoot: false,
