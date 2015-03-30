@@ -1,34 +1,67 @@
 <div class="bs-docs-section">
   <h1 id="tag" class="page-header">tag</h1>
-  <h2>常规tag</h2>
+  <h2>默认样式</h2>
   <div class="bs-example" data-example-id="simple-tag">
     <ul class="tag">
-      <li>自定义文案</li>
-      <li class="tag-active">自定义文案<i class="iconfont icon-check-sign"></i></li>
-      <li class="tag-disabled">自定义文案</li>
+      <li>男装</li>
+      <li class="active">女装</li>
+      <li>童装</li>
+      <li class="disabled">老年装</li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="tag">
-  <li>自定义文案</li>
-  <li class="tag-active">自定义文案<i class="iconfont icon-check-sign"></i></li>
-  <li class="tag-disabled">自定义文案</li>
-</ul>
 {% endhighlight %}
 
-  <h2>右侧带叉tag</h2>
+  <h2>可关闭</h2>
   <div class="bs-example" data-example-id="simple-tag">
-    <ul class="tag">
-      <li>自定义文案<i class="iconfont icon-close-sign"></i></li>
-      <li class="tag-close">自定义文案<i class="iconfont icon-close-sign"></i></li>
-      <li class="tag-close-hover">自定义文案<i class="iconfont icon-close-sign"></i></li>
+    <ul class="tag tag-with-icon">
+      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="tag">
-  <li>自定义文案<i class="iconfont icon-close-sign"></i></li>
-  <li class="tag-close-top">自定义文案<i class="iconfont icon-close-sign"></i></li>
-  <li class="tag-close-hover">自定义文案<i class="iconfont icon-close-sign"></i></li>
-</ul>
+{% endhighlight %}
+  <h2>可选中</h2>
+  <div class="bs-example" data-example-id="simple-tag">
+    <ul class="tag tag-with-icon" data-toggle='buttons'>
+      <li>男装 <i class="iconfont icon-check-round-sign"></i></li>
+      <li class="active">女装 <i class="iconfont icon-check-round-sign"></i></li>
+      <li>童装 <i class="iconfont icon-check-round-sign"></i></li>
+      <li class="disabled">老年装 <i class="iconfont icon-check-round-sign"></i></li>
+    </ul>
+  </div>
+{% highlight html %}
+{% endhighlight %}
+  <h2>不同大小</h2>
+  <p>加上 <code>.tag-sm</code>, <code>.tag-lg</code> 或者 <code>tag-xl</code>  变成不同大小.</p>
+  <div class="bs-example" data-example-id="simple-tag">
+    <ul class="tag tag-with-icon tag-sm">
+      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
+    </ul>
+    <ul class="tag tag-with-icon">
+      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
+    </ul>
+    <ul class="tag tag-with-icon tag-lg">
+      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
+    </ul>
+    <ul class="tag tag-with-icon tag-xl">
+      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
+      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
+    </ul>
+  </div>
+{% highlight html %}
 {% endhighlight %}
 </div>
