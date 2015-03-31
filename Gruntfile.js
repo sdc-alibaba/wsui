@@ -50,7 +50,8 @@ module.exports = function (grunt) {
     'js/validate.js',
     'js/datepicker.js',
     'js/intro.js',
-    'js/toast.js'
+    'js/toast.js',
+    'js/tag.js'
   ];
 
   // Project configuration.

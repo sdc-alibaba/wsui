@@ -1,67 +1,131 @@
 <div class="bs-docs-section">
   <h1 id="tag" class="page-header">tag</h1>
-  <h2>默认样式</h2>
+  <p>Tag 是用来显示统一类型的不同选择，类似checkbox或者radio。它可以作为纯信息展示，也可以通过内部的 checkbox/radio 来实现数据操作。</p>
+  <p>Tag 分为三种用法：展示信息（不可操作），可删除，可勾选。</p>
+  <p class="alert alert-danger">注意，tag组件本身不存储任何数据，数据都是通过内部的 checkbox/radio  来保存的。</p>
+  <h2 id='tag-default'>默认样式</h2>
   <div class="bs-example" data-example-id="simple-tag">
-    <ul class="tag">
-      <li>男装</li>
-      <li class="active">女装</li>
-      <li>童装</li>
-      <li class="disabled">老年装</li>
-    </ul>
+    <div class="tag-group">
+      <label class='tag'>男装</label>
+      <label class="tag active">女装</label>
+      <label class='tag'>童装</label>
+      <label class="tag disabled">老年装</label>
+    </div>
   </div>
 {% highlight html %}
+<div class="tag-group">
+  <label class='tag'>男装</label>
+  <label class="tag active">女装</label>
+  <label class='tag'>童装</label>
+  <label class="tag disabled">老年装</label>
+</div>
+{% endhighlight %}
+  <h2 id='tag-hover'>悬停高亮</h2>
+  <div class="bs-example" data-example-id="simple-tag">
+    <div class="tag-group tag-hover">
+      <label class='tag'>男装</label>
+      <label class="tag active">女装</label>
+      <label class='tag'>童装</label>
+      <label class="tag disabled">老年装</label>
+    </div>
+  </div>
+{% highlight html %}
+<div class="tag-group tag-hover">
+  <label class='tag'>男装</label>
+  <label class="tag active">女装</label>
+  <label class='tag'>童装</label>
+  <label class="tag disabled">老年装</label>
+</div>
 {% endhighlight %}
 
-  <h2>可关闭</h2>
-  <div class="bs-example" data-example-id="simple-tag">
-    <ul class="tag tag-with-icon">
-      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
-    </ul>
+  <h2 id='tag-removable'>可删除</h2>
+  <div class="bs-example" data-example-id="tag-removable">
+    <div class="tag-group tag-removable" data-toggle='tag'>
+      <label class='tag'>男装 <a name='remove'><i class="iconfont icon-close-round-sign"></i></a><input type='checkbox' name='simple-tag-1' value='1' checked='checked'/></label>
+      <label class="tag">女装 <a name='remove'><i class="iconfont icon-close-round-sign"></i></a> <input type='checkbox' name='simple-tag-1' value='2' checked='checked'/></label>
+      <label class='tag'>童装 <a name='remove'><i class="iconfont icon-close-round-sign"></i></a> <input type='checkbox' name='simple-tag-1' value='3' checked='checked' /></label>
+    </div>
   </div>
 {% highlight html %}
+<div class="tag-group tag-removable" data-toggle='tag'>
+  <label class='tag'>男装 <a name='remove'><i class="iconfont icon-close-round-sign"></i></a><input type='checkbox' name='simple-tag-1' value='1' checked='checked'/></label>
+  <label class="tag">女装 <a name='remove'><i class="iconfont icon-close-round-sign"></i></a> <input type='checkbox' name='simple-tag-1' value='2' checked='checked'/></label>
+  <label class='tag'>童装 <a name='remove'><i class="iconfont icon-close-round-sign"></i></a> <input type='checkbox' name='simple-tag-1' value='3' checked='checked' /></label>
+</div>
 {% endhighlight %}
-  <h2>可选中</h2>
+  <h2 id='tag-checkable'>可选中</h2>
   <div class="bs-example" data-example-id="simple-tag">
-    <ul class="tag tag-with-icon" data-toggle='buttons'>
-      <li>男装 <i class="iconfont icon-check-round-sign"></i></li>
-      <li class="active">女装 <i class="iconfont icon-check-round-sign"></i></li>
-      <li>童装 <i class="iconfont icon-check-round-sign"></i></li>
-      <li class="disabled">老年装 <i class="iconfont icon-check-round-sign"></i></li>
-    </ul>
+    <h4>多选</h4>
+    <div class="tag-group tag-checkable" data-toggle='tag'>
+      <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-2' value='2' checked='checked'/></label>
+      <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-2' value='2'/></label>
+      <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-2' value='3'/></label>
+    </div>
+    <h4>单选</h4>
+    <div class="tag-group tag-checkable" data-toggle='tag'>
+      <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='radio' name='simple-tag-4' value='2' checked='checked'/></label>
+      <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='radio' name='simple-tag-4' value='2'/></label>
+      <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='radio' name='simple-tag-4' value='3'/></label>
+    </div>
   </div>
 {% highlight html %}
+<h4>多选</h4>
+<div class="tag-group tag-checkable" data-toggle='tag'>
+  <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-2' value='2' checked='checked'/></label>
+  <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-2' value='2'/></label>
+  <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-2' value='3'/></label>
+</div>
+<h4>单选</h4>
+<div class="tag-group tag-checkable" data-toggle='tag'>
+  <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='radio' name='simple-tag-4' value='2' checked='checked'/></label>
+  <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='radio' name='simple-tag-4' value='2'/></label>
+  <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='radio' name='simple-tag-4' value='3'/></label>
+</div>
 {% endhighlight %}
-  <h2>不同大小</h2>
+  <h2 id='tag-size'>不同大小</h2>
   <p>加上 <code>.tag-sm</code>, <code>.tag-lg</code> 或者 <code>tag-xl</code>  变成不同大小.</p>
   <div class="bs-example" data-example-id="simple-tag">
-    <ul class="tag tag-with-icon tag-sm">
-      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
-    </ul>
-    <ul class="tag tag-with-icon">
-      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
-    </ul>
-    <ul class="tag tag-with-icon tag-lg">
-      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
-    </ul>
-    <ul class="tag tag-with-icon tag-xl">
-      <li>男装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="active">女装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li>童装 <i class="iconfont icon-close-round-sign"></i></li>
-      <li class="disabled">老年装 <i class="iconfont icon-close-round-sign"></i></li>
-    </ul>
+    <div class="tag-group tag-checkable tag-sm" data-toggle='tag'>
+      <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+      <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+      <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+    </div>
+    <div class="tag-group tag-checkable" data-toggle='tag'>
+      <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+      <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+      <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+    </div>
+    <div class="tag-group tag-checkable tag-lg" data-toggle='tag'>
+      <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+      <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+      <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+    </div>
+    <div class="tag-group tag-checkable tag-xl" data-toggle='tag'>
+      <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+      <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+      <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+    </div>
   </div>
 {% highlight html %}
+<div class="tag-group tag-checkable tag-sm" data-toggle='tag'>
+  <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+  <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+  <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+</div>
+<div class="tag-group tag-checkable" data-toggle='tag'>
+  <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+  <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+  <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+</div>
+<div class="tag-group tag-checkable tag-lg" data-toggle='tag'>
+  <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+  <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+  <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+</div>
+<div class="tag-group tag-checkable tag-xl" data-toggle='tag'>
+  <label class='tag active'>男装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2' checked='checked'/></label>
+  <label class="tag">女装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='2'/></label>
+  <label class='tag'>童装 <i class="iconfont icon-check-round-sign"></i> <input type='checkbox' name='simple-tag-3' value='3'/></label>
+</div>
 {% endhighlight %}
 </div>
