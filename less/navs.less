@@ -72,7 +72,6 @@
       margin-right: 2px;
       line-height: @line-height-base;
       border: 1px solid transparent;
-      border-radius: @border-radius-base @border-radius-base 0 0;
     }
 
     // Active state, and its :hover to override normal :hover
@@ -100,16 +99,20 @@
     padding: 0;
     > a {
       color: #666;
-      padding: 20px;
-      border-radius: 0;
+      padding: 2px;
       background: #fcfcfc;
       margin: 0;
       border: 0;
       border-top: 1px solid @navTabsBorderColor;
       border-bottom: 1px solid @navTabsBorderColor;
+      text-align: center;
       &:hover,&:focus {
         background: #fff;
         border-color: @navTabsBorderColor;
+      }
+      h4 {
+        font-weight: normal;
+        font-size: 16px;
       }
     }
     + li {
@@ -122,13 +125,8 @@
       font-weight: normal;
       border-bottom: 1px solid #fff;
       border-top: 3px solid @brand-primary !important;
-      padding-top: 18px; //和其他标签对齐
       margin: 0 -1px;
-    }
-
-    h3 {
-      text-align: center;
-      color: #333;
+      padding: 1px;
     }
 
     ul {
@@ -148,16 +146,6 @@
       text-align: right;
       margin-right: 10px;
       cursor: pointer;
-    }
-  }
-  &.column3 {
-    > li {
-      width: 33.333%;
-    }
-  }
-  &.column5 {
-    > li {
-      width: 20%;
     }
   }
 }

@@ -2669,7 +2669,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: 2px;
   line-height: 1.5;
   border: 1px solid transparent;
-  border-radius: 2px 2px 0 0;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
@@ -2688,34 +2687,34 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 0;
 }
 .tab-wraped > li > a {
-  padding: 20px;
+  padding: 2px;
   margin: 0;
   color: #666;
+  text-align: center;
   background: #fcfcfc;
   border: 0;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  border-radius: 0;
 }
 .tab-wraped > li > a:hover,
 .tab-wraped > li > a:focus {
   background: #fff;
   border-color: #ddd;
 }
+.tab-wraped > li > a h4 {
+  font-size: 16px;
+  font-weight: normal;
+}
 .tab-wraped > li + li > a {
   border-left: 1px solid #ddd;
 }
 .tab-wraped > li.active > a {
-  padding-top: 18px;
+  padding: 1px;
   margin: 0 -1px;
   font-weight: normal;
   background: #fff;
   border-top: 3px solid #f23f40 !important;
   border-bottom: 1px solid #fff;
-}
-.tab-wraped > li h3 {
-  color: #333;
-  text-align: center;
 }
 .tab-wraped > li ul {
   margin: auto;
@@ -2734,12 +2733,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #999;
   text-align: right;
   cursor: pointer;
-}
-.tab-wraped.column3 > li {
-  width: 33.333%;
-}
-.tab-wraped.column5 > li {
-  width: 20%;
 }
 .tab-content > .tab-pane {
   display: none;
@@ -5348,5 +5341,43 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+.main-block {
+  margin-bottom: 20px;
+  background: #fff;
+}
+.main-inner > article .main-block {
+  border: 25px solid #fff;
+  border-width: 0 25px;
+}
+.block-title {
+  height: 80px;
+  padding: 0 5px;
+  margin: 0 0 30px 0;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 80px;
+  color: #666;
+  border-bottom: solid 1px #e5e5e5;
+}
+.block-title.no-border {
+  margin: 0 0 5px 0;
+  border-bottom: none;
+}
+.block-title .form-group {
+  height: 24px;
+  margin-right: 10px;
+  line-height: 24px;
+}
+.block-title .form-group .form-control {
+  width: 100px;
+}
+.main-iframe {
+  width: 100%;
+  height: 720px;
+  margin: 0;
+}
+[ng-cloak] {
+  visibility: hidden;
 }
 /*# sourceMappingURL=sui.css.map */
