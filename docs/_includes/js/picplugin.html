@@ -6,14 +6,13 @@
   注意！因为该插件接入了集团统一的图片空间，所以查看demo时需要登录一个线上卖家账号。所传图片会真实传到其图片空间里，请不要传太多无意义图片。<br>
   如果域名里包含 taobao.net,则会使用daily环境账号
   </p>
-  <p class="text-info">
+  <p class="bg-info">
     告示：裁剪后的图片URL也是集团通用cdn地址，外部均可正常访问，但是裁剪后图片不会落入图片空间存储。如果需要，需要图片空间后端提供接口支持
   </p>
   <pre><code>
 /**
  * @file picPlugin.js
  * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
- * @param opt.triggerEle {string} 触发弹出图片空间插件弹层的元素的css选择器，通常是一些按钮、文字链
  * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
  * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
  * @param opt.cancelCallback {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
@@ -35,14 +34,14 @@
         </div>
     </div>
     -->
+    <p>为保证逻辑稳定，触发元素的选择器请使用id或保证选择的元素唯一</p>
     <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
     <div id="imgwrap"></div>
 
     <script>
     window.onload = function() {
       var sizeArr = [200, 100]
-      $.picPlugin({
-        triggerEle: '#pp',
+      $('#pp').picPlugin({
         picMinSize: [400, 200],
         cropOptions: {
           //allowSelect: false,
@@ -80,8 +79,7 @@
     <script>
       window.onload = function() {
         var sizeArr = [200, 100]
-        $.picPlugin({
-          triggerEle: '#pp',
+        $('#pp').picPlugin({
           picMinSize: [400, 200],
           // 下面传入的都是Jcrop插件的可用参数，详见http://deepliquid.com/content/Jcrop_Manual.html
           cropOptions: {

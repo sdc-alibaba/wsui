@@ -37,7 +37,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
   var pic, $picDlg, pp = {}
   pp._bindEvents = function(triggerEle) {
     var self = this,
-      options = this[triggerEle]
+      options = this[$(triggerEle).data('ppid')]
 
     //高度自适应，第一个参数是iframe高度
     pic.on('heightUpdated', function() {
@@ -98,7 +98,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
 
   pp._initJcrop = function(imgurl, triggerEle) {
     //方法调用返回值
-    var options = this[triggerEle],
+    var options = this[$(triggerEle).data('ppid')],
       self = this,
       jcrop,
       cropdlg
@@ -165,13 +165,16 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
   }
 
   pp.init = function(opt) {
-    this[opt.triggerEle] = $.extend({
+    var $ele = $(opt.triggerEle)
+    $ele.data('ppid', 'pp_' + (+new Date()))
+
+    this[$ele.data('ppid')] = $.extend({
       //默认配置
       needCrop: true
     }, opt)
 
     function bindTriggerClick() {
-      $(opt.triggerEle).off('click.pp').on('click.pp', function(e){
+      $ele.off('click.pp').on('click.pp', function(e){
         e.preventDefault()
         $picDlg = $.confirm({
           title: '选择图片',
@@ -197,7 +200,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     }
 
     //如果需要裁剪，且Jcrop尚未被加载进来，load it
-    if (this[opt.triggerEle].needCrop && !$.fn.Jcrop) {
+    if (this[$ele.data('ppid')].needCrop && !$.fn.Jcrop) {
       $("head").append("<link rel='stylesheet' type='text/css' href='//g.alicdn.com/sj/lib/jcrop/css/jquery.Jcrop.min.css' />")
 
       $.ajax('//g.alicdn.com/sj/lib/jcrop/js/jquery.Jcrop.min.js', {dataType: 'script', cache: true})
@@ -211,8 +214,9 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
   }
 
   // 单例扩展到jQuery静态方法上,修正this
-  $.extend({
+  $.fn.extend({
     picPlugin: function (opt) {
+      opt.triggerEle = this
       pp.init.call(pp, opt)
     }
   })
