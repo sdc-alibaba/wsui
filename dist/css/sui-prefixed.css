@@ -2285,6 +2285,12 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
+[data-toggle="buttons"] > .sui-btn input[type="radio"],
+[data-toggle="buttons"] > .sui-btn input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
 .fade {
   opacity: 0;
   -webkit-transition: opacity .15s linear;
