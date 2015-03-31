@@ -10,13 +10,14 @@
  */
 
 /* global ZeroClipboard */
-//jscs:disable 
+//jscs:disable
 
 !function ($) {
   'use strict';
 
   $(function () {
 
+    /*
     // Scrollspy
     var $window = $(window)
     var $body   = $(document.body)
@@ -27,6 +28,7 @@
     $window.on('load', function () {
       $body.scrollspy('refresh')
     })
+    */
 
     // Kill links
     $('.bs-docs-container [href=#]').click(function (e) {

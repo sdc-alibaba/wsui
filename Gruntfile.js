@@ -35,21 +35,21 @@ module.exports = function (grunt) {
     'js/alert.js',
     'js/button.js',
     'js/carousel.js',
-    'js/collapse.js',
+    // 'js/collapse.js',
     'js/dropdown.js',
     'js/modal.js',
     'js/tooltip.js',
     // SUI不需要bootstrap里的popover
     // 'js/popover.js',
-    'js/scrollspy.js',
+    // 'js/scrollspy.js',
     'js/tab.js',
     'js/autocomplete.js',
-    'js/affix.js',
+    // 'js/affix.js',
     'js/pagination.js',
     'js/datepicker.js',
     'js/validate.js',
     'js/datepicker.js',
-    'js/intro.js',
+    // 'js/intro.js',
     'js/toast.js'
   ];
 

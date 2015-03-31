@@ -115,7 +115,12 @@ body {
  *
  * Turn the `.navbar` at the top of the docs purple.
  */
-
+.bs-navbar-collapse .navbar-nav li {
+  display: inline-block;
+}
+.navbar-static-top {
+  background: #000;
+}
 .bs-docs-nav {
   margin-bottom: 0;
   font-size: 15px;
@@ -151,6 +156,7 @@ body {
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
   color: #fff;
+  background: #000;
 }
 .bs-docs-nav .navbar-toggle .icon-bar {
   background-color: #39b5aa;
@@ -565,9 +571,9 @@ body {
  * sections of docs content.
  */
 
-/*.bs-docs-sidebar {
-  background: #2a3542;
-}*/
+.bs-docs-sidebar {
+  position: fixed;
+}
 
 /* By default it's not affixed in mobile views, so undo that */
 .bs-docs-sidebar.affix {
