@@ -3853,7 +3853,7 @@ a.list-group-item-danger.active:focus {
   padding: 23px 20px 20px;
 }
 .panel-heading {
-  padding: 15px 20px;
+  padding: 12px 20px;
   border-bottom: 1px solid transparent;
 }
 .panel-heading > .sui-dropdown .dropdown-toggle {
@@ -3863,9 +3863,6 @@ a.list-group-item-danger.active:focus {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
-  color: inherit;
-}
-.panel-title > a {
   color: inherit;
 }
 .panel-footer {
@@ -3922,15 +3919,14 @@ a.list-group-item-danger.active:focus {
   border-color: transparent;
 }
 .panel-default > .panel-heading {
-  color: #333;
   background-color: #ededed;
+}
+.panel-default > .panel-heading a {
+  font-weight: 400;
+  color: #999;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: transparent;
-}
-.panel-default > .panel-heading .sui-badge {
-  color: #ededed;
-  background-color: #333;
 }
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: transparent;
@@ -3940,15 +3936,14 @@ a.list-group-item-danger.active:focus {
   border-color: #fbcccc;
 }
 .panel-primary > .panel-heading {
-  color: #333;
   background-color: #fff3f3;
+}
+.panel-primary > .panel-heading a {
+  font-weight: 400;
+  color: #f23f40;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #fbcccc;
-}
-.panel-primary > .panel-heading .sui-badge {
-  color: #fff3f3;
-  background-color: #333;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #fbcccc;
