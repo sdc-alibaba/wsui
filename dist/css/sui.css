@@ -523,6 +523,7 @@ a.bg-danger:hover {
 }
 ul,
 ol {
+  padding: 0;
   margin-top: 0;
   margin-bottom: 10.5px;
 }
@@ -533,11 +534,9 @@ ol ol {
   margin-bottom: 0;
 }
 .list-unstyled {
-  padding-left: 0;
   list-style: none;
 }
 .list-inline {
-  padding-left: 0;
   margin-left: -5px;
   list-style: none;
 }
@@ -3428,7 +3427,7 @@ a.badge:focus {
   padding: 0 12px;
   margin: 10px 10px 0 0;
   font-size: 14px;
-  line-height: 28px;
+  line-height: 26px;
   color: #666;
   cursor: default;
   -webkit-user-select: none;
