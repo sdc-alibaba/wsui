@@ -10,7 +10,7 @@
   display: inline-block;
   .dropdown-toggle {
     // The caret makes the toggle a bit too tall in IE7
-    *margin-bottom: -3px;
+    margin-bottom: -3px;
   }
   .dropdown-inner {
     > a {
@@ -127,11 +127,11 @@
   &.disabled {
     .dropdown-inner {
       a {
-        color: @dropdownDisabledColor;//todo
+        color: @dropdown-link-disabled-color;//todo
       }
     }
     &.dropdown-bordered a {
-      background-color: @dropdownDisabledBgColor;//todo
+      background-color: @gray-lighter;//todo
     }
   }
   input {
@@ -184,7 +184,7 @@
   // Links within the dropdown menu
   > li {
     padding: 0 1px; //这里通过li左右padding而不是容器的，因为多级菜单要用li的hover状态来控制，必须让li占据更多宽度
-    border-top: 1px solid @dropdown-divider-bg;//by mufei 
+    border-top: 1px solid @dropdown-divider-bg;// 
     &:first-child {
       border-top: none;
     }
@@ -272,7 +272,7 @@
   right: 0;
   bottom: 0;
   top: 0;
-  z-index: @zindex-dropdown - 10;
+  z-index: (@zindex-dropdown - 10);
 }
 
 // different size
