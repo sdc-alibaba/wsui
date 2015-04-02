@@ -1,3 +1,4 @@
+@import "//at.alicdn.com/t/font_1427945831_1892905.css";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -1721,14 +1722,14 @@ output {
   outline: 0;
 }
 .form-control::-moz-placeholder {
-  color: #ccc;
+  color: #999;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .form-control::-webkit-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 textarea.form-control {
   height: auto;
@@ -2022,8 +2023,7 @@ select[multiple].form-group-lg .form-control {
   position: relative;
   width: 100%;
   margin: 0;
-  overflow: hidden;
-  font-weight: normal;
+  font-weight: 400;
   border: 1px solid #ccc;
   border-radius: 2px;
 }
@@ -2147,7 +2147,7 @@ select:-moz-focusring {
 }
 .btn {
   display: inline-block;
-  padding: 4px 14px;
+  padding: 3px 14px;
   margin: 0;
   font-size: 14px;
   font-weight: normal;
@@ -2873,7 +2873,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .pagination div .page-num + .page-confirm {
   display: inline-block;
-  padding: 4px 14px;
+  padding: 3px 14px;
   margin: 0;
   font-size: 14px;
   font-weight: normal;
@@ -2990,6 +2990,7 @@ select[multiple].pagination-lg div .page-num {
 }
 .pagination-lg div .page-num + .page-confirm {
   display: inline-block;
+  padding: 3px 14px;
   padding: 4px 14px;
   margin: 0;
   font-size: 14px;
@@ -3093,7 +3094,7 @@ select[multiple].pagination-xl div .page-num {
 }
 .pagination-xl div .page-num + .page-confirm {
   display: inline-block;
-  padding: 4px 14px;
+  padding: 3px 14px;
   padding: 5px 20px;
   margin: 0;
   font-size: 14px;
@@ -3198,7 +3199,7 @@ select[multiple].pagination-sm div .page-num {
 }
 .pagination-sm div .page-num + .page-confirm {
   display: inline-block;
-  padding: 4px 14px;
+  padding: 3px 14px;
   padding: 0 6px;
   margin: 0;
   font-size: 14px;

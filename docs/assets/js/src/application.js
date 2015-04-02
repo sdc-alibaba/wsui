@@ -36,6 +36,7 @@
     })
 
     // Sidenav affixing
+    /*
     setTimeout(function () {
       var $sideBar = $('.bs-docs-sidebar')
 
@@ -59,6 +60,7 @@
       $('.bs-top').affix()
     }, 100)
 
+    */
     // theme toggler
     ;(function () {
       var stylesheetLink = $('#bs-theme-stylesheet')
