@@ -2732,11 +2732,6 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   display: block;
   visibility: visible;
 }
-.tab-content.tab-wraped {
-  padding: 21px;
-  border: 1px solid #ddd;
-  border-top: 0;
-}
 .nav-tabs .sui-dropdown-menu {
   margin-top: -1px;
   border-top-left-radius: 0;
@@ -2768,11 +2763,11 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
 }
 .sui-pagination {
   margin: 21px 0;
+  color: #999;
 }
 .sui-pagination ul {
   display: inline-block;
-  margin-bottom: 0;
-  margin-left: 0;
+  margin: 0 13px 0 0;
   vertical-align: middle;
 }
 .sui-pagination li {
@@ -2782,13 +2777,15 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
 .sui-pagination li > span {
   position: relative;
   float: left;
-  padding: 2px 7px;
+  min-width: 28px;
+  height: 28px;
   margin-left: -1px;
-  line-height: 21px;
-  color: #f23f40;
+  line-height: 28px;
+  color: #666;
+  text-align: center;
   text-decoration: none;
   background-color: #fff;
-  border: 1px solid #e0e9ee;
+  border: 1px solid #ccc;
 }
 .sui-pagination li > a > i.sui-icon,
 .sui-pagination li > span > i.sui-icon {
@@ -2829,9 +2826,10 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   background-color: transparent;
 }
 .sui-pagination .prev > span,
-.sui-pagination > .next > span,
+.sui-pagination .next > span,
 .sui-pagination .prev > a,
-.sui-pagination > .next > a {
+.sui-pagination .next > a {
+  width: 70px;
   background-color: #fafafa;
 }
 .sui-pagination .disabled.prev > span:hover,
@@ -2843,7 +2841,7 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
 .sui-pagination .disabled.prev > a:focus,
 .sui-pagination .disabled.next > a:focus {
   background-color: #fafafa;
-  border-color: #e0e9ee;
+  border-color: #ccc;
 }
 .sui-pagination .prev + .prev a,
 .sui-pagination .next + .next a {
@@ -2851,451 +2849,19 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
 }
 .sui-pagination div {
   display: inline-block;
-  color: #333;
+  color: #999;
 }
 .sui-pagination div .page-num {
-  width: 25px;
-  margin: 0;
-  border-radius: 0;
+  width: 38px;
+  height: 22px;
+  margin: 0 5px;
   outline: none;
-  -webkit-transition: width .1s linear .1s;
-       -o-transition: width .1s linear .1s;
-          transition: width .1s linear .1s;
 }
-.sui-pagination div .page-num + .page-confirm {
-  display: inline-block;
-  padding: 3px 14px;
-  margin: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.5;
-  color: #777;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  vertical-align: top;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background: transparent;
-  background: #f23f40;
-  border: 2px solid #c9c9c9;
-  border-color: #f23f40;
-  border-radius: 0;
-  outline: 0;
-}
-.sui-pagination div .page-num + .page-confirm.btn-bordered {
-  color: #333;
-  border: 2px solid #999;
-}
-.sui-pagination div .page-num + .page-confirm:hover,
-.sui-pagination div .page-num + .page-confirm:focus,
-.sui-pagination div .page-num + .page-confirm.focus {
-  color: #f00;
-  text-decoration: none;
-  border-color: #f00;
-}
-.sui-pagination div .page-num + .page-confirm:active,
-.sui-pagination div .page-num + .page-confirm.active {
-  color: #d93838;
-  border-color: #d93838;
-}
-.sui-pagination div .page-num + .page-confirm.disabled,
-.sui-pagination div .page-num + .page-confirm[disabled] {
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.sui-pagination div .page-num + .page-confirm.disabled,
-.sui-pagination div .page-num + .page-confirm[disabled],
-.sui-pagination div .page-num + .page-confirm.disabled:hover,
-.sui-pagination div .page-num + .page-confirm[disabled]:hover,
-.sui-pagination div .page-num + .page-confirm.disabled:focus,
-.sui-pagination div .page-num + .page-confirm[disabled]:focus,
-.sui-pagination div .page-num + .page-confirm.disabled.focus,
-.sui-pagination div .page-num + .page-confirm[disabled].focus,
-.sui-pagination div .page-num + .page-confirm.disabled:active,
-.sui-pagination div .page-num + .page-confirm[disabled]:active,
-.sui-pagination div .page-num + .page-confirm.disabled.active,
-.sui-pagination div .page-num + .page-confirm[disabled].active {
-  color: #999;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
-}
-.sui-pagination div .page-num + .page-confirm .sui-badge {
-  color: #fff;
-  background-color: #777;
-}
-.sui-pagination div .page-num + .page-confirm:hover,
-.sui-pagination div .page-num + .page-confirm:focus,
-.sui-pagination div .page-num + .page-confirm.focus {
-  color: #fff;
-  text-decoration: none;
-  background: #f00;
-  border-color: #f00;
-}
-.sui-pagination div .page-num + .page-confirm:active,
-.sui-pagination div .page-num + .page-confirm.active {
-  color: #fff;
-  background: #d93838;
-  border-color: #d93838;
-}
-.sui-pagination div .page-num + .page-confirm .sui-badge {
-  color: #f23f40;
-  background-color: #fff;
-}
-.sui-pagination div .page-num:focus {
-  width: 50px;
-}
-.sui-pagination div .page-num:focus + .page-confirm {
-  display: inline-block;
-}
-.pagination-centered {
+.pagination-center {
   text-align: center;
 }
 .pagination-right {
   text-align: right;
-}
-.pagination-lg li > a,
-.pagination-lg li > span {
-  padding: 4px 9px;
-  font-size: 20px;
-}
-.pagination-lg div {
-  font-size: 20px;
-}
-.pagination-lg div .page-num {
-  height: 34px;
-  padding: 4px 14px;
-  font-size: 16px;
-  line-height: 1.5;
-  border-radius: 3px;
-}
-textarea.pagination-lg div .page-num,
-select[multiple].pagination-lg div .page-num {
-  height: auto;
-}
-.pagination-lg div .page-num + .page-confirm {
-  display: inline-block;
-  padding: 3px 14px;
-  padding: 4px 14px;
-  margin: 0;
-  font-size: 14px;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 1.5;
-  color: #777;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  vertical-align: top;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background: transparent;
-  background: #f23f40;
-  border: 2px solid #c9c9c9;
-  border-color: #f23f40;
-  border-radius: 0;
-  outline: 0;
-}
-.pagination-lg div .page-num + .page-confirm.btn-bordered {
-  color: #333;
-  border: 2px solid #999;
-}
-.pagination-lg div .page-num + .page-confirm:hover,
-.pagination-lg div .page-num + .page-confirm:focus,
-.pagination-lg div .page-num + .page-confirm.focus {
-  color: #f00;
-  text-decoration: none;
-  border-color: #f00;
-}
-.pagination-lg div .page-num + .page-confirm:active,
-.pagination-lg div .page-num + .page-confirm.active {
-  color: #d93838;
-  border-color: #d93838;
-}
-.pagination-lg div .page-num + .page-confirm.disabled,
-.pagination-lg div .page-num + .page-confirm[disabled] {
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.pagination-lg div .page-num + .page-confirm.disabled,
-.pagination-lg div .page-num + .page-confirm[disabled],
-.pagination-lg div .page-num + .page-confirm.disabled:hover,
-.pagination-lg div .page-num + .page-confirm[disabled]:hover,
-.pagination-lg div .page-num + .page-confirm.disabled:focus,
-.pagination-lg div .page-num + .page-confirm[disabled]:focus,
-.pagination-lg div .page-num + .page-confirm.disabled.focus,
-.pagination-lg div .page-num + .page-confirm[disabled].focus,
-.pagination-lg div .page-num + .page-confirm.disabled:active,
-.pagination-lg div .page-num + .page-confirm[disabled]:active,
-.pagination-lg div .page-num + .page-confirm.disabled.active,
-.pagination-lg div .page-num + .page-confirm[disabled].active {
-  color: #999;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
-}
-.pagination-lg div .page-num + .page-confirm .sui-badge {
-  color: #fff;
-  background-color: #777;
-}
-.pagination-lg div .page-num + .page-confirm:hover,
-.pagination-lg div .page-num + .page-confirm:focus,
-.pagination-lg div .page-num + .page-confirm.focus {
-  color: #fff;
-  text-decoration: none;
-  background: #f00;
-  border-color: #f00;
-}
-.pagination-lg div .page-num + .page-confirm:active,
-.pagination-lg div .page-num + .page-confirm.active {
-  color: #fff;
-  background: #d93838;
-  border-color: #d93838;
-}
-.pagination-lg div .page-num + .page-confirm .sui-badge {
-  color: #f23f40;
-  background-color: #fff;
-}
-.pagination-xl li > a,
-.pagination-xl li > span {
-  padding: 6px 12px;
-  font-size: 20px;
-}
-.pagination-xl div .page-num {
-  height: 34px;
-  padding: 4px 14px;
-  font-size: 16px;
-  line-height: 1.5;
-  border-radius: 3px;
-}
-textarea.pagination-xl div .page-num,
-select[multiple].pagination-xl div .page-num {
-  height: auto;
-}
-.pagination-xl div .page-num + .page-confirm {
-  display: inline-block;
-  padding: 3px 14px;
-  padding: 5px 20px;
-  margin: 0;
-  font-size: 14px;
-  font-size: 20px;
-  font-weight: normal;
-  line-height: 1.5;
-  line-height: 1.429;
-  color: #777;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  vertical-align: top;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background: transparent;
-  background: #f23f40;
-  border: 2px solid #c9c9c9;
-  border-color: #f23f40;
-  border-radius: 0;
-  outline: 0;
-}
-.pagination-xl div .page-num + .page-confirm.btn-bordered {
-  color: #333;
-  border: 2px solid #999;
-}
-.pagination-xl div .page-num + .page-confirm:hover,
-.pagination-xl div .page-num + .page-confirm:focus,
-.pagination-xl div .page-num + .page-confirm.focus {
-  color: #f00;
-  text-decoration: none;
-  border-color: #f00;
-}
-.pagination-xl div .page-num + .page-confirm:active,
-.pagination-xl div .page-num + .page-confirm.active {
-  color: #d93838;
-  border-color: #d93838;
-}
-.pagination-xl div .page-num + .page-confirm.disabled,
-.pagination-xl div .page-num + .page-confirm[disabled] {
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.pagination-xl div .page-num + .page-confirm.disabled,
-.pagination-xl div .page-num + .page-confirm[disabled],
-.pagination-xl div .page-num + .page-confirm.disabled:hover,
-.pagination-xl div .page-num + .page-confirm[disabled]:hover,
-.pagination-xl div .page-num + .page-confirm.disabled:focus,
-.pagination-xl div .page-num + .page-confirm[disabled]:focus,
-.pagination-xl div .page-num + .page-confirm.disabled.focus,
-.pagination-xl div .page-num + .page-confirm[disabled].focus,
-.pagination-xl div .page-num + .page-confirm.disabled:active,
-.pagination-xl div .page-num + .page-confirm[disabled]:active,
-.pagination-xl div .page-num + .page-confirm.disabled.active,
-.pagination-xl div .page-num + .page-confirm[disabled].active {
-  color: #999;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
-}
-.pagination-xl div .page-num + .page-confirm .sui-badge {
-  color: #fff;
-  background-color: #777;
-}
-.pagination-xl div .page-num + .page-confirm:hover,
-.pagination-xl div .page-num + .page-confirm:focus,
-.pagination-xl div .page-num + .page-confirm.focus {
-  color: #fff;
-  text-decoration: none;
-  background: #f00;
-  border-color: #f00;
-}
-.pagination-xl div .page-num + .page-confirm:active,
-.pagination-xl div .page-num + .page-confirm.active {
-  color: #fff;
-  background: #d93838;
-  border-color: #d93838;
-}
-.pagination-xl div .page-num + .page-confirm .sui-badge {
-  color: #f23f40;
-  background-color: #fff;
-}
-.pagination-sm li > a,
-.pagination-sm li > span {
-  padding: 0 5px;
-  font-size: 12px;
-}
-.pagination-sm div .page-num {
-  height: 20px;
-  padding: 0 6px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 2px;
-}
-textarea.pagination-sm div .page-num,
-select[multiple].pagination-sm div .page-num {
-  height: auto;
-}
-.pagination-sm div .page-num + .page-confirm {
-  display: inline-block;
-  padding: 3px 14px;
-  padding: 0 6px;
-  margin: 0;
-  font-size: 14px;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1.5;
-  color: #777;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  vertical-align: top;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background: transparent;
-  background: #f23f40;
-  border: 2px solid #c9c9c9;
-  border-color: #f23f40;
-  border-radius: 0;
-  outline: 0;
-}
-.pagination-sm div .page-num + .page-confirm.btn-bordered {
-  color: #333;
-  border: 2px solid #999;
-}
-.pagination-sm div .page-num + .page-confirm:hover,
-.pagination-sm div .page-num + .page-confirm:focus,
-.pagination-sm div .page-num + .page-confirm.focus {
-  color: #f00;
-  text-decoration: none;
-  border-color: #f00;
-}
-.pagination-sm div .page-num + .page-confirm:active,
-.pagination-sm div .page-num + .page-confirm.active {
-  color: #d93838;
-  border-color: #d93838;
-}
-.pagination-sm div .page-num + .page-confirm.disabled,
-.pagination-sm div .page-num + .page-confirm[disabled] {
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.pagination-sm div .page-num + .page-confirm.disabled,
-.pagination-sm div .page-num + .page-confirm[disabled],
-.pagination-sm div .page-num + .page-confirm.disabled:hover,
-.pagination-sm div .page-num + .page-confirm[disabled]:hover,
-.pagination-sm div .page-num + .page-confirm.disabled:focus,
-.pagination-sm div .page-num + .page-confirm[disabled]:focus,
-.pagination-sm div .page-num + .page-confirm.disabled.focus,
-.pagination-sm div .page-num + .page-confirm[disabled].focus,
-.pagination-sm div .page-num + .page-confirm.disabled:active,
-.pagination-sm div .page-num + .page-confirm[disabled]:active,
-.pagination-sm div .page-num + .page-confirm.disabled.active,
-.pagination-sm div .page-num + .page-confirm[disabled].active {
-  color: #999;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
-}
-.pagination-sm div .page-num + .page-confirm .sui-badge {
-  color: #fff;
-  background-color: #777;
-}
-.pagination-sm div .page-num + .page-confirm:hover,
-.pagination-sm div .page-num + .page-confirm:focus,
-.pagination-sm div .page-num + .page-confirm.focus {
-  color: #fff;
-  text-decoration: none;
-  background: #f00;
-  border-color: #f00;
-}
-.pagination-sm div .page-num + .page-confirm:active,
-.pagination-sm div .page-num + .page-confirm.active {
-  color: #fff;
-  background: #d93838;
-  border-color: #d93838;
-}
-.pagination-sm div .page-num + .page-confirm .sui-badge {
-  color: #f23f40;
-  background-color: #fff;
-}
-.pagination-naked li > a,
-.pagination-naked li span {
-  padding: 2px 2px;
-  font-size: 12px;
-  background-color: transparent !important;
-  border: none;
-}
-.pagination-naked li > a:hover,
-.pagination-naked li span:hover {
-  color: #f23f40;
-}
-.pagination-naked li > a > i,
-.pagination-naked li span > i {
-  line-height: 21px;
-}
-.pagination-naked.pagination-lg li > a,
-.pagination-naked.pagination-lg li span {
-  padding: 4px 2px;
-  font-size: 20px;
-}
-.pagination-naked.pagination-lg li > a.ex-page-status,
-.pagination-naked.pagination-lg li span.ex-page-status {
-  padding: 4px 10px;
-  color: #333;
 }
 .sui-label {
   display: inline-block;
