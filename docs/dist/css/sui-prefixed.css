@@ -2843,18 +2843,15 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   background-color: #fafafa;
   border-color: #ccc;
 }
-.sui-pagination .prev + .prev a,
-.sui-pagination .next + .next a {
-  margin-left: 5px;
-}
-.sui-pagination div {
+.sui-pagination > div {
   display: inline-block;
   color: #999;
 }
-.sui-pagination div .page-num {
+.sui-pagination > div .page-num {
   width: 38px;
   height: 22px;
   margin: 0 5px;
+  color: #666;
   outline: none;
 }
 .pagination-center {
