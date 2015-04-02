@@ -115,7 +115,12 @@ body {
  *
  * Turn the `.navbar` at the top of the docs purple.
  */
-
+.bs-navbar-collapse .navbar-nav li {
+  display: inline-block;
+}
+.navbar-static-top {
+  background: #000;
+}
 .bs-docs-nav {
   margin-bottom: 0;
   font-size: 15px;
@@ -123,6 +128,11 @@ body {
 }
 .bs-docs-nav .container {
   margin: 0 20px;
+}
+@media (min-width: 1600px) {
+  .container {
+    width: 1400px;
+  }
 }
 .bs-home-nav .bs-nav-b {
   display: none;
@@ -137,10 +147,16 @@ body {
 
   -webkit-font-smoothing: antialiased;
 }
+
+.bs-docs-nav .navbar-brand img {
+  width: 80px;
+  margin-top: -26px;
+}
 .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
   color: #fff;
+  background: #000;
 }
 .bs-docs-nav .navbar-toggle .icon-bar {
   background-color: #39b5aa;
@@ -555,9 +571,9 @@ body {
  * sections of docs content.
  */
 
-/*.bs-docs-sidebar {
-  background: #2a3542;
-}*/
+.bs-docs-sidebar {
+  position: fixed;
+}
 
 /* By default it's not affixed in mobile views, so undo that */
 .bs-docs-sidebar.affix {
@@ -1600,6 +1616,7 @@ h1[id] {
   min-height: 100%;
   max-height: 100%;
   padding: 40px 20px 800px;
+  overflow: scroll;
 }
 
 .bs-docs-sidenav {
@@ -1626,4 +1643,8 @@ body {
 
 .bs-docs-featurette .thumbnail {
   max-width: 800px;
+}
+
+#disqus_thread {
+  margin-top: 100px;
 }

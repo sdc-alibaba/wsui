@@ -2,11 +2,6 @@
 
  /**
  * toast.js
- * https://github.com/usablica/intro.js
- * MIT licensed
- *
- * Copyright (C) 2013 usabli.ca - A weekend project by Afshin Mehrabani (@afshinme
-
  /*jshint scripturl:true */
  /*jshint funcscope:true */
  /*jshint -W004 */
@@ -95,8 +90,8 @@
   }
 
   Toast.prototype.defaults = {
-    position: 'top',
-    type: 'danger',
+    position: 'center',
+    type: 'default',
     // speed: 500,
     timeout: 3000,
     // closeButton: false,
@@ -111,7 +106,7 @@
 
   $.toast.noConflict = function () {
     $.toast = old;
-    return this
+    return this;
   }
 
  /* BUTTON DATA-API

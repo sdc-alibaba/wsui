@@ -2,10 +2,10 @@
 // Buttons
 // --------------------------------------------------
 
-// Base styles   .btn和.btn.btn-bordered 的样式完全相同
+// Base styles   .btn和.btn.btn-bordered 的样式只有border和文案颜色不同
 // --------------------------------------------------
 
-.btn, .btn-bordered{
+.btn {
   display: inline-block;
   margin: 0; // For input.btn
   font-weight: @btn-font-weight;
@@ -13,13 +13,18 @@
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
-  color: @btn-default-color;
   background: transparent;
-  border: 2px solid @btn-default-border;
   white-space: nowrap;
+  color: @btn-default-color;
+  border: 2px solid @btn-default-border;
+  &.btn-bordered {
+    color: #333;
+    border: 2px solid #999;
+  }
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base);
   .button-variant(@btn-default-hover-color; @btn-default-active-color);
   .user-select(none);
+  //浅色border按钮
   outline: 0;
 
   &.disabled,
@@ -111,5 +116,28 @@ input[type="reset"],
 input[type="button"] {
   &.btn-block {
     width: 100%;
+  }
+}
+
+// Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
+// `display: none;` or `visibility: hidden;` as that also hides the popover.
+// Simply visually hiding the inputs via `opacity` would leave them clickable in
+// certain cases which is prevented by using `clip` and `pointer-events`.
+// This way, we ensure a DOM element is visible to position the popover from.
+//
+// See https://github.com/twbs/bootstrap/pull/12794 and
+// https://github.com/twbs/bootstrap/pull/14559 for more information.
+
+[data-toggle="buttons"] {
+  > .btn {
+    input[type="radio"],
+    input[type="checkbox"] {
+      position: absolute;
+      clip: rect(0,0,0,0);
+      pointer-events: none;
+    }
   }
 }

@@ -18,6 +18,8 @@
     this.options        = options
     this.$body          = $(document.body)
     if (element === null) {
+      // 下行表示该对话框是静态方法调用生成的
+      this.isStaticInvoke = true
       element = $(Modal.COMPILEDTPL({
         title: options.title,
         body: options.body,
@@ -42,13 +44,13 @@
         + '<div class="modal-content">'
           + '<div class="modal-header">'
             + '<button type="button" class="' + CLASSMAP.close + '" data-dismiss="modal" aria-hidden="true">&times;</button>'
-            + '<h5 class="modal-title"><%=title%></h5>'
+            + '<h4 class="modal-title"><%=title%></h4>'
           + '</div>'
           + '<div class="modal-body"><%=body%></div>'
           + '<div class="modal-footer">'
             // 增加data-ok="modal"参数
+            + '<button type="button" class="' + CLASSMAP.btn + ' btn-lg" data-dismiss="modal"><%=cancelbtn%></button>'
             + '<button type="button" class="' + CLASSMAP.btn + ' btn-primary btn-lg" data-ok="modal"><%=okbtn%></button>'
-            + '<button type="button" class="' + CLASSMAP.btn + ' btn-default btn-lg" data-dismiss="modal"><%=cancelbtn%></button>'
           + '</div>'
         + '</div>'
       + '</div>'
@@ -72,7 +74,7 @@
     // 是否显示关闭按钮
     !options.closebtn && $dialog.find('.' + CLASSMAP.close).remove()
     // 是否显示取消按钮
-    !options.cancelbtn && $dialog.find('.modal-footer .btn-default').remove()
+    !options.cancelbtn && $dialog.find('.modal-footer [data-dismiss]').remove()
     // 设置是否指定宽度类型
     if (optWidth) {
       var widthMap = {
@@ -269,6 +271,10 @@
       $ele.trigger(that.hideReason == 'ok' ? 'okHidden' : 'cancelHidden')
       that.hideReason = null
       $ele.trigger('hidden')
+
+      // 销毁静态方法生成的dialog元素 , 默认只有静态方法是remove类型
+      that.isStaticInvoke && $ele.remove()
+
     })
   }
 
@@ -414,6 +420,7 @@
     bgcolor: '#000',
     keyboard: true,
     hasfoot: true,
+    cancelbtn: true,
     closebtn: true,
     transition: true
   }
@@ -513,21 +520,61 @@
       return $ele
     },
     // 为最常见的alert，confirm建立$.modal的快捷方式，
-    alert: function (customCfg) {
-      var dialogCfg = {
+    alert: function (title, content, hidden) {
+      var defaults = {
         type: 'alert',
-        title: '注意'
+        title: '注意',
+        cancelbtn: false
       }
-      return $._modal(dialogCfg, customCfg)
+      var config;
+      if ($.isPlainObject(title)) {
+        config = title;
+      } else {
+        if ($.isFunction(content)) {
+          config = {
+            title: '注意',
+            body: title,
+            hidden: content
+          }
+        } else {
+          config = {
+            title: title,
+            body: content,
+            hidden: hidden
+          };
+        }
+      }
+      return $._modal(defaults, config);
     },
-    confirm: function (customCfg) {
-      var dialogCfg = {
+    confirm: function (title, content, okHidden, cancelHidden) {
+      var defaults = {
         type: 'confirm',
         title: '提示',
         cancelbtn: '取消'
       }
-      return $._modal(dialogCfg, customCfg)
+      var config;
+      if ($.isPlainObject(title)) {
+        config = title;
+      } else {
+        if ($.isFunction(content)) {
+          config = {
+            title: '提示',
+            body: title,
+            okHidden: content,
+            cancelHidden: okHidden
+          };
+        } else {
+          config = {
+            title: title,
+            body: content,
+            okHidden: okHidden,
+            cancelHidden: cancelHidden
+          };
+        }
+      }
+      return $._modal(defaults, config);
     }
+
   })
 
 }(jQuery);

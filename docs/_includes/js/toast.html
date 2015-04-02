@@ -40,35 +40,16 @@
 
 
   <h2 id="toast-usage">用法</h2>
-  <p>调用$.toast()可触发提示框事件，可传入对象参数；亦可省略参数名，默认第一个是text,第二个type,第三个position,如： $.toast('button bottomright warning','warning','bottom right');</p>
+  <p>调用$.toast()可触发提示框事件，可传入对象参数；亦可省略参数名，默认第一个是text,第二个type,第三个position</p>
+  <p>以下用法都是正确的：</p>
 {% highlight js %}
-$('#toast-topleft').click(function(event){
-  event.preventDefault();
-  $.toast({text:'button topleft danger',type:'danger',position:'top left'});
-});
-$('#toast-top').click(function(event){
-  event.preventDefault();
-  $.toast({text:'button top success',posititon:'top',type:'success'});
-});
-$('#toast-topright').click(function(event){
-  event.preventDefault();
-  $.toast({text:'button topright warning',type:'warning',position:'top right'});
-});
-$('#toast-center').click(function(event){
-  event.preventDefault();
-  $.toast({text:'button center danger',type:'danger',position:'center'});
-});
-$('#toast-bottomleft').click(function(event){
-  event.preventDefault();
-  $.toast({text:'button bottomleft danger',type:'danger',position:'bottom left'});
-});
-$('#toast-bottom').click(function(event){
-  event.preventDefault();
-  $.toast({text:'button bottom success',type:'success',position:'bottom'});
-});
-$('#toast-bottomright').click(function(event){
-  event.preventDefault();
-  $.toast('button bottomright warning','warning','bottom right');
+$.toast("自定义消息");
+$.toast("提交成功", "success");
+$.toast("提交成功", "success", "bottom center");
+$.toast({
+  text: '自定义文案',
+  type: 'danger',
+  position: 'top left'
 });
 {% endhighlight %}
   
@@ -85,17 +66,17 @@ $('#toast-bottomright').click(function(event){
       <tbody>
         <tr>
           <td>position</td>
-          <td>'top'</td>
+          <td>'center'</td>
           <td>显示位置，可选top,left,right,center,bottom,bottom,middle,默认为center middle,可省略写</td>
         </tr>
         <tr>
           <td>type</td>
-          <td>'danger'</td>
+          <td>'default'</td>
           <td>提示类型，可选danger,default,success,primary,warning,info</td>
         </tr>
         <tr>
           <td>timeout</td>
-          <td>5000</td>
+          <td>3000</td>
           <td>自动隐藏时间</td>
         </tr>
         <tr>
@@ -104,7 +85,7 @@ $('#toast-bottomright').click(function(event){
           <td>是否允许点击自己控制弹出框关闭</td>
         </tr>
         <tr>
-          <td>texts</td>
+          <td>text</td>
           <td>''</td>
           <td>弹出框显示文字</td>
         </tr>
@@ -112,15 +93,11 @@ $('#toast-bottomright').click(function(event){
     </table>
   </div><!-- /.table-responsive -->
 
-  <h3 id="toast-events">事件</h3>
+  <h3 id="toast-events">JS方法</h3>
     <p>1.可直接调用$.toast('字符串');改变提示文字</p>
     <p>2.可调用$.toast().show();$.toast().hide();手动控制提示框显示和消失</p>
 {% highlight js %}
 $.toast({text:'button topright warning',type:'warning',position:'top right'}).show();
 $.toast().hide();
 {% endhighlight %}
-
-
-
-  
 </div>

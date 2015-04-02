@@ -23,6 +23,7 @@
   left: 0;
   z-index: @zindex-modal;
   -webkit-overflow-scrolling: touch;
+  border: none;
 
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
@@ -46,10 +47,6 @@
   width: auto;
   margin: 10px;
   background-color: @modal-content-bg;
-  border: 5px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
-  border: 5px solid @modal-content-border-color;
-  box-shadow: 0 3px 7px rgba(0,0,0,0.3);
-  background-clip: padding-box;
   outline: 0;
 }
 
@@ -74,39 +71,41 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-  padding: 6px 0;
-  margin: 0 10px;
+  margin: 0 25px;
+  padding: 18px 0 18px 5px;
   border-bottom: 1px solid @modal-header-border-color;
 }
 // Close icon
 .modal-header .close {
-  margin-top: -2px;
+  line-height: normal;
+  font-size: 40px;
+  margin: -28px -26px 0 0;
+  outline: 0;
 }
 
 // Title text within header
 .modal-title {
   margin: 0;
-  line-height: @modal-title-line-height;
+  color: #666;
 }
 
 // Modal body
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  padding: 10px 15px;
+  padding: 20px 30px;
   min-height: 50px;
 }
 
 // Footer (for actions)
 .modal-footer {
-  padding: 5px 10px;
+  padding: 0 30px 30px 30px;
   text-align: right; // right align buttons
-  background-color: @modal-footer-bg-color;
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
+    margin-left: 15px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups

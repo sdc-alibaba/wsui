@@ -405,6 +405,13 @@ input[type="checkbox"] {
   color: lighten(@text-color, 25%); // lighten the text some for contrast
 }
 
+.form-group .help-block {
+  margin: (@padding-base-vertical+1) 0;
+}
+.form-group-lg .help-block {
+  margin: (@padding-large-vertical+1) 0;
+}
+
 //select
 
 .select {
@@ -415,6 +422,7 @@ input[type="checkbox"] {
   width: 100%;
   font-weight: normal;
   margin: 0;
+
   &:after {
     content: " ";
     position: absolute;
@@ -434,12 +442,18 @@ input[type="checkbox"] {
     border: none;
     box-shadow: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     margin: -1px 0; //保持大小不变
     position: relative;
     z-index: 10;
+    cursor: pointer;
   }
 }
-
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
 
 // Inline forms
 //
@@ -578,7 +592,7 @@ input[type="checkbox"] {
   .form-group-lg {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+        padding-top: ((@padding-large-vertical * @line-height-large) - 1);
       }
     }
   }

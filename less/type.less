@@ -104,12 +104,14 @@ small,
   .bg-variant(@state-danger-bg);
 }
 
+
 // Lists
 // -------------------------
 
 // Unordered and Ordered lists
 ul,
 ol {
+  padding: 0;
   margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
   ul,
@@ -122,7 +124,6 @@ ol {
 
 // Unstyled keeps list items block level, just removes default browser padding and list-style
 .list-unstyled {
-  padding-left: 0;
   list-style: none;
 }
 
