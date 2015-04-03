@@ -969,7 +969,7 @@ window.CLASSMAP = {
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger('hidden', relatedTarget)
-      $this.find('.wsif').removeClass('wsif-fold').addClass('wsif-unfold')
+      $this.find('.wsif').toggleClass('wsif-fold wsif-unfold')
     })
   }
 
