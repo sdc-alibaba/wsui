@@ -50,7 +50,7 @@
   float: left;
   min-width: 160px;
   padding: 1px 0;
-  margin: 2px 0 0; // override default ul
+  margin: -1px 0 0; // override default ul
   list-style: none;
   font-size: @font-size-large;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
@@ -82,7 +82,7 @@
     line-height: @line-height-base;
     color: @dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
-    border-top: 1px solid @dropdown-border;
+    border-top: 1px solid @dropdown-link-border-color;
   }
   > li:first-child > a {
     border-top: none;

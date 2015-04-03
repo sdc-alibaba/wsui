@@ -911,8 +911,7 @@ window.CLASSMAP = {
       // 切换箭头方向
       $this
         .find('.wsif')
-        .removeClass('wsif-unfold')
-        .addClass('wsif-fold')
+        .toggleClass('wsif-fold wsif-unfold')
 
       $parent
         .toggleClass('open')
