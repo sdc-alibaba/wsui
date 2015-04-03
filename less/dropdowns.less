@@ -25,6 +25,21 @@
   outline: 0;
 }
 
+//dropdown border
+.dropdown, .dropdown.open{
+  .dropdown-toggle {
+    display: inline-block;
+    border: 1px solid @dropdown-border;
+    background-color: @dropdown-bg;
+    &:hover,
+    &:focus {
+      color: @brand-primary;
+      border: 1px solid @dropdown-border;
+      background-color: @dropdown-bg;
+    }
+  }
+}
+
 // The dropdown menu (ul)
 .dropdown-menu {
   position: absolute;
@@ -67,6 +82,10 @@
     line-height: @line-height-base;
     color: @dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
+    border-top: 1px solid @dropdown-border;
+  }
+  > li:first-child > a {
+    border-top: none;
   }
 }
 

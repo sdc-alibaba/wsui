@@ -19,6 +19,7 @@
   }
   // Set the border and box shadow on specific inputs to match
   .form-control,
+  .form-control + .input-group-addon-count,
   .select,
   .select:after {
     border-color: @border-color;
@@ -55,7 +56,7 @@
 // contrast against a dark gray background.
 .form-control-focus(@color: @input-border-focus) {
   @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
-  &:focus {
+  &:focus, &:focus + .input-group-addon-count {
     border-color: @color;
     outline: 0;
   }

@@ -1713,7 +1713,8 @@ output {
   }
   */
 }
-.form-control:focus {
+.form-control:focus,
+.form-control:focus + .input-group-addon-count {
   border-color: #333;
   outline: 0;
 }
@@ -1726,6 +1727,11 @@ output {
 }
 .form-control::-webkit-input-placeholder {
   color: #ccc;
+}
+.form-control + .input-group-addon-count {
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 textarea.form-control {
   height: auto;
@@ -1920,11 +1926,13 @@ select[multiple].form-group-lg .form-control {
   color: #21c19f;
 }
 .has-success .form-control,
+.has-success .form-control + .input-group-addon-count,
 .has-success .select,
 .has-success .select:after {
   border-color: #21c19f;
 }
 .has-success .form-control:focus,
+.has-success .form-control + .input-group-addon-count:focus,
 .has-success .select:focus,
 .has-success .select:after:focus {
   border-color: #1a957b;
@@ -1950,11 +1958,13 @@ select[multiple].form-group-lg .form-control {
   color: #ee9f28;
 }
 .has-warning .form-control,
+.has-warning .form-control + .input-group-addon-count,
 .has-warning .select,
 .has-warning .select:after {
   border-color: #ee9f28;
 }
 .has-warning .form-control:focus,
+.has-warning .form-control + .input-group-addon-count:focus,
 .has-warning .select:focus,
 .has-warning .select:after:focus {
   border-color: #d28511;
@@ -1980,11 +1990,13 @@ select[multiple].form-group-lg .form-control {
   color: #f23f40;
 }
 .has-error .form-control,
+.has-error .form-control + .input-group-addon-count,
 .has-error .select,
 .has-error .select:after {
   border-color: #f23f40;
 }
 .has-error .form-control:focus,
+.has-error .form-control + .input-group-addon-count:focus,
 .has-error .select:focus,
 .has-error .select:after:focus {
   border-color: #ee1011;
@@ -2340,6 +2352,20 @@ tbody.collapse.in {
 .dropdown-toggle:focus {
   outline: 0;
 }
+.sui-dropdown .dropdown-toggle,
+.sui-dropdown.open .dropdown-toggle {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+}
+.sui-dropdown .dropdown-toggle:hover,
+.sui-dropdown.open .dropdown-toggle:hover,
+.sui-dropdown .dropdown-toggle:focus,
+.sui-dropdown.open .dropdown-toggle:focus {
+  color: #f23f40;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+}
 .sui-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -2379,12 +2405,16 @@ tbody.collapse.in {
   line-height: 1.5;
   color: #333;
   white-space: nowrap;
+  border-top: 1px solid rgba(0, 0, 0, .15);
+}
+.sui-dropdown-menu > li:first-child > a {
+  border-top: none;
 }
 .sui-dropdown-menu > li > a:hover,
 .sui-dropdown-menu > li > a:focus {
-  color: #fff;
+  color: #f23f40;
   text-decoration: none;
-  background-color: #f00;
+  background-color: #fff;
 }
 .sui-dropdown-menu > .active > a,
 .sui-dropdown-menu > .active > a:hover,
@@ -2485,8 +2515,12 @@ tbody.collapse.in {
   width: 100%;
   margin-bottom: 0;
 }
+.sui-input-group .form-control[data-max] {
+  border-right: none;
+}
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-addon-count,
 .input-group-lg > .input-group-btn > .sui-btn {
   height: 34px;
   padding: 4px 14px;
@@ -2496,13 +2530,16 @@ tbody.collapse.in {
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
+textarea.input-group-lg > .input-group-addon-count,
 textarea.input-group-lg > .input-group-btn > .sui-btn,
 select[multiple].input-group-lg > .form-control,
 select[multiple].input-group-lg > .input-group-addon,
+select[multiple].input-group-lg > .input-group-addon-count,
 select[multiple].input-group-lg > .input-group-btn > .sui-btn {
   height: auto;
 }
 .input-group-sm > .form-control,
+.input-group-sm > .input-group-addon-count,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .sui-btn {
   height: 20px;
@@ -2512,30 +2549,36 @@ select[multiple].input-group-lg > .input-group-btn > .sui-btn {
   border-radius: 2px;
 }
 textarea.input-group-sm > .form-control,
+textarea.input-group-sm > .input-group-addon-count,
 textarea.input-group-sm > .input-group-addon,
 textarea.input-group-sm > .input-group-btn > .sui-btn,
 select[multiple].input-group-sm > .form-control,
+select[multiple].input-group-sm > .input-group-addon-count,
 select[multiple].input-group-sm > .input-group-addon,
 select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   height: auto;
 }
+.input-group-addon-count,
 .input-group-addon,
 .input-group-btn,
 .sui-input-group .form-control {
   display: table-cell;
 }
+.input-group-addon-count:not(:first-child):not(:last-child),
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
 .sui-input-group .form-control:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
+.input-group-addon-count,
 .input-group-addon,
 .input-group-btn {
   width: 1%;
   white-space: nowrap;
   vertical-align: middle;
 }
-.input-group-addon {
+.input-group-addon,
+.input-group-addon-count {
   padding: 4px 14px;
   font-size: 16px;
   font-weight: normal;
@@ -2546,22 +2589,30 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   border: 1px solid #ccc;
   border-radius: 2px;
 }
-.input-group-addon.input-sm {
+.input-group-addon.input-sm,
+.input-group-addon-count.input-sm {
   padding: 0 6px;
   font-size: 12px;
   border-radius: 2px;
 }
-.input-group-addon.input-lg {
+.input-group-addon.input-lg,
+.input-group-addon-count.input-lg {
   padding: 4px 14px;
   font-size: 20px;
   border-radius: 3px;
 }
 .input-group-addon input[type="radio"],
-.input-group-addon input[type="checkbox"] {
+.input-group-addon-count input[type="radio"],
+.input-group-addon input[type="checkbox"],
+.input-group-addon-count input[type="checkbox"] {
   margin-top: 0;
+}
+.input-group-addon-count {
+  background-color: #fff;
 }
 .sui-input-group .form-control:first-child,
 .input-group-addon:first-child,
+.input-group-addon-count:first-child,
 .input-group-btn:first-child > .sui-btn,
 .input-group-btn:first-child > .sui-btn-group > .sui-btn,
 .input-group-btn:first-child > .dropdown-toggle,
@@ -2570,11 +2621,13 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.input-group-addon:first-child {
+.input-group-addon:first-child,
+.input-group-addon-count:first-child {
   border-right: 0;
 }
 .sui-input-group .form-control:last-child,
 .input-group-addon:last-child,
+.input-group-addon-count:last-child,
 .input-group-btn:last-child > .sui-btn,
 .input-group-btn:last-child > .sui-btn-group > .sui-btn,
 .input-group-btn:last-child > .dropdown-toggle,
@@ -2583,7 +2636,8 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.input-group-addon:last-child {
+.input-group-addon:last-child,
+.input-group-addon-count:last-child {
   border-left: 0;
 }
 .input-group-btn {

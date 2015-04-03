@@ -46,6 +46,12 @@
         .trigger('focus')
         .attr('aria-expanded', 'true')
 
+      // 切换箭头方向
+      $this
+        .find('.wsif')
+        .removeClass('wsif-unfold')
+        .addClass('wsif-fold')
+
       $parent
         .toggleClass('open')
         .trigger('shown', relatedTarget)
@@ -102,6 +108,7 @@
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger('hidden', relatedTarget)
+      $this.find('.wsif').removeClass('wsif-fold').addClass('wsif-unfold')
     })
   }
 

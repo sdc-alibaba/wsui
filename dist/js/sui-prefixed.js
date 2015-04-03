@@ -908,6 +908,12 @@ window.CLASSMAP = {
         .trigger('focus')
         .attr('aria-expanded', 'true')
 
+      // 切换箭头方向
+      $this
+        .find('.wsif')
+        .removeClass('wsif-unfold')
+        .addClass('wsif-fold')
+
       $parent
         .toggleClass('open')
         .trigger('shown', relatedTarget)
@@ -964,6 +970,7 @@ window.CLASSMAP = {
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger('hidden', relatedTarget)
+      $this.find('.wsif').removeClass('wsif-fold').addClass('wsif-unfold')
     })
   }
 
@@ -3040,6 +3047,26 @@ window.CLASSMAP = {
       $("[data-toggle='autocomplete']").autocomplete();
     });
 }(window.jQuery);
+
+/* jshint laxcomma: true */
+!function ($) {
+
+  'use strict';
+  // document ready init
+  $(function () {
+    $(document).on('input propertychange', '[data-max]', function () {
+      var that = this,
+          len = $(that).data('max'),
+          count = $(that).val().length;
+      if (count < len) {
+        $(that).siblings('.input-group-addon-count').text(count + '/' + len);
+      } else {
+        $(that).siblings('.input-group-addon-count').html('<span style="color:#f23f40">' + count + '/' + len + '</span>');
+      }
+    });
+  })
+
+}(jQuery);
 
 !function ($) {
   'use strict';
