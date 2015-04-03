@@ -1720,14 +1720,14 @@ output {
   outline: 0;
 }
 .form-control::-moz-placeholder {
-  color: #999;
+  color: #ccc;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #999;
+  color: #ccc;
 }
 .form-control::-webkit-input-placeholder {
-  color: #999;
+  color: #ccc;
 }
 .form-control + .input-group-addon-count {
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
