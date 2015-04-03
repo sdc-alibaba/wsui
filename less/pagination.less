@@ -4,14 +4,14 @@
 // Space out pagination from surrounding content
 .pagination {
   margin: @line-height-computed 0;
+  color: #999;
 }
 
 .pagination ul {
   // Allow for text-based alignment
   display: inline-block;
   // Reset default ul styles
-  margin-left: 0;
-  margin-bottom: 0;
+  margin: 0 13px 0 0;
   vertical-align: middle;
   // Visuals
   //.box-shadow(0 1px 2px rgba(0,0,0,.05));
@@ -22,12 +22,14 @@
 .pagination li > a,
 .pagination li > span {
 
+  min-width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
   position: relative;
   float: left; // Collapse white-space
-  padding: @paginationPadding;
-  line-height: @line-height-computed;
   text-decoration: none;
-  color: @brand-primary;
+  color: #666;
   background-color: @paginationBackground;
   border: 1px solid @paginationBorder;
   margin-left: -1px; //Collapse the border
@@ -71,9 +73,10 @@
 }
 //next&prev btn, depends on the disabled attribute
 .pagination {
-    .prev, > .next {
+    .prev, .next {
         > span, > a {
             background-color: @paginationBtnColor;
+            width: 70px;
         }
     }
     .disabled.prev, .disabled.next {
@@ -85,35 +88,15 @@
 }
 
 .pagination {
-    //非主流分页器
-    .prev + .prev,.next + .next {
-        a {
-            margin-left: 5px;
-        }
-    }
-    //输入框拉长
-    div {
+    &>div {
         display: inline-block;
         color: @paginationExPageStatus;
         .page-num {
-            //.input-default;
-            margin: 0px;
-            width: 25px;
-            border-radius: 0;
+            margin: 0 5px;
+            width: 38px;
+            height: 22px;
             outline: none;
-            .transition(width 0.1s linear 0.1s);
-            + .page-confirm {
-                .btn;
-                .btn-primary;
-                border-radius: 0;
-                vertical-align: top;
-            }
-        }
-        .page-num:focus {
-            width: 50px;
-            + .page-confirm {
-                display: inline-block;
-            }
+            color: #666;
         }
     }
 }
@@ -122,108 +105,9 @@
 // Alignment
 // --------------------------------------------------
 
-.pagination-centered {
+.pagination-center {
   text-align: center;
 }
 .pagination-right {
   text-align: right;
 }
-
-
-// Sizing
-// --------------------------------------------------
-
-// Large
-.pagination-lg {
-  li > a,
-  li > span {
-    padding: @paginationPaddingLarge;
-    font-size: @font-size-xlarge;
-  }
-  div {
-    font-size: @font-size-xlarge;
-      .page-num {
-          .input-lg;
-          + .page-confirm {
-              .btn;
-              .btn-lg;
-              .btn-primary;
-              vertical-align: top;
-              border-radius: 0;
-          }
-      }
-  }
-}
-// xlarge
-
-.pagination-xl {
-  li > a,
-  li > span {
-    padding: @paginationPaddingXLarge;
-    font-size: @font-size-xlarge;
-  }
-  div {
-      .page-num {
-          .input-lg;
-          + .page-confirm {
-              .btn;
-              .btn-xl;
-              .btn-primary;
-              border-radius: 0;
-              vertical-align: top;
-          }
-      }
-  }
-}
-
-// Small
-.pagination-sm {
-  li > a,
-  li > span {
-    padding: @paginationPaddingSmall;
-    font-size: @font-size-small;
-  }
-  div {
-      .page-num {
-          .input-sm;
-          + .page-confirm {
-              .btn;
-              .btn-sm;
-              .btn-primary;
-              vertical-align: top;
-              border-radius: 0;
-          }
-      }
-  }
-}
-//非主流分页器
-
-.pagination-naked {
-    li {
-        > a,span {
-            border: none;
-            background-color: transparent !important;
-            padding: @paginationNakedPadding;
-            font-size: @font-size-small;
-            &:hover {
-                color: @brand-primary;
-            }
-            > i {
-                line-height: @line-height-computed;
-            }
-        }
-    }
-}
-.pagination-naked.pagination-lg {
-    li {
-        > a,span {
-            padding: @paginationNakedPaddingLarge;
-            font-size: @font-size-xlarge;
-            &.ex-page-status {
-                padding: 4px 10px;
-                color: @paginationExPageStatus;
-            }
-        }
-    }
-}
-
