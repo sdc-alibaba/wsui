@@ -2739,6 +2739,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .tab-wraped > li {
   padding: 0;
+  -webkit-transition: border .2s linear;
+       -o-transition: border .2s linear;
+          transition: border .2s linear;
 }
 .tab-wraped > li > a {
   padding: 2px;
@@ -2849,10 +2852,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ccc;
-}
-.pagination li > a > i.icon,
-.pagination li > span > i.icon {
-  line-height: 21px;
+  -webkit-transition: all .1s linear;
+       -o-transition: all .1s linear;
+          transition: all .1s linear;
 }
 .pagination li > a:hover,
 .pagination li > a:focus {
@@ -2910,12 +2912,23 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: inline-block;
   color: #999;
 }
+.pagination > div > .text-muted {
+  margin: 0 4px;
+}
+.pagination > div > .text-muted + span {
+  padding-left: 5px;
+  margin-left: 5px;
+}
 .pagination > div .page-num {
   width: 38px;
   height: 22px;
   margin: 0 5px;
   color: #666;
+  border: 1px solid #ccc;
   outline: none;
+}
+.pagination > div .page-num:focus {
+  border: 1px solid #333;
 }
 .pagination-center {
   text-align: center;
@@ -3613,6 +3626,10 @@ a.list-group-item-danger.active:focus {
 }
 .embed-responsive.embed-responsive-4by3 {
   padding-bottom: 75%;
+}
+iframe {
+  width: 100%;
+  border: 0;
 }
 .close {
   float: right;
