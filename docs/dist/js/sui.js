@@ -908,6 +908,11 @@ window.CLASSMAP = {
         .trigger('focus')
         .attr('aria-expanded', 'true')
 
+      // 切换箭头方向
+      $this
+        .find('.wsif')
+        .toggleClass('wsif-fold wsif-unfold')
+
       $parent
         .toggleClass('open')
         .trigger('shown', relatedTarget)
@@ -964,6 +969,7 @@ window.CLASSMAP = {
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger('hidden', relatedTarget)
+      $this.find('.wsif').toggleClass('wsif-fold wsif-unfold')
     })
   }
 
@@ -2220,6 +2226,19 @@ window.CLASSMAP = {
     .on('click.tab.data-api', '[data-toggle="tab"]', clickHandler)
     .on('click.tab.data-api', '[data-toggle="pill"]', clickHandler)
 
+}(jQuery);
+
+/* jshint laxcomma: true */
+!function ($) {
+
+  'use strict';
+  // document ready init
+  $(document).on('input propertychange', '[data-max]', function () {
+    var that = this,
+        len = $(that).data('max'),
+        count = $(that).val().length;
+    $(that).siblings('.input-group-addon-count').html('<span class="' + (count < len ? '' : 'text-primary') + '">' + count + '/' + len + '</span>');
+  });
 }(jQuery);
 
 !function ($) {
