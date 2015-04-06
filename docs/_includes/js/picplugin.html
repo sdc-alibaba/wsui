@@ -23,19 +23,22 @@
  * @param opt.successCallback {function} 主流程完全顺利走完后的回调，第一个参数是图片url
  */
   </code></pre>
-  <div class="bs-example bs-example-picplugin" role="picplugin">
-    <!--
-    <div class="cover-con">
-        <div class="cover">
-            <div class="crossv"> </div>
-            <div class="crossh"> </div>
-            <a class="add-cover" id="pp"></a>
-            <input type="hidden" value="" name="coverUrl">
-        </div>
+  <div class="bs-example bs-example-picplugin-nojs" role="picplugin">
+    <div class="picplugin" data-toggle="picplugin" style="width: 200px;height: 100px">
+      <i class="iconfont icon-add"></i>
+      <input type="hidden" name="persistence-nojs">
+      <img alt="预览">
+      <div class="operation">
+        <i class="J_replacePic">更换</i>
+        <i class="J_deletePic">删除</i>
+      </div>
     </div>
-    -->
+  </div>
+  <div class="bs-example bs-example-picplugin" role="picplugin">
+
     <p>为保证逻辑稳定，触发元素的选择器请使用id或保证选择的元素唯一</p>
     <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
+    <input type="hidden" name="persistence" >
     <div id="imgwrap"></div>
 
     <script>
@@ -64,17 +67,18 @@
 
           console.log('finally:   ' + url)
           $('#imgwrap').html('<img src="' + url + '">')
+          $('[name=persistence]').val(url)
         },
         cancelCallback: function(t) {
           console.log(t + '1')
         }
       })
-
     }
     </script>
   </div><!-- /example -->
 {% highlight html %}
     <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
+    <input type="hidden" name="persistence" >
     <div id="imgwrap"></div>
     <script>
       window.onload = function() {
@@ -98,6 +102,7 @@
           successCallback: function(url) {
             console.log('finally:   ' + url)
             $('#imgwrap').html('<img src="' + url + '">')
+            $('[name=persistence]').val(url)
           },
           cancelCallback: function(t) {
             console.log(t + '1')

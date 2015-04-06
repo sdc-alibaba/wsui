@@ -194,32 +194,32 @@ module.exports = function (grunt) {
       }
     },
 
-    autoprefixer: {
-      options: {
-        browsers: configBridge.config.autoprefixerBrowsers
-      },
-      core: {
-        options: {
-          map: true
-        },
-        src: 'dist/css/<%= pkg.name %>.css'
-      },
-      theme: {
-        options: {
-          map: true
-        },
-        src: 'dist/css/<%= pkg.name %>-theme.css'
-      },
-      docs: {
-        src: 'docs/assets/css/src/docs.css'
-      },
-      examples: {
-        expand: true,
-        cwd: 'docs/examples/',
-        src: ['**/*.css'],
-        dest: 'docs/examples/'
-      }
-    },
+//   autoprefixer: {
+//     options: {
+//       browsers: configBridge.config.autoprefixerBrowsers
+//     },
+//     core: {
+//       options: {
+//         map: true
+//       },
+//       src: 'dist/css/<%= pkg.name %>.css'
+//     },
+//     theme: {
+//       options: {
+//         map: true
+//       },
+//       src: 'dist/css/<%= pkg.name %>-theme.css'
+//     },
+//     docs: {
+//       src: 'docs/assets/css/src/docs.css'
+//     },
+//     examples: {
+//       expand: true,
+//       cwd: 'docs/examples/',
+//       src: ['**/*.css'],
+//       dest: 'docs/examples/'
+//     }
+//   },
 
     csslint: {
       options: {
@@ -476,7 +476,7 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'prefix:css']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
+  grunt.registerTask('dist-css', ['less-compile', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js']);
@@ -508,7 +508,7 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
   // 关闭自定义下载相关的任务执行
   // grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);

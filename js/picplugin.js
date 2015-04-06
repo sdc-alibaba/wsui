@@ -124,6 +124,11 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
         })
       },
       okHide: function() {
+        var $ele = this.$element,
+          $okBtn = $ele.find('[data-ok]')
+        //防止多次提交裁剪请求
+        if ($okBtn.hasClass('disabled')) return
+
         var sendData = $.extend({}, jcrop.tellSelect(), {
           picTfs: imgurl[0]
           // @千驹，去掉token校验
@@ -148,7 +153,10 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
           } else {
             $.toast(res.msg, 'danger')
           }
+        }).always(function(){
+          $okBtn.removeClass('disabled')
         })
+        $okBtn.addClass('disabled')
         //阻止默认关闭弹层逻辑
         return false
       },
@@ -219,6 +227,10 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       opt.triggerEle = this
       pp.init.call(pp, opt)
     }
+  })
+
+  $(function() {
+    //TODO$('[data-toggle="picplugin"]').picPlugin()
   })
 
 }(jQuery)
