@@ -65,8 +65,6 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
         tmpImg.onload = function(){
           if (validateSelectedImg(tmpImg.width, tmpImg.height)) {
             doCropOrSuccess()
-          } else {
-            $.toast('亲所选的图片不满足尺寸要求，请重新选择', 'danger')
           }
         }
         tmpImg.onerror = function(){
@@ -81,10 +79,12 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       function validateSelectedImg(w, h) {
         var minSize = options.picMinSize;
         if (minSize && (w < minSize[0] || h < minSize[1])) {
+          $.toast('亲所选的图片尺寸过小(小于' + minSize.join('*') + ')，请重新选择', 'danger')
           return false
         }
         var maxSize = options.picMaxSize;
         if (maxSize && (w > maxSize[0] || h > maxSize[1])) {
+          $.toast('亲所选的图片尺寸过大(大于' + maxSize.join('*') + ')，请重新选择', 'danger')
           return false
         }
         return true
@@ -184,26 +184,9 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     function bindTriggerClick() {
       $ele.off('click.pp').on('click.pp', function(e){
         e.preventDefault()
-        $picDlg = $.confirm({
-          title: '选择图片',
-          body: '<div id="picPluginWrap"></div>',
-          hasfoot: false,
-          width: 'large',
-          shown: function(){
-            pic = __picPlugin__.init({
-              containerId: 'picPluginWrap',
-              singleSelect: true
-            })
-            pp._bindEvents(opt.triggerEle)
-            pic.run()
-          },
-          hide: function() {
-            opt.cancelCallback && opt.cancelCallback.call(null, opt.triggerEle)
-          },
-          cancelHidden: function() {
-            pic && pic.close();
-          }
-        })
+        if ($ele.hasClass('pp-preview')) return
+
+        pp.show(opt)
       })
     }
 
@@ -218,7 +201,32 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     } else {
       bindTriggerClick()
     }
+  }
 
+  pp.show = function(arg0) {
+    // 判断如果第一个参数是json对象，则视为options，如果不是，则作为ppid并依次获取options
+    var opt = typeof arg0 == 'object' ? arg0 : this[arg0]
+    console.log(opt)
+    $picDlg = $.confirm({
+      title: '选择图片',
+      body: '<div id="picPluginWrap"></div>',
+      hasfoot: false,
+      width: 'large',
+      shown: function(){
+        pic = __picPlugin__.init({
+          containerId: 'picPluginWrap',
+          singleSelect: true
+        })
+        pp._bindEvents(opt.triggerEle)
+        pic.run()
+      },
+      hide: function() {
+        opt.cancelCallback && opt.cancelCallback.call(null, opt.triggerEle)
+      },
+      cancelHidden: function() {
+        pic && pic.close();
+      }
+    })
   }
 
   // 单例扩展到jQuery静态方法上,修正this
@@ -230,7 +238,36 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
   })
 
   $(function() {
-    //TODO$('[data-toggle="picplugin"]').picPlugin()
+
+    // 无JS调用类型的组件初始化
+    $('[data-toggle="picplugin"]').each(function(k, v) {
+      var param = $(v).data()
+      param.successCallback = function(url){
+        $(v).addClass('pp-preview')
+          .children('img').attr('src', url)
+        $(v).children('input').val(url)
+      }
+      // 是否启用默认选框功能
+      if (!param.allowSelect) {
+        param.cropInitCallback = function(instance) {
+          instance.setSelect([0, 0].concat(param.picMinSize))
+        }
+      }
+      $(v).picPlugin(param)
+    })
+    
+    // 更换图片
+    $(document).on('click.pp', '.J_replacePic', function() {
+      pp.show($(this).parents('.picplugin').data('ppid'))
+    })
+    // 清除图片
+    $(document).on('click.pp', '.J_deletePic', function(e) {
+      e.stopPropagation()
+      var $picplugin = $(this).parents('.picplugin')
+      $picplugin.removeClass('pp-preview')
+        .children('img').removeAttr('src')
+      $picplugin.children('input').val('')
+    })
   })
 
 }(jQuery)

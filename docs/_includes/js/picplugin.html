@@ -23,8 +23,22 @@
  * @param opt.successCallback {function} 主流程完全顺利走完后的回调，第一个参数是图片url
  */
   </code></pre>
+
+  <h3>无JS 调用方式，快速简洁使用方式，适合开发同学配置。</h3>
+  <p>picMinSize的参数形式在data属性上的写法为 data-pic-min-size. 具体见下例</p>
   <div class="bs-example bs-example-picplugin-nojs" role="picplugin">
-    <div class="picplugin" data-toggle="picplugin" style="width: 200px;height: 100px">
+    <h5>需要裁剪</h5>
+    <div class="picplugin" style="width: 300px;height: 100px" data-toggle="picplugin" data-pic-min-size="[200, 100]" data-pic-max-size="[800, 600]" data-need-crop="true" data-crop-options='{"minSize": [300, 150], "aspectRatio": 3}'>
+      <i class="iconfont icon-add"></i>
+      <input type="hidden" name="persistence-nojs">
+      <img alt="预览">
+      <div class="operation">
+        <i class="J_replacePic">更换</i>
+        <i class="J_deletePic">删除</i>
+      </div>
+    </div>
+    <h5>不需要裁剪</h5>
+    <div class="picplugin" style="width: 150px;height: 150px" data-toggle="picplugin" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-need-crop="false">
       <i class="iconfont icon-add"></i>
       <input type="hidden" name="persistence-nojs">
       <img alt="预览">
@@ -34,8 +48,31 @@
       </div>
     </div>
   </div>
-  <div class="bs-example bs-example-picplugin" role="picplugin">
 
+{% highlight html %}
+<div class="picplugin" style="width: 300px;height: 100px" data-toggle="picplugin" data-pic-min-size="[200, 100]" data-pic-max-size="[800, 600]" data-need-crop="true" data-crop-options='{"minSize": [300, 150], "aspectRatio": 3}'>
+  <i class="iconfont icon-add"></i>
+  <input type="hidden" name="anyname1">
+  <img alt="预览">
+  <div class="operation">
+    <i class="J_replacePic">更换</i>
+    <i class="J_deletePic">删除</i>
+  </div>
+</div>
+<br>
+<div class="picplugin" style="width: 150px;height: 150px" data-toggle="picplugin" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-need-crop="false">
+  <i class="iconfont icon-add"></i>
+  <input type="hidden" name="anyname2">
+  <img alt="预览">
+  <div class="operation">
+    <i class="J_replacePic">更换</i>
+    <i class="J_deletePic">删除</i>
+  </div>
+</div>
+{% endhighlight %}
+  <div class="bs-example bs-example-picplugin" role="picplugin" data-pic-min-size="">
+
+    <h3>JS 调用方式，更细粒度的控制组件</h3>
     <p>为保证逻辑稳定，触发元素的选择器请使用id或保证选择的元素唯一</p>
     <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
     <input type="hidden" name="persistence" >
@@ -48,9 +85,7 @@
         picMinSize: [400, 200],
         cropOptions: {
           //allowSelect: false,
-
           //minSize: sizeArr
-
           //maxSize: sizeArr,
           //aspectRatio: sizeArr[0] / sizeArr[1]
           //aspectRatio: 6
