@@ -15,7 +15,7 @@
  * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
  * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
  * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
- * @param opt.cancelCallback {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+ * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
  * @param opt.needCrop {boolean} 是否需要在图片空间插件关闭后弹出图片裁剪弹层
  * @param opt.cropOptions {json}裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
  * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
@@ -104,7 +104,7 @@
           $('#imgwrap').html('<img src="' + url + '">')
           $('[name=persistence]').val(url)
         },
-        cancelCallback: function(t) {
+        cancel: function(t) {
           console.log(t + '1')
         }
       })
