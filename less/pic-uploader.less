@@ -1,4 +1,4 @@
-.picplugin {
+.pic-uploader {
   position: relative;
   overflow: hidden;
   display: table-cell;
@@ -21,15 +21,12 @@
     line-height: @tipsHeight;
     bottom: (-@tipsHeight - 1);
     transition: bottom .3s linear;
-    i {
+    a {
       float: left;
       width: 50%;
       cursor: pointer;
       font-style: normal;
       color: #fff;
-      &:hover {
-        color: @brand-primary;
-      }
     }
   }
   &>img {
@@ -44,7 +41,7 @@
   }
 }
 
-.picplugin.pp-preview {
+.pic-uploader.pic-preview {
   .icon-add {
     visibility: hidden;
   }

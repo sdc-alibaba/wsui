@@ -7,12 +7,12 @@
  * @param opt.triggerEle {string} 触发弹出图片空间插件弹层的元素的css选择器，通常是一些按钮、文字链
  * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
  * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
- * @param opt.cancelCallback {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+ * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
  * @param opt.needCrop {boolean} 是否需要在图片空间插件关闭后弹出图片裁剪弹层
  * @param opt.cropOptions {json}裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
- * @param opt.cropInitCallback {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
- * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到successCallback），否则会向后端发送裁剪的数据。
- * @param opt.successCallback {function} 主流程完全顺利走完后的回调，第一个参数是图片url
+ * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
+ * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
+ * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url
  * @version 1.0.0
  * @date 2015-02-15
  */
@@ -53,7 +53,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
           //弹出图片裁剪弹层。
           self._initJcrop(url, triggerEle)
         } else {
-          options.successCallback && options.successCallback.call(self, url)
+          options.success && options.success.call(self, url)
           pic.close();
         }
       }
@@ -120,7 +120,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
         $(this).find('.originpic').Jcrop(cropOptions, function(){
           jcrop = this
           //执行初始化后的特殊逻辑控制回调
-          options.cropInitCallback && options.cropInitCallback.call(self, jcrop)
+          options.cropInit && options.cropInit.call(self, jcrop)
         })
       },
       okHide: function() {
@@ -147,7 +147,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
           if (res.success) {
             //手工调用的okHide不会再进okHide回调
             cropdlg.modal('okHide')
-            options.successCallback && options.successCallback.call(self, getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'))
+            options.success && options.success.call(self, getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'))
             //把之前隐藏的图片空间iframe和弹层关闭
             pic.close()
           } else {
@@ -184,7 +184,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     function bindTriggerClick() {
       $ele.off('click.pp').on('click.pp', function(e){
         e.preventDefault()
-        if ($ele.hasClass('pp-preview')) return
+        if ($ele.hasClass('pic-preview')) return
 
         pp.show(opt)
       })
@@ -221,7 +221,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
         pic.run()
       },
       hide: function() {
-        opt.cancelCallback && opt.cancelCallback.call(null, opt.triggerEle)
+        opt.cancel && opt.cancel.call(null, opt.triggerEle)
       },
       cancelHidden: function() {
         pic && pic.close();
@@ -231,42 +231,54 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
 
   // 单例扩展到jQuery静态方法上,修正this
   $.fn.extend({
-    picPlugin: function (opt) {
+    picUploader: function (opt) {
       opt.triggerEle = this
-      pp.init.call(pp, opt)
+      var config = $.extend({}, $.fn.picUploader.defaults, $(this).data(), opt)
+      pp.init.call(pp, config)
     }
   })
+
+  $.fn.picUploader.defaults = {
+    picMinSize: [50, 50], // 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
+    picMaxSize: [1000, 1000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+    cancel: $.noop, // 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+    needCrop: true, // 是否需要在图片空间插件关闭后弹出图片裁剪弹层
+    cropOptions: {}, // 裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
+    cropInit: $.noop, // Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
+    beforeSend: $.noop, // 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
+    success: $.noop // 主流程完全顺利走完后的回调，第一个参数是图片url
+  }
 
   $(function() {
 
     // 无JS调用类型的组件初始化
-    $('[data-toggle="picplugin"]').each(function(k, v) {
-      var param = $(v).data()
-      param.successCallback = function(url){
-        $(v).addClass('pp-preview')
+    $('[data-toggle="pic-uploader"]').each(function(k, v) {
+      var param = $(this).data();
+      param.success = function(url){
+        $(v).addClass('pic-preview')
           .children('img').attr('src', url)
         $(v).children('input').val(url)
       }
       // 是否启用默认选框功能
       if (!param.allowSelect) {
-        param.cropInitCallback = function(instance) {
+        param.cropInit = function(instance) {
           instance.setSelect([0, 0].concat(param.picMinSize))
         }
       }
-      $(v).picPlugin(param)
+      $(v).picUploader(param);
     })
     
     // 更换图片
-    $(document).on('click.pp', '.J_replacePic', function() {
-      pp.show($(this).parents('.picplugin').data('ppid'))
+    $(document).on('click.pp', '.pic-uploader [name="replace"]', function() {
+      pp.show($(this).parents('.pic-uploader').data('ppid'))
     })
     // 清除图片
-    $(document).on('click.pp', '.J_deletePic', function(e) {
+    $(document).on('click.pp', '.pic-uploader [name="remove"]', function(e) {
       e.stopPropagation()
-      var $picplugin = $(this).parents('.picplugin')
-      $picplugin.removeClass('pp-preview')
+      var $picUploader= $(this).parents('.pic-uploader')
+      $picUploader.removeClass('pic-preview')
         .children('img').removeAttr('src')
-      $picplugin.children('input').val('')
+      $picUploader.children('input').val('')
     })
   })
 

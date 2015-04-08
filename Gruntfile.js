@@ -51,7 +51,7 @@ module.exports = function (grunt) {
     'js/datepicker.js',
     'js/intro.js',
     'js/toast.js',
-    'js/picplugin.js'
+    'js/pic-uploader.js'
   ];
 
   // Project configuration.
