@@ -1,3 +1,4 @@
+@import "//at.alicdn.com/t/font_1428479270_1649148.css";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -2031,7 +2032,6 @@ select[multiple].form-group-lg .form-control {
   position: relative;
   width: 100%;
   margin: 0;
-  overflow: hidden;
   font-weight: normal;
   border: 1px solid #ccc;
   border-radius: 2px;
@@ -5821,6 +5821,30 @@ button.sui-close {
   line-height: 18px;
   border-radius: 9px;
 }
+.sui-steps.step-2 > div {
+  float: left;
+  width: 50%;
+}
+.sui-steps.step-3 > div {
+  float: left;
+  width: 33.333%;
+}
+.sui-steps.step-4 > div {
+  float: left;
+  width: 25%;
+}
+.sui-steps.step-5 > div {
+  float: left;
+  width: 20%;
+}
+.sui-steps.step-6 > div {
+  float: left;
+  width: 16.66%;
+}
+.sui-steps.step-7 > div {
+  float: left;
+  width: 14.28%;
+}
 .sui-steps-round {
   padding: 0;
   margin: 18px 0;
@@ -6031,6 +6055,9 @@ button.sui-close {
   position: relative;
   min-height: 50px;
   padding: 10px 15px;
+}
+.modal-body .jcrop-holder {
+  margin: 0 auto;
 }
 .modal-footer {
   padding: 5px 10px;
@@ -7342,7 +7369,7 @@ tr.introjs-showElement > th {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 500;
+  z-index: 1500;
   display: inline-block;
   padding: 2px 25px .3em;
   font-size: 16px;
@@ -7399,6 +7426,56 @@ tr.introjs-showElement > th {
 /*.show-close-btn button{
 	display: block;
 }*/
+.pic-uploader {
+  position: relative;
+  display: table-cell;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+.pic-uploader > .iconfont {
+  font-size: 40px;
+  color: #999;
+}
+.pic-uploader .operation {
+  position: absolute;
+  bottom: -33px;
+  z-index: 20;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  background: #606060;
+  background: rgba(48, 48, 48, .5);
+  transition: bottom .3s linear;
+}
+.pic-uploader .operation a {
+  float: left;
+  width: 50%;
+  font-style: normal;
+  color: #fff;
+  cursor: pointer;
+}
+.pic-uploader > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  visibility: hidden;
+}
+.pic-uploader.pic-preview .icon-add {
+  visibility: hidden;
+}
+.pic-uploader.pic-preview > img {
+  visibility: visible;
+}
+.pic-uploader.pic-preview:hover .operation {
+  bottom: 0;
+}
 .clearfix:before,
 .clearfix:after,
 .dl-horizontal dd:before,
