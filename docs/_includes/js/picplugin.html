@@ -1,0 +1,149 @@
+<div class="bs-docs-section">
+  <h1 id="pic-uploader" class="page-header">图片上传&裁剪组件 <small>pic-uploader.js</small></h1>
+
+  <h2 id="pic-uploader-examples">示例</h2>
+  <p class="text-danger">
+  注意！因为该插件接入了集团统一的图片空间，所以查看demo时需要登录一个线上卖家账号。所传图片会真实传到其图片空间里，请不要传太多无意义图片。<br>
+  如果域名里包含 taobao.net,则会使用daily环境账号
+  </p>
+  <p class="bg-info">
+    告示：裁剪后的图片URL也是集团通用cdn地址，外部均可正常访问，但是裁剪后图片不会落入图片空间存储。如果需要，需要图片空间后端提供接口支持
+  </p>
+  <pre><code>
+/**
+ * @file pic-uploader.js
+ * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
+ * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
+ * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+ * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+ * @param opt.needCrop {boolean} 是否需要在图片空间插件关闭后弹出图片裁剪弹层
+ * @param opt.cropOptions {json}裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
+ * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
+ * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
+ * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url
+ */
+  </code></pre>
+
+  <h3>无JS 调用方式，快速简洁使用方式，适合开发同学配置。</h3>
+  <p>picMinSize的参数形式在data属性上的写法为 data-pic-min-size. 具体见下例</p>
+  <div class="bs-example bs-example-pic-uploader-nojs" role="pic-uploader">
+    <h5>需要裁剪</h5>
+    <div class="pic-uploader" style="width: 300px;height: 100px" data-toggle="pic-uploader" data-pic-min-size="[200, 100]" data-pic-max-size="[800, 600]" data-need-crop="true" data-crop-options='{"minSize": [300, 150], "aspectRatio": 3}'>
+      <i class="iconfont icon-add"></i>
+      <input type="hidden" name="pic-name-1">
+      <img alt="预览">
+      <div class="operation">
+        <a href="javascript:void(0);" name="replace">更换</a>
+        <a href="javascript:void(0);" name="remove">删除</a>
+      </div>
+    </div>
+    <br>
+    <div class="pic-uploader" style="width: 150px;height: 150px" data-toggle="pic-uploader" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-need-crop="false">
+      <i class="iconfont icon-add"></i>
+      <input type="hidden" name="anyname2">
+      <img alt="预览">
+      <div class="operation">
+        <a href="javascript:void(0);" name="replace">更换</a>
+        <a href="javascript:void(0);" name="remove">删除</a>
+      </div>
+    </div>
+  </div>
+
+{% highlight html %}
+<div class="pic-uploader" style="width: 300px;height: 100px" data-toggle="pic-uploader" data-pic-min-size="[200, 100]" data-pic-max-size="[800, 600]" data-need-crop="true" data-crop-options='{"minSize": [300, 150], "aspectRatio": 3}'>
+  <i class="iconfont icon-add"></i>
+  <input type="hidden" name="pic-name-1">
+  <img alt="预览">
+  <div class="operation">
+    <a href="javascript:void(0);" name="replace">更换</a>
+    <a href="javascript:void(0);" name="remove">删除</a>
+  </div>
+</div>
+<br>
+<div class="pic-uploader" style="width: 150px;height: 150px" data-toggle="pic-uploader" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-need-crop="false">
+  <i class="iconfont icon-add"></i>
+  <input type="hidden" name="anyname2">
+  <img alt="预览">
+  <div class="operation">
+    <a href="javascript:void(0);" name="replace">更换</a>
+    <a href="javascript:void(0);" name="remove">删除</a>
+  </div>
+</div>
+{% endhighlight %}
+  <div class="bs-example bs-example-pic-uploader" role="pic-uploader" data-pic-min-size="">
+
+    <h3>JS 调用方式，更细粒度的控制组件</h3>
+    <p>为保证逻辑稳定，触发元素的选择器请使用id或保证选择的元素唯一</p>
+    <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
+    <input type="hidden" name="persistence" >
+    <div id="imgwrap"></div>
+
+    <script>
+    window.onload = function() {
+      var sizeArr = [200, 100]
+      $('#pp').picUploader({
+        picMinSize: [400, 200],
+        cropOptions: {
+          //allowSelect: false,
+          //minSize: sizeArr
+          //maxSize: sizeArr,
+          //aspectRatio: sizeArr[0] / sizeArr[1]
+          //aspectRatio: 6
+        },
+        cropInit: function(instance) {
+          //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
+          //instance.setSelect([0, 0].concat(sizeArr))
+        },
+        beforeSend: function(data) {
+          console.log(data)
+          //return false
+        },
+        success: function(url) {
+
+          console.log('finally:   ' + url)
+          $('#imgwrap').html('<img src="' + url + '">')
+          $('[name=persistence]').val(url)
+        },
+        cancel: function(t) {
+          console.log(t + '1')
+        }
+      })
+    }
+    </script>
+  </div><!-- /example -->
+{% highlight html %}
+    <a class="btn btn-primary" id="pp"> 上传&裁剪</a>
+    <input type="hidden" name="persistence" >
+    <div id="imgwrap"></div>
+    <script>
+      window.onload = function() {
+        var sizeArr = [200, 100]
+        $('#pp').picUploader({
+          picMinSize: [400, 200],
+          // 下面传入的都是Jcrop插件的可用参数，详见http://deepliquid.com/content/Jcrop_Manual.html
+          cropOptions: {
+            //allowSelect: false,
+            //裁剪的最新尺寸
+            //minSize: sizeArr
+          },
+          cropInit: function(instance) {
+            //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
+            //instance.setSelect([0, 0].concat(sizeArr))
+          },
+          beforeSend: function(data) {
+            console.log(data)
+            //return false
+          },
+          success: function(url) {
+            console.log('finally:   ' + url)
+            $('#imgwrap').html('<img src="' + url + '">')
+            $('[name=persistence]').val(url)
+          },
+          cancel: function(t) {
+            console.log(t + '1')
+          }
+        })
+    </script>
+{% endhighlight %}
+
+

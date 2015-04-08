@@ -18,6 +18,8 @@
     this.options        = options
     this.$body          = $(document.body)
     if (element === null) {
+      // 下行表示该对话框是静态方法调用生成的
+      this.isStaticInvoke = true
       element = $(Modal.COMPILEDTPL({
         title: options.title,
         body: options.body,
@@ -269,6 +271,10 @@
       $ele.trigger(that.hideReason == 'ok' ? 'okHidden' : 'cancelHidden')
       that.hideReason = null
       $ele.trigger('hidden')
+
+      // 销毁静态方法生成的dialog元素 , 默认只有静态方法是remove类型
+      that.isStaticInvoke && $ele.remove()
+
     })
   }
 

@@ -1,0 +1,55 @@
+.pic-uploader {
+  position: relative;
+  overflow: hidden;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  &>.iconfont {
+    font-size: 40px;
+    color: #999;
+  }
+  @tipsHeight: 32px;
+  .operation {
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+    background: #606060;
+    background: rgba(48, 48, 48, 0.5);
+    height: @tipsHeight;
+    line-height: @tipsHeight;
+    bottom: (-@tipsHeight - 1);
+    transition: bottom .3s linear;
+    a {
+      float: left;
+      width: 50%;
+      cursor: pointer;
+      font-style: normal;
+      color: #fff;
+    }
+  }
+  &>img {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: default;
+    visibility: hidden;
+  }
+}
+
+.pic-uploader.pic-preview {
+  .icon-add {
+    visibility: hidden;
+  }
+  &>img {
+    visibility: visible;
+  }
+  &:hover .operation {
+    bottom: 0;
+  }
+
+}
