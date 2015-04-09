@@ -1,11 +1,11 @@
 //jscs:disable
 /* jshint shadow:true, unused:false, funcscope:true*/
-(function ($) {
++function ($) {
   "use strict";
 
   var defaultOptions = {
-    className: 'tagsinput form-control',
-    tagClass: 'label label-primary',
+    className: 'tagsinput tag-group form-control',
+    tagClass: 'tag-primary',
     itemValue: function(item) {
       return (typeof item === typeof "a") ? item : item.value;
     },
@@ -131,7 +131,7 @@
 
       // add a tag element
 
-      var $tag = $('<span class="tag ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"></span></span>');
+      var $tag = $('<span class="tag ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"><i class="iconfont icon-close-round-sign"></span></span>');
       $tag.data('item', item);
       self.findInputWrapper().before($tag);
       $tag.after(' ');
@@ -571,5 +571,5 @@
   $(function() {
     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
   });
-})(window.jQuery);
+}(window.jQuery);
 
