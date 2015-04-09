@@ -25,7 +25,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
 
   // 判断域名环境,返回合理的URL
   var getSourceUrl = function(path, hostkey) {
-    var isDailyEnv = !/\.com$/.test(location.host), envHost
+    var isDailyEnv = /\.taobao\.net$/.test(location.host), envHost
     if (hostkey) {
       envHost = '//' + hostkey + (isDailyEnv ? '.daily.taobao.net/' : '.taobao.com/')
     } else {
@@ -267,7 +267,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       }
       $(v).picUploader(param);
     })
-    
+
     // 更换图片
     $(document).on('click.pp', '.pic-uploader [name="replace"]', function() {
       pp.show($(this).parents('.pic-uploader').data('ppid'))
