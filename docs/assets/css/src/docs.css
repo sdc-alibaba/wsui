@@ -600,10 +600,10 @@ body {
   /* float: right; */
   height: 20px;
   font-size: 28px;
+  font-weight: normal;
   line-height: 20px;
   color: red;
   vertical-align: middle;
-  font-weight: normal;
 }
 
 .bs-docs-sidebar .nav > li > a:hover,

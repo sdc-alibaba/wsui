@@ -813,6 +813,8 @@
     };
 
     $(function() {
-      $("[data-toggle='autocomplete']").autocomplete();
+      $("[data-toggle='autocomplete']").each(function() {
+        $(this).autocomplete();
+      });
     });
 }(window.jQuery);

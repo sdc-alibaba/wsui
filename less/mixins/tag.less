@@ -1,0 +1,22 @@
+.tag-size(@padding, @font-size, @line-height) {
+  padding: @padding 1em;
+  font-size: @font-size;
+  line-height: @line-height;
+}
+
+.tag-variant(@color) {
+  &, &:hover {
+    background: @color;
+    border-color: @color;
+    color: white;
+  }
+  .disabled, &.disabled:hover {
+    background: @color;
+    border-color: @color;
+    color: white;
+  }
+  .iconfont:hover {
+    color: white;
+    opacity: 1;
+  }
+}

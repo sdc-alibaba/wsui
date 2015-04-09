@@ -12,5 +12,6 @@ window.CLASSMAP = {
   popover: 'popover',
   tooltip: 'tooltip',
   nav: 'nav',
-  pagination: 'pagination'
+  pagination: 'pagination',
+  tagGroup: 'tag-group'
 }
