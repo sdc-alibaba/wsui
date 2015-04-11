@@ -1784,7 +1784,6 @@ input[type="search"] {
 .radio label,
 .checkbox label {
   min-height: 21px;
-  padding-left: 20px;
   margin-bottom: 0;
   font-weight: normal;
   cursor: pointer;
@@ -1794,8 +1793,49 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
+  left: -9999px;
+  z-index: -99999;
   margin-top: 4px \9;
-  margin-left: -20px;
+  opacity: 0;
+}
+.radio span,
+.radio-inline span,
+.checkbox span,
+.checkbox-inline span {
+  font-family: 'wsif';
+}
+.radio span:before,
+.radio-inline span:before,
+.checkbox span:before,
+.checkbox-inline span:before {
+  margin-right: 8px;
+  color: #999;
+}
+.checkbox span:before,
+.checkbox-inline span:before {
+  content: '\e626';
+}
+.checkbox input[type="checkbox"]:checked + span:before,
+.checkbox-inline input[type="checkbox"]:checked + span:before {
+  color: #666;
+  content: '\e625';
+}
+.checkbox:hover span:before,
+.checkbox-inline:hover span:before {
+  color: #999;
+}
+.radio span:before,
+.radio-inline span:before {
+  content: '\e624';
+}
+.radio input[type="radio"]:checked + span:before,
+.radio-inline input[type="radio"]:checked + span:before {
+  color: #666;
+  content: '\e623';
+}
+.radio:hover span:before,
+.radio-inline:hover span:before {
+  color: #999;
 }
 .radio + .radio,
 .checkbox + .checkbox {
