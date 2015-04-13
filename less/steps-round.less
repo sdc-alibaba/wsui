@@ -16,20 +16,10 @@
 			float: left;
 			background-color: @stepsTodoColor;
 		}
-		&:first-child {
-			&:before {
-				.border-left-radius(4px);
-			}
-		}
-		&:last-child {
-			&:before {
-				.border-right-radius(4px);
-			}
-		}
 		.wrap {
 			position:absolute;
 			left: 50%;
-			margin-left: -25px;	
+			margin-left: -25px;
 			width: 50px;
 			text-align: center;
 			background: #FFF;
@@ -38,7 +28,7 @@
 		.round {
 			width: 30px;
 			height: 30px;
-			.border-radius(15px);
+			.border-radius(50%);
 			display: inline-block;
 			vertical-align: middle;
 			font-size: @font-size-base;
@@ -64,7 +54,7 @@
 		}
 
 	}
-	//default color is todocolor	
+	//default color is todocolor
 	//为了美观，finished和current颜色暂时设成一致
 	> .finished, .current {
 		&:before {
