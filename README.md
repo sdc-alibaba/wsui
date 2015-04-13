@@ -1,3 +1,14 @@
+# 重要提示
+
+__dev__ 分支为 __开发__ 分支主干。
+__master__ 分支为 __发布__ 分支主干。
+
+任何开发都汇总到dev分支。为方便diff，在dev分支的gitignore里添加了 _dist/_ 和 _docs/dist_ 目录，但在master分支里是没添加的，因为需要发布。所以开发完毕需要发布时操作如下：
+
+1. 更新master，基于master新建daily/x.y.z的新分支。（而不是基于dev新建）
+1. 在新的daily分支上merge dev分支的最新修改，然后执行一次grunt（生成新的dist目录）
+1. 常规流程发布
+
 # [Bootstrap](http://getbootstrap.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg?style=flat)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg?style=flat)](https://www.npmjs.com/package/bootstrap)
