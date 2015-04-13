@@ -24,8 +24,8 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
   "use strict";
 
   // 判断域名环境,返回合理的URL
-  var getSourceUrl = function(path, hostkey) {
-    var isDailyEnv = !/\.com$/.test(location.host), envHost
+  var _getSourceUrl = function(path, hostkey) {
+    var isDailyEnv = /\.taobao\.net$/.test(location.host), envHost
     if (hostkey) {
       envHost = '//' + hostkey + (isDailyEnv ? '.daily.taobao.net/' : '.taobao.com/')
     } else {
@@ -139,7 +139,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
           if (options.beforeSend.call(self, sendData) === false) return false;
         }
         //发送裁剪请求
-        $.ajax(getSourceUrl('action.do?api=primus_cover_crop', 'we'), {
+        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'we'), {
           type: 'get',
           data: sendData,
           dataType: 'jsonp'
@@ -147,7 +147,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
           if (res.success) {
             //手工调用的okHide不会再进okHide回调
             cropdlg.modal('okHide')
-            options.success && options.success.call(self, getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'))
+            options.success && options.success.call(self, _getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'))
             //把之前隐藏的图片空间iframe和弹层关闭
             pic.close()
           } else {
@@ -181,7 +181,12 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       needCrop: true
     }, opt)
 
-    function bindTriggerClick() {
+    // 如果是非js调用的图片插件且需要裁剪，则对触发元素图片预览区进行宽高初始化处理
+    if ($ele.data('toggle') == 'pic-uploader' && opt.needCrop) {
+      pp._resizePreview(opt)
+    }
+    
+    function _bindTriggerClick() {
       $ele.off('click.pp').on('click.pp', function(e){
         e.preventDefault()
         if ($ele.hasClass('pic-preview')) return
@@ -196,11 +201,24 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
 
       $.ajax('//g.alicdn.com/sj/lib/jcrop/js/jquery.Jcrop.min.js', {dataType: 'script', cache: true})
       .done(function(){
-        bindTriggerClick()
+        _bindTriggerClick()
       })
     } else {
-      bindTriggerClick()
+      _bindTriggerClick()
     }
+
+
+  }
+
+  pp._resizePreview = function (opt) {
+    var cropMinSize = opt.cropOptions.minSize,
+      // 预览区宽高比
+      aspectRatio = opt.cropOptions.aspectRatio ? opt.cropOptions.aspectRatio : (cropMinSize ? cropMinSize[0] / cropMinSize[1] : 1).toFixed(2),
+      previewHeight = opt.previewHeight || 100
+    $(opt.triggerEle).css({
+      height: previewHeight,
+      width: opt.previewWidth || (previewHeight * aspectRatio)
+    }) 
   }
 
   pp.show = function(arg0) {
@@ -241,6 +259,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
   $.fn.picUploader.defaults = {
     picMinSize: [50, 50], // 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
     picMaxSize: [1000, 1000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+    previewHeight: 100, // 预览区高度，宽度会自动计算合适的值。用户也可以自行指定。
     cancel: $.noop, // 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
     needCrop: true, // 是否需要在图片空间插件关闭后弹出图片裁剪弹层
     cropOptions: {}, // 裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
@@ -267,7 +286,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       }
       $(v).picUploader(param);
     })
-    
+
     // 更换图片
     $(document).on('click.pp', '.pic-uploader [name="replace"]', function() {
       pp.show($(this).parents('.pic-uploader').data('ppid'))

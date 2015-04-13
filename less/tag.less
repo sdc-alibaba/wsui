@@ -1,0 +1,131 @@
+//
+// Tag
+// --------------------------------------------------
+
+// Base class
+.tag-group {
+  margin: 0;
+  margin-bottom: @line-height-computed;
+}
+@color-active: darken(@brand-primary, 10%);
+.tag {
+  display: inline-block;
+  font-weight: normal;
+  .tag-size(@padding-base-vertical; @font-size-base; @line-height-base);
+  color: inherit;
+  border: 1px solid #999;
+  cursor: default;
+  .user-select(none);
+  .transition(all .2s linear);
+  position: relative;
+  margin: 0;
+
+  a[name] {
+    &, &:hover {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    &:hover {
+      color: @brand-primary;
+    }
+  }
+  
+  input[type='checkbox'],
+  input[type='radio'] {
+    display: none;
+  }
+
+  + .tag {
+    margin-left: .5em;
+  }
+  .iconfont {
+    cursor: pointer;
+    line-height: 100%;  //避免撑开行高
+    position: relative;
+    right: -0.4em;
+    vertical-align: 1px;
+    font-size: 120%;
+    font-weight: bold;
+    color: inherit;
+    opacity: .8;
+  }
+
+}
+
+.tag-hover {
+  .tag:hover{
+    border-color: @brand-primary;
+    color: @brand-primary;
+  }
+}
+
+.tag-checkable {
+  .tag-hover;
+  .tag {
+    cursor: pointer;
+    &.active {
+      color: @color-active;
+      border-color: @color-active;
+    }
+  }
+}
+
+.tag-group .tag.disabled{
+    opacity: .5;
+    cursor: not-allowed;
+    &:hover {
+      color: inherit;
+      border-color: #999;
+    }
+  }
+
+.tag-group {
+  &.tag-sm, &.tag-xs {
+    .tag {
+      .tag-size(@padding-small-vertical; @font-size-small; @line-height-small);
+    }
+  }
+  &.tag-lg, &.tag-lg {
+    .tag {
+      .tag-size(@padding-large-vertical; @font-size-large; @line-height-large);
+    }
+  }
+  &.tag-xl, &.tag-xl {
+    .tag {
+      .tag-size(@padding-xlarge-vertical; @font-size-xlarge; @line-height-xlarge);
+    }
+  }
+}
+
+.tag {
+  &.tag-sm, &.tag-xs {
+    .tag-size(@padding-small-vertical; @font-size-small; @line-height-small);
+  }
+  &.tag-lg, &.tag-lg {
+    .tag-size(@padding-large-vertical; @font-size-large; @line-height-large);
+  }
+  &.tag-xl, &.tag-xl {
+    .tag-size(@padding-xlarge-vertical; @font-size-xlarge; @line-height-xlarge);
+  }
+}
+.tag-primary .tag,
+.tag.tag-primary {
+  .tag-variant(@brand-primary);
+}
+.tag-success .tag,
+.tag.tag-success {
+  .tag-variant(@brand-success);
+}
+.tag-warning .tag,
+.tag.tag-warning {
+  .tag-variant(@brand-warning);
+}
+.tag-info .tag,
+.tag.tag-info {
+  .tag-variant(@brand-info);
+}
+.tag-danger .tag,
+.tag.tag-danger {
+  .tag-variant(@brand-danger);
+}

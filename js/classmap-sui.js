@@ -12,5 +12,6 @@ window.CLASSMAP = {
   popover: 'sui-popover',
   tooltip: 'sui-tooltip',
   nav: 'sui-nav',
-  pagination: 'sui-pagination'
+  pagination: 'sui-pagination',
+  tagGroup: 'sui-tag-group'
 }
