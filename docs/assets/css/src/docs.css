@@ -593,12 +593,25 @@ body {
 
 /* All levels of nav */
 .bs-docs-sidebar .nav > li > a {
+  position: relative;
   display: block;
   padding: 4px 20px;
   font-size: 13px;
   font-weight: 500;
   color: #888;
 }
+.bs-docs-sidebar .nav > li > a > i {
+  /* position: absolute; */
+  top: -10px;
+  /* float: right; */
+  height: 20px;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 20px;
+  color: red;
+  vertical-align: middle;
+}
+
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
   padding-left: 19px;

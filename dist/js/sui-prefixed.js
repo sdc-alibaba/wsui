@@ -12,7 +12,8 @@ window.CLASSMAP = {
   popover: 'sui-popover',
   tooltip: 'sui-tooltip',
   nav: 'sui-nav',
-  pagination: 'sui-pagination'
+  pagination: 'sui-pagination',
+  tagGroup: 'sui-tag-group'
 }
 
 /*jshint -W054 */
@@ -5747,3 +5748,903 @@ $('[data-toggle="validate"]').each(function() {
  /* BUTTON DATA-API
   * =============== */ 
 }(window.jQuery);
+
++function ($) {
+  'use strict';
+
+  $(document).on('change', '[data-toggle="tag"] input[type]', function (e) {
+    var $input = $(e.target);
+    var $group = $input.parents('.' + CLASSMAP.tagGroup);
+    $group.find('input[type]').each(function () {
+      var $this = $(this);
+      var checked = $this.is(':checked');
+      $this.parents('.tag')[checked ? 'addClass' : 'removeClass']('active');
+    });
+  })
+  $(document).on('click', '[data-toggle="tag"] [name="remove"]', function (e) {
+    var $btn = $(e.target);
+    $btn.parents('.tag').remove();
+  })
+
+}(jQuery);
+
+/* global __picPlugin__ */
+// jscs:disable
+/**
+ * @file picPlugin.js
+ * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
+ * @author banbian, zangtao.zt@alibaba-inc.com
+ * @param opt.triggerEle {string} 触发弹出图片空间插件弹层的元素的css选择器，通常是一些按钮、文字链
+ * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
+ * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+ * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+ * @param opt.needCrop {boolean} 是否需要在图片空间插件关闭后弹出图片裁剪弹层
+ * @param opt.cropOptions {json}裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
+ * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
+ * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
+ * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url
+ * @version 1.0.0
+ * @date 2015-02-15
+ */
+
+//加载图片空间插件js
+jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
+
+!function ($) {
+  "use strict";
+
+  // 判断域名环境,返回合理的URL
+  var _getSourceUrl = function(path, hostkey) {
+    var isDailyEnv = /\.taobao\.net$/.test(location.host), envHost
+    if (hostkey) {
+      envHost = '//' + hostkey + (isDailyEnv ? '.daily.taobao.net/' : '.taobao.com/')
+    } else {
+      envHost = isDailyEnv ? '//g-assets.daily.taobao.net/' : '//g.alicdn.com/';
+    }
+    return envHost + path;
+  }
+
+  var pic, $picDlg, pp = {}
+  pp._bindEvents = function(triggerEle) {
+    var self = this,
+      options = this[$(triggerEle).data('ppid')]
+
+    //高度自适应，第一个参数是iframe高度
+    pic.on('heightUpdated', function() {
+      $picDlg.modal('handleUpdate');
+    })
+    pic.on('picInserted', function(url) {
+
+      //如果不需要裁剪，选完图片后就关闭iframe
+      //如果需要裁剪，选完图片后只隐藏picDlg弹层，校验图片尺寸（如有需求），再弹出裁剪框，裁剪流程任意一处都可以返回到选择图片的弹层（即重新显示picDlg）
+      function doCropOrSuccess() {
+        if (options.needCrop) {
+          $picDlg.hide()
+          //弹出图片裁剪弹层。
+          self._initJcrop(url, triggerEle)
+        } else {
+          options.success && options.success.call(self, url)
+          pic.close();
+        }
+      }
+
+      //如果对在图片空间选择的图片尺寸有限制：获取图片尺寸校验，再进行后续逻辑
+      //如果没有限制：直接执行后续逻辑
+      if (options.picMinSize || options.picMaxSize) {
+        var tmpImg = new Image()
+        tmpImg.onload = function(){
+          if (validateSelectedImg(tmpImg.width, tmpImg.height)) {
+            doCropOrSuccess()
+          }
+        }
+        tmpImg.onerror = function(){
+            $.toast('图片无效，请重新选择', 'danger')
+        }
+        tmpImg.src = url
+      } else {
+        doCropOrSuccess()
+      }
+
+      //校验图片宽高，返回值作为是否通过的判断
+      function validateSelectedImg(w, h) {
+        var minSize = options.picMinSize;
+        if (minSize && (w < minSize[0] || h < minSize[1])) {
+          $.toast('亲所选的图片尺寸过小(小于' + minSize.join('*') + ')，请重新选择', 'danger')
+          return false
+        }
+        var maxSize = options.picMaxSize;
+        if (maxSize && (w > maxSize[0] || h > maxSize[1])) {
+          $.toast('亲所选的图片尺寸过大(大于' + maxSize.join('*') + ')，请重新选择', 'danger')
+          return false
+        }
+        return true
+      }
+
+    })
+    pic.on('close', function() {
+      $picDlg.modal('okHide');
+    })
+  }
+
+  pp._initJcrop = function(imgurl, triggerEle) {
+    //方法调用返回值
+    var options = this[$(triggerEle).data('ppid')],
+      self = this,
+      jcrop,
+      cropdlg
+    cropdlg = $.confirm({
+      title: '裁剪图片',
+      //使用图片空间弹层的遮罩层即可
+      backdrop: 'static',
+      bgColor: 'rgba(0, 0, 0, 0)',
+      width: 450,
+      keyboard: false,
+      body: '<img class="originpic" src="' + imgurl + '"/>',
+      show: function() {
+        //裁剪组件初始化参数
+        var cropOptions = $.extend({
+          keySupport: false,
+          boxWidth: 400,
+          boxHeight: 400
+        }, options.cropOptions)
+        $(this).find('.originpic').Jcrop(cropOptions, function(){
+          jcrop = this
+          //执行初始化后的特殊逻辑控制回调
+          options.cropInit && options.cropInit.call(self, jcrop)
+        })
+      },
+      okHide: function() {
+        var $ele = this.$element,
+          $okBtn = $ele.find('[data-ok]')
+        //防止多次提交裁剪请求
+        if ($okBtn.hasClass('disabled')) return
+
+        var sendData = $.extend({}, jcrop.tellSelect(), {
+          picTfs: imgurl[0]
+          // @千驹，去掉token校验
+          // _tb_token_: $('#J_TB_TOKEN').val()
+        })
+        if (options.beforeSend) {
+          //beforeSend 回调调用方可以在最后return false来阻止后续的请求提交逻辑
+          if (options.beforeSend.call(self, sendData) === false) return false;
+        }
+        //发送裁剪请求
+        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'we'), {
+          type: 'get',
+          data: sendData,
+          dataType: 'jsonp'
+        }).done(function(res) {
+          if (res.success) {
+            //手工调用的okHide不会再进okHide回调
+            cropdlg.modal('okHide')
+            options.success && options.success.call(self, _getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'))
+            //把之前隐藏的图片空间iframe和弹层关闭
+            pic.close()
+          } else {
+            $.toast(res.msg, 'danger')
+          }
+        }).always(function(){
+          $okBtn.removeClass('disabled')
+        })
+        $okBtn.addClass('disabled')
+        //阻止默认关闭弹层逻辑
+        return false
+      },
+      cancelHide: function() {
+        $picDlg.show()
+      },
+      cancelHidden: function() {
+        $('body').addClass('modal-open')
+      },
+      hidden: function() {
+        jcrop.destroy()
+      }
+    })
+  }
+
+  pp.init = function(opt) {
+    var $ele = $(opt.triggerEle)
+    $ele.data('ppid', 'pp_' + (+new Date()))
+
+    this[$ele.data('ppid')] = $.extend({
+      //默认配置
+      needCrop: true
+    }, opt)
+
+    // 如果是非js调用的图片插件且需要裁剪，则对触发元素图片预览区进行宽高初始化处理
+    if ($ele.data('toggle') == 'pic-uploader' && opt.needCrop) {
+      pp._resizePreview(opt)
+    }
+    
+    function _bindTriggerClick() {
+      $ele.off('click.pp').on('click.pp', function(e){
+        e.preventDefault()
+        if ($ele.hasClass('pic-preview')) return
+
+        pp.show(opt)
+      })
+    }
+
+    //如果需要裁剪，且Jcrop尚未被加载进来，load it
+    if (this[$ele.data('ppid')].needCrop && !$.fn.Jcrop) {
+      $("head").append("<link rel='stylesheet' type='text/css' href='//g.alicdn.com/sj/lib/jcrop/css/jquery.Jcrop.min.css' />")
+
+      $.ajax('//g.alicdn.com/sj/lib/jcrop/js/jquery.Jcrop.min.js', {dataType: 'script', cache: true})
+      .done(function(){
+        _bindTriggerClick()
+      })
+    } else {
+      _bindTriggerClick()
+    }
+
+
+  }
+
+  pp._resizePreview = function (opt) {
+    var cropMinSize = opt.cropOptions.minSize,
+      // 预览区宽高比
+      aspectRatio = opt.cropOptions.aspectRatio ? opt.cropOptions.aspectRatio : (cropMinSize ? cropMinSize[0] / cropMinSize[1] : 1).toFixed(2),
+      previewHeight = opt.previewHeight || 100
+    $(opt.triggerEle).css({
+      height: previewHeight,
+      width: opt.previewWidth || (previewHeight * aspectRatio)
+    }) 
+  }
+
+  pp.show = function(arg0) {
+    // 判断如果第一个参数是json对象，则视为options，如果不是，则作为ppid并依次获取options
+    var opt = typeof arg0 == 'object' ? arg0 : this[arg0]
+    console.log(opt)
+    $picDlg = $.confirm({
+      title: '选择图片',
+      body: '<div id="picPluginWrap"></div>',
+      hasfoot: false,
+      width: 'large',
+      shown: function(){
+        pic = __picPlugin__.init({
+          containerId: 'picPluginWrap',
+          singleSelect: true
+        })
+        pp._bindEvents(opt.triggerEle)
+        pic.run()
+      },
+      hide: function() {
+        opt.cancel && opt.cancel.call(null, opt.triggerEle)
+      },
+      cancelHidden: function() {
+        pic && pic.close();
+      }
+    })
+  }
+
+  // 单例扩展到jQuery静态方法上,修正this
+  $.fn.extend({
+    picUploader: function (opt) {
+      opt.triggerEle = this
+      var config = $.extend({}, $.fn.picUploader.defaults, $(this).data(), opt)
+      pp.init.call(pp, config)
+    }
+  })
+
+  $.fn.picUploader.defaults = {
+    picMinSize: [50, 50], // 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
+    picMaxSize: [1000, 1000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+    previewHeight: 100, // 预览区高度，宽度会自动计算合适的值。用户也可以自行指定。
+    cancel: $.noop, // 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+    needCrop: true, // 是否需要在图片空间插件关闭后弹出图片裁剪弹层
+    cropOptions: {}, // 裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
+    cropInit: $.noop, // Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
+    beforeSend: $.noop, // 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
+    success: $.noop // 主流程完全顺利走完后的回调，第一个参数是图片url
+  }
+
+  $(function() {
+
+    // 无JS调用类型的组件初始化
+    $('[data-toggle="pic-uploader"]').each(function(k, v) {
+      var param = $(this).data();
+      param.success = function(url){
+        $(v).addClass('pic-preview')
+          .children('img').attr('src', url)
+        $(v).children('input').val(url)
+      }
+      // 是否启用默认选框功能
+      if (!param.allowSelect) {
+        param.cropInit = function(instance) {
+          instance.setSelect([0, 0].concat(param.picMinSize))
+        }
+      }
+      $(v).picUploader(param);
+    })
+
+    // 更换图片
+    $(document).on('click.pp', '.pic-uploader [name="replace"]', function() {
+      pp.show($(this).parents('.pic-uploader').data('ppid'))
+    })
+    // 清除图片
+    $(document).on('click.pp', '.pic-uploader [name="remove"]', function(e) {
+      e.stopPropagation()
+      var $picUploader= $(this).parents('.pic-uploader')
+      $picUploader.removeClass('pic-preview')
+        .children('img').removeAttr('src')
+      $picUploader.children('input').val('')
+    })
+  })
+
+}(jQuery)
+
+//jscs:disable
+/* jshint shadow:true, unused:false, funcscope:true*/
++function ($) {
+  "use strict";
+
+  var defaultOptions = {
+    className: 'tagsinput tag-group form-control',
+    tagClass: 'tag-primary',
+    itemValue: function(item) {
+      return (typeof item === typeof "a") ? item : item.value;
+    },
+    itemText: function(item) {
+      return this.itemValue(item);
+    },
+    itemTitle: function(item) {
+      return null;
+    },
+    freeInput: true,
+    addOnBlur: false,
+    maxTags: undefined,
+    maxChars: undefined,
+    useAutocomplete: 0,  //自动补全
+    autocomplete: {
+      autoSelectFirst: true
+    },
+    confirmKeys: [13, 44],
+    onTagExists: function(item, $tag) {
+      $tag.hide().fadeIn();
+    },
+    trimValue: false,
+    allowDuplicates: false
+  };
+
+  /**
+   * Constructor function
+   */
+  function TagsInput(element, options) {
+    this.itemsArray = [];
+
+    this.$element = $(element);
+    this.options = $.extend({}, defaultOptions, this.$element.data(), options);
+
+    this.$element.hide();
+    this.isSelect = (element.tagName === 'SELECT');
+    this.multiple = (this.isSelect && element.hasAttribute('multiple'));
+    this.objectItems = options && options.itemValue;  //todo
+    this.placeholderText = element.hasAttribute('placeholder') ? this.$element.attr('placeholder') : '';
+    this.inputSize = Math.max(1, this.placeholderText.length);
+
+    this.$container = $('<div class=""></div>').addClass(this.options.className);
+    this.$input = $('<input type="text" placeholder="' + this.placeholderText + '"/>').appendTo(this.$container);
+
+    this.$element.before(this.$container);
+
+    this.build(options);
+  }
+
+  TagsInput.prototype = {
+    constructor: TagsInput,
+
+    /**
+     * Adds the given item as a new tag. Pass true to dontPushVal to prevent
+     * updating the elements val()
+     */
+    add: function(item, dontPushVal, options) {
+      var self = this;
+
+      if (self.options.maxTags && self.itemsArray.length >= self.options.maxTags)
+        return;
+
+      // Ignore falsey values, except false
+      if (item !== false && !item)
+        return;
+
+      // Trim value
+      if (typeof item === "string" && self.options.trimValue) {
+        item = $.trim(item);
+      }
+
+      // Throw an error when trying to add an object while the itemValue option was not set
+
+      // Ignore strings only containg whitespace
+      if (item.toString().match(/^\s*$/))
+        return;
+
+      // If SELECT but not multiple, remove current tag
+      if (self.isSelect && !self.multiple && self.itemsArray.length > 0)
+        self.remove(self.itemsArray[0]);
+
+      if (typeof item === "string" && this.$element[0].tagName === 'INPUT') {
+        var items = item.split(',');
+        if (items.length > 1) {
+          for (var i = 0; i < items.length; i++) {
+            this.add(items[i], true);
+          }
+
+          if (!dontPushVal)
+            self.pushVal();
+          return;
+        }
+      }
+
+      var itemValue = self.options.itemValue(item),
+          itemText = self.options.itemText(item),
+          tagClass = $.isFunction(self.options.tagClass) ? self.options.tagClass(item) : self.options.tagClass,
+          itemTitle = self.options.itemTitle(item);
+
+      // Ignore items allready added
+      var existing = $.grep(self.itemsArray, function(item) { return self.options.itemValue(item) === itemValue; } )[0];
+      if (existing && !self.options.allowDuplicates) {
+        // Invoke onTagExists
+        if (self.options.onTagExists) {
+          var $existingTag = $(".tag", self.$container).filter(function() { return $(this).data("item") === existing; });
+          self.options.onTagExists(item, $existingTag);
+        }
+        return;
+      }
+
+      // if length greater than limit
+      if (self.items().toString().length + item.length + 1 > self.options.maxInputLength)
+        return;
+
+      // raise beforeItemAdd arg
+      var beforeItemAddEvent = $.Event('beforeItemAdd', { item: item, cancel: false, options: options});
+      self.$element.trigger(beforeItemAddEvent);
+      if (beforeItemAddEvent.cancel)
+        return;
+
+      // register item in internal array and map
+      self.itemsArray.push(item);
+
+      // add a tag element
+
+      var $tag = $('<span class="tag ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"><i class="iconfont icon-close"></span></span>');
+      $tag.data('item', item);
+      self.findInputWrapper().before($tag);
+      $tag.after(' ');
+
+      // add <option /> if item represents a value not present in one of the <select />'s options
+      if (self.isSelect && !$('option[value="' + encodeURIComponent(itemValue) + '"]',self.$element)[0]) {
+        var $option = $('<option selected>' + htmlEncode(itemText) + '</option>');
+        $option.data('item', item);
+        $option.attr('value', itemValue);
+        self.$element.append($option);
+      }
+
+      if (!dontPushVal)
+        self.pushVal();
+
+      // Add class when reached maxTags
+      if (self.options.maxTags === self.itemsArray.length || self.items().toString().length === self.options.maxInputLength)
+        self.$container.addClass('bootstrap-tagsinput-max');
+
+      self.$element.trigger($.Event('itemAdded', { item: item, options: options }));
+    },
+
+    /**
+     * Removes the given item. Pass true to dontPushVal to prevent updating the
+     * elements val()
+     */
+    remove: function(item, dontPushVal, options) {
+      var self = this;
+
+      if (self.objectItems) {
+        if (typeof item === "object")
+          item = $.grep(self.itemsArray, function(other) { return self.options.itemValue(other) ==  self.options.itemValue(item); } );
+        else
+          item = $.grep(self.itemsArray, function(other) { return self.options.itemValue(other) ==  item; } );
+
+        item = item[item.length-1];
+      }
+
+      if (item) {
+        var beforeItemRemoveEvent = $.Event('beforeItemRemove', { item: item, cancel: false, options: options });
+        self.$element.trigger(beforeItemRemoveEvent);
+        if (beforeItemRemoveEvent.cancel)
+          return;
+
+        $('.tag', self.$container).filter(function() { return $(this).data('item') === item; }).remove();
+        $('option', self.$element).filter(function() { return $(this).data('item') === item; }).remove();
+        if($.inArray(item, self.itemsArray) !== -1)
+          self.itemsArray.splice($.inArray(item, self.itemsArray), 1);
+      }
+
+      if (!dontPushVal)
+        self.pushVal();
+
+      // Remove class when reached maxTags
+      if (self.options.maxTags > self.itemsArray.length)
+        self.$container.removeClass('bootstrap-tagsinput-max');
+
+      self.$element.trigger($.Event('itemRemoved',  { item: item, options: options }));
+    },
+
+    /**
+     * Removes all items
+     */
+    removeAll: function() {
+      var self = this;
+
+      $('.tag', self.$container).remove();
+      $('option', self.$element).remove();
+
+      while(self.itemsArray.length > 0)
+        self.itemsArray.pop();
+
+      self.pushVal();
+    },
+
+    /**
+     * Refreshes the tags so they match the text/value of their corresponding
+     * item.
+     */
+    refresh: function() {
+      var self = this;
+      $('.tag', self.$container).each(function() {
+        var $tag = $(this),
+            item = $tag.data('item'),
+            itemValue = self.options.itemValue(item),
+            itemText = self.options.itemText(item),
+            tagClass = self.options.tagClass(item);
+
+          // Update tag's class and inner text
+          $tag.attr('class', null);
+          $tag.addClass('tag ' + htmlEncode(tagClass));
+          $tag.contents().filter(function() {
+            return this.nodeType == 3;
+          })[0].nodeValue = htmlEncode(itemText);
+
+          if (self.isSelect) {
+            var option = $('option', self.$element).filter(function() { return $(this).data('item') === item; });
+            option.attr('value', itemValue);
+          }
+      });
+    },
+
+    /**
+     * Returns the items added as tags
+     */
+    items: function() {
+      return this.itemsArray;
+    },
+
+    /**
+     * Assembly value by retrieving the value of each item, and set it on the
+     * element.
+     */
+    pushVal: function() {
+      var self = this,
+          val = $.map(self.items(), function(item) {
+            return self.options.itemValue(item).toString();
+          });
+
+      self.$element.val(val, true).trigger('change');
+    },
+
+    /**
+     * Initializes the tags input behaviour on the element
+     */
+    build: function(options) {
+      var self = this;
+
+      // When itemValue is set, freeInput should always be false
+      if (self.objectItems)
+        self.options.freeInput = false;
+
+      makeOptionItemFunction(self.options, 'itemValue');
+      makeOptionItemFunction(self.options, 'itemText');
+      makeOptionFunction(self.options, 'tagClass');
+
+      if(this.options.useAutocomplete) {
+        //取出ac 设置
+        var acOptions = $.extend({}, this.options.autocomplete);
+        var uncapitalizeFirstLetter = function (string) {
+            return string.charAt(0).toLowerCase() + string.slice(1);
+        }
+        for(var k in this.options) {
+          if(/^autocomplete/.test(k)) {
+            acOptions[uncapitalizeFirstLetter(k.replace(/autocomplete/, ""))] = this.options[k];
+          }
+        }
+        self.$ac = this.$input.autocomplete($.extend({
+          onSelect: function(suggestion) {
+            self.add(suggestion);
+            self.$input.val("");
+          }
+        }, acOptions));
+        this.$element.on("itemAdded itemRemoved", function() {
+          self.$ac.autocomplete("fixPosition");
+        });
+      }
+
+      self.$container.on('click', $.proxy(function(event) {
+        if (! self.$element.attr('disabled')) {
+          self.$input.removeAttr('disabled');
+        }
+        self.$input.focus();
+      }, self));
+
+
+      self.$container.on('keydown', 'input', $.proxy(function(event) {
+        var $input = $(event.target),
+            $inputWrapper = self.findInputWrapper();
+
+        if (self.$element.attr('disabled')) {
+          self.$input.attr('disabled', 'disabled');
+          return;
+        }
+
+        switch (event.which) {
+          // BACKSPACE
+          case 8:
+            if (doGetCaretPosition($input[0]) === 0) {
+              var prev = $inputWrapper.prev();
+              if (prev) {
+                self.remove(prev.data('item'));
+              }
+            }
+            break;
+
+          // DELETE
+          case 46:
+            if (doGetCaretPosition($input[0]) === 0) {
+              var next = $inputWrapper.next();
+              if (next) {
+                self.remove(next.data('item'));
+              }
+            }
+            break;
+
+          // LEFT ARROW
+          case 37:
+            // Try to move the input before the previous tag
+            var $prevTag = $inputWrapper.prev();
+            if ($input.val().length === 0 && $prevTag[0]) {
+              $prevTag.before($inputWrapper);
+              $input.focus();
+            }
+            break;
+          // RIGHT ARROW
+          case 39:
+            // Try to move the input after the next tag
+            var $nextTag = $inputWrapper.next();
+            if ($input.val().length === 0 && $nextTag[0]) {
+              $nextTag.after($inputWrapper);
+              $input.focus();
+            }
+            break;
+         default:
+             // ignore
+         }
+
+        // Reset internal input's size
+        var textLength = $input.val().length,
+            wordSpace = Math.ceil(textLength / 5),
+            size = textLength + wordSpace + 1;
+        $input.attr('size', Math.max(this.inputSize, $input.val().length));
+      }, self));
+
+      self.$container.on('keypress', 'input', $.proxy(function(event) {
+         var $input = $(event.target);
+
+         if (self.$element.attr('disabled')) {
+            self.$input.attr('disabled', 'disabled');
+            return;
+         }
+
+         var text = $input.val(),
+         maxLengthReached = self.options.maxChars && text.length >= self.options.maxChars;
+         if (self.options.freeInput && (keyCombinationInList(event, self.options.confirmKeys) || maxLengthReached)) {
+            self.add(maxLengthReached ? text.substr(0, self.options.maxChars) : text);
+            $input.val('');
+            event.preventDefault();
+         }
+
+         // Reset internal input's size
+         var textLength = $input.val().length,
+            wordSpace = Math.ceil(textLength / 5),
+            size = textLength + wordSpace + 1;
+         $input.attr('size', Math.max(this.inputSize, $input.val().length));
+      }, self));
+
+      // Remove icon clicked
+      self.$container.on('click', '[data-role=remove]', $.proxy(function(event) {
+        if (self.$element.attr('disabled')) {
+          return;
+        }
+        self.remove($(event.target).closest('.tag').data('item'));
+      }, self));
+
+      // Only add existing value as tags when using strings as tags
+      if (self.options.itemValue === defaultOptions.itemValue) {
+        if (self.$element[0].tagName === 'INPUT') {
+            self.add(self.$element.val());
+        } else {
+          $('option', self.$element).each(function() {
+            self.add($(this).attr('value'), true);
+          });
+        }
+      }
+    },
+
+    /**
+     * Removes all tagsinput behaviour and unregsiter all event handlers
+     */
+    destroy: function() {
+      var self = this;
+
+      // Unbind events
+      self.$container.off('keypress', 'input');
+      self.$container.off('click', '[role=remove]');
+
+      self.$container.remove();
+      self.$element.removeData('tagsinput');
+      self.$element.show();
+    },
+
+    /**
+     * Sets focus on the tagsinput
+     */
+    focus: function() {
+      this.$input.focus();
+    },
+
+    /**
+     * Returns the internal input element
+     */
+    input: function() {
+      return this.$input;
+    },
+
+    /**
+     * Returns the element which is wrapped around the internal input. This
+     * is normally the $container, but typeahead.js moves the $input element.
+     */
+    findInputWrapper: function() {
+      var elt = this.$input[0],
+          container = this.$container[0];
+      while(elt && elt.parentNode !== container)
+        elt = elt.parentNode;
+
+      return $(elt);
+    }
+  };
+
+  /**
+   * Register JQuery plugin
+   */
+  $.fn.tagsinput = function(arg1, arg2, arg3) {
+    var results = [];
+
+    this.each(function() {
+      var tagsinput = $(this).data('tagsinput');
+      // Initialize a new tags input
+      if (!tagsinput) {
+          tagsinput = new TagsInput(this, arg1);
+          $(this).data('tagsinput', tagsinput);
+          results.push(tagsinput);
+
+          if (this.tagName === 'SELECT') {
+              $('option', $(this)).attr('selected', 'selected');
+          }
+
+          // Init tags from $(this).val()
+          $(this).val($(this).val());
+      } else if (!arg1 && !arg2) {
+          // tagsinput already exists
+          // no function, trying to init
+          results.push(tagsinput);
+      } else if(tagsinput[arg1] !== undefined) {
+          // Invoke function on existing tags input
+            if(tagsinput[arg1].length === 3 && arg3 !== undefined){
+               var retVal = tagsinput[arg1](arg2, null, arg3);
+            }else{
+               var retVal = tagsinput[arg1](arg2);
+            }
+          if (retVal !== undefined)
+              results.push(retVal);
+      }
+    });
+
+    if ( typeof arg1 == 'string') {
+      // Return the results from the invoked function calls
+      return results.length > 1 ? results : results[0];
+    } else {
+      return results;
+    }
+  };
+
+  $.fn.tagsinput.Constructor = TagsInput;
+
+  /**
+   * Most options support both a string or number as well as a function as
+   * option value. This function makes sure that the option with the given
+   * key in the given options is wrapped in a function
+   */
+  function makeOptionItemFunction(options, key) {
+    if (typeof options[key] !== 'function') {
+      var propertyName = options[key];
+      options[key] = function(item) { return item[propertyName]; };
+    }
+  }
+  function makeOptionFunction(options, key) {
+    if (typeof options[key] !== 'function') {
+      var value = options[key];
+      options[key] = function() { return value; };
+    }
+  }
+  /**
+   * HtmlEncodes the given value
+   */
+  var htmlEncodeContainer = $('<div />');
+  function htmlEncode(value) {
+    if (value) {
+      return htmlEncodeContainer.text(value).html();
+    } else {
+      return '';
+    }
+  }
+
+  /**
+   * Returns the position of the caret in the given input field
+   * http://flightschool.acylt.com/devnotes/caret-position-woes/
+   */
+  function doGetCaretPosition(oField) {
+    var iCaretPos = 0;
+    if (document.selection) {
+      oField.focus ();
+      var oSel = document.selection.createRange();
+      oSel.moveStart ('character', -oField.value.length);
+      iCaretPos = oSel.text.length;
+    } else if (oField.selectionStart || oField.selectionStart == '0') {
+      iCaretPos = oField.selectionStart;
+    }
+    return (iCaretPos);
+  }
+
+  /**
+    * Returns boolean indicates whether user has pressed an expected key combination.
+    * @param object keyPressEvent: JavaScript event object, refer
+    *     http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
+    * @param object lookupList: expected key combinations, as in:
+    *     [13, {which: 188, shiftKey: true}]
+    */
+  function keyCombinationInList(keyPressEvent, lookupList) {
+      var found = false;
+      $.each(lookupList, function (index, keyCombination) {
+          if (typeof (keyCombination) === 'number' && keyPressEvent.which === keyCombination) {
+              found = true;
+              return false;
+          }
+
+          if (keyPressEvent.which === keyCombination.which) {
+              var alt = !keyCombination.hasOwnProperty('altKey') || keyPressEvent.altKey === keyCombination.altKey,
+                  shift = !keyCombination.hasOwnProperty('shiftKey') || keyPressEvent.shiftKey === keyCombination.shiftKey,
+                  ctrl = !keyCombination.hasOwnProperty('ctrlKey') || keyPressEvent.ctrlKey === keyCombination.ctrlKey;
+              if (alt && shift && ctrl) {
+                  found = true;
+                  return false;
+              }
+          }
+      });
+
+      return found;
+  }
+
+  /**
+   * Initialize tagsinput behaviour on inputs and selects which have
+   * data-role=tagsinput
+   */
+  $(function() {
+    $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+  });
+}(window.jQuery);
+
