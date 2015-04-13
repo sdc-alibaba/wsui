@@ -34,6 +34,7 @@ label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 
@@ -131,11 +132,11 @@ output {
 
   // Placeholder
   .placeholder();
-
+  
   & + .input-group-addon-count {
     .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
   }
-
+  
   // Disabled and read-only inputs
   //
   // HTML5 says that controls under a fieldset > legend:first-child won't be
@@ -221,7 +222,6 @@ input[type="search"] {
 
   label {
     min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
-    padding-left: 20px;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
@@ -232,8 +232,48 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-left: -20px;
+  opacity: 0;
+  z-index: -99999;
+  left: -9999px;
   margin-top: 4px \9;
+}
+.radio,
+.radio-inline,
+.checkbox,
+.checkbox-inline {
+  span {
+    font-family: 'wsif';
+  }
+  span:before {
+    margin-right: 8px;
+    color: @box-color;
+  }
+}
+.checkbox,
+.checkbox-inline {
+  span:before {
+    content:'\e626';
+  }
+  input[type="checkbox"]:checked + span:before {
+    content:'\e625';
+    color: @box-checked-color;
+  }
+  &:hover span:before {
+    color: @box-hover-color;
+  }
+}
+.radio,
+.radio-inline {
+  span:before {
+    content:'\e624';
+  }
+  input[type="radio"]:checked + span:before {
+    content:'\e623';
+    color: @box-checked-color;
+  }
+  &:hover span:before {
+    color: @box-hover-color;
+  }
 }
 
 .radio + .radio,
