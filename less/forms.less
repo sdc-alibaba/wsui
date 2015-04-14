@@ -254,8 +254,11 @@ input[type="search"] {
   span:before {
     content:'\e626';
   }
-  input[type="checkbox"]:checked + span:before,input[type="checkbox"]:checked + span {
+  input[type="checkbox"]:checked + span:before {
     content:'\e625';
+    color: @box-checked-color;
+  }
+  input[type="checkbox"]:checked + span {
     color: @box-checked-color;
   }
   &:hover span:before, &:hover span {
@@ -271,7 +274,10 @@ input[type="search"] {
     content:'\e623';
     color: @box-checked-color;
   }
-  &:hover span:before {
+  input[type="radio"]:checked + span {
+    color: @box-checked-color;
+  }
+  &:hover span:before,&:hover span {
     color: @box-hover-color;
   }
 }

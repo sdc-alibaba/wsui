@@ -1813,11 +1813,13 @@ input[type="search"] {
   content: '\e626';
 }
 .checkbox input[type="checkbox"]:checked + span:before,
-.checkbox-inline input[type="checkbox"]:checked + span:before,
+.checkbox-inline input[type="checkbox"]:checked + span:before {
+  color: #666;
+  content: '\e625';
+}
 .checkbox input[type="checkbox"]:checked + span,
 .checkbox-inline input[type="checkbox"]:checked + span {
   color: #666;
-  content: '\e625';
 }
 .checkbox:hover span:before,
 .checkbox-inline:hover span:before,
@@ -1834,8 +1836,14 @@ input[type="search"] {
   color: #666;
   content: '\e623';
 }
+.radio input[type="radio"]:checked + span,
+.radio-inline input[type="radio"]:checked + span {
+  color: #666;
+}
 .radio:hover span:before,
-.radio-inline:hover span:before {
+.radio-inline:hover span:before,
+.radio:hover span,
+.radio-inline:hover span {
   color: #999;
 }
 .radio + .radio,
@@ -3527,6 +3535,9 @@ a.list-group-item-danger.active:focus {
 .panel-heading > .sui-dropdown .dropdown-toggle {
   color: inherit;
 }
+.panel-heading[data-toggle="collapse"] {
+  cursor: row-resize;
+}
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
@@ -3884,14 +3895,6 @@ button.sui-close {
   content: '';
   background-color: #eee;
 }
-.sui-steps-round > li:first-child:before {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.sui-steps-round > li:last-child:before {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
 .sui-steps-round > li .wrap {
   position: absolute;
   top: 0;
@@ -3913,10 +3916,10 @@ button.sui-close {
   vertical-align: middle;
   background-color: #fff;
   border: 4px #d3d3d3 solid;
-          border-radius: 15px;
+          border-radius: 50%;
 
-  -webkit-border-radius: 15px;
-     -moz-border-radius: 15px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
 }
 .sui-steps-round > li .round > i {
   font-size: 14px;
@@ -5127,7 +5130,7 @@ button.sui-close {
 }
 .main-inner > article .main-block {
   border: 25px solid #fff;
-  border-width: 0 25px;
+  border-top-width: 0;
 }
 .block-title {
   height: 80px;
