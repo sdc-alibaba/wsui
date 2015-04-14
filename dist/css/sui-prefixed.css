@@ -1806,7 +1806,7 @@ input[type="search"] {
 .radio-inline span:before,
 .checkbox span:before,
 .checkbox-inline span:before {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .checkbox span:before,
 .checkbox-inline span:before {
