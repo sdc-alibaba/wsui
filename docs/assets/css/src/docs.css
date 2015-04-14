@@ -1142,10 +1142,10 @@ h1[id] {
   float: left;
 }
 .bs-example > .dropdown > .dropdown-menu {
-  position: static;
+  /*position: static;
   display: block;
   margin-bottom: 5px;
-  clear: left;
+  clear: left;*/
 }
 
 /* Example tabbable tabs */
