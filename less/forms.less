@@ -243,10 +243,10 @@ input[type="search"] {
 .checkbox-inline {
   span {
     font-family: 'wsif';
+    color: @box-color;
   }
   span:before {
     margin-right: 8px;
-    color: @box-color;
   }
 }
 .checkbox,
@@ -254,11 +254,11 @@ input[type="search"] {
   span:before {
     content:'\e626';
   }
-  input[type="checkbox"]:checked + span:before {
+  input[type="checkbox"]:checked + span:before,input[type="checkbox"]:checked + span {
     content:'\e625';
     color: @box-checked-color;
   }
-  &:hover span:before {
+  &:hover span:before, &:hover span {
     color: @box-hover-color;
   }
 }

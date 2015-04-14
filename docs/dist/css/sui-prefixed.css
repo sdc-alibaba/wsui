@@ -1800,25 +1800,29 @@ input[type="search"] {
 .checkbox span,
 .checkbox-inline span {
   font-family: 'wsif';
+  color: #999;
 }
 .radio span:before,
 .radio-inline span:before,
 .checkbox span:before,
 .checkbox-inline span:before {
   margin-right: 8px;
-  color: #999;
 }
 .checkbox span:before,
 .checkbox-inline span:before {
   content: '\e626';
 }
 .checkbox input[type="checkbox"]:checked + span:before,
-.checkbox-inline input[type="checkbox"]:checked + span:before {
+.checkbox-inline input[type="checkbox"]:checked + span:before,
+.checkbox input[type="checkbox"]:checked + span,
+.checkbox-inline input[type="checkbox"]:checked + span {
   color: #666;
   content: '\e625';
 }
 .checkbox:hover span:before,
-.checkbox-inline:hover span:before {
+.checkbox-inline:hover span:before,
+.checkbox:hover span,
+.checkbox-inline:hover span {
   color: #999;
 }
 .radio span:before,
