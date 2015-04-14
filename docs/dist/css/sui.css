@@ -2088,19 +2088,12 @@ select[multiple].form-group-lg .form-control {
   border: 1px solid #ccc;
   border-radius: 2px;
 }
-.select:after {
+.select .wsif-unfold {
   position: absolute;
   top: 50%;
   right: 10px;
   z-index: 0;
-  width: 0;
-  height: 0;
-  margin-top: -2px;
-  content: " ";
-  border: 6px solid #333;
-  border-right: 4px solid transparent!important;
-  border-bottom: 4px solid transparent!important;
-  border-left: 4px solid transparent!important;
+  margin-top: -12px;
 }
 .select select {
   position: relative;
