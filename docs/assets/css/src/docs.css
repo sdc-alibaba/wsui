@@ -1617,6 +1617,9 @@ h1[id] {
   padding: 0 !important;
   margin: 0 !important;
 }
+.bs-docs-container > .row > .col-md-9 {
+  background: #fff;
+}
 
 .bs-docs-header {
   display: none;
