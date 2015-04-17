@@ -34,7 +34,6 @@ label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   margin-bottom: 5px;
-  color: @box-color;
 }
 
 
@@ -206,6 +205,9 @@ input[type="search"] {
 
 .form-group {
   margin-bottom: 15px;
+  &>label {
+    color: @box-color;
+  }
 }
 
 
@@ -223,7 +225,6 @@ input[type="search"] {
   label {
     min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
     margin-bottom: 0;
-    font-weight: normal;
     cursor: pointer;
   }
 }
@@ -294,7 +295,6 @@ input[type="search"] {
   padding-right: 20px;
   margin-bottom: 0;
   vertical-align: middle;
-  font-weight: normal;
   cursor: pointer;
 }
 .radio-inline + .radio-inline,
@@ -468,7 +468,6 @@ input[type="checkbox"] {
   border-radius: @input-border-radius;
   position: relative;
   width: 100%;
-  font-weight: 400;
   margin: 0;
 
   // &:after {

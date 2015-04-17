@@ -9,13 +9,12 @@
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: @headings-font-family;
-  font-weight: @headings-font-weight;
+  font-weight: 400;
   line-height: @line-height-base;
   color: @headings-color;
   margin: (@line-height-computed / 2) 0;
 
   small, .small {
-    font-weight: normal;
     line-height: 1;
     color: @headings-small-color;
     font-size: 70%;
@@ -147,9 +146,6 @@ dl {
 dt,
 dd {
   line-height: @line-height-base;
-}
-dt {
-  font-weight: bold;
 }
 dd {
   margin-left: 0; // Undo browser default
