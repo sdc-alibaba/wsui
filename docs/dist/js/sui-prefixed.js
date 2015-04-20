@@ -7953,6 +7953,7 @@ $('[data-toggle="validate"]').each(function() {
  * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
  * @author banbian, zangtao.zt@alibaba-inc.com
  * @param opt.triggerEle {string} 触发弹出图片空间插件弹层的元素的css选择器，通常是一些按钮、文字链
+ * @param opt.tab {string} 图片空间打开时默认展现的标签页,默认是'list'， 取值为'list'或'upload'
  * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
  * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
  * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
@@ -7966,7 +7967,7 @@ $('[data-toggle="validate"]').each(function() {
  */
 
 //加载图片空间插件js
-jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
+jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
 
 !function ($) {
   "use strict";
@@ -8133,7 +8134,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     if ($ele.data('toggle') == 'pic-uploader' && opt.needCrop) {
       pp._resizePreview(opt)
     }
-    
+
     function _bindTriggerClick() {
       $ele.off('click.pp').on('click.pp', function(e){
         e.preventDefault()
@@ -8166,13 +8167,12 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     $(opt.triggerEle).css({
       height: previewHeight,
       width: opt.previewWidth || (previewHeight * aspectRatio)
-    }) 
+    })
   }
 
   pp.show = function(arg0) {
     // 判断如果第一个参数是json对象，则视为options，如果不是，则作为ppid并依次获取options
     var opt = typeof arg0 == 'object' ? arg0 : this[arg0]
-    console.log(opt)
     $picDlg = $.confirm({
       title: '选择图片',
       body: '<div id="picPluginWrap"></div>',
@@ -8181,6 +8181,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
       shown: function(){
         pic = __picPlugin__.init({
           containerId: 'picPluginWrap',
+          tab: opt.tab || 'list',
           singleSelect: true
         })
         pp._bindEvents(opt.triggerEle)
