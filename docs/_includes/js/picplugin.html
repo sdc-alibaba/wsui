@@ -13,6 +13,7 @@
 /**
  * @file pic-uploader.js
  * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
+ * @param opt.tab {string} 图片空间打开时默认展现的标签页,默认是'list'， 取值为'list'或'upload'
  * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
  * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
  * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
@@ -38,7 +39,7 @@
       </div>
     </div>
     <br>
-    <div class="pic-uploader" data-toggle="pic-uploader" data-preview-height="150" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-crop-options='{"minSize": [200, 150]}'>
+    <div class="pic-uploader" data-toggle="pic-uploader" data-preview-height="150" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-crop-options='{"minSize": [200, 150]}' data-tab="upload">
       <i class="iconfont icon-add"></i>
       <input type="hidden" name="anyname2">
       <img alt="预览">
@@ -64,7 +65,7 @@
       </div>
     </div>
     <br>
-    <div class="pic-uploader" data-toggle="pic-uploader" data-preview-height="150" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-crop-options='{"minSize": [200, 150]}'>
+    <div class="pic-uploader" data-toggle="pic-uploader" data-preview-height="150" data-pic-min-size="[200, 200]" data-pic-max-size="[700, 700]" data-crop-options='{"minSize": [200, 150]}' data-tab="upload">
       <i class="iconfont icon-add"></i>
       <input type="hidden" name="anyname2">
       <img alt="预览">
