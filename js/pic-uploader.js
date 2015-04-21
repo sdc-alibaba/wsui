@@ -5,11 +5,13 @@
  * @brief 快速调用图片空间插件实现选择/上传/裁剪图片
  * @author banbian, zangtao.zt@alibaba-inc.com
  * @param opt.triggerEle {string} 触发弹出图片空间插件弹层的元素的css选择器，通常是一些按钮、文字链
- * @param opt.tab {string} 图片空间打开时默认展现的标签页,默认是'list'， 取值为'list'或'upload'
+ * @param opt.noTab {boolean} 图片空间ifame打开时,不显示顶部的切换tab，默认是false。此时如果想指定主内容区显示upload区或list区，需要配合tab参数指定
+ * @param opt.tab {string} 图片空间iframe打开时默认展现的标签页,默认是'list'， 取值为'list'或'upload'
  * @param opt.picMinSize {array} 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
  * @param opt.picMaxSize {array} 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
- * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+ * @param opt.previewHeight {number} 预览区高度，宽度会自动计算合适的值。用户也可以自行指定。
  * @param opt.needCrop {boolean} 是否需要在图片空间插件关闭后弹出图片裁剪弹层
+ * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
  * @param opt.cropOptions {json}裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
  * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
  * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
@@ -233,7 +235,8 @@ jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dat
       shown: function(){
         pic = __picPlugin__.init({
           containerId: 'picPluginWrap',
-          tab: opt.tab || 'list',
+          noTab: opt.noTab,
+          tab: opt.tab,
           singleSelect: true
         })
         pp._bindEvents(opt.triggerEle)
@@ -261,9 +264,11 @@ jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dat
     picMinSize: [50, 50], // 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
     picMaxSize: [1000, 1000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
     previewHeight: 100, // 预览区高度，宽度会自动计算合适的值。用户也可以自行指定。
-    cancel: $.noop, // 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
+    noTab: false,  //@param opt.noTab {boolean} 图片空间ifame打开时,不显示顶部的切换tab，默认是false。此时如果想指定主内容区显示upload区或list区，需要配合tab参数指定}
+    tab: 'list',  //图片空间ifame打开时,不显示顶部的切换tab，默认是false。此时如果想指定主内容区显示upload区或list区，需要配合tab参数指定
     needCrop: true, // 是否需要在图片空间插件关闭后弹出图片裁剪弹层
     cropOptions: {}, // 裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
+    cancel: $.noop, // 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
     cropInit: $.noop, // Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
     beforeSend: $.noop, // 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
     success: $.noop // 主流程完全顺利走完后的回调，第一个参数是图片url
