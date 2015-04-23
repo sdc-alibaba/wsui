@@ -185,7 +185,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     if ($ele.data('toggle') == 'pic-uploader' && opt.needCrop) {
       pp._resizePreview(opt)
     }
-    
+
     function _bindTriggerClick() {
       $ele.off('click.pp').on('click.pp', function(e){
         e.preventDefault()
@@ -218,7 +218,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
     $(opt.triggerEle).css({
       height: previewHeight,
       width: opt.previewWidth || (previewHeight * aspectRatio)
-    }) 
+    })
   }
 
   pp.show = function(arg0) {
@@ -258,7 +258,7 @@ jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType:
 
   $.fn.picUploader.defaults = {
     picMinSize: [50, 50], // 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
-    picMaxSize: [1000, 1000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+    picMaxSize: [10000, 10000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
     previewHeight: 100, // 预览区高度，宽度会自动计算合适的值。用户也可以自行指定。
     cancel: $.noop, // 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
     needCrop: true, // 是否需要在图片空间插件关闭后弹出图片裁剪弹层
