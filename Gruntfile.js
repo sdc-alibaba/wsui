@@ -53,8 +53,8 @@ module.exports = function (grunt) {
     // 'js/intro.js',
     'js/toast.js',
     'js/tag.js',
-    'js/pic-uploader.js',
-    'js/tagsinput.js'
+    'js/pic-uploader.js'
+    // 'js/tagsinput.js'
   ];
 
   // Project configuration.
