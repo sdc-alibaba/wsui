@@ -4900,6 +4900,11 @@ button.close {
 .pic-uploader.pic-preview:hover .operation {
   bottom: 0;
 }
+#J_cursize {
+  margin-left: 20px;
+  font-weight: 400;
+  color: #777;
+}
 .clearfix:before,
 .clearfix:after,
 .dl-horizontal dd:before,
