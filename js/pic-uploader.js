@@ -16,12 +16,12 @@
  * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
  * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
  * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url
- * @version 1.0.0
- * @date 2015-02-15
+ * @version 1.0.2
+ * @date 2015-04-23
  */
 
 //加载图片空间插件js
-jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
+jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
 
 !function ($) {
   "use strict";
@@ -62,21 +62,21 @@ jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dat
       }
 
       //如果对在图片空间选择的图片尺寸有限制：获取图片尺寸校验，再进行后续逻辑
-      //如果没有限制：直接执行后续逻辑
-      if (options.picMinSize || options.picMaxSize) {
-        var tmpImg = new Image()
-        tmpImg.onload = function(){
+      var tmpImg = new Image()
+      tmpImg.onload = function(){
+        if (options.picMinSize || options.picMaxSize) {
           if (validateSelectedImg(tmpImg.width, tmpImg.height)) {
             doCropOrSuccess()
           }
+        } else {
+          //如果没有限制：直接执行后续逻辑
+          doCropOrSuccess()
         }
-        tmpImg.onerror = function(){
-            $.toast('图片无效，请重新选择', 'danger')
-        }
-        tmpImg.src = url
-      } else {
-        doCropOrSuccess()
       }
+      tmpImg.onerror = function(){
+        $.toast('系统异常，请重新选择一次', 'danger')
+      }
+      tmpImg.src = url
 
       //校验图片宽高，返回值作为是否通过的判断
       function validateSelectedImg(w, h) {
@@ -104,39 +104,51 @@ jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dat
     var options = this[$(triggerEle).data('ppid')],
       self = this,
       jcrop,
+      onCropChange = function(c) {
+        $('#J_cursize').html(c.w.toFixed(0) + ' * ' + c.h.toFixed(0))
+      },
       cropdlg
     cropdlg = $.confirm({
-      title: '裁剪图片',
+      title: '裁剪图片<span id="J_cursize"></span>',
       //使用图片空间弹层的遮罩层即可
       backdrop: 'static',
       bgColor: 'rgba(0, 0, 0, 0)',
-      width: 450,
+      width: 550,
       keyboard: false,
       body: '<img class="originpic" src="' + imgurl + '"/>',
       show: function() {
         //裁剪组件初始化参数
         var cropOptions = $.extend({
           keySupport: false,
-          boxWidth: 400,
-          boxHeight: 400
+          boxWidth: 500,
+          boxHeight: 500,
+          onChange: onCropChange,
+          onSelect: onCropChange
         }, options.cropOptions)
         $(this).find('.originpic').Jcrop(cropOptions, function(){
           jcrop = this
+          // 修正jcrop bug，如果图片尺寸大于裁剪区container大小，则maxSize计算会出错，但minSize没问题。
+          if (cropOptions.maxSize) {
+            jcrop.setOptions({
+              maxSize: [cropOptions.maxSize[0] / jcrop.getScaleFactor()[0], cropOptions.maxSize[1] / jcrop.getScaleFactor()[1]]
+            })
+          }
           //执行初始化后的特殊逻辑控制回调
           options.cropInit && options.cropInit.call(self, jcrop)
         })
       },
       okHide: function() {
         var $ele = this.$element,
-          $okBtn = $ele.find('[data-ok]')
+          $okBtn = $ele.find('[data-ok]'),
+          sizeInfo = jcrop.tellSelect()
+        // 四舍五入取整
+        $.each(sizeInfo, function(k, v){
+          sizeInfo[k] = +v.toFixed(0)
+        })
         //防止多次提交裁剪请求
         if ($okBtn.hasClass('disabled')) return
 
-        var sendData = $.extend({}, jcrop.tellSelect(), {
-          picTfs: imgurl[0]
-          // @千驹，去掉token校验
-          // _tb_token_: $('#J_TB_TOKEN').val()
-        })
+        var sendData = $.extend({}, sizeInfo, { picTfs: imgurl[0] })
         if (options.beforeSend) {
           //beforeSend 回调调用方可以在最后return false来阻止后续的请求提交逻辑
           if (options.beforeSend.call(self, sendData) === false) return false;
@@ -150,7 +162,7 @@ jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dat
           if (res.success) {
             //手工调用的okHide不会再进okHide回调
             cropdlg.modal('okHide')
-            options.success && options.success.call(self, _getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'))
+            options.success && options.success.call(self, _getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'), res.data)
             //把之前隐藏的图片空间iframe和弹层关闭
             pic.close()
           } else {
@@ -262,7 +274,7 @@ jQuery.ajax('https://g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dat
 
   $.fn.picUploader.defaults = {
     picMinSize: [50, 50], // 从图片空间选择图片时的尺寸最小值，数组形式[宽，高]，例子： [200, 100]
-    picMaxSize: [1000, 1000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
+    picMaxSize: [10000, 10000], // 从图片空间选择图片时的尺寸最大值，数组形式[宽，高]，例子： [400, 200]
     previewHeight: 100, // 预览区高度，宽度会自动计算合适的值。用户也可以自行指定。
     noTab: false,  //@param opt.noTab {boolean} 图片空间ifame打开时,不显示顶部的切换tab，默认是false。此时如果想指定主内容区显示upload区或list区，需要配合tab参数指定}
     tab: 'list',  //图片空间ifame打开时,不显示顶部的切换tab，默认是false。此时如果想指定主内容区显示upload区或list区，需要配合tab参数指定

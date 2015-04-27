@@ -92,25 +92,29 @@
     window.onload = function() {
       var sizeArr = [200, 100]
       $('#pp').picUploader({
+        noTab: true,
         picMinSize: [400, 200],
+        picMaxSize: [5000, 5000],
         cropOptions: {
-          //allowSelect: false,
+          allowSelect: false,
           //minSize: sizeArr
-          //maxSize: sizeArr,
+          minSize: [140, 100],
+          maxSize: [200, 200]
           //aspectRatio: sizeArr[0] / sizeArr[1]
           //aspectRatio: 6
         },
         cropInit: function(instance) {
           //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
-          //instance.setSelect([0, 0].concat(sizeArr))
+          instance.setSelect([0, 0, 200, 120])
         },
         beforeSend: function(data) {
           console.log(data)
           //return false
         },
-        success: function(url) {
+        success: function(url, data) {
 
-          console.log('finally:   ' + url)
+          console.log('imgurl:   ' + url)
+          console.log(data)
           $('#imgwrap').html('<img src="' + url + '">')
           $('[name=persistence]').val(url)
         },
@@ -129,16 +133,20 @@
       window.onload = function() {
         var sizeArr = [200, 100]
         $('#pp').picUploader({
+          noTab: true,
           picMinSize: [400, 200],
-          // 下面传入的都是Jcrop插件的可用参数，详见http://deepliquid.com/content/Jcrop_Manual.html
+          picMaxSize: [2000, 2000],
           cropOptions: {
-            //allowSelect: false,
-            //裁剪的最新尺寸
+            allowSelect: false,
             //minSize: sizeArr
+            minSize: [140, 100],
+            maxSize: [500, 200]
+            //aspectRatio: sizeArr[0] / sizeArr[1]
+            //aspectRatio: 6
           },
           cropInit: function(instance) {
             //如果设置了allowSelect: false,用户无法取消/生成选区，所以需要初始化完成后生成一个选区
-            //instance.setSelect([0, 0].concat(sizeArr))
+            instance.setSelect([0, 0, 200, 120])
           },
           beforeSend: function(data) {
             console.log(data)
