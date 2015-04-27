@@ -21,7 +21,8 @@
  */
 
 //加载图片空间插件js
-jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
+var protocol = (location.protocol === 'https:' ? 'https' : 'http:');
+jQuery.ajax(protocol + '//g.alicdn.com/sj/pic/1.3.3/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
 
 !function ($) {
   "use strict";
