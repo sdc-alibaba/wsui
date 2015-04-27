@@ -1381,8 +1381,10 @@ $.extend($.fn, {
 	}
 });
 
-$('[data-toggle="validate"]').each(function() {
-  $(this).validate();
+$(function(){
+  $('[data-toggle="validate"]').each(function() {
+    $(this).validate();
+  })
 })
 
 }(window.jQuery, undefined);
