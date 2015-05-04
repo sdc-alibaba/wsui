@@ -7972,7 +7972,11 @@ $(function(){
 
 //加载图片空间插件js
 var protocol = (location.protocol === 'https:' ? 'https' : 'http:');
-jQuery.ajax(protocol + '//g.alicdn.com/sj/pic/1.3.3/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
+var picPluginUrl = location.hostname.indexOf('daily.taobao.net') > -1 ?
+                   '//g.assets.daily.taobao.net/sj/pic/1.3.4/static/seller-v2/js/api.js' :
+                   protocol + '//g.alicdn.com/sj/pic/1.3.4/static/seller-v2/js/api.js'
+
+jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
 
 !function ($) {
   "use strict";
