@@ -72,7 +72,7 @@ module.exports = function (grunt) {
     prefix: {
       options: {
         // 均有默认配置
-        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'icon', 'carousel', 'close', 'form', 'row-fluid', 'tag', 'label', 'container', 'container-fluid', 'row', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
+        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'select', 'icon', 'carousel', 'close', 'form',  'tag', 'label', 'container', 'container-fluid', 'row', 'row-fluid', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
         prefix: 'sui-'
       },
       css: {
