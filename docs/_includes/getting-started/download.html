@@ -27,6 +27,14 @@
 <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="http://g.alicdn.com/sui/sui3/0.0.8/js/sui-prefixed.min.js"></script>
 {% endhighlight %}
+  <h3 id="ie8">ie8 兼容性</h3>
+  <p>为了使在IE8中响应式栅格可以正常工作，以及可以使用HTML5的标签，你需要额外引入两个文件：</p>
+{% highlight html %}
+<!--[if lt IE 9]>
+<script src="../dist/js/lib/html5shiv.min.js"></script>
+<script src="../dist/js/lib/respond.min.js"></script>
+<![endif]-->
+{% endhighlight %}
   <h3 id="download" >下载</h1>
 
   <p class='alert alert-danger'>建议直接引用我们的CDN地址，保证稳定快速的访问，而不是把文件下载到本地或者传到你自己的服务器。</p>

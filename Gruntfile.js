@@ -301,8 +301,12 @@ module.exports = function (grunt) {
         src: 'fonts/*',
         dest: 'dist/'
       },
+      lib: {
+        src: ['js/lib/*.js'],
+        dest: 'dist/'
+      },
       docs: {
-        src: ['dist/*/*', 'download/**/*'],
+        src: ['dist/**/*', 'download/**/*'],
         dest: 'docs/'
       },
       old: {
@@ -517,7 +521,7 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   // grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:lib', 'copy:docs', 'build-glyphicons-data']);
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 
