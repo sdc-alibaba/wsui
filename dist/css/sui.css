@@ -533,7 +533,6 @@ ol ol {
   list-style: none;
 }
 .list-inline {
-  margin-left: -5px;
   list-style: none;
 }
 .list-inline > li {
@@ -2718,7 +2717,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #f23f40;
   text-decoration: none;
   background-color: #eee;
-  border-color: #eee;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -2778,7 +2776,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .tab-wraped > li > a:hover,
 .tab-wraped > li > a:focus {
   background: #fff;
-  border-color: #ddd;
 }
 .tab-wraped > li > a h4 {
   font-size: 16px;
@@ -4859,7 +4856,7 @@ button.close {
   cursor: pointer;
   border: 1px solid #ccc;
 }
-.pic-uploader > .iconfont {
+.pic-uploader > .wsif {
   font-size: 40px;
   color: #999;
 }
@@ -4891,7 +4888,7 @@ button.close {
   cursor: default;
   visibility: hidden;
 }
-.pic-uploader.pic-preview .icon-add {
+.pic-uploader.pic-preview .wsif-add {
   visibility: hidden;
 }
 .pic-uploader.pic-preview > img {

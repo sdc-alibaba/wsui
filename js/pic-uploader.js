@@ -21,7 +21,12 @@
  */
 
 //加载图片空间插件js
-jQuery.ajax('//g.alicdn.com/sj/pic/1.3.0/static/seller-v2/js/api.js', {dataType: 'script', cache: true})
+var protocol = (location.protocol === 'https:' ? 'https' : 'http:');
+var picPluginUrl = location.hostname.indexOf('daily.taobao.net') > -1 ?
+                   '//g.assets.daily.taobao.net/sj/pic/1.3.4/static/seller-v2/js/api.js' :
+                   protocol + '//g.alicdn.com/sj/pic/1.3.4/static/seller-v2/js/api.js'
+
+jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
 
 !function ($) {
   "use strict";
