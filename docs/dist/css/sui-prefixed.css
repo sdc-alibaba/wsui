@@ -4859,7 +4859,7 @@ button.sui-close {
   cursor: pointer;
   border: 1px solid #ccc;
 }
-.pic-uploader > .iconfont {
+.pic-uploader > .wsif {
   font-size: 40px;
   color: #999;
 }
@@ -4891,7 +4891,7 @@ button.sui-close {
   cursor: default;
   visibility: hidden;
 }
-.pic-uploader.pic-preview .icon-add {
+.pic-uploader.pic-preview .wsif-add {
   visibility: hidden;
 }
 .pic-uploader.pic-preview > img {
@@ -4899,6 +4899,11 @@ button.sui-close {
 }
 .pic-uploader.pic-preview:hover .operation {
   bottom: 0;
+}
+#J_cursize {
+  margin-left: 20px;
+  font-weight: 400;
+  color: #777;
 }
 .clearfix:before,
 .clearfix:after,
