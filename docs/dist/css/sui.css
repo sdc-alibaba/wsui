@@ -2717,7 +2717,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #f23f40;
   text-decoration: none;
   background-color: #eee;
-  border-color: #eee;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -2777,7 +2776,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .tab-wraped > li > a:hover,
 .tab-wraped > li > a:focus {
   background: #fff;
-  border-color: #ddd;
 }
 .tab-wraped > li > a h4 {
   font-size: 16px;
