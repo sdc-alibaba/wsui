@@ -533,7 +533,6 @@ ol ol {
   list-style: none;
 }
 .list-inline {
-  margin-left: -5px;
   list-style: none;
 }
 .list-inline > li {
