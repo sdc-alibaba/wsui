@@ -1,23 +1,23 @@
 <div class="bs-docs-section">
-  <h1 id="js-overview" class="page-header">Overview</h1>
+  <h1 id="js-overview" class="page-header">概览</h1>
 
-  <h3 id="js-individual-compiled">Individual or compiled</h3>
-  <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
+  <h3 id="js-individual-compiled">单独引用 或 编译后引用</h3>
+  <p>使用Javascripts插件时，可以引用单独的文件（使用Bootstrap的<code>*.js</code>文件），或者一次性引用全部文件（使用<code>bootstrap.js</code>,或者压缩版的<code>bootstrap.min.js</code>。</p>
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-not-both">
-    <h4>Using the compiled JavaScript</h4>
-    <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
+    <h4>使用编译后的JavaScript</h4>
+    <p><code>bootstrap.js</code>和<code>bootstrap.min.js</code>都包含了所有插件，引用其中的一个即可。</p>
   </div>
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-dependencies">
-    <h4>Plugin dependencies</h4>
-    <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
+    <h4>插件依赖关系</h4>
+    <p>一些插件和CSS依赖于其他插件。如果您采用单独引用插件的方式，请查看文档以确保插件之间的依赖关系。需要注意的时，所有插件都依赖于jQuery（也就是说页面中jQuery文件的引用必须在插件文件<strong>之前</strong>）。 <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">查看<code>bower.json</code></a>文件，看一下支持哪些版本的jQuery。</p>
   </div>
 
-  <h3 id="js-data-attrs">Data attributes</h3>
-  <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
+  <h3 id="js-data-attrs">Data属性</h3>
+  <p>你可以仅仅通过data属性API来使用javascript组件，不需要写任何一行javascript代码。 这是Bootstrap中的一等API，而且这也是你使用Bootstrap插件时的首选方式。</p>
 
-  <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:</p>
+  <p>然而，在有些情况下希望关掉此功能。因此，我们提供了解除data属性API的方法，即解除<code>data-api</code>命名空间绑定在文档上的事件。就像下面这样:</p>
 {% highlight js %}
 $(document).off('.data-api')
 {% endhighlight %}
