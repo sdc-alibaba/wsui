@@ -4897,7 +4897,7 @@ button.close {
 .pic-uploader.pic-preview:hover .operation {
   bottom: 0;
 }
-#J_cursize {
+.current-size {
   margin-left: 20px;
   font-weight: 400;
   color: #777;
