@@ -262,7 +262,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
       hide: function() {
         opt.cancel && opt.cancel.call(null, opt.triggerEle)
       },
-      cancelHidden: function() {
+      cancelHide: function() {
         pic && pic.close();
       }
     })
