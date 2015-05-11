@@ -40,13 +40,17 @@ textarea {
 // Links
 
 a {
-  color: @link-color;
+  color: #666;
   text-decoration: none;
 
-  &:hover,
-  &:focus {
-    color: @link-hover-color;
-    text-decoration: @link-hover-decoration;
+  &:hover, &:active, &:focus {
+    color: @link-color;
+  }
+
+  &.text-primary {
+    &:hover, &:active, &:focus {
+      color: @link-hover-color;
+    }
   }
 
   &:focus {
