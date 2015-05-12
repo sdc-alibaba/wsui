@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @import "//at.alicdn.com/t/font_1428634097_9316366.css";
+=======
+>>>>>>> origin/master
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -705,6 +708,56 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
+<<<<<<< HEAD
+=======
+@font-face {
+  font-family: 'iconfont';
+
+  src: url('//at.alicdn.com/t/font_1428634097_5624354.eot');
+  src: url('//at.alicdn.com/t/font_1428634097_5624354.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//at.alicdn.com/t/font_1428634097_5624354.woff') format('woff'), /* chrome、firefox */ url('//at.alicdn.com/t/font_1428634097_5624354.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//at.alicdn.com/t/font_1428634097_5624354.svg#iconfont') format('svg');
+
+  /* IE9*/
+  /* iOS 4.1- */
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: .2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-close:before {
+  content: "\e609";
+}
+.icon-check-round-sign:before {
+  content: "\e602";
+}
+.icon-check-round:before {
+  content: "\e603";
+}
+.icon-close-round-sign:before {
+  content: "\e604";
+}
+.icon-close-round:before {
+  content: "\e608";
+}
+.icon-new:before {
+  content: "\e601";
+}
+.icon-success:before {
+  content: "\e605";
+}
+.icon-danger:before {
+  content: "\e606";
+}
+.icon-warning:before {
+  content: "\e607";
+}
+.icon-add:before {
+  content: "\e600";
+}
+>>>>>>> origin/master
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -7634,6 +7687,15 @@ tr.introjs-showElement > th {
 .toast-danger {
   background: #ea4a36;
 }
+<<<<<<< HEAD
+=======
+/*.modal-out {
+
+}*/
+/*.show-close-btn button{
+	display: block;
+}*/
+>>>>>>> origin/master
 .tagsinput {
   max-width: 100%;
   cursor: text;
@@ -7707,7 +7769,11 @@ tr.introjs-showElement > th {
 .pic-uploader.pic-preview:hover .operation {
   bottom: 0;
 }
+<<<<<<< HEAD
 #J_cursize {
+=======
+.current-size {
+>>>>>>> origin/master
   margin-left: 20px;
   font-weight: 400;
   color: #777;

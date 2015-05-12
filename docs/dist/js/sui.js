@@ -1,19 +1,19 @@
 // classmapstart
 
 window.CLASSMAP = {
-  alert: 'sui-alert',
-  close: 'sui-close',
-  btn: 'sui-btn',
-  modal: 'sui-modal',
-  carousel: 'sui-carousel',
-  panel: 'sui-panel',
-  dropdown: 'sui-dropdown',
-  dropdownMenu: 'sui-dropdown-menu',
-  popover: 'sui-popover',
-  tooltip: 'sui-tooltip',
-  nav: 'sui-nav',
-  pagination: 'sui-pagination',
-  tagGroup: 'sui-tag-group'
+  alert: 'alert',
+  close: 'close',
+  modal: 'modal',
+  btn: 'btn',
+  carousel: 'carousel',
+  panel: 'panel',
+  dropdown: 'dropdown',
+  dropdownMenu: 'dropdown-menu',
+  popover: 'popover',
+  tooltip: 'tooltip',
+  nav: 'nav',
+  pagination: 'pagination',
+  tagGroup: 'tag-group'
 }
 
 /*jshint -W054 */
@@ -8060,19 +8060,11 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
       self = this,
       jcrop,
       onCropChange = function(c) {
-<<<<<<< HEAD
-        $('#J_cursize').html(c.w.toFixed(0) + ' * ' + c.h.toFixed(0))
-      },
-      cropdlg
-    cropdlg = $.confirm({
-      title: '裁剪图片<span id="J_cursize"></span>',
-=======
         $('.current-size').html(c.w.toFixed(0) + ' * ' + c.h.toFixed(0))
       },
       cropdlg
     cropdlg = $.confirm({
       title: '裁剪图片<span class="current-size"></span>',
->>>>>>> origin/master
       //使用图片空间弹层的遮罩层即可
       backdrop: 'static',
       bgColor: 'rgba(0, 0, 0, 0)',
@@ -8221,11 +8213,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
         opt.cancel && opt.cancel.call(null, opt.triggerEle)
       },
       cancelHide: function() {
-<<<<<<< HEAD
-        pic && pic.close()
-=======
         pic && pic.close();
->>>>>>> origin/master
       }
     })
   }
