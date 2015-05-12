@@ -8,6 +8,20 @@
   margin-bottom: @line-height-computed;
   background-color: @panel-bg;
   border: 1px solid transparent;
+
+  // 小号panel
+  &.panel-sm {
+    .panel-heading{
+      padding: @panel-sm-heading-padding;
+      font-size: @font-size-base;
+      .text-muted {
+        font-size: @font-size-small;
+      }
+    }
+    .panel-body {
+      padding: @panel-sm-body-padding;
+    }
+  }
 }
 
 // Panel contents
@@ -20,6 +34,12 @@
 .panel-heading {
   padding: @panel-heading-padding;
   border-bottom: 1px solid transparent;
+  font-size: @font-size-large;
+  color: #666;
+
+  .text-muted {
+    font-size: @font-size-base;
+  }
 
   > .dropdown .dropdown-toggle {
     color: inherit;
@@ -31,6 +51,7 @@
 }
 
 // Within heading, strip any `h*` tag of its default margins for spacing.
+/*
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
@@ -38,6 +59,7 @@
   color: inherit;
 
 }
+*/
 
 // Optional footer (stays gray in every modifier class)
 /*
@@ -145,3 +167,4 @@
   .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
 }
 */
+
