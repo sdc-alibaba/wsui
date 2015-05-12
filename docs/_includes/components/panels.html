@@ -25,12 +25,16 @@
   <p>为了确保样式正确，请把链接放入到 <code>.panel-title</code> 中.</p>
   <div class="bs-example" data-example-id="panel-with-heading">
     <div class="panel panel-default">
-      <div class="panel-heading">Panel heading without title</div>
+      <div class="panel-heading">
+        Panel title
+        <a href="#" class="pull-right">删除</a>
+      </div>
       <div class="panel-body">
         Panel content
       </div>
     </div>
-    <div class="panel panel-default">
+    <p>为panel添加<code>panel-toggle</code>的class，可以是panel获得hover切换样式的功能</p>
+    <div class="panel panel-default panel-toggle">
       <div class="panel-heading">
         <h3 class="panel-title">Panel title</h3>
       </div>
@@ -41,13 +45,16 @@
   </div>
 {% highlight html %}
 <div class="panel panel-default">
-  <div class="panel-heading">Panel heading without title</div>
+  <div class="panel-heading">
+    Panel  title
+    <a href="#" class="pull-right">删除</a>
+  </div>
   <div class="panel-body">
     Panel content
   </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default panel-toggle">
   <div class="panel-heading">
     <h3 class="panel-title">Panel title</h3>
   </div>
@@ -57,6 +64,7 @@
 </div>
 {% endhighlight %}
 
+<!--
   <h3 id="panels-footer">带脚部</h3>
   <p>你可以把一些按钮或者文案放入到 <code>.panel-footer</code> 中。注意，footer <strong>没有</strong> 从上下文中继承相关颜色。</p>
   <div class="bs-example" data-example-id="panel-with-footer">
@@ -76,6 +84,7 @@
 </div>
 {% endhighlight %}
 
+-->
   <h3 id="panels-alternatives">不同上下文颜色</h3>
   <p>就像其他组件一样，你可以通过加上不同的类变成不同的上下文颜色。</p>
   <div class="bs-example" data-example-id="contextual-panels">
@@ -203,6 +212,7 @@
 {% endhighlight %}
 
 
+<!--
   <h3 id="panels-list-group">结合列表组</h3>
   <p>轻松无缝集成 <a href="#list-group">列表组</a>.</p>
   <div class="bs-example" data-example-id="panel-with-list-group">
@@ -241,4 +251,5 @@
   </ul>
 </div>
 {% endhighlight %}
+-->
 </div>
