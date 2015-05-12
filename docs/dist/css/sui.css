@@ -277,13 +277,18 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #f23f40;
+  color: #666;
   text-decoration: none;
 }
 a:hover,
+a:active,
 a:focus {
+  color: #f23f40;
+}
+a.text-primary:hover,
+a.text-primary:active,
+a.text-primary:focus {
   color: #f00;
-  text-decoration: underline;
 }
 a:focus {
   outline: thin dotted;
@@ -454,7 +459,7 @@ small,
   color: #333;
 }
 .text-muted {
-  color: #777;
+  color: #999;
 }
 .text-primary {
   color: #f23f40;
@@ -2219,7 +2224,6 @@ select:-moz-focusring {
 .btn:focus,
 .btn.focus {
   color: #f00;
-  text-decoration: none;
   border-color: #f00;
 }
 .btn:active,
@@ -2261,7 +2265,6 @@ select:-moz-focusring {
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  text-decoration: none;
   background: #f00;
   border-color: #f00;
 }
@@ -2447,14 +2450,12 @@ tbody.collapse.in {
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   color: #f23f40;
-  text-decoration: none;
   background-color: #fff;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
   color: #fff;
-  text-decoration: none;
   background-color: #f23f40;
   outline: 0;
 }
@@ -2465,7 +2466,6 @@ tbody.collapse.in {
 }
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
-  text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
   background-image: none;
@@ -2715,7 +2715,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   color: #f23f40;
-  text-decoration: none;
   background-color: #eee;
 }
 .nav > li.disabled > a {
@@ -2724,7 +2723,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li.disabled > a:hover,
 .nav > li.disabled > a:focus {
   color: #777;
-  text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
 }
@@ -2867,7 +2865,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 28px;
   color: #666;
   text-align: center;
-  text-decoration: none;
   background-color: #fff;
   border: 1px solid #ccc;
   transition: all .1s linear;
@@ -2939,7 +2936,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   width: 38px;
   height: 22px;
   margin: 0 5px;
+  margin-top: -1px;
   color: #666;
+  vertical-align: middle\9;
   border: 1px solid #ccc;
   outline: none;
 }
@@ -2967,7 +2966,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 a.label:hover,
 a.label:focus {
   color: #fff;
-  text-decoration: none;
   cursor: pointer;
 }
 .label:empty {
@@ -3139,7 +3137,6 @@ a.label:focus {
 a.badge:hover,
 a.badge:focus {
   color: #fff;
-  text-decoration: none;
   cursor: pointer;
 }
 .list-group-item.active > .badge,
@@ -3355,7 +3352,6 @@ a.list-group-item .list-group-item-heading {
 a.list-group-item:hover,
 a.list-group-item:focus {
   color: #555;
-  text-decoration: none;
   background-color: #f5f5f5;
 }
 .list-group-item.disabled,
@@ -3500,12 +3496,27 @@ a.list-group-item-danger.active:focus {
   background-color: #fff;
   border: 1px solid transparent;
 }
+.panel.panel-sm .panel-heading {
+  padding: 9px 14px;
+  font-size: 14px;
+}
+.panel.panel-sm .panel-heading .text-muted {
+  font-size: 12px;
+}
+.panel.panel-sm .panel-body {
+  padding: 15px;
+}
 .panel-body {
-  padding: 23px 20px 20px;
+  padding: 20px;
 }
 .panel-heading {
   padding: 12px 20px;
+  font-size: 16px;
+  color: #666;
   border-bottom: 1px solid transparent;
+}
+.panel-heading .text-muted {
+  font-size: 14px;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -3513,17 +3524,22 @@ a.list-group-item-danger.active:focus {
 .panel-heading[data-toggle="collapse"] {
   cursor: row-resize;
 }
+/*
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: @font-size-large;
   color: inherit;
+
 }
+*/
+/*
 .panel-footer {
-  padding: 15px 20px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
+  padding: @panel-footer-padding;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-inner-border;
 }
+*/
 .panel > .list-group,
 .panel > .panel-collapse > .list-group {
   margin-bottom: 0;
@@ -3543,11 +3559,21 @@ a.list-group-item-danger.active:focus {
 .panel-heading + .list-group .list-group-item:first-child {
   border-top-width: 0;
 }
+/*
 .list-group + .panel-footer {
   border-top-width: 0;
 }
+*/
 .panel-group {
   margin-bottom: 21px;
+  /*
+  .panel-footer {
+    border-top: 0;
+    + .panel-collapse .panel-body {
+      border-bottom: 1px solid @panel-inner-border;
+    }
+  }
+  */
 }
 .panel-group .panel {
   margin-bottom: 0;
@@ -3562,21 +3588,12 @@ a.list-group-item-danger.active:focus {
 .panel-group .panel-heading + .panel-collapse > .list-group {
   border-top: 1px solid #ddd;
 }
-.panel-group .panel-footer {
-  border-top: 0;
-}
-.panel-group .panel-footer + .panel-collapse .panel-body {
-  border-bottom: 1px solid #ddd;
-}
 .panel-default {
   background: #f7f7f7;
   border-color: transparent;
 }
 .panel-default > .panel-heading {
   background-color: #ededed;
-}
-.panel-default > .panel-heading a {
-  color: #999;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: transparent;
@@ -3590,9 +3607,6 @@ a.list-group-item-danger.active:focus {
 }
 .panel-primary > .panel-heading {
   background-color: #fff3f3;
-}
-.panel-primary > .panel-heading a {
-  color: #f23f40;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #fbcccc;
@@ -3654,7 +3668,6 @@ iframe {
 .close:hover,
 .close:focus {
   color: #ff5050;
-  text-decoration: none;
   cursor: pointer;
 }
 button.close {
@@ -4108,7 +4121,6 @@ button.close {
 .tooltip .tooltip-inner {
   padding: 9px 11px;
   text-align: left;
-  text-decoration: none;
 }
 .tooltip-arrow {
   position: absolute;
@@ -4144,7 +4156,6 @@ button.close {
 .tooltip-only-arrow .tooltip-inner {
   padding: 9px 11px;
   text-align: left;
-  text-decoration: none;
 }
 .tooltip.tooltip-default,
 .tooltip-only-arrow.tooltip-default {
@@ -4406,7 +4417,6 @@ button.close {
 .carousel-control:hover,
 .carousel-control:focus {
   color: #fff;
-  text-decoration: none;
   filter: alpha(opacity=90);
   outline: 0;
   opacity: .9;
@@ -4897,7 +4907,7 @@ button.close {
 .pic-uploader.pic-preview:hover .operation {
   bottom: 0;
 }
-#J_cursize {
+.current-size {
   margin-left: 20px;
   font-weight: 400;
   color: #777;
