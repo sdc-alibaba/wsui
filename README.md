@@ -1,7 +1,9 @@
 # 重要提示
 
-**dev** 为开发分支，开发新功能请从dev上切新分支。不要动 **master** 分支。
-因为CDN发布机制的问题，默认的npm配置是 `production`，只会安装发布需要的部分依赖，所以开发环境下请使用 `npm install --production=true` 来安装全部依赖。
+- **dev** 为开发分支，开发新功能请从dev上切新分支。不要动 **master** 分支。
+- 因为CDN发布机制的问题，默认的npm配置是 `production`，只会安装发布需要的部分依赖，所以开发环境下请使用 `npm install --production=false` 来安装全部依赖。
+- 建议使用 [淘宝的NPM源](http://npm.taobao.org/)，以提高安装速度。
+
 
 # [Bootstrap](http://getbootstrap.com)
 
