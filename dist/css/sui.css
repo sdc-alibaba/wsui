@@ -2404,6 +2404,16 @@ tbody.collapse.in {
   background-color: #fff;
   border: 1px solid #999;
 }
+.dropdown .dropdown-submenu {
+  position: relative;
+}
+.dropdown .dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+.dropdown .dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -2849,7 +2859,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .pagination ul {
   display: inline-block;
-  margin: 0 13px 0 0;
+  margin: 0 15px 0 0;
   vertical-align: middle;
 }
 .pagination li {
@@ -2927,6 +2937,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .pagination > div > .text-muted {
   margin: 0 4px;
+  color: #666;
 }
 .pagination > div > .text-muted + span {
   padding-left: 5px;

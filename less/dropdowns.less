@@ -39,7 +39,17 @@
     cursor: pointer;
   }
 }
-
+//submenu
+.dropdown .dropdown-submenu {
+  position: relative;
+}
+.dropdown .dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+.dropdown .dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
 // The dropdown menu (ul)
 .dropdown-menu {
   position: absolute;
