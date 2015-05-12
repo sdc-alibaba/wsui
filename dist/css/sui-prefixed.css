@@ -2404,6 +2404,16 @@ tbody.collapse.in {
   background-color: #fff;
   border: 1px solid #999;
 }
+.sui-dropdown .dropdown-submenu {
+  position: relative;
+}
+.sui-dropdown .dropdown-submenu > .sui-dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+.sui-dropdown .dropdown-submenu:hover > .sui-dropdown-menu {
+  display: block;
+}
 .sui-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -4879,7 +4889,7 @@ button.sui-close {
   height: 32px;
   line-height: 32px;
   background: #606060;
-  background: rgba(48, 48, 48, .5);
+  background: rgba(48, 48, 48, .7);
   transition: bottom .3s linear;
 }
 .pic-uploader .operation a {
@@ -4888,6 +4898,9 @@ button.sui-close {
   font-style: normal;
   color: #fff;
   cursor: pointer;
+}
+.pic-uploader .operation a:hover {
+  background: #f23f40;
 }
 .pic-uploader > img {
   position: absolute;
