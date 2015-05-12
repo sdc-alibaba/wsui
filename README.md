@@ -1,13 +1,7 @@
 # 重要提示
 
-__dev__ 分支为 __开发__ 分支主干。
-__master__ 分支为 __发布__ 分支主干。
-
-任何开发都汇总到dev分支。为方便diff，在dev分支的gitignore里添加了 _dist/_ 和 _docs/dist_ 目录，但在master分支里是没添加的，因为需要发布。所以开发完毕需要发布时操作如下：
-
-1. 更新master，基于master新建daily/x.y.z的新分支。（而不是基于dev新建）
-1. 在新的daily分支上merge dev分支的最新修改，然后执行一次grunt（生成新的dist目录）
-1. 常规流程发布
+**dev** 为开发分支，开发新功能请从dev上切新分支。不要动 **master** 分支。
+因为CDN发布机制的问题，默认的npm配置是 `production`，只会安装发布需要的部分依赖，所以开发环境下请使用 `npm install --production=true` 来安装全部依赖。
 
 # [Bootstrap](http://getbootstrap.com)
 
