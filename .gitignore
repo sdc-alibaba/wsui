@@ -1,3 +1,4 @@
+.package
 dist/
 docs/dist/
 # Ignore docs files

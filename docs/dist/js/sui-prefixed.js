@@ -8213,7 +8213,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
         opt.cancel && opt.cancel.call(null, opt.triggerEle)
       },
       cancelHide: function() {
-        pic && pic.close();
+        pic && pic.close()
       }
     })
   }

@@ -17,8 +17,6 @@ module.exports = function (grunt) {
     var parser = new BsLessdocParser(fileContent);
     return { sections: parser.parseFile() };
   };
-  var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
-  var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
   Object.keys(configBridge.paths).forEach(function (key) {
@@ -54,16 +52,19 @@ module.exports = function (grunt) {
     'js/tagsinput.js'
   ];
 
+  var buildTo = grunt.option('buildTo');
+
   // Project configuration.
   grunt.initConfig({
 
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
+    dist: buildTo || 'dist',
     // jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
 
     // Task configuration.
     clean: {
-      dist: 'dist',
+      dist: '<%= dist %>',
       docs: 'docs/dist'
     },
 
@@ -76,7 +77,7 @@ module.exports = function (grunt) {
       css: {
         expand: true,
         cwd: './',
-        src: ['dist/css/**/*.css'],
+        src: ['<%=dist%>/css/**/*.css'],
         dest: './',
         ext: '-prefixed.css'
       }
@@ -132,11 +133,11 @@ module.exports = function (grunt) {
       },
       sui: {
         src: ['js/classmap.js'].concat(jsList),
-        dest: 'dist/js/<%= pkg.name %>.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>.js'
       },
       suiPrefixed: {
         src: ['js/classmap-sui.js'].concat(jsList),
-        dest: 'dist/js/<%= pkg.name %>-prefixed.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>-prefixed.js'
       }
     },
 
@@ -146,11 +147,11 @@ module.exports = function (grunt) {
       },
       core: {
         src: '<%= concat.sui.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>.min.js'
       },
       corePrefixed: {
         src: '<%= concat.suiPrefixed.dest %>',
-        dest: 'dist/js/<%= pkg.name %>-prefixed.min.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>-prefixed.min.js'
       },
       customize: {
         src: configBridge.paths.customizerJs,
@@ -176,10 +177,10 @@ module.exports = function (grunt) {
           sourceMap: true,
           outputSourceFiles: true,
           sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+          sourceMapFilename: '<%=dist%>/css/<%= pkg.name %>.css.map'
         },
         src: 'less/sui.less',
-        dest: 'dist/css/<%= pkg.name %>.css'
+        dest: '<%=dist%>/css/<%= pkg.name %>.css'
       },
       compileTheme: {
         options: {
@@ -187,10 +188,10 @@ module.exports = function (grunt) {
           sourceMap: true,
           outputSourceFiles: true,
           sourceMapURL: '<%= pkg.name %>-theme.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
+          sourceMapFilename: '<%=dist%>/css/<%= pkg.name %>-theme.css.map'
         },
         src: 'less/theme.less',
-        dest: 'dist/css/<%= pkg.name %>-theme.css'
+        dest: '<%=dist%>/css/<%= pkg.name %>-theme.css'
       }
     },
 
@@ -226,8 +227,8 @@ module.exports = function (grunt) {
         csslintrc: 'less/.csslintrc'
       },
       dist: [
-        'dist/css/sui.css',
-        'dist/css/sui-theme.css'
+        '<%=dist%>/css/sui.css',
+        '<%=dist%>/css/sui-theme.css'
       ],
       examples: [
         'docs/examples/**/*.css'
@@ -248,20 +249,20 @@ module.exports = function (grunt) {
         advanced: false
       },
       minifyCore: {
-        src: 'dist/css/<%= pkg.name %>.css',
-        dest: 'dist/css/<%= pkg.name %>.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>.min.css'
       },
       minifyTheme: {
-        src: 'dist/css/<%= pkg.name %>-theme.css',
-        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>-theme.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>-theme.min.css'
       },
       minifyCorePrefixed: {
-        src: 'dist/css/<%= pkg.name %>-prefixed.css',
-        dest: 'dist/css/<%= pkg.name %>-prefixed.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>-prefixed.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>-prefixed.min.css'
       },
       minifyThemePrefixed: {
-        src: 'dist/css/<%= pkg.name %>-theme-prefixed.css',
-        dest: 'dist/css/<%= pkg.name %>-theme-prefixed.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>-theme-prefixed.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>-theme-prefixed.min.css'
       },
       docs: {
         src: [
@@ -278,9 +279,9 @@ module.exports = function (grunt) {
       },
       dist: {
         expand: true,
-        cwd: 'dist/css/',
+        cwd: '<%=dist%>/css/',
         src: ['*.css', '!*.min.css'],
-        dest: 'dist/css/'
+        dest: '<%=dist%>/css/'
       },
       examples: {
         expand: true,
@@ -297,19 +298,19 @@ module.exports = function (grunt) {
     copy: {
       fonts: {
         src: 'fonts/*',
-        dest: 'dist/'
+        dest: '<%=dist%>/'
       },
       lib: {
         src: ['js/lib/*.js'],
-        dest: 'dist/'
+        dest: '<%=dist%>/'
       },
       docs: {
-        src: ['dist/**/*', 'download/**/*'],
+        src: ['<%=dist%>/**/*', 'download/**/*'],
         dest: 'docs/'
       },
       old: {
         src: ['old/*/*'],
-        dest: 'dist/'
+        dest: '<%=dist%>/'
       }
     },
 
@@ -346,24 +347,6 @@ module.exports = function (grunt) {
       customizerNav: {
         src: 'docs/_jade/customizer-nav.jade',
         dest: 'docs/_includes/nav/customize.html'
-      }
-    },
-
-    validation: {
-      options: {
-        charset: 'utf-8',
-        doctype: 'HTML5',
-        failHard: true,
-        reset: true,
-        relaxerror: [
-          'Element img is missing required attribute src.',
-          'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.',
-          'Bad value separator for attribute role on element li.'
-        ]
-      },
-      files: {
-        src: '_gh_pages/**/*.html'
       }
     },
 
@@ -406,7 +389,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'dist/',
+            cwd: '<%=dist%>/',
             src: ['**'],
             dest: 'sui-<%= pkg.version %>-dist'
           }
@@ -418,8 +401,13 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
-  require('time-grunt')(grunt);
+
+  if (buildTo) {
+    require('load-grunt-tasks')(grunt, { scope: ['dependencies'] });
+  } else {
+    require('load-grunt-tasks')(grunt);
+    require('time-grunt')(grunt);
+  }
 
   // Docs HTML validation task
   // grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
@@ -453,7 +441,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'prefix:css']);
@@ -463,7 +451,11 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js', 'copy:docs']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'copy:docs']);
+  if (buildTo) {
+    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'dist-css', 'dist-js']);
+  } else {
+    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'copy:docs']);
+  }
 
   // 自动为产出文件和文档补全sui-前缀
   grunt.loadNpmTasks('prefix-cssclass');
@@ -472,20 +464,9 @@ module.exports = function (grunt) {
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
 
-  grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
-
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
   grunt.registerTask('build-customizer-html', 'jade');
-  grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
-    generateRawFiles(grunt, '');
-  });
-
-  grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var srcFiles = grunt.config.get('concat.sui.src');
-    var destFilepath = 'dist/js/npm.js';
-    generateCommonJSModule(grunt, srcFiles, destFilepath);
-  });
 
   // Docs task.
   grunt.registerTask('docs-css', ['csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
