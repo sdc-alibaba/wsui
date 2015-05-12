@@ -2404,6 +2404,16 @@ tbody.collapse.in {
   background-color: #fff;
   border: 1px solid #999;
 }
+.sui-dropdown .dropdown-submenu {
+  position: relative;
+}
+.sui-dropdown .dropdown-submenu > .sui-dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+.sui-dropdown .dropdown-submenu:hover > .sui-dropdown-menu {
+  display: block;
+}
 .sui-dropdown-menu {
   position: absolute;
   top: 100%;
