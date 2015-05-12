@@ -2404,12 +2404,16 @@ tbody.collapse.in {
   background-color: #fff;
   border: 1px solid #999;
 }
+.dropdown-toggle i.wsif {
+  color: #999;
+}
 .sui-dropdown .dropdown-submenu {
   position: relative;
 }
 .sui-dropdown .dropdown-submenu > .sui-dropdown-menu {
   top: 0;
   left: 100%;
+  margin: 0;
 }
 .sui-dropdown .dropdown-submenu:hover > .sui-dropdown-menu {
   display: block;
@@ -2431,9 +2435,6 @@ tbody.collapse.in {
   background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid #999;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
 .sui-dropdown-menu.pull-right {
   right: 0;
@@ -2459,6 +2460,10 @@ tbody.collapse.in {
 }
 .sui-dropdown-menu > li > a:hover,
 .sui-dropdown-menu > li > a:focus {
+  color: #f23f40;
+  background-color: #fff;
+}
+.sui-dropdown-menu > li:hover > a {
   color: #f23f40;
   background-color: #fff;
 }
@@ -2792,10 +2797,10 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   border-left: 1px solid #ddd;
 }
 .tab-wraped > li.active > a {
-  padding: 1px;
+  padding: 1px 2px 2px;
   margin: 0 -1px;
   background: #fff;
-  border-top: 3px solid #f23f40 !important;
+  border-top: 2px solid #f23f40 !important;
   border-bottom: 1px solid #fff;
 }
 .tab-wraped > li ul {
