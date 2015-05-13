@@ -4179,12 +4179,12 @@ button.close {
 }
 .tooltip.tooltip-default,
 .tooltip-only-arrow.tooltip-default {
-  border: 2px solid #b2b2b2;
-  border-radius: 2px;
+  border: 1px solid #b2b2b2;
+  border-radius: 1px;
 }
 .tooltip.top > .tooltip-arrow,
 .tooltip-only-arrow.top > .tooltip-arrow {
-  bottom: -5px;
+  bottom: -6px;
   left: 50%;
   margin-left: -6px;
   border-width: 6px 6px 0;
@@ -4192,8 +4192,8 @@ button.close {
 }
 .tooltip.top > .tooltip-arrow .tooltip-arrow.cover,
 .tooltip-only-arrow.top > .tooltip-arrow .tooltip-arrow.cover {
-  top: -7px;
-  margin-left: -4px;
+  top: -8px;
+  margin-left: -6px;
   border-top-color: #fff;
 }
 .tooltip.top.tooltip-default .tooltip-arrow,
@@ -4219,15 +4219,15 @@ button.close {
 .tooltip.right > .tooltip-arrow,
 .tooltip-only-arrow.right > .tooltip-arrow {
   top: 50%;
-  left: -5px;
+  left: -6px;
   margin-top: -6px;
   border-width: 6px 6px 6px 0;
   border-right-color: #b2b2b2;
 }
 .tooltip.right > .tooltip-arrow .tooltip-arrow.cover,
 .tooltip-only-arrow.right > .tooltip-arrow .tooltip-arrow.cover {
-  left: 0;
-  margin-top: -4px;
+  left: -4px;
+  margin-top: -6px;
   border-right-color: #fff;
 }
 .tooltip.right.tooltip-default .tooltip-arrow,
@@ -4253,15 +4253,15 @@ button.close {
 .tooltip.left > .tooltip-arrow,
 .tooltip-only-arrow.left > .tooltip-arrow {
   top: 50%;
-  right: -5px;
+  right: -6px;
   margin-top: -6px;
   border-width: 6px 0 6px 6px;
   border-left-color: #b2b2b2;
 }
 .tooltip.left > .tooltip-arrow .tooltip-arrow.cover,
 .tooltip-only-arrow.left > .tooltip-arrow .tooltip-arrow.cover {
-  left: -7px;
-  margin-top: -4px;
+  left: -8px;
+  margin-top: -6px;
   border-left-color: #fff;
 }
 .tooltip.left.tooltip-default .tooltip-arrow,
@@ -4286,7 +4286,7 @@ button.close {
 }
 .tooltip.bottom > .tooltip-arrow,
 .tooltip-only-arrow.bottom > .tooltip-arrow {
-  top: -5px;
+  top: -6px;
   left: 50%;
   margin-left: -6px;
   border-width: 0 6px 6px;
@@ -4294,8 +4294,8 @@ button.close {
 }
 .tooltip.bottom > .tooltip-arrow .tooltip-arrow.cover,
 .tooltip-only-arrow.bottom > .tooltip-arrow .tooltip-arrow.cover {
-  top: 0;
-  margin-left: -4px;
+  top: -4px;
+  margin-left: -6px;
   border-bottom-color: #fff;
 }
 .tooltip.bottom.tooltip-default .tooltip-arrow,
@@ -4320,7 +4320,7 @@ button.close {
 }
 .tooltip .tooltip-arrow.cover,
 .tooltip-only-arrow .tooltip-arrow.cover {
-  border-width: 4px;
+  border-width: 6px;
 }
 .carousel {
   position: relative;
