@@ -1898,7 +1898,6 @@ fieldset[disabled] .checkbox label {
   padding: 0 6px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
 textarea.input-sm,
 select[multiple].input-sm {
@@ -1909,7 +1908,6 @@ select[multiple].input-sm {
   padding: 0 6px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
 textarea.form-group-sm .form-control,
 select[multiple].form-group-sm .form-control {
@@ -1920,7 +1918,6 @@ select[multiple].form-group-sm .form-control {
   padding: 4px 14px;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
 }
 textarea.input-lg,
 select[multiple].input-lg {
@@ -1931,7 +1928,6 @@ select[multiple].input-lg {
   padding: 4px 14px;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
 }
 textarea.form-group-lg .form-control,
 select[multiple].form-group-lg .form-control {
@@ -2084,7 +2080,6 @@ select[multiple].form-group-lg .form-control {
   width: 100%;
   margin: 0;
   border: 1px solid #ccc;
-  border-radius: 2px;
 }
 .sui-select .wsif-unfold {
   position: absolute;
@@ -2575,7 +2570,6 @@ tbody.collapse.in {
   padding: 4px 14px;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -2595,7 +2589,6 @@ select[multiple].input-group-lg > .input-group-btn > .sui-btn {
   padding: 0 6px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon-count,
@@ -2845,7 +2838,6 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   padding: 9px 15px;
   margin-bottom: 21px;
   list-style: none;
-  border-radius: 3px;
 }
 .sui-breadcrumb > li {
   display: inline-block;
@@ -3198,7 +3190,6 @@ a.sui-thumbnail.active {
   padding: 13px;
   margin-bottom: 21px;
   border: 1px solid transparent;
-  border-radius: 2px;
 }
 .sui-alert h4 {
   margin-top: 0;
@@ -4894,7 +4885,7 @@ button.sui-close {
   height: 32px;
   line-height: 32px;
   background: #606060;
-  background: rgba(48, 48, 48, .7);
+  background: rgba(48, 48, 48, .6);
   transition: bottom .3s linear;
 }
 .pic-uploader .operation a {
