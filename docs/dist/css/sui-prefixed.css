@@ -2405,6 +2405,7 @@ tbody.collapse.in {
   border: 1px solid #999;
 }
 .dropdown-toggle i.wsif {
+  margin-left: 20px;
   color: #999;
 }
 .sui-dropdown .dropdown-submenu {
