@@ -16,14 +16,23 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
           <li role="presentation" class="dropdown-submenu">
-            <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
+            <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">
+              <i class="wsif wsif-iconfontrignt pull-right"></i> Separated link</a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="subdropdown">
               <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
-              <!-- <li role="presentation" class="divider"></li> -->
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
+              <li role="presentation" class="dropdown-submenu">
+                <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">
+                  <i class="wsif wsif-iconfontrignt pull-right"></i>Separated link</a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="subdropdown">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
@@ -51,7 +60,24 @@
   </a>
 
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-    ...
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
+    <li role="presentation" class="dropdown-submenu">
+      <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">
+        <i class="wsif wsif-iconfontrignt pull-right"></i> Separated link
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="subdropdown">
+        <li role="presentation" class="dropdown-submenu">
+          <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">
+            <i class="wsif wsif-iconfontrignt pull-right"></i>Separated link
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="subdropdown">
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </div>
 {% endhighlight %}
