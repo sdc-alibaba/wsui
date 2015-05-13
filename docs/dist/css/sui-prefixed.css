@@ -4037,6 +4037,9 @@ button.sui-close {
   line-height: normal;
   outline: 0;
 }
+.modal-header .sui-close.wsif-close {
+  display: none;
+}
 .modal-title {
   margin: 0;
   color: #666;

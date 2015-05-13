@@ -1079,6 +1079,7 @@ window.CLASSMAP = {
         + '<div class="modal-content">'
           + '<div class="modal-header">'
             + '<button type="button" class="' + CLASSMAP.close + '" data-dismiss="modal" aria-hidden="true">&times;</button>'
+            + '<i class="wsif wsif-close close"></i>'
             + '<h4 class="modal-title"><%=title%></h4>'
           + '</div>'
           + '<div class="modal-body"><%=body%></div>'
