@@ -117,7 +117,7 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @form-padding-base-horizontal;
+  padding: @padding-base-vertical (@form-padding-base-horizontal - 2px);
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
@@ -364,7 +364,7 @@ input[type="checkbox"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small;);
+  .input-size(@input-height-small; @padding-small-vertical; (@padding-small-horizontal - 5px); @font-size-small; @line-height-small;);
 }
 .form-group-sm {
   .form-control {
@@ -373,7 +373,7 @@ input[type="checkbox"] {
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large;);
+  .input-size(@input-height-large; @padding-large-vertical; (@padding-large-horizontal - 7px); @font-size-large; @line-height-large;);
 }
 .form-group-lg {
   .form-control {
