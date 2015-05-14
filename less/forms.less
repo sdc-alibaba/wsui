@@ -334,6 +334,48 @@ input[type="checkbox"] {
   }
 }
 
+//Checkbox with tag
+
+.checkbox .tag{
+  // position: relative;
+  span{
+    display: inline-block;
+    padding:4px 12px 2px;
+    border: 1px solid #999;
+    position: relative;
+  }
+}
+
+.checkbox .tag input[type="checkbox"]:checked{
+  &+span{
+    border:1px solid #f23f40;  
+    .wsif-tick{
+      position: absolute;
+      right: -.5px;
+      bottom:4px;
+      display: inline-block;
+      color: #f23f40;
+      height: 18px;
+      width: 18px;
+      font-size: 18px;
+    }
+  }
+}
+
+.checkbox .tag span:before{
+  content: '';
+  margin: 0;
+}
+
+.checkbox .tag input[type="checkbox"]:checked + span:before, .checkbox-inline .tag input[type="checkbox"]:checked + span:before{
+  content: '';
+  margin: 0;
+}
+
+.checkbox .tag .wsif-tick{
+  display: none;
+}
+
 
 // Static form control text
 //
