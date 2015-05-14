@@ -1883,10 +1883,8 @@ fieldset[disabled] .radio label,
 fieldset[disabled] .checkbox label {
   cursor: not-allowed;
 }
-.checkbox .tag {
-  position: relative;
-}
 .checkbox .tag span {
+  position: relative;
   display: inline-block;
   padding: 4px 12px 2px;
   border: 1px solid #999;
@@ -1894,9 +1892,9 @@ fieldset[disabled] .checkbox label {
 .checkbox .tag input[type="checkbox"]:checked + span {
   border: 1px solid #f23f40;
 }
-.checkbox .tag input[type="checkbox"]:checked + span + .wsif-tick {
+.checkbox .tag input[type="checkbox"]:checked + span .wsif-tick {
   position: absolute;
-  right: 1px;
+  right: -.5px;
   bottom: 4px;
   display: inline-block;
   width: 18px;

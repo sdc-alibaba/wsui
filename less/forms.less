@@ -337,20 +337,21 @@ input[type="checkbox"] {
 //Checkbox with tag
 
 .checkbox .tag{
-  position: relative;
+  // position: relative;
   span{
     display: inline-block;
     padding:4px 12px 2px;
     border: 1px solid #999;
+    position: relative;
   }
 }
 
 .checkbox .tag input[type="checkbox"]:checked{
   &+span{
     border:1px solid #f23f40;  
-    &+.wsif-tick{
+    .wsif-tick{
       position: absolute;
-      right: 1px;
+      right: -.5px;
       bottom:4px;
       display: inline-block;
       color: #f23f40;
