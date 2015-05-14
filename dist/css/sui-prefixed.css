@@ -1909,7 +1909,7 @@ fieldset[disabled] .checkbox label {
   content: '';
 }
 .checkbox .sui-tag input[type="checkbox"]:checked + span:before,
-.checkbox-inline input[type="checkbox"]:checked + span:before {
+.checkbox-inline .sui-tag input[type="checkbox"]:checked + span:before {
   margin: 0;
   content: '';
 }
