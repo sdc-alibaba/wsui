@@ -6274,6 +6274,8 @@ button.sui-close {
   position: relative;
   width: auto;
   margin: 10px;
+  margin-right: auto;
+  margin-left: auto;
   background-color: #fff;
   background-clip: padding-box;
   border: 5px solid #b2b2b2;
@@ -7680,12 +7682,6 @@ tr.introjs-showElement > th {
 .toast-danger {
   background: #ea4a36;
 }
-/*.modal-out {
-
-}*/
-/*.show-close-btn button{
-	display: block;
-}*/
 .tagsinput {
   max-width: 100%;
   cursor: text;
