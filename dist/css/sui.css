@@ -1691,7 +1691,7 @@ output {
   display: block;
   width: 100%;
   height: 31px;
-  padding: 4px 10px;
+  padding: 4px 8px;
   font-size: 14px;
   line-height: 1.5;
   color: #666;
@@ -1753,7 +1753,7 @@ input[type="search"] {
   .input-group-sm input[type="time"],
   .input-group-sm input[type="datetime-local"],
   .input-group-sm input[type="month"] {
-    line-height: 20px;
+    line-height: 22px;
   }
   input[type="date"].input-lg,
   input[type="time"].input-lg,
@@ -1763,7 +1763,7 @@ input[type="search"] {
   .input-group-lg input[type="time"],
   .input-group-lg input[type="datetime-local"],
   .input-group-lg input[type="month"] {
-    line-height: 34px;
+    line-height: 32px;
   }
 }
 .form-group {
@@ -1927,44 +1927,40 @@ fieldset[disabled] .checkbox label {
   padding-left: 0;
 }
 .input-sm {
-  height: 20px;
-  padding: 0 6px;
+  height: 22px;
+  padding: 1px 4px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
 textarea.input-sm,
 select[multiple].input-sm {
   height: auto;
 }
 .form-group-sm .form-control {
-  height: 20px;
-  padding: 0 6px;
+  height: 22px;
+  padding: 1px 9px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
 textarea.form-group-sm .form-control,
 select[multiple].form-group-sm .form-control {
   height: auto;
 }
 .input-lg {
-  height: 34px;
-  padding: 4px 14px;
+  height: 32px;
+  padding: 3px 10px;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
 }
 textarea.input-lg,
 select[multiple].input-lg {
   height: auto;
 }
 .form-group-lg .form-control {
-  height: 34px;
-  padding: 4px 14px;
+  height: 32px;
+  padding: 3px 17px;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
 }
 textarea.form-group-lg .form-control,
 select[multiple].form-group-lg .form-control {
@@ -1989,14 +1985,14 @@ select[multiple].form-group-lg .form-control {
   pointer-events: none;
 }
 .input-lg + .form-control-feedback {
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
 }
 .input-sm + .form-control-feedback {
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
 }
 .has-success .help-block,
 .has-success .control-label,
@@ -2110,14 +2106,13 @@ select[multiple].form-group-lg .form-control {
   margin: 5px 0;
 }
 .form-group-lg .help-block {
-  margin: 5px 0;
+  margin: 4px 0;
 }
 .select {
   position: relative;
   width: 100%;
   margin: 0;
   border: 1px solid #ccc;
-  border-radius: 2px;
 }
 .select .wsif-unfold {
   position: absolute;
@@ -2221,17 +2216,17 @@ select:-moz-focusring {
 }
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {
-    padding-top: 5px;
+    padding-top: 3.5px;
   }
 }
 @media (min-width: 768px) {
   .form-horizontal .form-group-sm .control-label {
-    padding-top: 1px;
+    padding-top: 2px;
   }
 }
 .btn {
   display: inline-block;
-  padding: 3px 14px;
+  padding: 3px 17px;
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
@@ -2338,18 +2333,18 @@ select:-moz-focusring {
   border-color: #fff;
 }
 .btn-xl {
-  padding: 5px 20px;
-  font-size: 20px;
+  padding: 6px 28px;
+  font-size: 16px;
   line-height: 1.429;
 }
 .btn-lg {
-  padding: 4px 14px;
+  padding: 3px 17px;
   font-size: 16px;
   line-height: 1.5;
 }
 .btn-sm {
-  padding: 0 6px;
-  font-size: 12px;
+  padding: 1px 9px;
+  font-size: 14px;
   line-height: 1.5;
 }
 .btn-xs {
@@ -2605,11 +2600,10 @@ tbody.collapse.in {
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-addon-count,
 .input-group-lg > .input-group-btn > .btn {
-  height: 34px;
-  padding: 4px 14px;
+  height: 32px;
+  padding: 3px 10px;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
 }
 textarea.input-group-lg > .form-control,
 textarea.input-group-lg > .input-group-addon,
@@ -2625,11 +2619,10 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
 .input-group-sm > .input-group-addon-count,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  height: 20px;
-  padding: 0 6px;
+  height: 22px;
+  padding: 1px 4px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 2px;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon-count,
@@ -2662,7 +2655,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .input-group-addon,
 .input-group-addon-count {
-  padding: 4px 14px;
+  padding: 4px 17px;
   font-size: 16px;
   line-height: 1;
   color: #666;
@@ -2673,13 +2666,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .input-group-addon.input-sm,
 .input-group-addon-count.input-sm {
-  padding: 0 6px;
+  padding: 1px 9px;
   font-size: 12px;
   border-radius: 2px;
 }
 .input-group-addon.input-lg,
 .input-group-addon-count.input-lg {
-  padding: 4px 14px;
+  padding: 3px 17px;
   font-size: 20px;
   border-radius: 3px;
 }
@@ -2879,7 +2872,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 9px 15px;
   margin-bottom: 21px;
   list-style: none;
-  border-radius: 3px;
 }
 .breadcrumb > li {
   display: inline-block;
@@ -3232,7 +3224,6 @@ a.thumbnail.active {
   padding: 13px;
   margin-bottom: 21px;
   border: 1px solid transparent;
-  border-radius: 2px;
 }
 .alert h4 {
   margin-top: 0;
@@ -3302,7 +3293,7 @@ a.thumbnail.active {
   color: #ee1011;
 }
 .alert-small {
-  padding: 4px 14px;
+  padding: 4px 17px;
 }
 .alert-small .close {
   top: 0;
@@ -4931,7 +4922,7 @@ button.close {
   height: 32px;
   line-height: 32px;
   background: #606060;
-  background: rgba(48, 48, 48, .7);
+  background: rgba(48, 48, 48, .6);
   transition: bottom .3s linear;
 }
 .pic-uploader .operation a {

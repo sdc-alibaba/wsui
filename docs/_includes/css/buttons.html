@@ -30,21 +30,6 @@
     <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">火狐 &lt;30 版本上有一个bug</a>，使用 <code>&lt;input&gt;</code> 当做按钮的时候，会无法设置正确的 <code>line-height</code>, 这会导致使用其他元素的按钮高度无法对齐.</p>
   </div>
 
-  <h2 id="buttons-options">不同样式的按钮</h2>
-  <p>有一系列不同的class，可以让你的按钮有不同的样式</p>
-  <div class="bs-example" data-example-id="btn-variants">
-    <button type="button" class="btn">默认</button>
-    <button type="button" class="btn btn-primary">首要</button>
-  </div>
-{% highlight html %}
-<!-- Standard button -->
-<button type="button" class="btn">默认</button>
-
-<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-<button type="button" class="btn btn-primary">首要</button>
-
-{% endhighlight %}
-
   <div class="bs-callout bs-callout-warning" id="callout-buttons-color-accessibility">
     <h4>把样式转变成辅助技术可以识别的含义</h4>
     <p>使用上面的类只能改变样式，而不能改变按钮对于辅助技术-如屏幕阅读器-的意义。请确保你的按钮的含义不仅体现在它的颜色上，也体现在它的替代技术上，比如，可以通过 <code>.sr-only</code> 来增加一个隐藏的文案提示。
@@ -55,44 +40,54 @@
   <div class="bs-example" data-example-id="btn-sizes">
     <p>
       <button type="button" class="btn btn-primary btn-xl">超大按钮</button>
+      <a href="#" class="btn btn-bordered btn-xl">超大按钮</a>
       <button type="button" class="btn btn-xl">超大按钮</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-lg">大按钮</button>
+      <a href="#" class="btn btn-bordered btn-lg">大按钮</a>
       <button type="button" class="btn btn-lg">大按钮</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary">默认大小</button>
+      <a href="#" class="btn btn-bordered">默认大小</a>
       <button type="button" class="btn">默认大小</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-sm">小按钮</button>
+      <a href="#" class="btn btn-bordered btn-sm">小按钮</a>
       <button type="button" class="btn btn-sm">小按钮</button>
     </p>
     <p>
       <button type="button" class="btn btn-primary btn-xs">超小按钮</button>
+      <a href="#" class="btn btn-bordered btn-xs">超小按钮</a>
       <button type="button" class="btn btn-xs">超小按钮</button>
     </p>
   </div>
 {% highlight html %}
 <p>
   <button type="button" class="btn btn-primary btn-xl">超大按钮</button>
+  <a href="#" class="btn btn-bordered btn-xl">超大按钮</a>
   <button type="button" class="btn btn-xl">超大按钮</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-lg">大按钮</button>
+  <a href="#" class="btn btn-bordered btn-lg">大按钮</a>
   <button type="button" class="btn btn-lg">大按钮</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary">默认大小</button>
+  <a href="#" class="btn btn-bordered">默认大小</a>
   <button type="button" class="btn">默认大小</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-sm">小按钮</button>
+  <a href="#" class="btn btn-bordered btn-sm">小按钮</a>
   <button type="button" class="btn btn-sm">小按钮</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary btn-xs">超小按钮</button>
+  <a href="#" class="btn btn-bordered btn-sm">超小按钮</a>
   <button type="button" class="btn btn-xs">超小按钮</button>
 </p>
 {% endhighlight %}
