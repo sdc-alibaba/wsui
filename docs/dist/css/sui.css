@@ -4060,13 +4060,10 @@ button.close {
   border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .close {
-  margin: -28px -26px 0 0;
-  font-size: 40px;
+  margin: -17px -22px 0 0;
+  font-size: 30px;
   line-height: normal;
   outline: 0;
-}
-.modal-header .close.wsif-close {
-  display: none;
 }
 .modal-title {
   margin: 0;
