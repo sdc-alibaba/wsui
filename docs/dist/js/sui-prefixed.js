@@ -1078,7 +1078,7 @@ window.CLASSMAP = {
       + '<div class="modal-dialog">'
         + '<div class="modal-content">'
           + '<div class="modal-header">'
-            + '<i class="'+ CLASSMAP.close + ' wsif wsif-close02"></i>'
+            + '<i class="wsif wsif-close02 ' + CLASSMAP.close + '"></i>'
             + '<h4 class="modal-title"><%=title%></h4>'
           + '</div>'
           + '<div class="modal-body"><%=body%></div>'
