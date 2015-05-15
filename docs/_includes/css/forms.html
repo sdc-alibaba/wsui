@@ -393,6 +393,30 @@
 </div>
 {% endhighlight %}
 
+<h4>tag样式的checkbox</h4>
+<div class="bs-example" data-example-id="simple-tag">
+  <div class="checkbox checkbox-inline" style="margin-top:0;">
+      <label class="tag">
+      <input type="checkbox"> 
+        <span>10000元<i class="wsif wsif-tick"></i></span>    
+      </label>
+  </div>
+  <div class="checkbox checkbox-inline">
+      <label class="tag">
+      <input type="checkbox" checked> 
+        <span>500元<i class="wsif wsif-tick"></i></span>
+      </label>
+  </div>
+</div>
+{% highlight html %}
+<div class="checkbox checkbox-inline">
+    <label class="tag">
+    <input type="checkbox" checked> 
+      <span>500元<i class="wsif wsif-tick"></i></span>
+    </label>
+</div>
+{% endhighlight %}
+
   <h3>下拉列表（select）</h3>
   <p>注意，很多原生选择菜单单 - 即在 Safari 和 Chrome 中 - 的圆角是无法通过修改 <code>border-radius</code> 属性来改变的。</p>
   <div class="bs-example" data-example-ids="select-form-control">

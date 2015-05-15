@@ -43,7 +43,7 @@
       + '<div class="modal-dialog">'
         + '<div class="modal-content">'
           + '<div class="modal-header">'
-            + '<button type="button" class="' + CLASSMAP.close + '" data-dismiss="modal" aria-hidden="true">&times;</button>'
+            + '<i class="wsif wsif-close02 ' + CLASSMAP.close + '" data-dismiss="modal"></i>'
             + '<h4 class="modal-title"><%=title%></h4>'
           + '</div>'
           + '<div class="modal-body"><%=body%></div>'

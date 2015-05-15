@@ -16,7 +16,7 @@
     width: 100%;
     z-index: 20;
     background: #606060;
-    background: rgba(48, 48, 48, 0.5);
+    background: rgba(48, 48, 48, 0.6);
     height: @tipsHeight;
     line-height: @tipsHeight;
     bottom: (-@tipsHeight - 1);
@@ -27,6 +27,9 @@
       cursor: pointer;
       font-style: normal;
       color: #fff;
+      &:hover {
+        background: @brand-primary;
+      }
     }
   }
   &>img {
