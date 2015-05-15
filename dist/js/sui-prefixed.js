@@ -1738,7 +1738,7 @@ window.CLASSMAP = {
 
         $tip
           .detach()
-          .css({ top: 0, left: 0, display: 'block' })
+          .css({ top: 0, left: 0, display: 'block', opacity: 0.9 })
 
         opt.container ? $tip.appendTo(opt.container) : $tip.insertAfter(this.$element)
         if (/\bhover\b/.test(opt.trigger)) {

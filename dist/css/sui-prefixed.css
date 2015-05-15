@@ -288,7 +288,7 @@ a:focus {
 a.text-primary:hover,
 a.text-primary:active,
 a.text-primary:focus {
-  color: #f00;
+  color: #ff6566;
 }
 a:focus {
   outline: thin dotted;
@@ -2249,8 +2249,8 @@ select:-moz-focusring {
 .sui-btn:hover,
 .sui-btn:focus,
 .sui-btn.focus {
-  color: #f00;
-  border-color: #f00;
+  color: #ff6566;
+  border-color: #ff6566;
 }
 .sui-btn:active,
 .sui-btn.active {
@@ -2291,8 +2291,8 @@ select:-moz-focusring {
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background: #f00;
-  border-color: #f00;
+  background: #ff6566;
+  border-color: #ff6566;
 }
 .btn-primary:active,
 .btn-primary.active {
@@ -2475,7 +2475,7 @@ tbody.collapse.in {
 }
 .sui-dropdown-menu > li > a {
   display: block;
-  padding: 3px 14px;
+  padding: 3px 10px;
   clear: both;
   line-height: 1.5;
   color: #666;
@@ -2888,7 +2888,7 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
 }
 .sui-pagination ul {
   display: inline-block;
-  margin: 0 15px 0 0;
+  margin: 0 10px 0 0;
   vertical-align: middle;
 }
 .sui-pagination li {
@@ -2911,8 +2911,8 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
 .sui-pagination li > a:hover,
 .sui-pagination li > a:focus {
   color: #fff;
-  background-color: #f00;
-  border-color: #f00;
+  background-color: #ff6566;
+  border-color: #ff6566;
 }
 .sui-pagination .active > a,
 .sui-pagination .active > span {
@@ -2973,10 +2973,10 @@ select[multiple].input-group-sm > .input-group-btn > .sui-btn {
   margin-left: 5px;
 }
 .sui-pagination > div .page-num {
-  width: 38px;
-  height: 22px;
-  margin: 0 5px;
+  width: 40px;
+  height: 28px;
   margin-top: -1px;
+  margin-right: 5px;
   color: #666;
   vertical-align: middle\9;
   border: 1px solid #ccc;
@@ -3540,6 +3540,7 @@ a.list-group-item-danger.active:focus {
   font-size: 14px;
 }
 .sui-panel.panel-sm .panel-heading .text-muted {
+  margin-left: 2px;
   font-size: 12px;
 }
 .sui-panel.panel-sm .panel-body {
@@ -3555,6 +3556,7 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
 }
 .panel-heading .text-muted {
+  margin-left: 2px;
   font-size: 14px;
 }
 .panel-heading > .sui-dropdown .dropdown-toggle {
@@ -3797,13 +3799,13 @@ button.sui-close {
 }
 .sui-steps .current {
   color: #fff;
-  background-color: #f00;
+  background-color: #ff6566;
 }
 .sui-steps .current .triangle-right {
-  border-color: transparent transparent transparent #f00;
+  border-color: transparent transparent transparent #ff6566;
 }
 .sui-steps .current .round {
-  color: #f00;
+  color: #ff6566;
   color: #fff\9;
   background-color: #fff;
   background-color: transparent\9;

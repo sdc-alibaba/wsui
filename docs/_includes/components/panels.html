@@ -25,48 +25,27 @@
       </div>
     </div>
   </div>
-{% highlight html %}
-<div class="panel panel-default panel-sm">
-  <div class="panel-heading">
-    Panel  title
-    <a href="#" class="pull-right text-muted">删除</a>
-  </div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
-
-<div class="panel panel-default panel-toggle">
-  <div class="panel-heading">
-    Panel title
-  </div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
-{% endhighlight %}
-
-<!--
-  <h3 id="panels-footer">带脚部</h3>
-  <p>你可以把一些按钮或者文案放入到 <code>.panel-footer</code> 中。注意，footer <strong>没有</strong> 从上下文中继承相关颜色。</p>
-  <div class="bs-example" data-example-id="panel-with-footer">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        Panel content
-      </div>
-      <div class="panel-footer">Panel footer</div>
+  {% highlight html %}
+  <div class="panel panel-default panel-sm">
+    <div class="panel-heading">
+      Panel  title
+      <a href="#" class="pull-right text-muted">删除</a>
+    </div>
+    <div class="panel-body">
+      Panel content
     </div>
   </div>
-{% highlight html %}
-<div class="panel panel-default">
-  <div class="panel-body">
-    Panel content
-  </div>
-  <div class="panel-footer">Panel footer</div>
-</div>
-{% endhighlight %}
 
--->
+  <div class="panel panel-default panel-toggle">
+    <div class="panel-heading">
+      Panel title
+    </div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+  {% endhighlight %}
+
   <h3 id="panels-alternatives">不同上下文颜色</h3>
   <p>就像其他组件一样，你可以通过加上不同的类变成不同的上下文颜色。</p>
   <div class="bs-example" data-example-id="contextual-panels">
@@ -79,10 +58,10 @@
       </div>
     </div>
   </div>
-{% highlight html %}
-<div class="panel panel-primary">...</div>
+  {% highlight html %}
+  <div class="panel panel-primary">...</div>
 
-{% endhighlight %}
+  {% endhighlight %}
 
   <h3 id="panels-tables">结合表格</h3>
   <p>可以在面板中无缝集成表格。</p>
@@ -127,20 +106,20 @@
       </table>
     </div>
   </div>
-{% highlight html %}
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <p>...</p>
-  </div>
+  {% highlight html %}
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Panel heading</div>
+    <div class="panel-body">
+      <p>...</p>
+    </div>
 
-  <!-- Table -->
-  <table class="table">
-    ...
-  </table>
-</div>
-{% endhighlight %}
+    <!-- Table -->
+    <table class="table">
+      ...
+    </table>
+  </div>
+  {% endhighlight %}
 
   <p>没有 body 也是没问题的。</p>
   <div class="bs-example" data-example-id="panel-without-body-with-table">
@@ -181,57 +160,17 @@
       </table>
     </div>
   </div>
-{% highlight html %}
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
+  {% highlight html %}
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Panel heading</div>
 
-  <!-- Table -->
-  <table class="table">
-    ...
-  </table>
-</div>
-{% endhighlight %}
-
-
-<!--
-  <h3 id="panels-list-group">结合列表组</h3>
-  <p>轻松无缝集成 <a href="#list-group">列表组</a>.</p>
-  <div class="bs-example" data-example-id="panel-with-list-group">
-    <div class="panel panel-default">
-      <!-- Default panel contents -->
-      <div class="panel-heading">Panel heading</div>
-      <div class="panel-body">
-        <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      </div>
-
-      <!-- List group -->
-      <ul class="list-group">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-    </div>
+    <!-- Table -->
+    <table class="table">
+      ...
+    </table>
   </div>
-{% highlight html %}
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <p>...</p>
-  </div>
+  {% endhighlight %}
 
-  <!-- List group -->
-  <ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-</div>
-{% endhighlight %}
--->
-</div>
+
+
