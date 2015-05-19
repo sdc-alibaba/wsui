@@ -1896,8 +1896,8 @@ fieldset[disabled] .checkbox label {
   position: absolute;
   right: -.5px;
   bottom: 4px;
-  bottom: 3px\9;
-  bottom: 3px\0;
+  bottom: 3px \9;
+  bottom: 3px \0;
   display: inline-block;
   width: 18px;
   height: 18px;
@@ -3110,11 +3110,11 @@ a.label:focus {
 .tag > li.tag-active > i {
   position: absolute;
   right: -.3px;
-  right: -.5px\9;
-  right: -.5px\0;
+  right: -.5px \9;
+  right: -.5px \0;
   bottom: 0;
-  bottom: -.1px\9;
-  bottom: -.1px\0;
+  bottom: -.1px \9;
+  bottom: -.1px \0;
   font-size: 18px;
   line-height: 18px;
   color: #f23f40;
