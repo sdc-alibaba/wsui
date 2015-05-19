@@ -1030,7 +1030,20 @@ window.CLASSMAP = {
     .on('keydown.dropdown.data-api', toggle, Dropdown.prototype.keydown)
     .on('keydown.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
     .on('keydown.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
-
+    // .on('mouseover.dropdown', '.dropdown', function () {
+    //   var $container = $(this), el = $container.find('[data-trigger="hover"]')[0];
+    //   var that = $(this).find('.dropdown-toggle')[0];
+    //   if (el) {
+    //     Dropdown.prototype.toggle.call(that);
+    //   }
+    // })
+    // .on('mouseleave.dropdown', '.dropdown', function () {
+    //   var $container = $(this), el = $container.find('[data-trigger="hover"]')[0];
+    //   var that = $(this).find('.dropdown-toggle')[0];
+    //   if (el) {
+    //     Dropdown.prototype.toggle.call(that);
+    //   }
+    // })
 }(jQuery);
 
 /* jshint laxcomma: true */

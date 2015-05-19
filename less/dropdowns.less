@@ -18,7 +18,7 @@
 // The dropdown wrapper (div)
 .dropdown {
   position: relative;
-  display: block;
+  display: inline-block;
   height: 30px;
 }
 
@@ -160,6 +160,13 @@
   }
 }
 
+//hover state for dropdown
+.dropdown:hover [data-trigger="hover"] + .dropdown-menu {
+  display: block;
+}
+.dropdown:hover [data-trigger="hover"] .wsif-unfold:before {
+  content: "\e614";
+}
 // Menu positioning
 //
 // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
