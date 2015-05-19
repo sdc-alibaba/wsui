@@ -1817,6 +1817,11 @@ input[type="search"] {
   color: #666;
   content: '\e625';
 }
+.checkbox input[type="checkbox"]:not([disabled]):hover + span:before,
+.checkbox-inline input[type="checkbox"]:not([disabled]):hover + span:before {
+  color: #666;
+  content: '\e625';
+}
 .checkbox input[type="checkbox"]:checked + span,
 .checkbox-inline input[type="checkbox"]:checked + span {
   color: #666;
@@ -1833,6 +1838,11 @@ input[type="search"] {
 }
 .radio input[type="radio"]:checked + span:before,
 .radio-inline input[type="radio"]:checked + span:before {
+  color: #666;
+  content: '\e623';
+}
+.radio input[type="radio"]:not([disabled]):hover + span:before,
+.radio-inline input[type="radio"]:not([disabled]):hover + span:before {
   color: #666;
   content: '\e623';
 }
@@ -4091,7 +4101,7 @@ button.close {
 }
 .modal-footer .btn + .btn {
   margin-bottom: 0;
-  margin-left: 15px;
+  margin-left: 11px;
 }
 .modal-footer .btn-group .btn + .btn {
   margin-left: -1px;

@@ -259,6 +259,11 @@ input[type="search"] {
     content:'\e625';
     color: @box-checked-color;
   }
+  input[type="checkbox"]:not([disabled]):hover + span:before {
+    content:'\e625';
+    color: @box-checked-color;
+  }
+
   input[type="checkbox"]:checked + span {
     color: @box-checked-color;
   }
@@ -275,6 +280,11 @@ input[type="search"] {
     content:'\e623';
     color: @box-checked-color;
   }
+  input[type="radio"]:not([disabled]):hover + span:before {
+    content:'\e623';
+    color: @box-checked-color;
+  }
+
   input[type="radio"]:checked + span {
     color: @box-checked-color;
   }
@@ -348,7 +358,7 @@ input[type="checkbox"] {
 
 .checkbox .tag input[type="checkbox"]:checked{
   &+span{
-    border:1px solid #f23f40;  
+    border:1px solid #f23f40;
     .wsif-tick{
       position: absolute;
       right: -.5px;
