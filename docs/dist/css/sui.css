@@ -1893,16 +1893,30 @@ fieldset[disabled] .radio label,
 fieldset[disabled] .checkbox label {
   cursor: not-allowed;
 }
-.checkbox .tag span {
+.tag > span {
   position: relative;
   display: inline-block;
   padding: 4px 12px 2px;
   border: 1px solid #999;
 }
-.checkbox .tag input[type="checkbox"]:checked + span {
+.tag > span:before {
+  margin: 0;
+  content: '';
+}
+.tag > span > .wsif-tick {
+  display: none;
+}
+.tag > input[type="checkbox"]:not([disabled]):hover + span:before {
+  content: '';
+}
+.tag > input[type="checkbox"]:checked + span {
   border: 1px solid #f23f40;
 }
-.checkbox .tag input[type="checkbox"]:checked + span .wsif-tick {
+.tag > input[type="checkbox"]:checked + span:before {
+  margin: 0;
+  content: '';
+}
+.tag > input[type="checkbox"]:checked + span .wsif-tick {
   position: absolute;
   right: -.5px;
   bottom: 4px;
@@ -1913,18 +1927,6 @@ fieldset[disabled] .checkbox label {
   height: 18px;
   font-size: 18px;
   color: #f23f40;
-}
-.checkbox .tag span:before {
-  margin: 0;
-  content: '';
-}
-.checkbox .tag input[type="checkbox"]:checked + span:before,
-.checkbox-inline .tag input[type="checkbox"]:checked + span:before {
-  margin: 0;
-  content: '';
-}
-.checkbox .tag .wsif-tick {
-  display: none;
 }
 .form-control-static {
   padding-top: 5px;
