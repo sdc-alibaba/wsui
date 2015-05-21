@@ -346,19 +346,37 @@ input[type="checkbox"] {
 
 //Checkbox with tag
 
-.checkbox .tag{
+.tag{
   // position: relative;
-  span{
+  &>span{
     display: inline-block;
     padding:4px 12px 2px;
     border: 1px solid #999;
     position: relative;
+    &:before{
+      content: '';
+      margin: 0;
+    }
+    &>.wsif-tick{
+      display: none;
+    }
+  }
+  &>input[type="checkbox"]:not([disabled]):hover{
+    &+span{
+      &:before{
+        content: '';
+      }
+    }
   }
 }
 
-.checkbox .tag input[type="checkbox"]:checked{
+.tag>input[type="checkbox"]:checked{
   &+span{
     border:1px solid #f23f40;
+    &:before{
+      content: '';
+      margin: 0;
+    }
     .wsif-tick{
       position: absolute;
       right: -.5px;
@@ -373,21 +391,6 @@ input[type="checkbox"] {
     }
   }
 }
-
-.checkbox .tag span:before{
-  content: '';
-  margin: 0;
-}
-
-.checkbox .tag input[type="checkbox"]:checked + span:before, .checkbox-inline .tag input[type="checkbox"]:checked + span:before{
-  content: '';
-  margin: 0;
-}
-
-.checkbox .tag .wsif-tick{
-  display: none;
-}
-
 
 // Static form control text
 //
