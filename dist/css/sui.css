@@ -1813,14 +1813,17 @@ input[type="search"] {
   content: '\e626';
 }
 .checkbox input[type="checkbox"]:checked + span:before,
-.checkbox-inline input[type="checkbox"]:checked + span:before {
-  color: #666;
-  content: '\e625';
-}
+.checkbox-inline input[type="checkbox"]:checked + span:before,
 .checkbox input[type="checkbox"]:not([disabled]):hover + span:before,
 .checkbox-inline input[type="checkbox"]:not([disabled]):hover + span:before {
   color: #666;
   content: '\e625';
+}
+.checkbox.text-primary input[type="checkbox"]:checked + span:before,
+.checkbox-inline.text-primary input[type="checkbox"]:checked + span:before,
+.checkbox.text-primary input[type="checkbox"]:not([disabled]):hover + span:before,
+.checkbox-inline.text-primary input[type="checkbox"]:not([disabled]):hover + span:before {
+  color: #f23f40;
 }
 .checkbox input[type="checkbox"]:checked + span,
 .checkbox-inline input[type="checkbox"]:checked + span {
@@ -1837,14 +1840,17 @@ input[type="search"] {
   content: '\e624';
 }
 .radio input[type="radio"]:checked + span:before,
-.radio-inline input[type="radio"]:checked + span:before {
-  color: #666;
-  content: '\e623';
-}
+.radio-inline input[type="radio"]:checked + span:before,
 .radio input[type="radio"]:not([disabled]):hover + span:before,
 .radio-inline input[type="radio"]:not([disabled]):hover + span:before {
   color: #666;
   content: '\e623';
+}
+.radio.text-primary input[type="radio"]:checked + span:before,
+.radio-inline.text-primary input[type="radio"]:checked + span:before,
+.radio.text-primary input[type="radio"]:not([disabled]):hover + span:before,
+.radio-inline.text-primary input[type="radio"]:not([disabled]):hover + span:before {
+  color: #f23f40;
 }
 .radio input[type="radio"]:checked + span,
 .radio-inline input[type="radio"]:checked + span {
@@ -1863,7 +1869,7 @@ input[type="search"] {
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-right: 20px;
+  padding-right: 10px;
   margin-bottom: 0;
   vertical-align: middle;
   cursor: pointer;

@@ -250,18 +250,19 @@ input[type="search"] {
     margin-right: 4px;
   }
 }
-.checkbox,
-.checkbox-inline {
+.checkbox, .checkbox-inline {
   span:before {
     content:'\e626';
   }
-  input[type="checkbox"]:checked + span:before {
+  input[type="checkbox"]:checked + span:before, input[type="checkbox"]:not([disabled]):hover + span:before {
     content:'\e625';
     color: @box-checked-color;
   }
-  input[type="checkbox"]:not([disabled]):hover + span:before {
-    content:'\e625';
-    color: @box-checked-color;
+  // 强对比场景hover变红
+  &.text-primary {
+    input[type="checkbox"]:checked + span:before, input[type="checkbox"]:not([disabled]):hover + span:before {
+      color: @brand-primary;
+    }
   }
 
   input[type="checkbox"]:checked + span {
@@ -270,21 +271,22 @@ input[type="search"] {
   &:hover span:before, &:hover span {
     color: @box-hover-color;
   }
+
 }
-.radio,
-.radio-inline {
+.radio, .radio-inline {
   span:before {
     content:'\e624';
   }
-  input[type="radio"]:checked + span:before {
+  input[type="radio"]:checked + span:before, input[type="radio"]:not([disabled]):hover + span:before {
     content:'\e623';
     color: @box-checked-color;
   }
-  input[type="radio"]:not([disabled]):hover + span:before {
-    content:'\e623';
-    color: @box-checked-color;
+  // 强对比场景hover变红
+  &.text-primary {
+    input[type="radio"]:checked + span:before, input[type="radio"]:not([disabled]):hover + span:before {
+      color: @brand-primary;
+    }
   }
-
   input[type="radio"]:checked + span {
     color: @box-checked-color;
   }
@@ -302,7 +304,7 @@ input[type="search"] {
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-right: 20px;
+  padding-right: 10px;
   margin-bottom: 0;
   vertical-align: middle;
   cursor: pointer;
