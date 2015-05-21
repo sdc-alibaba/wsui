@@ -22,7 +22,7 @@
 $(document).off('.data-api')
 {% endhighlight %}
 
-  <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
+  <p>此外，如果仅仅针对某个特定的插件，只需要在<code>data-api</code>前面添加插件的名称，如下:</p>
 {% highlight js %}
 $(document).off('.alert.data-api')
 {% endhighlight %}
@@ -38,19 +38,19 @@ $(document).off('.alert.data-api')
 $('.btn.danger').button('toggle').addClass('fat')
 {% endhighlight %}
 
-  <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+  <p>所有方法都可以接受一个可选的options对象作为配置参数，一个字符串来指定方法，或者什么都不提供（这种情况下，modal会采用默认配置进行初始化）：</p>
 {% highlight js %}
-$('#myModal').modal()                      // initialized with defaults
-$('#myModal').modal({ keyboard: false })   // initialized with no keyboard
-$('#myModal').modal('show')                // initializes and invokes show immediately
+$('#myModal').modal()                      // 使用默认配置进行初始化
+$('#myModal').modal({ keyboard: false })   // 使用option对象进行初始化 
+$('#myModal').modal('show')                // 使用字符串初始化 传参之后制定方法将立即触发
 {% endhighlight %}
 
-  <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel="popover"]').data('popover')</code>.</p>
+  <p>每插件通过<code>Constructor</code>属性暴露了其原始构造函数：<code>$.fn.popover.Constructor</code>。如果你想获得某个插件的实例，可以通过下面的方式直接从元素中获取: <code>$('[rel="popover"]').data('popover')</code>。</p>
 
-  <h4>Default settings</h4>
-  <p>You can change the default settings for a plugin by modifying the plugin's <code>Constructor.DEFAULTS</code> object:<p>
+  <h4>默认设置</h4>
+  <p>你可以通过修改插件的<code>Constructor.DEFAULTS</code>对象，对默认设置进行修改：<p>
 {% highlight js %}
-$.fn.modal.Constructor.DEFAULTS.keyboard = false // changes default for the modal plugin's `keyboard` option to false
+$.fn.modal.Constructor.DEFAULTS.keyboard = false // 修改插件的默认属性`keyboard`为false
 {% endhighlight %}
 
   <h3 id="js-noconflict">No conflict</h3>
