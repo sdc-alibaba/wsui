@@ -8,6 +8,21 @@
   margin-bottom: @line-height-computed;
   background-color: @panel-bg;
   border: 1px solid transparent;
+
+  // 小号panel
+  &.panel-sm {
+    .panel-heading{
+      padding: @panel-sm-heading-padding;
+      font-size: @font-size-base;
+      .text-muted {
+        margin-left: 2px;
+        font-size: @font-size-small;
+      }
+    }
+    .panel-body {
+      padding: @panel-sm-body-padding;
+    }
+  }
 }
 
 // Panel contents
@@ -20,6 +35,13 @@
 .panel-heading {
   padding: @panel-heading-padding;
   border-bottom: 1px solid transparent;
+  font-size: @font-size-large;
+  color: #666;
+
+  .text-muted {
+    margin-left: 2px;
+    font-size: @font-size-base;
+  }
 
   > .dropdown .dropdown-toggle {
     color: inherit;
@@ -31,6 +53,7 @@
 }
 
 // Within heading, strip any `h*` tag of its default margins for spacing.
+/*
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
@@ -38,13 +61,16 @@
   color: inherit;
 
 }
+*/
 
 // Optional footer (stays gray in every modifier class)
+/*
 .panel-footer {
   padding: @panel-footer-padding;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
 }
+*/
 
 
 // List groups in panels
@@ -79,9 +105,11 @@
     border-top-width: 0;
   }
 }
+/*
 .list-group + .panel-footer {
   border-top-width: 0;
 }
+*/
 
 // Collapsable panels (aka, accordion)
 //
@@ -109,12 +137,14 @@
     }
   }
 
+  /*
   .panel-footer {
     border-top: 0;
     + .panel-collapse .panel-body {
       border-bottom: 1px solid @panel-inner-border;
     }
   }
+  */
 }
 
 
@@ -139,3 +169,4 @@
   .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
 }
 */
+

@@ -10,6 +10,7 @@ __master__ 分支为 __发布__ 分支主干。
 1. 常规流程发布
 
 # [Bootstrap](http://getbootstrap.com)
+
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg?style=flat)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg?style=flat)](https://www.npmjs.com/package/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg?style=flat)](https://travis-ci.org/twbs/bootstrap)

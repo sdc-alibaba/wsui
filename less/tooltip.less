@@ -2,7 +2,7 @@
 // Tooltips
 // --------------------------------------------------
 
-@tipBorderWidth: 2px;
+@tipBorderWidth: 1px;
 @arrowOffset: 7px;
 @emotionalArrowOffset: (@arrowOffset - @tipBorderWidth);
 
@@ -34,7 +34,6 @@
   // Wrapper for the tooltip content
   .tooltip-inner {
     padding: 9px 11px;
-    text-decoration: none;
     text-align: left;
     //white-space: pre-wrap;  //fix bug in firefox: not break word when long line withou space
   }
@@ -78,7 +77,7 @@
 .tooltip ,.tooltip-only-arrow{
   &.tooltip-default {
     border: @tipBorderWidth solid @tooltipBorderColor;
-    border-radius: 2px;
+    border-radius: 1px;
   }
 
   //------------------------------------------.top
@@ -90,9 +89,11 @@
       border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
       border-top-color: @tooltipBorderColor;
       & .tooltip-arrow.cover {
-        margin-left: (-@tooltipArrowWidth + 2);
+        // margin-left: (-@tooltipArrowWidth + 2);
+        margin-left: -@tooltipArrowWidth;
         border-top-color: @body-bg;
-        top: -@arrowOffset;
+        // top: -@arrowOffset;
+        top: (-@arrowOffset - 1);
       }
     }
     &.tooltip-default .tooltip-arrow {
@@ -120,9 +121,10 @@
       border-width: @tooltipArrowWidth @tooltipArrowWidth @tooltipArrowWidth 0;
       border-right-color: @tooltipBorderColor;
       & .tooltip-arrow.cover {
-        margin-top: (-@tooltipArrowWidth + 2);
+        // margin-top: (-@tooltipArrowWidth + 2);
+        margin-top: -@tooltipArrowWidth;
         border-right-color: @body-bg;
-        left: 0;
+        left: -4px;
       }
     }
     &.tooltip-default .tooltip-arrow {
@@ -150,9 +152,11 @@
       border-width: @tooltipArrowWidth 0 @tooltipArrowWidth @tooltipArrowWidth;
       border-left-color: @tooltipBorderColor;
       & .tooltip-arrow.cover {
-        margin-top: (-@tooltipArrowWidth + 2);
+        // margin-top: (-@tooltipArrowWidth + 2);
+        margin-top: -@tooltipArrowWidth;
         border-left-color: @body-bg;
-        left: -@arrowOffset;
+        // left: -@arrowOffset;
+        left: (-@arrowOffset - 1);
       }
     }
     &.tooltip-default .tooltip-arrow {
@@ -181,9 +185,10 @@
       border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
       border-bottom-color: @tooltipBorderColor;
       & .tooltip-arrow.cover {
-        margin-left: (-@tooltipArrowWidth + 2);
+        // margin-left: (-@tooltipArrowWidth + 2);
+        margin-left: -@tooltipArrowWidth;
         border-bottom-color: @body-bg;
-        top: 0;
+        top: -4px;
       }
     }
     &.tooltip-default .tooltip-arrow {
@@ -204,7 +209,8 @@
   }
   // ---- end
   .tooltip-arrow.cover {
-    border-width: (@tooltipArrowWidth - 2);
+    // border-width: (@tooltipArrowWidth - 2);
+    border-width: @tooltipArrowWidth;
   }
 
 }
