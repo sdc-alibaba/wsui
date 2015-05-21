@@ -2428,7 +2428,7 @@ tbody.collapse.in {
 }
 .dropdown {
   position: relative;
-  display: block;
+  display: inline-block;
   height: 30px;
 }
 .dropdown-toggle:focus {
@@ -2532,6 +2532,12 @@ tbody.collapse.in {
 }
 .open > a {
   outline: 0;
+}
+.dropdown:hover [data-trigger="hover"] + .dropdown-menu {
+  display: block;
+}
+.dropdown:hover [data-trigger="hover"] .wsif-unfold:before {
+  content: "\e614";
 }
 .dropdown-menu-right {
   right: 0;
