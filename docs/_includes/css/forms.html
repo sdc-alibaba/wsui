@@ -20,7 +20,7 @@
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox"> 
+          <input type="checkbox">
           <span>Check me out</span>
         </label>
       </div>
@@ -44,7 +44,7 @@
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox"> 
+      <input type="checkbox">
       <span>Check me out</span>
     </label>
   </div>
@@ -81,7 +81,7 @@
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox"> 
+          <input type="checkbox">
           <span>Remember me</span>
         </label>
       </div>
@@ -100,7 +100,7 @@
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox"> 
+      <input type="checkbox">
       <span>Remember me</span>
     </label>
   </div>
@@ -361,6 +361,33 @@
 </label>
 {% endhighlight %}
 
+<h4>强对比情况,给单选框/多选框元素添加一个class：<code>text-primary</code>即可</h4>
+  <div class="bs-example" data-example-id="inline-checkboxes-radios">
+    <form>
+      <label class="checkbox-inline text-primary">
+        <input type="checkbox" value="option1"> <span>强对比1</span>
+      </label>
+      <label class="checkbox-inline text-primary">
+        <input type="checkbox" value="option2"> <span>强对比2</span>
+      </label>
+    </form>
+    <br>
+    <form>
+      <label class="radio-inline text-primary">
+        <input type="radio" name="primaryRadioOptions" value="option1"> <span>强对比1</span>
+      </label>
+      <label class="radio-inline text-primary">
+        <input type="radio" name="primaryRadioOptions" value="option2"> <span>强对比2</span>
+      </label>
+    </form>
+  </div>
+
+{% highlight html %}
+  <label class="radio-inline text-primary">
+    ...
+</label>
+{% endhighlight %}
+
   <h4>没有label文案的Checkboxes 和 radios</h4>
   <p>如果没有label文案，input元素仍会按预期布局， <strong>目前只在非内联排布的 checkboxes 和 radios场景有效.</strong> 请注意仍然为元素添加一些辅助说明文案方便辅助工具阅读,比如 <code>aria-label</code></p>
   <div class="bs-example" data-example-id="checkboxes-radios-without-labels">
@@ -396,17 +423,17 @@
 <h4>tag样式的checkbox</h4>
 <div class="bs-example" data-example-id="simple-tag">
   <label class="tag checkbox-inline">
-    <input type="checkbox"> 
-    <span>10000元<i class="wsif wsif-tick"></i></span>    
+    <input type="checkbox">
+    <span>10000元<i class="wsif wsif-tick"></i></span>
   </label>
   <label class="tag checkbox-inline">
-    <input type="checkbox" checked> 
+    <input type="checkbox" checked>
     <span>500元<i class="wsif wsif-tick"></i></span>
   </label>
 </div>
 {% highlight html %}
   <label class="tag checkbox-inline">
-    <input type="checkbox" checked> 
+    <input type="checkbox" checked>
     <span>500元<i class="wsif wsif-tick"></i></span>
 </label>
 {% endhighlight %}
