@@ -449,7 +449,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'copy:lib']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'prefix:css']);
