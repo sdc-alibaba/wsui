@@ -1655,3 +1655,29 @@ body {
 #disqus_thread {
   margin-top: 100px;
 }
+
+.toggle-design-btn {
+  font-size: 16px;
+  font-weight: normal;
+  float: right;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+.toggle-design-btn:hover {
+  text-decoration: none;
+}
+.toggle-design-btn .caret {
+  border-width: 6px;
+}
+
+.design-source {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: max-height 1s ease-out;
+  -moz-transition: max-height 1s ease-out;
+  transition: max-height 1s ease-out;
+}
+.design-source.open {
+  max-height: 3000px; //最大值 ,因为会影响动画，所以不能设置太大，如果有超过这个值，自己在 style 中重置一下
+}

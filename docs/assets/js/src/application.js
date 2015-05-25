@@ -84,6 +84,12 @@
       })
     })();
 
+
+    //design toggle
+    $(document).on("click", function(e) {
+      var $btn = $(e.target);
+      $btn.parent().next().toggleClass("open");
+    });
     // Tooltip and popover demos
 
     // Button state demo
