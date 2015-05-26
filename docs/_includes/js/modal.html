@@ -1,31 +1,31 @@
 <div class="bs-docs-section">
-  <h1 id="modals" class="page-header">Modals <small>modal.js</small></h1>
-  <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
+  <h1 id="modals" class="page-header">模态框 <small>modal.js</small></h1>
+  <p>模态框经过了优化，更加灵活，以对话框的形式弹出具有最小和最实用的功能集。</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
-    <h4>Overlapping modals not supported</h4>
-    <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
+    <h4>不支持模态框重叠</h4>
+    <p>在一个模态框打开的情况下，不要去打开另外一个模态框。如果确实有这种需求，需要定制一些代码对其显示进行控制。</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
-  <h4>Modal markup placement</h4>
-    <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
+  <h4>模态框的位置标记</h4>
+    <p>务必将模态框的HTML代码放置在文档的最高层（即作为body的直接子元素），以避免其他组件影响到模态框的展现/功能。</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-modal-mobile-caveats">
-    <h4>Mobile device caveats</h4>
-    <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
+    <h4>关于移动设备的说明</h4>
+    <p>这里有一些关于移动设备上使用模态框的附加说明。详情请见：<a href="../getting-started/#support-fixed-position-keyboards">浏览器支持文档</a>。</p>
   </div>
 
-  <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong> To achieve the same effect, use some custom JavaScript:</p>
+  <p><strong class="text-danger">鉴于HTML5定义的语义，<code>autofocus</code>属性在Bootstrap的模态框中是没有效果的。</strong> 为了取得相同的效果，请使用下述的定制代码：</p>
   {% highlight js %}
   $('#myModal').on('shown', function () {
     $('#myInput').focus()
   })
   {% endhighlight %}
 
-  <h2 id="modals-examples">Examples</h2>
+  <h2 id="modals-examples">例子</h2>
 
-  <h3>Static example</h3>
-  <p>A rendered modal with header, body, and set of actions in the footer.</p>
+  <h3>静态例子</h3>
+  <p>一个具有header，body以及包含一系列事件的footer的模态框。</p>
   <div class="bs-example bs-example-modal" data-example-id="static-modal">
     <div class="modal">
       <div class="modal-dialog">
@@ -65,8 +65,8 @@
 </div><!-- /.modal -->
 {% endhighlight %}
 
-  <h3>Live demo</h3>
-  <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+  <h3>动态例子</h3>
+  <p>通过点击下面的按钮可以使用Javascript启动一个模态框。该模态框将会相对于页面自上而下的展示。</p>
   <!-- sample modal content -->
   <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -140,14 +140,14 @@
 {% endhighlight %}
 
   <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
-    <h4>Make modals accessible</h4>
-    <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
-    <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
+    <h4>增强模态框的可访问性</h4>
+    <p>务必为<code>.modal</code>类添加<code>rolw="dialog"</code>, <code>aria-labelledby="myModalLabel"</code>属性用来指向模态框的标题,并且<code>aria-hidden="true"</code>属性告诉辅助工具略去模态框的DOM元素。</p>
+    <p>此外，你可以使用<code>aria-describedby</code>为一个<code>.modal</code>添加一些说明。</p>
   </div>
 
   <div class="bs-callout bs-callout-info" id="callout-modal-youtube">
-    <h4>Embedding YouTube videos</h4>
-    <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
+    <h4>嵌入YouTube视频</h4>
+    <p>在模态框中嵌入YouTube视频需要一些额外的Javascript来控制其自动停止、重放等功能，这些代码Bootstrap中并没有提供。可以参考下面这篇文章。<a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">Stack Overflow上的文章</a></p>
   </div>
 
   <h2 id="modals-sizes">Optional sizes</h2>
