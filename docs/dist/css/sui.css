@@ -4202,7 +4202,7 @@ button.close {
 }
 .tooltip-only-arrow {
   position: relative;
-  border: 2px solid #b2b2b2;
+  border: 1px solid #b2b2b2;
 }
 .tooltip-only-arrow.tooltip-default .tooltip-inner {
   color: #222;
