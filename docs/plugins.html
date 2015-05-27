@@ -16,74 +16,6 @@ lead: "An overview of Bootstrap, how to download and use, basic templates and ex
     <p>注意dev分支才是最新的主分支，不要动master分支。发完mergerequest之后，可以旺旺通知一下 @任行</p>
     <p>请确保提交的代码执行grunt之后不会报错。</p>
 
-    <h2>二 JS 插件编写规范</h2>
-    <h3>插件基本结构</h3>
-    <p>SUI 所有的JS插件都是标准的 jQuery 插件。以 modal 为例，一个 JS 插件的基本结构如下：</p>
-
-{% highlight js %}
-+function ($) {
-  'use strict';
-  //闭包中的构造方法
-  var Modal = function (element, options) {
-  }
-
-  // 原型方法
-  Modal.prototype.toggle = function() {
-  }
-
-  //默认参数
-  Modal.DEFAULTS = {
-  }
-
-  //noconflict
-  $.fn.modal.noConflict = function () {
-  }
-
-  //在jQuery对象上提供的静态方法
-  $.extend({
-    alert: function() {
-    }
-  });
-
-  //如果有原型方法
-  $.fn.extend({
-    xxx: function() {
-    }
-  });
-
-  //代理的事件监听
-  $(document).on('click.data-api', '[data-toggle="modal"]', function (e) {
-  });
-}(jQuery);
-{% endhighlight %}
-
-    <h3>支持自动初始化</h3>
-    <p>如果你的组件不需要初始化就可以使用，那么是最好的情况。但是大多数情况，可能还需要通过JS初始化才能使用。</p>
-    <p>为了方便使用，我们需要提供一种自动初始化的方法，现在的统一做法是通过 <code>data-toggle='{{组件名}}'</code> 的方式来标识需要初始化的组件。自动初始化的代码如下所示：</p>
-
-{% highlight js %}
-$(function(){
-  $('[data-toggle="validate"]').each(function() {
-    $(this).validate();
-  });
-})
-{% endhighlight %}
-    <p>为了保持自动初始化和手动调用 JS API 的结果一致，请不要在自动初始化时做任何除了调用API之外的多余操作。</p>
-
-    <h3>支持data-* 参数配置</h3>
-    <p>因为我们可以通过HTML属性来自动初始化组件，所以要求组件的参数都可以通过 <code>data-*</code> 的形式配置。当然即使是通过JS初始化，也是可以支持 <code>data-*</code> 配置的。</p>
-    <p>一般我们的参数有三种配置，按优先级从高到底分别是：调用JS API传入的配置，通过 <code>data-*</code>配置，默认配置。一般对参数的解析方式如下：</p>
-
-{% highlight js %}
-var config = $.extend({
-  {},
-  defaults, //默认配置，优先级最低
-  $(this).data(), //通过 data-* 进行配置
-  options //调用JS API传入的配置
-}
-{% endhighlight %}
-    
-
     <h2>三 CSS插件编写规范</h2>
     <h3>提取公共依赖</h3>
     <p>相对于JS插件的独立性，CSS插件可能会有更多依赖。一般情况下，我们需要依赖 <code>variables.less</code> 和 <code>mixins/xxx</code> 两个文件。而插件中对应的一些变量配置和mixin也需要放到这些文件中。</p>
@@ -163,6 +95,76 @@ var config = $.extend({
     <p>所以隐藏下拉菜单是不会出现 <code>xx.hide()</code> 这样的操作的，而是通过移除 容器上的 <code>.open</code> 类来使菜单隐藏。</p>
     <p>要把组件的容器当成一个对象，他的 <code>open</code> 类就是一个接口。而不应该去关心内部是如何open的。</p>
     <p>同样，不要有任何形式的JS动画出现，动画只能以CSS动画的形式存在。</p>
-    <h2>文档规范</h2>
+
+    <h2>二 JS 插件编写规范</h2>
+    <h3>插件基本结构</h3>
+    <p>SUI 所有的JS插件都是标准的 jQuery 插件。以 modal 为例，一个 JS 插件的基本结构如下：</p>
+
+{% highlight js %}
++function ($) {
+  'use strict';
+  //闭包中的构造方法
+  var Modal = function (element, options) {
+  }
+
+  // 原型方法
+  Modal.prototype.toggle = function() {
+  }
+
+  //默认参数
+  Modal.DEFAULTS = {
+  }
+
+  //noconflict
+  $.fn.modal.noConflict = function () {
+  }
+
+  //在jQuery对象上提供的静态方法
+  $.extend({
+    alert: function() {
+    }
+  });
+
+  //如果有原型方法
+  $.fn.extend({
+    xxx: function() {
+    }
+  });
+
+  //代理的事件监听
+  $(document).on('click.data-api', '[data-toggle="modal"]', function (e) {
+  });
+}(jQuery);
+{% endhighlight %}
+
+    <h3>支持自动初始化</h3>
+    <p>如果你的组件不需要初始化就可以使用，那么是最好的情况。但是大多数情况，可能还需要通过JS初始化才能使用。</p>
+    <p>为了方便使用，我们需要提供一种自动初始化的方法，现在的统一做法是通过 <code>data-toggle='{{组件名}}'</code> 的方式来标识需要初始化的组件。自动初始化的代码如下所示：</p>
+
+{% highlight js %}
+$(function(){
+  $('[data-toggle="validate"]').each(function() {
+    $(this).validate();
+  });
+})
+{% endhighlight %}
+    <p>为了保持自动初始化和手动调用 JS API 的结果一致，请不要在自动初始化时做任何除了调用API之外的多余操作。</p>
+
+    <h3>支持data-* 参数配置</h3>
+    <p>因为我们可以通过HTML属性来自动初始化组件，所以要求组件的参数都可以通过 <code>data-*</code> 的形式配置。当然即使是通过JS初始化，也是可以支持 <code>data-*</code> 配置的。</p>
+    <p>一般我们的参数有三种配置，按优先级从高到底分别是：调用JS API传入的配置，通过 <code>data-*</code>配置，默认配置。一般对参数的解析方式如下：</p>
+
+{% highlight js %}
+var config = $.extend({
+  {},
+  defaults, //默认配置，优先级最低
+  $(this).data(), //通过 data-* 进行配置
+  options //调用JS API传入的配置
+}
+{% endhighlight %}
+
+    <h2>三 文档规范</h2>
+    <p>文档一般包含：初始化方法，自定义配置，JS API 说明，事件说明，示例。<p>
+    <p>最重要的是，文档中一定要有丰富的示例。</p>
   </div>
 </div>
