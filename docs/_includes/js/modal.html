@@ -141,7 +141,7 @@
 
   <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
     <h4>增强模态框的可访问性</h4>
-    <p>务必为<code>.modal</code>类添加<code>rolw="dialog"</code>, <code>aria-labelledby="myModalLabel"</code>属性用来指向模态框的标题,并且<code>aria-hidden="true"</code>属性告诉辅助工具略去模态框的DOM元素。</p>
+    <p>务必为<code>.modal</code>类添加<code>role="dialog"</code>, <code>aria-labelledby="myModalLabel"</code>属性用来指向模态框的标题,并且<code>aria-hidden="true"</code>属性告诉辅助工具略去模态框的DOM元素。</p>
     <p>此外，你可以使用<code>aria-describedby</code>为一个<code>.modal</code>添加一些说明。</p>
   </div>
 
@@ -150,8 +150,8 @@
     <p>在模态框中嵌入YouTube视频需要一些额外的Javascript来控制其自动停止、重放等功能，这些代码Bootstrap中并没有提供。可以参考下面这篇文章。<a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">Stack Overflow上的文章</a></p>
   </div>
 
-  <h2 id="modals-sizes">Optional sizes</h2>
-  <p>Modals have two optional sizes, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
+  <h2 id="modals-sizes">可选尺寸</h2>
+  <p>模态框有两种尺寸选择，可以通过在<code>.modal-dialog</code>上面指定类名进行配置。</p>
   <div class="bs-example">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
@@ -210,8 +210,8 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <h2 id="modals-remove-animation">Remove animation</h2>
-  <p>For modals that simply appear rather than fade in to view, remove the <code>.fade</code> class from your modal markup.</p>
+  <h2 id="modals-remove-animation">移除过渡效果</h2>
+  <p>如果想让模态框直接展示，而不是附带过渡效果，仅需移除模态框的<code>.fade</code>类即可。</p>
 {% highlight html %}
 <div class="modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
   ...
