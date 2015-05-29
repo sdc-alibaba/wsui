@@ -2220,3 +2220,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .design-source.open {
   max-height: 3000px; /*最大值 ,因为会影响动画，所以不能设置太大，如果有超过这个值，自己在 style 中重置一下*/
 }
+.design-source > img {
+  width: 100%;
+}
