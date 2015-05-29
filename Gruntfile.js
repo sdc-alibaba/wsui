@@ -462,7 +462,7 @@ module.exports = function (grunt) {
   if (buildTo) {
     grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'dist-css', 'dist-js', 'docs']);
   } else {
-    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'copy:docs', 'docs']);
+    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'docs']);
   }
 
   // 自动为产出文件和文档补全sui-前缀
