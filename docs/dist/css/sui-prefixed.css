@@ -4065,6 +4065,8 @@ button.sui-close {
   position: relative;
   width: auto;
   margin: 10px;
+  margin-right: auto;
+  margin-left: auto;
   background-color: #fff;
   outline: 0;
 }
