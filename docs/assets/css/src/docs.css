@@ -1657,10 +1657,10 @@ body {
 }
 
 .toggle-design-btn {
-  font-size: 16px;
-  font-weight: normal;
   float: right;
   margin-top: 6px;
+  font-size: 16px;
+  font-weight: normal;
   cursor: pointer;
 }
 
@@ -1672,12 +1672,12 @@ body {
 }
 
 .design-source {
-  overflow: hidden;
   max-height: 0;
+  overflow: hidden;
   -webkit-transition: max-height 1s ease-out;
-  -moz-transition: max-height 1s ease-out;
-  transition: max-height 1s ease-out;
+     -moz-transition: max-height 1s ease-out;
+          transition: max-height 1s ease-out;
 }
 .design-source.open {
-  max-height: 3000px; //最大值 ,因为会影响动画，所以不能设置太大，如果有超过这个值，自己在 style 中重置一下
+  max-height: 3000px; /*最大值 ,因为会影响动画，所以不能设置太大，如果有超过这个值，自己在 style 中重置一下*/
 }
