@@ -10,8 +10,6 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
-  var npmShrinkwrap = require('npm-shrinkwrap');
-  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var getLessVarsData = function () {
     var filePath = path.join(__dirname, 'less/variables.less');
@@ -19,8 +17,6 @@ module.exports = function (grunt) {
     var parser = new BsLessdocParser(fileContent);
     return { sections: parser.parseFile() };
   };
-  var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
-  var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
   Object.keys(configBridge.paths).forEach(function (key) {
@@ -57,29 +53,32 @@ module.exports = function (grunt) {
     // 'js/tagsinput.js'
   ];
 
+  var buildTo = grunt.option('buildTo');
+
   // Project configuration.
   grunt.initConfig({
 
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
+    dist: buildTo || 'dist',
     // jqueryVersionCheck: configBridge.config.jqueryVersionCheck.join('\n'),
 
     // Task configuration.
     clean: {
-      dist: 'dist',
+      dist: '<%= dist %>',
       docs: 'docs/dist'
     },
 
     prefix: {
       options: {
         // 均有默认配置
-        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'icon', 'carousel', 'close', 'form', 'row-fluid', 'tag', 'label', 'container', 'container-fluid', 'row', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
+        keyClass : ['alert', 'badge', 'breadcrumb', 'btn', 'btn-group', 'btn-toolbar', 'dropdown', 'dropdown-menu', 'dropup', 'select', 'icon', 'carousel', 'close', 'form',  'tag', 'label', 'container', 'container-fluid', 'row', 'row-fluid', 'modal', 'navbar', 'nav', 'pagination', 'progress', 'steps', 'steps-round', 'table', 'tooltip', 'lead', 'page-header', 'well', 'input-group', 'list-group', 'jumbotron', 'media', 'panel', 'thumbnail'],
         prefix: 'sui-'
       },
       css: {
         expand: true,
         cwd: './',
-        src: ['dist/css/**/*.css'],
+        src: ['<%=dist%>/css/**/*.css'],
         dest: './',
         ext: '-prefixed.css'
       }
@@ -135,11 +134,11 @@ module.exports = function (grunt) {
       },
       sui: {
         src: ['js/classmap.js'].concat(jsList),
-        dest: 'dist/js/<%= pkg.name %>.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>.js'
       },
       suiPrefixed: {
         src: ['js/classmap-sui.js'].concat(jsList),
-        dest: 'dist/js/<%= pkg.name %>-prefixed.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>-prefixed.js'
       }
     },
 
@@ -149,11 +148,11 @@ module.exports = function (grunt) {
       },
       core: {
         src: '<%= concat.sui.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>.min.js'
       },
       corePrefixed: {
         src: '<%= concat.suiPrefixed.dest %>',
-        dest: 'dist/js/<%= pkg.name %>-prefixed.min.js'
+        dest: '<%=dist%>/js/<%= pkg.name %>-prefixed.min.js'
       },
       customize: {
         src: configBridge.paths.customizerJs,
@@ -179,10 +178,10 @@ module.exports = function (grunt) {
           sourceMap: true,
           outputSourceFiles: true,
           sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+          sourceMapFilename: '<%=dist%>/css/<%= pkg.name %>.css.map'
         },
         src: 'less/sui.less',
-        dest: 'dist/css/<%= pkg.name %>.css'
+        dest: '<%=dist%>/css/<%= pkg.name %>.css'
       },
       compileTheme: {
         options: {
@@ -190,10 +189,10 @@ module.exports = function (grunt) {
           sourceMap: true,
           outputSourceFiles: true,
           sourceMapURL: '<%= pkg.name %>-theme.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
+          sourceMapFilename: '<%=dist%>/css/<%= pkg.name %>-theme.css.map'
         },
         src: 'less/theme.less',
-        dest: 'dist/css/<%= pkg.name %>-theme.css'
+        dest: '<%=dist%>/css/<%= pkg.name %>-theme.css'
       }
     },
 
@@ -229,8 +228,8 @@ module.exports = function (grunt) {
         csslintrc: 'less/.csslintrc'
       },
       dist: [
-        'dist/css/sui.css',
-        'dist/css/sui-theme.css'
+        '<%=dist%>/css/sui.css',
+        '<%=dist%>/css/sui-theme.css'
       ],
       examples: [
         'docs/examples/**/*.css'
@@ -251,20 +250,20 @@ module.exports = function (grunt) {
         advanced: false
       },
       minifyCore: {
-        src: 'dist/css/<%= pkg.name %>.css',
-        dest: 'dist/css/<%= pkg.name %>.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>.min.css'
       },
       minifyTheme: {
-        src: 'dist/css/<%= pkg.name %>-theme.css',
-        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>-theme.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>-theme.min.css'
       },
       minifyCorePrefixed: {
-        src: 'dist/css/<%= pkg.name %>-prefixed.css',
-        dest: 'dist/css/<%= pkg.name %>-prefixed.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>-prefixed.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>-prefixed.min.css'
       },
       minifyThemePrefixed: {
-        src: 'dist/css/<%= pkg.name %>-theme-prefixed.css',
-        dest: 'dist/css/<%= pkg.name %>-theme-prefixed.min.css'
+        src: '<%=dist%>/css/<%= pkg.name %>-theme-prefixed.css',
+        dest: '<%=dist%>/css/<%= pkg.name %>-theme-prefixed.min.css'
       },
       docs: {
         src: [
@@ -281,9 +280,9 @@ module.exports = function (grunt) {
       },
       dist: {
         expand: true,
-        cwd: 'dist/css/',
+        cwd: '<%=dist%>/css/',
         src: ['*.css', '!*.min.css'],
-        dest: 'dist/css/'
+        dest: '<%=dist%>/css/'
       },
       examples: {
         expand: true,
@@ -300,15 +299,19 @@ module.exports = function (grunt) {
     copy: {
       fonts: {
         src: 'fonts/*',
-        dest: 'dist/'
+        dest: '<%=dist%>/'
+      },
+      lib: {
+        src: ['js/lib/*.js'],
+        dest: '<%=dist%>/'
       },
       docs: {
-        src: ['dist/*/*', 'download/**/*'],
+        src: ['<%=dist%>/**/*', 'download/**/*'],
         dest: 'docs/'
       },
       old: {
         src: ['old/*/*'],
-        dest: 'dist/'
+        dest: '<%=dist%>/'
       }
     },
 
@@ -348,24 +351,6 @@ module.exports = function (grunt) {
       }
     },
 
-    validation: {
-      options: {
-        charset: 'utf-8',
-        doctype: 'HTML5',
-        failHard: true,
-        reset: true,
-        relaxerror: [
-          'Element img is missing required attribute src.',
-          'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.',
-          'Bad value separator for attribute role on element li.'
-        ]
-      },
-      files: {
-        src: '_gh_pages/**/*.html'
-      }
-    },
-
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
@@ -378,17 +363,14 @@ module.exports = function (grunt) {
       less: {
         files: 'less/**/*.less',
         tasks: ['less', 'newer:copy:docs']
-      }
-    },
-
-    sed: {
-      versionNumber: {
-        pattern: (function () {
-          var old = grunt.option('oldver');
-          return old ? RegExp.quote(old) : old;
-        })(),
-        replacement: grunt.option('newver'),
-        recursive: true
+      },
+      docs: {
+        files: 'docs/assets/css/src/*.css',
+        tasks: ['cssmin:docs']
+      },
+      docsJS: {
+        files: 'docs/assets/js/src/*.js',
+        tasks: ['uglify:docs']
       }
     },
 
@@ -405,12 +387,6 @@ module.exports = function (grunt) {
       }
     },
 
-    exec: {
-      npmUpdate: {
-        command: 'npm update'
-      }
-    },
-
     compress: {
       main: {
         options: {
@@ -422,7 +398,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'dist/',
+            cwd: '<%=dist%>/',
             src: ['**'],
             dest: 'sui-<%= pkg.version %>-dist'
           }
@@ -434,12 +410,17 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
-  require('time-grunt')(grunt);
+
+  if (buildTo) {
+    require('load-grunt-tasks')(grunt, { scope: ['dependencies'] });
+  } else {
+    require('load-grunt-tasks')(grunt);
+    require('time-grunt')(grunt);
+  }
 
   // Docs HTML validation task
   // grunt.registerTask('validate-html', ['jekyll:docs', 'validation']);
-  grunt.registerTask('validate-html', ['jekyll:docs']);
+  // grunt.registerTask('validate-html', ['jekyll:docs']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -454,13 +435,7 @@ module.exports = function (grunt) {
   if (runSubset('core') &&
       // Skip core tests if this is a Savage build
       process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
-    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'test-js', 'docs']);
-  }
-  // Skip HTML validation if running a different subset of the test suite
-  if (runSubset('validate-html') &&
-      // Skip HTML5 validator on Travis when [skip validator] is in the commit message
-      isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)) {
-    testSubtasks.push('validate-html');
+    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'test-js']);
   }
   // Only run Sauce Labs tests if there's a Sauce access key
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
@@ -475,17 +450,21 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'copy:lib']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'prefix:css']);
   grunt.registerTask('dist-css', ['less-compile', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js', 'copy:docs']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test']);
+  if (buildTo) {
+    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'dist-css', 'dist-js', 'docs']);
+  } else {
+    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'docs']);
+  }
 
   // 自动为产出文件和文档补全sui-前缀
   grunt.loadNpmTasks('prefix-cssclass');
@@ -493,22 +472,10 @@ module.exports = function (grunt) {
  // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
   // This can be overzealous, so its changes should always be manually reviewed!
-  grunt.registerTask('change-version-number', 'sed');
-
-  grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
   grunt.registerTask('build-customizer-html', 'jade');
-  grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
-    generateRawFiles(grunt, '');
-  });
-
-  grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var srcFiles = grunt.config.get('concat.sui.src');
-    var destFilepath = 'dist/js/npm.js';
-    generateCommonJSModule(grunt, srcFiles, destFilepath);
-  });
 
   // Docs task.
   grunt.registerTask('docs-css', ['csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
@@ -518,23 +485,8 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   // grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:lib', 'copy:docs']);
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 
-  // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
-  // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
-  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', '_update-shrinkwrap']);
-  grunt.registerTask('_update-shrinkwrap', function () {
-    var done = this.async();
-    npmShrinkwrap({ dev: true, dirname: __dirname }, function (err) {
-      if (err) {
-        grunt.fail.warn(err);
-      }
-      var dest = 'test-infra/npm-shrinkwrap.json';
-      fs.renameSync('npm-shrinkwrap.json', dest);
-      grunt.log.writeln('File ' + dest.cyan + ' updated.');
-      done();
-    });
-  });
 };

@@ -23,7 +23,6 @@
       color: @gray-light;
       &:hover,
       &:focus {
-        text-decoration: none;
         color: @brand-primary;
         background-color: @nav-link-hover-bg;
         // border-color: @nav-link-hover-bg;
@@ -37,7 +36,6 @@
       &:hover,
       &:focus {
         color: @nav-disabled-link-hover-color;
-        text-decoration: none;
         background-color: transparent;
         cursor: @cursor-disabled;
       }
@@ -123,9 +121,9 @@
     &.active > a {
       background: #fff;
       border-bottom: 1px solid #fff;
-      border-top: 3px solid @brand-primary !important;
+      border-top: 2px solid @brand-primary !important;
       margin: 0 -1px;
-      padding: 1px;
+      padding: 1px 2px 2px;
     }
 
     ul {

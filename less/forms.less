@@ -117,7 +117,7 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @form-padding-base-horizontal;
+  padding: @padding-base-vertical (@form-padding-base-horizontal - 2px);
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
@@ -250,30 +250,42 @@ input[type="search"] {
     margin-right: 4px;
   }
 }
-.checkbox,
-.checkbox-inline {
+.checkbox, .checkbox-inline {
   span:before {
     content:'\e626';
   }
-  input[type="checkbox"]:checked + span:before {
+  input[type="checkbox"]:checked + span:before, input[type="checkbox"]:not([disabled]):hover + span:before {
     content:'\e625';
     color: @box-checked-color;
   }
+  // 强对比场景hover变红
+  &.text-primary {
+    input[type="checkbox"]:checked + span:before, input[type="checkbox"]:not([disabled]):hover + span:before {
+      color: @brand-primary;
+    }
+  }
+
   input[type="checkbox"]:checked + span {
     color: @box-checked-color;
   }
   &:hover span:before, &:hover span {
     color: @box-hover-color;
   }
+
 }
-.radio,
-.radio-inline {
+.radio, .radio-inline {
   span:before {
     content:'\e624';
   }
-  input[type="radio"]:checked + span:before {
+  input[type="radio"]:checked + span:before, input[type="radio"]:not([disabled]):hover + span:before {
     content:'\e623';
     color: @box-checked-color;
+  }
+  // 强对比场景hover变红
+  &.text-primary {
+    input[type="radio"]:checked + span:before, input[type="radio"]:not([disabled]):hover + span:before {
+      color: @brand-primary;
+    }
   }
   input[type="radio"]:checked + span {
     color: @box-checked-color;
@@ -292,7 +304,7 @@ input[type="search"] {
 .radio-inline,
 .checkbox-inline {
   display: inline-block;
-  padding-right: 20px;
+  padding-right: 10px;
   margin-bottom: 0;
   vertical-align: middle;
   cursor: pointer;
@@ -334,6 +346,53 @@ input[type="checkbox"] {
   }
 }
 
+//Checkbox with tag
+
+.tag{
+  // position: relative;
+  &>span{
+    display: inline-block;
+    padding:4px 12px 2px;
+    border: 1px solid #999;
+    position: relative;
+    &:before{
+      content: '';
+      margin: 0;
+    }
+    &>.wsif-tick{
+      display: none;
+    }
+  }
+  &>input[type="checkbox"]:not([disabled]):hover{
+    &+span{
+      &:before{
+        content: '';
+      }
+    }
+  }
+}
+
+.tag>input[type="checkbox"]:checked{
+  &+span{
+    border:1px solid #f23f40;
+    &:before{
+      content: '';
+      margin: 0;
+    }
+    .wsif-tick{
+      position: absolute;
+      right: -.5px;
+      bottom:4px;
+      bottom: 3px \9;
+      bottom: 3px \0;
+      display: inline-block;
+      color: #f23f40;
+      height: 18px;
+      width: 18px;
+      font-size: 18px;
+    }
+  }
+}
 
 // Static form control text
 //
@@ -364,20 +423,20 @@ input[type="checkbox"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  .input-size(@input-height-small; @padding-small-vertical; (@padding-small-horizontal - 5px); @font-size-small; @line-height-small;);
 }
 .form-group-sm {
   .form-control {
-    .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+    .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small;);
   }
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-large; @padding-large-vertical; (@padding-large-horizontal - 7px); @font-size-large; @line-height-large;);
 }
 .form-group-lg {
   .form-control {
-    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large;);
   }
 }
 
@@ -465,7 +524,6 @@ input[type="checkbox"] {
 
 .select {
   border: 1px solid @input-border;
-  border-radius: @input-border-radius;
   position: relative;
   width: 100%;
   margin: 0;

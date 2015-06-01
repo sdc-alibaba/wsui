@@ -859,6 +859,10 @@ window.CLASSMAP = {
     Plugin.call($target, option)
   })
 
+  // 增加 http://demo.alibaba-inc.com/categories/3361/projects/11545/vds/135616  效果
+  $(document).on('mouseenter mouseleave', '.panel-toggle', function () {
+    $(this).toggleClass('panel-primary')
+  })
 }(jQuery);
 
 /* ========================================================================
@@ -1026,7 +1030,20 @@ window.CLASSMAP = {
     .on('keydown.dropdown.data-api', toggle, Dropdown.prototype.keydown)
     .on('keydown.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
     .on('keydown.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
-
+    // .on('mouseover.dropdown', '.dropdown', function () {
+    //   var $container = $(this), el = $container.find('[data-trigger="hover"]')[0];
+    //   var that = $(this).find('.dropdown-toggle')[0];
+    //   if (el) {
+    //     Dropdown.prototype.toggle.call(that);
+    //   }
+    // })
+    // .on('mouseleave.dropdown', '.dropdown', function () {
+    //   var $container = $(this), el = $container.find('[data-trigger="hover"]')[0];
+    //   var that = $(this).find('.dropdown-toggle')[0];
+    //   if (el) {
+    //     Dropdown.prototype.toggle.call(that);
+    //   }
+    // })
 }(jQuery);
 
 /* jshint laxcomma: true */
@@ -1074,7 +1091,7 @@ window.CLASSMAP = {
       + '<div class="modal-dialog">'
         + '<div class="modal-content">'
           + '<div class="modal-header">'
-            + '<button type="button" class="' + CLASSMAP.close + '" data-dismiss="modal" aria-hidden="true">&times;</button>'
+            + '<i class="wsif wsif-close02 ' + CLASSMAP.close + '" data-dismiss="modal"></i>'
             + '<h4 class="modal-title"><%=title%></h4>'
           + '</div>'
           + '<div class="modal-body"><%=body%></div>'
@@ -1734,7 +1751,7 @@ window.CLASSMAP = {
 
         $tip
           .detach()
-          .css({ top: 0, left: 0, display: 'block' })
+          .css({ top: 0, left: 0, display: 'block', opacity: 0.9 })
 
         opt.container ? $tip.appendTo(opt.container) : $tip.insertAfter(this.$element)
         if (/\bhover\b/.test(opt.trigger)) {
@@ -2318,8 +2335,8 @@ window.CLASSMAP = {
     },
     // 值传递
     _drawCtrl: function () {
-      var tpl = '<div>&nbsp;' + (this.displayInfoType == 'itemsCount' ? '<span>共' + this.itemsCount + '条</span>&nbsp;' : '<span>共' + this.pages + '页</span>&nbsp;') +
-        '<span>' + '&nbsp;到&nbsp;' + '<input type="text" class="page-num"/><button class="page-confirm">确定</button>' + '&nbsp;页' + '</span>' + '</div>';
+      var tpl = '<div>&nbsp;' + (this.displayInfoType == 'itemsCount' ? '<span>共' + this.itemsCount + '条</span> ' : '共<span class="text-muted">' + this.pages + '</span>页 ') +
+        '<span>' + ' 去 ' + '<input type="text" class="page-num"/><button class="btn btn-primary btn-sm">确定</button>' + ' 页' + '</span>' + '</div>';
       return tpl;
     },
 
@@ -5795,8 +5812,8 @@ $(function(){
 //加载图片空间插件js
 var protocol = (location.protocol === 'https:' ? 'https' : 'http:');
 var picPluginUrl = location.hostname.indexOf('daily.taobao.net') > -1 ?
-                   '//g.assets.daily.taobao.net/sj/pic/1.3.4/static/seller-v2/js/api.js' :
-                   protocol + '//g.alicdn.com/sj/pic/1.3.4/static/seller-v2/js/api.js'
+                   '//g-assets.daily.taobao.net/sj/pic/1.3.9/static/seller-v2/js/api.js' :
+                   protocol + '//g.alicdn.com/sj/pic/1.3.9/static/seller-v2/js/api.js'
 
 jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
 
@@ -5882,11 +5899,11 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
       self = this,
       jcrop,
       onCropChange = function(c) {
-        $('#J_cursize').html(c.w.toFixed(0) + ' * ' + c.h.toFixed(0))
+        $('.current-size').html(c.w.toFixed(0) + ' * ' + c.h.toFixed(0))
       },
       cropdlg
     cropdlg = $.confirm({
-      title: '裁剪图片<span id="J_cursize"></span>',
+      title: '裁剪图片<span class="current-size"></span>',
       //使用图片空间弹层的遮罩层即可
       backdrop: 'static',
       bgColor: 'rgba(0, 0, 0, 0)',
@@ -6034,8 +6051,8 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
       hide: function() {
         opt.cancel && opt.cancel.call(null, opt.triggerEle)
       },
-      cancelHidden: function() {
-        pic && pic.close();
+      cancelHide: function() {
+        pic && pic.close()
       }
     })
   }

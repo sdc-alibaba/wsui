@@ -18,7 +18,7 @@
 // The dropdown wrapper (div)
 .dropdown {
   position: relative;
-  display: block;
+  display: inline-block;
   height: 30px;
 }
 
@@ -35,9 +35,25 @@
     background-color: @dropdown-bg;
     position: relative;
     display: block;
-    padding: 2px 10px;
+    padding: 3px 10px;
     cursor: pointer;
   }
+}
+.dropdown-toggle i.wsif {
+  color: @dropdown-border;
+  margin-left: 20px;
+}
+//submenu
+.dropdown .dropdown-submenu {
+  position: relative;
+}
+.dropdown .dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin: 0;
+}
+.dropdown .dropdown-submenu:hover > .dropdown-menu {
+  display: block;
 }
 
 // The dropdown menu (ul)
@@ -50,15 +66,13 @@
   float: left;
   min-width: 160px;
   padding: 1px 0;
-  margin: -1px 0 0; // override default ul
+  margin: 1px 0 0; // override default ul
   list-style: none;
   font-size: @font-size-large;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: @dropdown-bg;
   border: 1px solid @dropdown-fallback-border; // IE8 fallback
   border: 1px solid @dropdown-border;
-  border-radius: @border-radius-base;
-  .box-shadow(0 6px 12px rgba(0,0,0,.175));
   background-clip: padding-box;
 
   // Aligns the dropdown menu to right
@@ -76,7 +90,7 @@
   // Links within the dropdown menu
   > li > a {
     display: block;
-    padding: 3px @font-size-base;
+    padding: 3px 10px;
     clear: both;
     line-height: @line-height-base;
     color: @dropdown-link-color;
@@ -92,10 +106,13 @@
 .dropdown-menu > li > a {
   &:hover,
   &:focus {
-    text-decoration: none;
     color: @dropdown-link-hover-color;
     background-color: @dropdown-link-hover-bg;
   }
+}
+.dropdown-menu > li:hover > a {
+  color: @dropdown-link-hover-color;
+  background-color: @dropdown-link-hover-bg;
 }
 
 // Active state
@@ -104,7 +121,6 @@
   &:hover,
   &:focus {
     color: @dropdown-link-active-color;
-    text-decoration: none;
     outline: 0;
     background-color: @dropdown-link-active-bg;
   }
@@ -124,7 +140,6 @@
   // Nuke hover/focus effects
   &:hover,
   &:focus {
-    text-decoration: none;
     background-color: transparent;
     background-image: none; // Remove CSS gradient
     .reset-filter();
@@ -145,6 +160,13 @@
   }
 }
 
+//hover state for dropdown
+.dropdown:hover [data-trigger="hover"] + .dropdown-menu {
+  display: block;
+}
+.dropdown:hover [data-trigger="hover"] .wsif-unfold:before {
+  content: "\e614";
+}
 // Menu positioning
 //
 // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown

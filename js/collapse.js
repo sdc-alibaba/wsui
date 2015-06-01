@@ -208,4 +208,8 @@
     Plugin.call($target, option)
   })
 
+  // 增加 http://demo.alibaba-inc.com/categories/3361/projects/11545/vds/135616  效果
+  $(document).on('mouseenter mouseleave', '.panel-toggle', function () {
+    $(this).toggleClass('panel-primary')
+  })
 }(jQuery);

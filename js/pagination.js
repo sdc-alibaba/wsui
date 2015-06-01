@@ -74,8 +74,8 @@
     },
     // 值传递
     _drawCtrl: function () {
-      var tpl = '<div>&nbsp;' + (this.displayInfoType == 'itemsCount' ? '<span>共' + this.itemsCount + '条</span>&nbsp;' : '<span>共' + this.pages + '页</span>&nbsp;') +
-        '<span>' + '&nbsp;到&nbsp;' + '<input type="text" class="page-num"/><button class="page-confirm">确定</button>' + '&nbsp;页' + '</span>' + '</div>';
+      var tpl = '<div>&nbsp;' + (this.displayInfoType == 'itemsCount' ? '<span>共' + this.itemsCount + '条</span> ' : '共<span class="text-muted">' + this.pages + '</span>页 ') +
+        '<span>' + ' 去 ' + '<input type="text" class="page-num"/><button class="btn btn-primary btn-sm">确定</button>' + ' 页' + '</span>' + '</div>';
       return tpl;
     },
 
