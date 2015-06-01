@@ -460,7 +460,7 @@ module.exports = function (grunt) {
 
   // Default task.
   if (buildTo) {
-    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'dist-css', 'dist-js', 'docs']);
+    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'dist-css', 'dist-js']);
   } else {
     grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'docs']);
   }
