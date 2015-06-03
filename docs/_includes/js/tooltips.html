@@ -56,29 +56,29 @@ $(function () {
 
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-tooltip-groups">
-    <h4>Tooltips in button groups and input groups require special setting</h4>
-    <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
+    <h4>Tooltips与按钮组和输入框组联合使用时需要一些特殊的设置</h4>
+    <p>在<code>.btn-group</code>或<code>.input-group</code>使用Tooltips时,需要指定<code>container: 'body'</code>选项()，目的是避免不必要的副作用(比如，当Tooltip显示之后，与其合作的页面元素可能变得更宽或者失去圆角）。</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-tooltip-hidden">
-    <h4>Don't try to show tooltips on hidden elements</h4>
-    <p>Invoking <code>$(...).tooltip('show')</code> when the target element is <code>display: none;</code> will cause the tooltip to be incorrectly positioned.</p>
+    <h4>不要在隐藏元素上面使用tooltips</h4>
+    <p>当目标元素被设置为<code>display: none;</code>时会引发<code>$(...).tooltip('show')</code>的定位异常。</p>
   </div>
   <div class="bs-callout bs-callout-info" id="callout-tooltip-disabled">
-    <h4>Tooltips on disabled elements require wrapper elements</h4>
-    <p>To add a tooltip to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the tooltip to that <code>&lt;div&gt;</code> instead.</p>
+    <h4>在页面禁止的元素上面使用Tooltips时，需要用一个元素将其包裹起来</h4>
+    <p>为一个<code>disabled</code> or <code>.disabled</code>元素添加Tooltips时, 需要将这个元素放在<code>&lt;div&gt;</code>之内，并将tooltip附加在<code>&lt;div&gt;</code>元素上。</p>
   </div>
 
-  <h2 id="tooltips-usage">Usage</h2>
-  <p>The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.</p>
-  <p>Trigger the tooltip via JavaScript:</p>
+  <h2 id="tooltips-usage">使用</h2>
+  <p>Tooltip一经请求将自动生成内容和标记，并且在元素触发之后会自动定位其显示位置。</p>
+  <p>通过Javascript代码触发Tooltip：</p>
 {% highlight js %}
 $('#example').tooltip(options)
 {% endhighlight %}
 
-  <h3>Markup</h3>
-  <p>The required markup for a tooltip is only a <code>data</code> attribute and <code>title</code> on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code>top</code> by the plugin).</p>
+  <h3>标记</h3>
+  <p>仅仅需要在你想要其拥有Tooltip的元素上面添加<code>data</code>属性和<code>title</code>属性即可。生成的tooltip是相当简单的，尽管其确实需要一个位置(默认情况下，该位置被设置为<code>top</code>)。</p>
   <div class="bs-callout bs-callout-warning" id="callout-tooltip-multiline">
-    <h4>Multiple-line links</h4>
+    <h4>换行的链接</h4>
     <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
   </div>
 {% highlight html %}
