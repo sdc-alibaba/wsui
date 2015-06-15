@@ -23,8 +23,8 @@
 //加载图片空间插件js
 var protocol = (location.protocol === 'https:' ? 'https:' : 'http:');
 var picPluginUrl = location.hostname.indexOf('daily.taobao.net') > -1 ?
-                   '//g-assets.daily.taobao.net/sj/pic/1.3.9/static/seller-v2/js/api.js' :
-                   protocol + '//g.alicdn.com/sj/pic/1.3.9/static/seller-v2/js/api.js'
+                   '//g-assets.daily.taobao.net/sj/pic/1.4.0/static/seller-v2/js/api.js' :
+                   protocol + '//g.alicdn.com/sj/pic/1.4.0/static/seller-v2/js/api.js'
 
 jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
 
