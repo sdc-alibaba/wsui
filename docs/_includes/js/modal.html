@@ -222,8 +222,8 @@
 </div>
 {% endhighlight %}
 
-  <h2 id="modals-related-target">Varying modal content based on trigger button</h2>
-  <p>Have a bunch of buttons that all trigger the same modal, just with slightly different contents? Use <code>event.relatedTarget</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML <code>data-*</code> attributes</a> (possibly <a href="http://api.jquery.com/data/">via jQuery</a>) to vary the contents of the modal depending on which button was clicked. See the Modal Events docs for details on <code>relatedTarget</code>,</p>
+  <h2 id="modals-related-target">基于触发按钮的不同动态展示不同的内容</h2>
+  <p>想要实现若干按钮触发同样的模态框，但是现实的内容不一样吗？使用<code>event.relatedTarget</code>以及<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML的<code>data-*</code>属性</a>(也许<a href="http://api.jquery.com/data/">通过jQuery</a>)来具体决定哪个按钮被点击的模态框的内容。可以查看模态框文档的事件部分获得关于<code>relatedTarget</code>的详细内容,</p>
   <div class="bs-example" style="padding-bottom: 24px;">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
@@ -302,21 +302,22 @@ $('#exampleModal').on('show', function (event) {
 })
 {% endhighlight %}
 
-  <h2 id="modals-usage">Usage</h2>
-  <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
+  <h2 id="modals-usage">使用</h2>
+  <p>通过data属性或者Javascript调用模态框组件可以根据需要动态展示隐藏的内容。模态框展示的时候会为<code>&lt;body&gt;</code>元素添加<code>.modal-open</code>类，该类主要用来重写body的默认滚动行为，并且产生一个<code>.modal-backdrop</code>遮罩层用来提供可点击区域，点击该区域就可以关闭模态框。</p>
 
-  <h3>Via data attributes</h3>
-  <p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
+  <h3>通过data属性</h3>
+  <p>可以不通过Javascript就激活一个模态框。设置一个控制元素（比如一个阿牛）的属性如下<code>data-toggle="modal"</code>， <code>data-target="#foo"</code>或者<code>href="#foo"</code> 用以指向一个特定的模态框。</p>
 {% highlight html %}
 <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
 {% endhighlight %}
 
-  <h3>Via JavaScript</h3>
-  <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
+  <h3>通过JavaScript</h3>
+  <p>可以通过一行代码激活一个有<code>myModal</code>id属性的模态框：</p>
+  <p>可以通过一行代码激活一个有id属性的模态框Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
   {% highlight js %}$('#myModal').modal(options){% endhighlight %}
 
-  <h3 id="modals-options">Options</h3>
-  <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
+  <h3 id="modals-options">选项</h3>
+  <p>可以通过配置data属性或者使用Javascript来配置模态框的选项。对于data属性，需要将属性名放在<code>data-</code>之后，比如<code>data-backdrop=""</code>。</p>
   <div class="table-responsive">
     <pre><code>
    /* 弹层静态方法，用于很少重复，不需记住状态的弹层，可方便的直接调用，最简单形式就是$.alert('我是alert') 或$.confirm('我是confirm') 或 $.confirm(options)
@@ -355,10 +356,10 @@ $('#exampleModal').on('show', function (event) {
 
   </div><!-- /.table-responsive -->
 
-  <h3 id="modals-methods">Methods</h3>
+  <h3 id="modals-methods">方法</h3>
 
   <h4>.modal(options)</h4>
-  <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
+  <p>将页面中的某块内容作为模态框激活，该方法接受一个可选参数<code>object</code>。</p>
 {% highlight js %}
 $('#myModal').modal({
   keyboard: false
@@ -366,15 +367,15 @@ $('#myModal').modal({
 {% endhighlight %}
 
   <h4>.modal('toggle')</h4>
-  <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown</code> or <code>hidden</code> event occurs).</p>
+  <p>手动打开或者关闭一个模态框。<strong>在模态框显示或隐藏之前返回到主调函数中</strong> (即在<code>shown</code>或者<code>hidden</code>事件被触发之前)。</p>
   {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
 
   <h4>.modal('show')</h4>
-  <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown</code> event occurs).</p>
+  <p>手动打开一个模态框。<strong>在模态框显示之前返回到主调函数中</strong> (比如在<code>shown</code>事件之前).</p>
   {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
   <h4>.modal('hide')</h4>
-  <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
+  <p>手动隐藏一个模态框。<strong>在模态框隐藏之前返回到主调函数中</strong> (比如在<code>hidden</code>事件之前).</p>
   {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
 
   <h4>.modal('okHide')</h4>
@@ -385,8 +386,8 @@ $('#myModal').modal({
   <p>执行一次自适应。用于弹层高度发生变化时。(当浏览器窗口resize时会自动自适应)</p>
   {% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
 
-  <h3 id="modals-events">Events</h3>
-  <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
+  <h3 id="modals-events">事件</h3>
+  <p>Bootstrap模态框类提供了一些事件用于监听并执行你自己的代码。</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
@@ -398,39 +399,39 @@ $('#myModal').modal({
       <tbody>
        <tr>
          <td>show</td>
-         <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
+         <td>该事件在 <code>show</code> 方法调用之后立即被触发。如果该事件由点击事件触发，则回调函数中可以通过事件的<code>relatedTarget</code> 属性访问该元素。</td>
        </tr>
        <tr>
          <td>shown</td>
-         <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
+         <td>该事件在模态框展示出来之后被触发（或者在CSS过渡效果完毕之后）。如果该事件由点击事件触发，则回调函数中可以通过事件的<code>relatedTarget</code> 属性访问该元素。</td>
        </tr>
        <tr>
          <td>hide</td>
-         <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+         <td>该事件在 <code>hide</code> 方法调用之后立即被触发。</td>
        </tr>
        <tr>
          <td>hidden</td>
-         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+         <td>该事件在模态框完全关闭之后（或者CSS过渡效果完成之后）被触发。</td>
        </tr>
        <tr>
          <td>okHide</td>
-         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
+         <td>该事件在<code>hide</code>方法被调用之后触发。其他不变，不过是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
        </tr>
        <tr>
          <td>okHidden</td>
-         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击“确认”按钮后弹层已经关闭后的回调</td>
+         <td>该事件在模态框完全关闭之后（或者CSS过渡效果完成之后）被触发。点击“确认”按钮后弹层已经关闭后的回调</td>
        </tr>
        <tr>
          <td>okHide</td>
-         <td>This event is fired immediately when the <code>hide</code> instance method has been called.其他不变，不过是点击了除“确认”按钮外其他原因导致弹层关闭时执行的回调</td>
+         <td>该事件在 <code>hide</code> 方法调用之后立即被触发。其他不变，不过是点击了除“确认”按钮外其他原因导致弹层关闭时执行的回调</td>
        </tr>
        <tr>
          <td>okHidden</td>
-         <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).点击了除“确认”按钮外其他原因导致弹层关闭完毕后执行的回调</td>
+         <td>该事件在模态框完全关闭之后（或者CSS过渡效果完成之后）被触发。点击了除“确认”按钮外其他原因导致弹层关闭完毕后执行的回调</td>
        </tr>
        <tr>
          <td>loaded</td>
-         <td><code>new</code> This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
+         <td><code>new</code> 从配置属性中的<code>option</code>指定的远程数据源加载数据完毕之后触发该事件。</td>
        </tr>
       </tbody>
     </table>

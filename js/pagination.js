@@ -95,7 +95,7 @@
           }
         }
       }
-      pag.on('click', '.page-confirm', function (e) {
+      pag.on('click', 'button', function (e) {
         doPagination.call(this)
       })
       pag.on('keypress', '.page-num', function (e) {
