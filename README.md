@@ -4,6 +4,11 @@
 - 因为CDN发布机制的问题，默认的npm配置是 `production`，只会安装发布需要的部分依赖，所以开发环境下请使用 `npm install --production=false` 来安装全部依赖。
 - 建议使用 [淘宝的NPM源](http://npm.taobao.org/)，以提高安装速度。
 
+### 满天星接入wsui的变动
+- Gruntfile.js文件中添加两个任务:less:compileMTXCore,cssmin:minifyMTXCore,会生成sui-mtx.css及sui-mtx.min.css文件。
+- 新增sui-mtx.less文件，该文件中引用的variables.less文件改为相应的variables-mtx.less文件。
+- 做上述变动后会针对满天星所需要的样式生成sui-mtx.css文件，并且不影响原有的sui.css文件。
+
 
 # [Bootstrap](http://getbootstrap.com)
 
