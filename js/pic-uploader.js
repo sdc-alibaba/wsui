@@ -39,7 +39,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
     } else {
       envHost = isDailyEnv ? '//g-assets.daily.taobao.net/' : '//g.alicdn.com/';
     }
-    return envHost + path;
+    return envHost + path
   }
 
   var pic, $picDlg, pp = {}
