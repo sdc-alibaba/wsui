@@ -167,7 +167,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
           if (res.success) {
             //手工调用的okHide不会再进okHide回调
             cropdlg.modal('okHide')
-            options.success && options.success.call(self, _getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'), res.data)
+            options.successCallback && options.successCallback.call(self, (/daily/.test(location.host)  ? '//img.daily.taobaocdn.net/tfscom/' : '//img.alicdn.com/tfscom/') + res.data.tfsFilePath)
             //把之前隐藏的图片空间iframe和弹层关闭
             pic.close()
           } else {
