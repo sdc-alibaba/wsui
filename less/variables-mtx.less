@@ -10,13 +10,13 @@
 @gray-base:              #000;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
 @gray-dark:              lighten(@gray-base, 20%);   // #333
-@gray:                   #666; // #555
+@gray:                   #717d98; // 满天星默认文字深色
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #03adf5;
-@brand-primary-hover:   #ff6566;
-@brand-primary-active:  #d93838;
+@brand-primary:         #03adf5;//满天星蓝色基调
+@brand-primary-hover:   #4ac9ff;//hover时的颜色
+@brand-primary-active:  #4ac9ff;//active颜色没给
 @brand-success:         #21c19f;
 @brand-info:            #2daae1;
 @brand-warning:         #f5af08;
@@ -182,7 +182,7 @@
 //** Text color for `<input>`s
 @input-color:                    @gray;
 //** `<input>` border color
-@input-border:                   #ccc;
+@input-border:                   #ccd5e5;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
@@ -194,10 +194,10 @@
 @input-border-radius-small:      @border-radius-small;
 
 //** Border color for inputs on focus
-@input-border-focus:             @brand-primary;
+@input-border-focus:             #aab3cd;//满天星focus border 颜色
 
 //** Placeholder text color
-@input-color-placeholder:        #ccc;
+@input-color-placeholder:        #d8e1f2;
 
 //** Default `.form-control` height
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);  // 21 + 4 * 2 + 2
@@ -858,5 +858,18 @@
 @stepsRoundFinishedTextColor: @stepsFinishedColor;
 @stepsRoundTodoTextColor: #666;
 @stepsRoundTodoBorderColor: #d3d3d3;
+
+//tag
+//--------------------------
+
+@tag-color: 				  #717d98;//深颜色
+@tag-border-color:   		  #aab3cd;//浅颜色
+@tag-hover-border-color:  	  #f47369;//红色
+@tag-hover-icon-color:   	  #f47369;//红色
+@tag-icon-color:     		  #aab3cd;//浅颜色
+@tag-active-border-color:     #f47369;//红色
+@tag-active-icon-color:       #f47369;//红色
+@tag-border-color-checked:    @brand-primary;
+@tag-icon-color-checked:      @brand-primary;
 
 
