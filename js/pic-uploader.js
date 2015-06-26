@@ -39,7 +39,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
     } else {
       envHost = isDailyEnv ? '//g-assets.daily.taobao.net/' : '//g.alicdn.com/';
     }
-    return envHost + path;
+    return envHost + path
   }
 
   var pic, $picDlg, pp = {}
@@ -159,7 +159,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
           if (options.beforeSend.call(self, sendData) === false) return false;
         }
         //发送裁剪请求
-        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'we'), {
+        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'weitao'), {
           type: 'get',
           data: sendData,
           dataType: 'jsonp'
