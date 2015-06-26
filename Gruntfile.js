@@ -183,6 +183,13 @@ module.exports = function (grunt) {
         src: 'less/sui.less',
         dest: '<%=dist%>/css/<%= pkg.name %>.css'
       },
+      compileMTXCore: {
+        options: {
+          strictMath: true
+        },
+        src: 'less/sui-mtx.less',
+        dest: '<%=dist%>/css/sui-mtx.css'
+      },
       compileTheme: {
         options: {
           strictMath: true,
@@ -252,6 +259,10 @@ module.exports = function (grunt) {
       minifyCore: {
         src: '<%=dist%>/css/<%= pkg.name %>.css',
         dest: '<%=dist%>/css/<%= pkg.name %>.min.css'
+      },
+      minifyMTXCore: {
+        src: '<%=dist%>/css/sui-mtx.css',
+        dest: '<%=dist%>/css/sui-mtx.min.css'
       },
       minifyTheme: {
         src: '<%=dist%>/css/<%= pkg.name %>-theme.css',
@@ -453,8 +464,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'uglify:corePrefixed', 'copy:lib']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'prefix:css']);
-  grunt.registerTask('dist-css', ['less-compile', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
+  grunt.registerTask('less-compile', ['less:compileCore','less:compileMTXCore', 'less:compileTheme', 'prefix:css']);
+  grunt.registerTask('dist-css', ['less-compile', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyMTXCore','cssmin:minifyTheme', 'cssmin:minifyCorePrefixed', 'cssmin:minifyThemePrefixed']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:old', 'dist-js', 'copy:docs']);
