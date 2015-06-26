@@ -159,7 +159,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
           if (options.beforeSend.call(self, sendData) === false) return false;
         }
         //发送裁剪请求
-        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'we'), {
+        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'weitao'), {
           type: 'get',
           data: sendData,
           dataType: 'jsonp'
