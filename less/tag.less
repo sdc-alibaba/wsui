@@ -6,24 +6,24 @@
 // Base class
 .tag > li{
 	padding: 0 12px;
-  margin: 10px 10px 0 0;
+  	margin: 10px 10px 0 0;
 	display: inline-block;
 	font-size: @font-size-h5;
-	color: #666;
+	color: @tag-color;
 	line-height: 26px;
-	border: 1px solid #999;
+	border: 1px solid @tag-border-color;
 	cursor: default;
 	.user-select(none);
 	.transition(border-color .3s linear);
 	&:hover{
-		border-color: @brand-primary;
+		border-color: @tag-hover-border-color;
     &>i{
-      color: @brand-primary;
+      color: @tag-hover-icon-color;
     }
 	}
   &>i {
     margin-left: 5px;
-	  color: #999;
+	  color: @tag-icon-color;
 	  cursor: pointer;
   }
 	&.tag-close{
@@ -42,7 +42,7 @@
 	}
 	&.tag-active{
 		position: relative;
-		border-color: @brand-primary;
+		border-color: @tag-active-border-color;
 		&>i{
 			position: absolute;
 			right: -0.3px;
@@ -53,7 +53,7 @@
 			bottom: ~"-0.1px \0";
 			font-size: @font-size-h3;
 			line-height: @font-size-h3;
-			color: @brand-primary;
+			color: @tag-active-icon-color;
 	  		background-color: #FFF;
 		}
 	}
@@ -74,7 +74,7 @@
 	  		right: -6px;
 	  		font-size: @font-size-h3;
 	  		line-height: @font-size-h3;
-	  		color: @brand-primary;
+	  		color: @tag-hover-icon-color;
 	  		border-radius: 9px;
 	  		background-color: #FFF;
   			opacity: 0;

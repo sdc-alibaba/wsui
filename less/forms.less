@@ -127,7 +127,7 @@ output {
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   // Customize the `:focus` state to imitate native WebKit styles.
-  .form-control-focus(#333);
+  .form-control-focus(@input-border-focus);
 
   // Placeholder
   .placeholder();
@@ -374,7 +374,7 @@ input[type="checkbox"] {
 
 .tag>input[type="checkbox"]:checked{
   &+span{
-    border:1px solid #f23f40;
+    border:1px solid @tag-border-color-checked;
     &:before{
       content: '';
       margin: 0;
@@ -386,7 +386,7 @@ input[type="checkbox"] {
       bottom: 3px \9;
       bottom: 3px \0;
       display: inline-block;
-      color: #f23f40;
+      color: @tag-icon-color-checked;
       height: 18px;
       width: 18px;
       font-size: 18px;

@@ -10,13 +10,14 @@
 @gray-base:              #000;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
 @gray-dark:              lighten(@gray-base, 20%);   // #333
-@gray:                   #666; // #555
+@gray:                   #717d98; // 满天星默认文字深色
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #f23f40;
-@brand-primary-hover:   #ff6566;
-@brand-primary-active:  #d93838;
+@brand-primary:         #03adf5;//满天星蓝色基调
+@brand-primary-hover:   #4ac9ff;//hover时的颜色
+@brand-primary-active:  #4ac9ff;//active颜色没给
+
 @brand-success:         #21c19f;
 @brand-info:            #2daae1;
 @brand-warning:         #f5af08;
@@ -31,7 +32,7 @@
 //** Background color for `<body>`.
 @body-bg:               #fff;
 //** Global text color on `<body>`.
-@text-color:            @gray-dark;
+@text-color:            @gray;
 
 //** Global textual link color.
 @link-color:            @brand-primary;
@@ -135,9 +136,9 @@
 @table-bg:                      transparent;
 //** Background color used for `.table-striped`.
 @table-bg-accent:               #f9f9f9;
-@table-bg-thead:                   #f4f4f4;
+@table-bg-thead:                #f2f6fc;
 //** Background color used for `.table-hover`.
-@table-bg-hover:                #f5f5f5;
+@table-bg-hover:                #f2f6fc;
 @table-bg-active:               @table-bg-hover;
 //** Background color used for '.table-primary'
 @table-bg-primary:              #28a3ef;
@@ -146,7 +147,7 @@
 //** 文字颜色 for '.table-primary'
 @table-primary-color:           #fff;
 //** Border color for table and cell borders.
-@table-border-color:            #ddd;
+@table-border-color:            #edf2fa;
 
 
 //== Buttons
@@ -154,19 +155,19 @@
 //## For each of Bootstrap's buttons, define text, background and border color.
 
 
-@btn-default-color:              #777;
+@btn-default-color:              #717d98;
 @btn-default-hover-color:        @brand-primary-hover;
 @btn-default-active-color:       @brand-primary-active;
 @btn-default-bg:                 transparent;
-@btn-default-border:             #c9c9c9;
+@btn-default-border:             #ccd5e5;
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-hover-bg:           @brand-primary-hover;
 @btn-primary-active-bg:          @brand-primary-active;
 
-@btn-bordered-color:             #333;                       
-@btn-bordered-border:            #999;
+@btn-bordered-color:             #717d98;                       
+@btn-bordered-border:            #ccd5e5;
 
 //== Forms
 //
@@ -185,7 +186,7 @@
 //** Text color for `<input>`s
 @input-color:                    @gray;
 //** `<input>` border color
-@input-border:                   #ccc;
+@input-border:                   #ccd5e5;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
@@ -197,10 +198,10 @@
 @input-border-radius-small:      @border-radius-small;
 
 //** Border color for inputs on focus
-@input-border-focus:             #333;
+@input-border-focus:             #aab3cd;//满天星focus border 颜色
 
 //** Placeholder text color
-@input-color-placeholder:        #ccc;
+@input-color-placeholder:        #d8e1f2;
 
 //** Default `.form-control` height
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);  // 21 + 4 * 2 + 2
@@ -220,9 +221,10 @@
 //** Disabled cursor for form controls and buttons.
 @cursor-disabled:                not-allowed;
 
-@box-color:                 #999;
-@box-checked-color:         #666;
-@box-hover-color:           #999;
+//checkbox radio
+@box-color:                 #aab3cd;
+@box-checked-color:         #717d98;
+@box-hover-color:           #aab3cd;
 //== Dropdowns
 //
 //## Dropdown menu container and contents.
@@ -865,12 +867,14 @@
 //tag
 //--------------------------
 
-@tag-color: 				  #666;//深颜色
-@tag-border-color:   		  #999;//浅颜色
-@tag-hover-border-color:  	  @brand-primary;//红色
-@tag-hover-icon-color:   	  @brand-primary;//红色
-@tag-icon-color:     		  #999;//浅颜色
-@tag-active-border-color:     @brand-primary;//红色
-@tag-active-icon-color:       @brand-primary;//红色
+@tag-color: 				  #717d98;//深颜色
+@tag-border-color:   		  #aab3cd;//浅颜色
+@tag-hover-border-color:  	  #f47369;//红色
+@tag-hover-icon-color:   	  #f47369;//红色
+@tag-icon-color:     		  #aab3cd;//浅颜色
+@tag-active-border-color:     #f47369;//红色
+@tag-active-icon-color:       #f47369;//红色
 @tag-border-color-checked:    @brand-primary;
 @tag-icon-color-checked:      @brand-primary;
+
+
