@@ -203,7 +203,7 @@
 @input-color-placeholder:        #ccc;
 
 //** Default `.form-control` height
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);  // 21 + 4 * 2 + 2
+@input-height-base:              (@line-height-computed + ((@padding-base-vertical - 2) * 2) + 2);  // 21 + 4 * 2 + 2
 //** Large `.form-control` height
 @input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 //** Small `.form-control` height
@@ -590,6 +590,7 @@
 @modal-header-border-color:   #e5e5e5;
 //** Modal footer border color
 @modal-footer-bg-color:   #f1f4f5;
+@modal-header-color:      @gray;
 
 @modal-lg:                    800px;
 @modal-md:                    590px;
