@@ -49,7 +49,7 @@
       // 切换箭头方向
       $this
         .find('.wsif')
-        .toggleClass('wsif-fold wsif-unfold')
+        .toggleClass('wsif-up wsif-down')
 
       $parent
         .toggleClass('open')
@@ -107,7 +107,7 @@
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger('hidden', relatedTarget)
-      $this.find('.wsif').toggleClass('wsif-fold wsif-unfold')
+      $this.find('.wsif').toggleClass('wsif-up wsif-down')
     })
   }
 
