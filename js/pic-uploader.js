@@ -273,7 +273,8 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
     picUploader: function (opt) {
       opt.triggerEle = this
       var config = $.extend({}, $.fn.picUploader.defaults, $(this).data(), opt)
-      pp.init.call(pp, config)
+      pp.init.call(pp, config);
+      return pp;
     }
   })
 
