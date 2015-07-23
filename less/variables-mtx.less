@@ -13,6 +13,7 @@
 @gray:                   #717d98; // 满天星默认文字深色
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+@gray-light-mtx:         #aab3cd;//满天星默认文字浅色
 
 @brand-primary:         #03adf5;//满天星蓝色基调
 @brand-primary-hover:   #4ac9ff;//hover时的颜色
@@ -855,15 +856,15 @@
 
 @stepsFinishedColor: @brand-primary;
 @stepsCurrentColor: @brand-primary-hover;
-@stepsTodoColor: @gray-lighter;
+@stepsTodoColor: #d8e1f2;//横条颜色
 @stepsBaseHeight: 32px;
 @stepsBaseWidth: 195px;
 @stepsFinishedTextColor: @body-bg;
 @stepsCurrentTextColor: @body-bg;
-@stepsTodoTextColor: #999;
+@stepsTodoTextColor: @gray-light-mtx;
 @stepsRoundFinishedTextColor: @stepsFinishedColor;
 @stepsRoundTodoTextColor: #666;
-@stepsRoundTodoBorderColor: #d3d3d3;
+@stepsRoundTodoBorderColor: #ccd5e5;
 
 //tag
 //--------------------------
