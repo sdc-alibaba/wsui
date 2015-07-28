@@ -462,7 +462,7 @@ module.exports = function (grunt) {
   if (buildTo) {
     grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'dist-css', 'dist-js']);
   } else {
-    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'copy:docs']);
+    grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:old', 'test', 'docs']);
   }
 
   // 自动为产出文件和文档补全sui-前缀
@@ -484,7 +484,7 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   // grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:lib', 'copy:docs', 'build-glyphicons-data']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:lib', 'copy:docs']);
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 

@@ -21,10 +21,10 @@
  */
 
 //加载图片空间插件js
-var protocol = (location.protocol === 'https:' ? 'https' : 'http:');
+var protocol = (location.protocol === 'https:' ? 'https:' : 'http:');
 var picPluginUrl = location.hostname.indexOf('daily.taobao.net') > -1 ?
-                   '//g.assets.daily.taobao.net/sj/pic/1.3.4/static/seller-v2/js/api.js' :
-                   protocol + '//g.alicdn.com/sj/pic/1.3.4/static/seller-v2/js/api.js'
+                   '//g-assets.daily.taobao.net/sj/pic/1.4.0/static/seller-v2/js/api.js' :
+                   protocol + '//g.alicdn.com/sj/pic/1.4.0/static/seller-v2/js/api.js'
 
 jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
 
@@ -39,7 +39,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
     } else {
       envHost = isDailyEnv ? '//g-assets.daily.taobao.net/' : '//g.alicdn.com/';
     }
-    return envHost + path;
+    return envHost + path
   }
 
   var pic, $picDlg, pp = {}
@@ -159,7 +159,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
           if (options.beforeSend.call(self, sendData) === false) return false;
         }
         //发送裁剪请求
-        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'we'), {
+        $.ajax(_getSourceUrl('action.do?api=primus_cover_crop', 'weitao'), {
           type: 'get',
           data: sendData,
           dataType: 'jsonp'
@@ -167,7 +167,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
           if (res.success) {
             //手工调用的okHide不会再进okHide回调
             cropdlg.modal('okHide')
-            options.success && options.success.call(self, _getSourceUrl('tfscom/' + res.data.tfsFilePath, 'img01'), res.data)
+            options.success && options.success.call(self, (/daily/.test(location.host)  ? '//img.daily.taobaocdn.net/tfscom/' : '//img.alicdn.com/tfscom/') + res.data.tfsFilePath)
             //把之前隐藏的图片空间iframe和弹层关闭
             pic.close()
           } else {
@@ -273,7 +273,8 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
     picUploader: function (opt) {
       opt.triggerEle = this
       var config = $.extend({}, $.fn.picUploader.defaults, $(this).data(), opt)
-      pp.init.call(pp, config)
+      pp.init.call(pp, config);
+      return pp;
     }
   })
 
