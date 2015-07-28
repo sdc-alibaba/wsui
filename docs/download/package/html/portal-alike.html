@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SUI Demo</title>
+
+    <link rel="stylesheet" href="../css/sui.min.css"/> 
+    <link rel="stylesheet" href="../css/framework.css"/>
+    <link rel="stylesheet" href="../css/sui-grid.css"/>
+    <link rel="stylesheet" href="../css/portal-alike.css"/>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../js/sui.min.js"></script>
+    <script src="../js/framework.js"></script>
+
+  </head>
+  <body>
+    <div>
+        <div class="openplatform-nav">
+            <div class="logo-container">
+                <h1>
+                    <a href="#"><i class="open-iconfont open-icon-alibaba"></i>阿里 · XX平台</a>
+                </h1>
+            </div>
+            <div class="top-nav-container">
+                <span class="slash">/</span>
+                <span>首级菜单 <i class="empty-triangle"></i></span>
+                <ul class="open-nav-menu" data-name="common">
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <div class="person-container">
+                    <span>ADMIN 
+                        <i class="open-iconfont open-icon-person"></i> 
+                        <i class="open-iconfont open-icon-triangle-down"></i>
+                    </span>
+                    <div>
+                        <i class="triangle"></i>
+                        <ul class="open-nav-menu" data-name="common">
+                            <li>
+                                <a href="http://www.atatech.org/"><i class="open-iconfont open-icon-pencil"></i>内容一</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-tag"></i>内容二</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-earth"></i>内容三</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-group"></i>内容四</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-quit"></i>内容五</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="notify-container has-message">
+                    <i class="open-iconfont open-icon-bell"></i>
+                    <span class="dotted">2</span>
+                </a>
+                <div class="search-container">
+                    <div class="inner">
+                        <input type="hidden" class="J_openType" value="">
+                        <input type="text" id="J_openAutoComp" value="" placeholder="资料库/API搜索" class="ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <i class="open-iconfont open-icon-search"></i>
+                    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+                </div>
+
+            </div>
+        </div>
+        <!--openplatform-nav end-->
+        <div class="openplatform-2nd-nav">
+            <div class="op-nav-group nav-left" data-name="common">
+                <a href="#" class="active">标签一</a>
+                <a href="#">标签二</a>
+                <a href="#" class="J_insert">标签三</a>
+                <div class="indecator" style="left: 10px; width: 40px;"></div>
+            </div>
+            <a href="#" class="btn btn-xlarge btn-primary open-create-app">
+                <i class="open-iconfont open-icon-plus"></i>这里放置按钮
+            </a>
+            <div class="second-nav-container" data-name="common">
+                <ul>
+                    <li><a href="#">菜单二</a>
+                    </li>
+                    <li class="J_insert"><a href="#">菜单二</a>
+                    </li>
+                    <li class="active"><a href="#">菜单三</a>
+                    </li>
+                    <li><a href="#">再来一个长长的菜单</a>
+                    </li>
+                </ul>
+                <div class="indecator" style="left: 48px; width: 40px;"></div>
+            </div>
+        </div>
+        <!---openplatform-2nd-nav end-->
+    </div><div class="open-framework-container">
+        <div class="openplatform-3rd-nav">
+            <ul>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+                <li>
+                    <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                    <ul>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+                <li class="opened">
+                    <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                    <ul style="height: auto;">
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li class="opened">
+                            <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                            <ul style="height: auto;">
+                                <li class="active">
+                                    <a href="#">这是一个三级菜单</a>
+                                </li>
+                                <li>
+                                    <a href="#">这是一个三级菜单</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+            </ul>
+        </div>
+        <div class="open-content">
+            <div class="open-content-inner">
+				<div class="preview-index row">
+					<div class="col-md-4 preview-column has-right-border">
+						<div class="business-container">
+							<div class="business-block">
+								<h4 class="title computing">弹性计算</h4>
+								<div>
+									<a class="subtitle">云服务器ECS：<span class="color-in-use">67</span></a>
+									<div class="detail">
+										<label>即将过期：<span class="color-out-date">23</span></label>
+										<label>已经过期：<span class="color-out-date">4</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">负载均衡SLB：<span class="color-in-use">5</span></a>
+									<div class="detail">
+										<label>即将过期：<span>0</span></label>
+										<label>已经过期：<span>0</span></label>
+									</div>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="business-container">
+							<div class="business-block">
+								<h4 class="title app">应用组件</h4>
+								<div>
+									<a class="subtitle">消息队列服务 MQS：<span class="color-out-date">即将过期</span></a>
+									<div class="detail">
+										<label>过期时间：2015/1/31</label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">开放消息服务 ONS：<span class="color-not-use">未开通</span></a>
+									<div class="detail">
+										<label>即将过期：<span>0</span></label>
+										<label>已经过期：<span>0</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">云服务器ECS：<span class="color-in-use">使用中</span></a>
+									<div class="detail">
+										<label>即将过期：<span>23</span></label>
+										<label>已经过期：<span>4</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">负载均衡SLB：<span class="color-in-use">使用中</span></a>
+									<div class="detail">
+										<label>即将过期：<span>0</span></label>
+										<label>已经过期：<span>0</span></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 preview-column has-right-border">
+						<div class="business-container">
+							<div class="business-block">
+								<h4 class="title database">弹性计算</h4>
+								<div>
+									<a class="subtitle">云服务器ECS：<span class="color-in-use">67</span></a>
+									<div class="detail">
+										<label>即将过期：<span>23</span></label>
+										<label>已经过期：<span class="color-out-date">4</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">分布式关系型数据库 DRDS：<span class="color-in-use">试用中</span></a>
+									<div class="detail">
+										<label>即将过期：<span class="color-out-date">0</span></label>
+										<label>已经过期：<span class="color-out-date">0</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">负载均衡SLB：<span class="color-in-use">5</span></a>
+									<div class="detail">
+										<label>即将过期：<span>0</span></label>
+										<label>已经过期：<span class="color-out-date">0</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">负载均衡SLB：<span class="color-in-use">5</span></a>
+									<div class="detail">
+										<label>即将过期：<span>0</span></label>
+										<label>已经过期：<span class="color-not-use">0</span></label>
+									</div>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="business-container">
+							<div class="business-block">
+								<h4 class="title bigdata">弹性计算</h4>
+								<div>
+									<a class="subtitle">云服务器ECS：<span>67</span></a>
+									<div class="detail">
+										<label>即将过期：<span>23</span></label>
+										<label>已经过期：<span>4</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">负载均衡SLB：<span>5</span></a>
+									<div class="detail">
+										<label>即将过期：<span>0</span></label>
+										<label>已经过期：<span>0</span></label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-4 preview-column">
+						<div class="business-container">
+							<div class="business-block">
+								<h4 class="title storage-cdn">弹性计算</h4>
+								<div>
+									<a class="subtitle">云服务器ECS：<span>67</span></a>
+									<div class="detail">
+										<label>即将过期：<span>23</span></label>
+										<label>已经过期：<span>4</span></label>
+									</div>
+								</div>
+								<div>
+									<a class="subtitle">负载均衡SLB：<span>5</span></a>
+									<div class="detail">
+										<label>即将过期：<span>0</span></label>
+										<label>已经过期：<span>0</span></label>
+									</div>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="business-container">
+							<div class="business-block">
+								<h4 class="title business-compoent">弹性计算</h4>
+								<div>
+									<a class="subtitle">云服务器ECS：<span>67</span></a>
+									<div class="detail">
+										<label>即将过期：<span>23</span></label>
+										<label>已经过期：<span>4</span></label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div> 
+            <div class="open-footer"> 淘宝XX平台@2014 </div>
+
+        </div>
+        <!--content end-->
+    </div>
+    
+    <!--framework end-->
+  </body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SUI Demo</title>
+    <link rel="stylesheet" href="../css/sui.min.css"/> 
+    <link rel="stylesheet" href="../css/framework.css"/>
+    <link rel="stylesheet" href="../css/sui-grid.css"/>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../js/sui.min.js"></script>
+    <script src="../js/framework.js"></script>
+  </head>
+  <body>
+    <div>
+        <div class="openplatform-nav">
+            <div class="logo-container">
+                <h1>
+                    <a href="#"><i class="open-iconfont open-icon-alibaba"></i>阿里 · XX平台</a>
+                </h1>
+            </div>
+            <div class="top-nav-container">
+                <span class="slash">/</span>
+                <span>首级菜单 <i class="empty-triangle"></i></span>
+                <ul class="open-nav-menu" data-name="common">
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <div class="person-container">
+                    <span>ADMIN 
+                        <i class="open-iconfont open-icon-person"></i> 
+                        <i class="open-iconfont open-icon-triangle-down"></i>
+                    </span>
+                    <div>
+                        <i class="triangle"></i>
+                        <ul class="open-nav-menu" data-name="common">
+                            <li>
+                                <a href="http://www.atatech.org/"><i class="open-iconfont open-icon-pencil"></i>内容一</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-tag"></i>内容二</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-earth"></i>内容三</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-group"></i>内容四</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-quit"></i>内容五</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="notify-container has-message">
+                    <i class="open-iconfont open-icon-bell"></i>
+                    <span class="dotted">2</span>
+                </a>
+                <div class="search-container">
+                    <div class="inner">
+                        <input type="hidden" class="J_openType" value="">
+                        <input type="text" id="J_openAutoComp" value="" placeholder="资料库/API搜索" class="ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <i class="open-iconfont open-icon-search"></i>
+                    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+                </div>
+
+            </div>
+        </div>
+        <!--openplatform-nav end-->
+        <div class="openplatform-2nd-nav">
+            <div class="op-nav-group nav-left" data-name="common">
+                <a href="#" class="active">标签一</a>
+                <a href="#">标签二</a>
+                <a href="#" class="J_insert">标签三</a>
+                <div class="indecator" style="left: 0px; width: 64px;"></div>
+            </div>
+            <a href="#" class="btn btn-xlarge btn-primary open-create-app">
+                <i class="open-iconfont open-icon-plus"></i>这里放置按钮
+            </a>
+            <div class="second-nav-container" data-name="common">
+                <ul>
+                    <li><a href="#">菜单二</a>
+                    </li>
+                    <li class="J_insert"><a href="#">菜单二</a>
+                    </li>
+                    <li class="active"><a href="#">菜单三</a>
+                    </li>
+                    <li><a href="#">再来一个长长的菜单</a>
+                    </li>
+                    <!--font-weight:bold导致字体加粗，在windows下会撑开宽度,不得已只能固定一个宽度-->
+                </ul>
+                <div class="indecator" style="left: 194px; width: 52px;"></div>
+            </div>
+        </div>
+        <!---openplatform-2nd-nav end-->
+    </div><div class="open-framework-container" style="opacity: 1; z-index: 0;">
+        <div class="openplatform-3rd-nav">
+            <ul>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+                <li>
+                    <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                    <ul>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+                <li class="opened">
+                    <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                    <ul style="height: auto;">
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li class="opened">
+                            <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                            <ul style="height: auto;">
+                                <li class="active">
+                                    <a href="#">这是一个三级菜单</a>
+                                </li>
+                                <li>
+                                    <a href="#">这是一个三级菜单</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+            </ul>
+        </div>
+        <div class="open-content">
+            <div class="open-content-inner edit-area">
+                
+            <ol class="breadcrumb" data-name="breadcrumb">
+  <li><a href="#">首页</a></li>
+  <li class="J_insert"><a href="#">列表</a></li>
+  <li class="active">详情</li>
+</ol><div class="alert alert-danger" role="alert" data-name="alert-jumbotron">
+  <i class="iconfont icon-success alert-icon"></i>
+  <div class="alert-content">
+    <h4 class="">数据尚未更新！</h4>
+    <p class="" data-name="p">仅提供6天以内的数据,如果您需要查询相关信息，请一个法师的法师打发是飞洒地方是地方撒旦法，发生地方阿斯蒂芬热热</p>
+
+  </div>
+</div><h3 class="" data-name="heading">商品列表</h3><div class="sui-grid" data-role="grid" data-name="grid-simple">
+            <div class="sui-grid-header">
+                <div class="sui-grid-header-wrap">
+                    <table>
+                        <colgroup>
+                            <col>
+                            <col style="width:130px">
+                            <col style="width:130px">
+                            <col style="width:130px">
+                        </colgroup>
+                        <thead role="rowgroup">
+                            <tr role="row">
+                                <th role="columnheader" class="sui-header" data-field="ProductName"><a class="sui-link" href="#">商品名称</a>
+                                </th>
+                                <th role="columnheader" class="sui-header" data-field="Unit Price"><a class="sui-link" href="#">单价</a>
+                                </th>
+                                <th role="columnheader" class="sui-header" data-field="Units in Stock"><a class="sui-link" href="#">库存</a>
+                                </th>
+                                <th role="columnheader" class="sui-header" data-field="Discontinued"><a class="sui-link" href="#">能否补货</a>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="sui-grid-content" style="max-height:400px;">
+                <table role="grid">
+                    <colgroup>
+                        <col>
+                        <col style="width:130px">
+                        <col style="width:130px">
+                        <col style="width:130px">
+                    </colgroup>
+                    <tbody role="rowgroup">
+                        <tr data-uid="uid1" role="row" class="J_insert">
+                            <td role="gridcell">商品1</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid2" role="row">
+                            <td role="gridcell">商品2</td>
+                            <td role="gridcell">1128.0</td>
+                            <td role="gridcell">1</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid3" role="row">
+                            <td role="gridcell">商品3</td>
+                            <td role="gridcell">100</td>
+                            <td role="gridcell">0</td>
+                            <td role="gridcell">断货</td>
+                        </tr>
+                        <tr data-uid="uid4" role="row">
+                            <td role="gridcell">商品4</td>
+                            <td role="gridcell">1299</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid5" role="row">
+                            <td role="gridcell">商品5</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid1" role="row">
+                            <td role="gridcell">商品1</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid2" role="row">
+                            <td role="gridcell">商品2</td>
+                            <td role="gridcell">1128.0</td>
+                            <td role="gridcell">1</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid3" role="row">
+                            <td role="gridcell">商品3</td>
+                            <td role="gridcell">100</td>
+                            <td role="gridcell">0</td>
+                            <td role="gridcell">断货</td>
+                        </tr>
+                        <tr data-uid="uid4" role="row">
+                            <td role="gridcell">商品4</td>
+                            <td role="gridcell">1299</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid5" role="row">
+                            <td role="gridcell">商品5</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid1" role="row">
+                            <td role="gridcell">商品1</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid2" role="row">
+                            <td role="gridcell">商品2</td>
+                            <td role="gridcell">1128.0</td>
+                            <td role="gridcell">1</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid3" role="row">
+                            <td role="gridcell">商品3</td>
+                            <td role="gridcell">100</td>
+                            <td role="gridcell">0</td>
+                            <td role="gridcell">断货</td>
+                        </tr>
+                        <tr data-uid="uid4" role="row">
+                            <td role="gridcell">商品4</td>
+                            <td role="gridcell">1299</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid5" role="row">
+                            <td role="gridcell">商品5</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid1" role="row">
+                            <td role="gridcell">商品1</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid2" role="row">
+                            <td role="gridcell">商品2</td>
+                            <td role="gridcell">1128.0</td>
+                            <td role="gridcell">1</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid3" role="row">
+                            <td role="gridcell">商品3</td>
+                            <td role="gridcell">100</td>
+                            <td role="gridcell">0</td>
+                            <td role="gridcell">断货</td>
+                        </tr>
+                        <tr data-uid="uid4" role="row">
+                            <td role="gridcell">商品4</td>
+                            <td role="gridcell">1299</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                        <tr data-uid="uid5" role="row">
+                            <td role="gridcell">商品5</td>
+                            <td role="gridcell">128.0</td>
+                            <td role="gridcell">15</td>
+                            <td role="gridcell">可补货</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sui-grid-pager" data-role="pager">
+                <a href="?page=1" class="sui-page-nav sui-page-first">&lt;&lt;</a>
+                <a href="?page=1" class="sui-page-nav sui-page br1">&lt;</a>
+                <span class="sui-page-input">Page <input type="text" class="sui-textbox" value="1"> of 4</span>
+                <a href="?page=2" class="sui-page-nav">&gt;</a>
+                <a href="?page=4" class="sui-page-nav sui-page-last br1">&gt;&gt;</a>
+                <span class="sui-page-info">1 - 20 of 77 items</span>
+            </div>
+        </div></div>
+            <div class="open-footer"> 淘宝XX平台@2014 </div>
+
+        </div>
+        <!--content end-->
+    </div>
+    
+    <!--framework end-->
+  </body>
+</html>

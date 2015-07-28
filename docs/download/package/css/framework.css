@@ -1,0 +1,752 @@
+.breadcrumb {
+  background: #f5f5f5;
+}
+.open-notify {
+  position: fixed;
+  width: 100%;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  z-index: 999999;
+  font-size: 14px;
+  font-weight: bold;
+  top: 0px;
+  left: 0px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border-radius: 2px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in;
+  -moz-transition: -moz-transform 0.2s ease-in-out, opacity 0.2s ease-in;
+  transform: translateY(-200%);
+  -webkit-transform: translateY(-200%);
+  -moz-transform: translateY(-200%);
+  cursor: pointer;
+}
+.open-notify .sui-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  position: relative;
+  bottom: 2px;
+  display: inline-block;
+  background: none;
+  margin-right: 5px;
+}
+.open-notify .sui-icon + label {
+  display: inline-block;
+  color: inherit;
+}
+.open-notify.opened {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  transform: translateY(0);
+}
+.open-alert {
+  color: red;
+  background: #fff2f2;
+  border: 1px solid #ffe3e0;
+}
+.open-success {
+  border: 1px solid #dcf9d6;
+  background: #edffe9;
+  color: #4ab933;
+}
+@font-face {
+  font-family: 'iconfont';
+  src: url('http://at.alicdn.com/t/font_1422863784_064658.eot'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_1422863784_064658.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_1422863784_064658.woff') format('woff'), /* chrome、firefox */
+  url('http://at.alicdn.com/t/font_1422863784_064658.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_1422863784_064658.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.open-iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  margin-right: 4px;
+  line-height: 18px;
+}
+.open-icon-alibaba:before {
+  content: "\e600";
+}
+.open-icon-search:before {
+  content: "\e601";
+}
+.open-icon-bell:before {
+  content: "\e613";
+}
+.open-icon-person:before {
+  content: "\e614";
+}
+.open-icon-group:before {
+  content: "\e612";
+}
+.open-icon-earth:before {
+  content: "\e605";
+}
+.open-icon-tag:before {
+  content: "\e606";
+}
+.open-icon-quit:before {
+  content: "\e607";
+}
+.open-icon-pencil:before {
+  content: "\e608";
+}
+.open-icon-triangle-right:before {
+  content: '\e60b';
+}
+.open-icon-triangle-down:before {
+  content: '\e609';
+}
+.open-icon-android:before {
+  content: "\e60f";
+  color: #85c808;
+}
+.open-icon-ios:before {
+  content: "\e60e";
+  color: #7c7c7c;
+}
+.open-icon-plus:before {
+  content: "\e610";
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+}
+body {
+  font-family: tahoma, "Microsoft Yahei", "SimSun", sans-serif !important;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+p {
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+.fix-nav-position {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+.handleHref a:focus {
+  text-decoration: none;
+  outline: none;
+}
+.openplatform-nav {
+  background: #373942;
+  height: 52px;
+  line-height: 52px;
+  padding: 0px 20px 0px 12px;
+  min-width: 1000px;
+}
+.openplatform-nav > div {
+  color: #aaaaaa;
+  cursor: pointer;
+}
+/*.openplatform-nav .empty-triangle {
+  font-family: "icon-pc";
+  font-style: normal;
+  line-height: 1;
+  display: inline-block;
+}
+.openplatform-nav .empty-triangle:before {
+  content: "\c611";
+}
+*/.openplatform-nav .triangle {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-bottom: 10px #2B2D34 solid;
+  position: absolute;
+  z-index: 10;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.openplatform-nav .open-nav-menu {
+  padding: 1px 0;
+  min-width: 100px;
+  list-style: none;
+  background: #2B2D34;
+  z-index: 9;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
+}
+.openplatform-nav .open-nav-menu > li > a {
+  color: inherit;
+  /*
+				padding: 10px 20px;
+				display: block;
+				width: 140px;
+				*/
+
+  /*
+				padding: 10px 26px;
+				display: block;
+				width: 125px;
+				*/
+
+  padding: 10px 12px 10px 25px;
+  display: block;
+  width: 170px;
+  line-height: 18px;
+  font-size: 14px;
+}
+.openplatform-nav .open-nav-menu > li > a:hover {
+  text-decoration: none;
+  color: #6cb5f4;
+}
+.openplatform-nav .open-nav-menu > li > a:hover .open-iconfont {
+  color: #6cb5f4;
+}
+.openplatform-nav .logo-container {
+  float: left;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+  /*
+		 &:hover {
+		 	color: #FFF;
+		 }
+		 */
+
+}
+.openplatform-nav .logo-container > h1 {
+  font-size: 18px;
+  line-height: inherit;
+  display: block;
+  font-weight: normal;
+  cursor: default;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+}
+.openplatform-nav .logo-container > h1 > a {
+  color: #e5e9ee;
+  font-size: inherit;
+  display: block;
+}
+.openplatform-nav .logo-container > h1 > a:hover {
+  text-decoration: none;
+}
+.openplatform-nav .logo-container > h1 .open-iconfont {
+  font-size: 30px;
+  position: relative;
+  top: 5px;
+  line-height: 30px;
+}
+.openplatform-nav .top-nav-container {
+  float: left;
+  padding: 0px 20px;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+}
+.openplatform-nav .top-nav-container .open-nav-menu {
+  display: none;
+  left: 0px;
+  position: absolute;
+  top: 51px;
+  padding: 10px 0px 15px 0px;
+}
+.openplatform-nav .top-nav-container .open-nav-menu a {
+  padding: 10px 20px;
+  width: 170px;
+  line-height: 18px;
+}
+.openplatform-nav .top-nav-container .slash {
+  position: absolute;
+  left: 0px;
+}
+.openplatform-nav .top-nav-container:hover {
+  background: #2B2D34;
+  color: #FFF;
+}
+.openplatform-nav .top-nav-container:hover .open-nav-menu {
+  display: block;
+}
+.openplatform-nav .top-nav-container:hover .slash {
+  display: none;
+}
+.openplatform-nav .search-container {
+  float: right;
+  cursor: default;
+}
+.openplatform-nav .search-container .autocomplete-suggestion strong {
+  color: #9d261d;
+}
+.openplatform-nav .search-container .inner.autocomplete-focus {
+  border-color: #FFF;
+}
+.openplatform-nav .search-container .inner.autocomplete-focus .open-icon-search {
+  color: #FFF;
+}
+.openplatform-nav .search-container .inner.autocomplete-focus > input {
+  width: 260px;
+}
+.openplatform-nav .search-container .inner {
+  padding-bottom: 5px;
+  border-bottom: 2px;
+  border-bottom-style: solid;
+  border-color: #5b6168;
+  display: inline-block;
+  height: 23px;
+  -webkit-transition: border-color 0.3s ease-in;
+  -moz-transition: border-color 0.3s ease-in;
+  transition: border-color 0.3s ease-in;
+  color: #FFF;
+  line-height: 1;
+  position: relative;
+  top: -2px;
+}
+.openplatform-nav .search-container .inner > input {
+  background: transparent;
+  border: 0px;
+  color: inherit;
+  width: 160px;
+  -webkit-transition: width 0.3s ease-in;
+  -moz-transition: width 0.3s ease-in;
+  transition: width 0.3s ease-in;
+  /**以下完全为了覆盖up-dpl的一堆样式**/
+
+  box-shadow: none;
+  display: inline;
+  line-height: normal;
+  height: 15px;
+  padding: 1px;
+  margin-bottom: 0px;
+}
+.openplatform-nav .search-container .inner > input:focus {
+  outline: none;
+  border-color: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.openplatform-nav .search-container .inner > input::-webkit-input-placeholder {
+  color: #5b6168;
+}
+.openplatform-nav .search-container .inner .open-icon-search {
+  color: #cdd4dc;
+  cursor: pointer;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+  font-size: 16px;
+}
+.openplatform-nav .search-container .inner .sui-suggestion-container {
+  position: absolute;
+  top: 28px;
+  left: 0px;
+}
+.openplatform-nav .search-container:hover .inner {
+  border-color: #FFF;
+  /*
+				> input {
+					width: 250px;
+					&::-webkit-input-placeholder {
+						color: #7b828b;
+					}
+				}
+				*/
+
+}
+.openplatform-nav .search-container:hover .inner .open-icon-search {
+  color: #FFF;
+}
+.openplatform-nav .notify-container {
+  float: right;
+  width: 84px;
+  position: relative;
+  display: block;
+  height: 52px;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+  color: #cdd4dc;
+}
+.openplatform-nav .notify-container .dotted {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: #cc6164;
+  position: absolute;
+  top: 8px;
+  left: 51px;
+  border-radius: 16px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FFF;
+  text-align: center;
+  display: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transition: background 0.3s ease-in;
+  -moz-transition: background 0.3s ease-in;
+  transition: background 0.3s ease-in;
+}
+.openplatform-nav .notify-container .open-icon-bell {
+  font-size: 24px;
+  line-height: 1;
+  position: absolute;
+  left: 30px;
+  top: 15px;
+}
+.openplatform-nav .notify-container:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+.openplatform-nav .notify-container.has-message {
+  color: #cc6164;
+}
+.openplatform-nav .notify-container.has-message .dotted {
+  display: inline-block;
+}
+.openplatform-nav .notify-container.has-message:hover {
+  color: #d44044;
+}
+.openplatform-nav .notify-container.has-message:hover .dotted {
+  background: #d44044;
+}
+.openplatform-nav .person-container {
+  float: right;
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+  position: relative;
+  color: #cdd4dc;
+}
+.openplatform-nav .person-container .open-icon-person {
+  margin: 0px 5px;
+}
+.openplatform-nav .person-container .empty-triangle {
+  transition: transform 0.3s ease-in;
+  -webkit-transition: -webkit-transform 0.3s ease-in;
+  -moz-transition: -moz-transform 0.3s ease-in;
+}
+.openplatform-nav .person-container .open-nav-menu {
+  border-radius: 4px;
+}
+.openplatform-nav .person-container .open-nav-menu .open-iconfont {
+  margin-right: 20px;
+  color: #8a8b8f;
+}
+.openplatform-nav .person-container .triangle {
+  top: -9px;
+  right: 20px;
+}
+.openplatform-nav .person-container > span {
+  line-height: 1;
+  font-size: 14px;
+}
+.openplatform-nav .person-container > div {
+  position: absolute;
+  display: none;
+  top: 53px;
+  right: 0px;
+  z-index: 10;
+}
+.openplatform-nav .person-container > div .open-nav-menu {
+  padding: 10px 0px;
+  box-shadow: none;
+}
+.openplatform-nav .person-container.open {
+  color: #FFF;
+}
+.openplatform-nav .person-container.open .empty-triangle {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.openplatform-nav .person-container.open > div {
+  display: block;
+}
+.openplatform-nav .person-container:hover {
+  color: #FFF;
+}
+.openplatform-nav .person-container:hover .open-icon-triangle-down {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.openplatform-nav .person-container:hover > div {
+  display: block;
+}
+.openplatform-2nd-nav {
+  border-bottom: 1px #d8dce4 solid;
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.16);
+  position: relative;
+  text-align: center;
+  min-width: 1000px;
+  background: #FFF;
+}
+.openplatform-2nd-nav .sui-dropdown.dropdown-bordered .dropdown-inner a {
+  padding: 5px 10px 5px 12px;
+}
+.openplatform-2nd-nav .op-nav-group {
+  display: table;
+  position: relative;
+  font-size: 14px;
+  width: 186px;
+  height: 30px;
+  border-radius: 16px;
+  border: 1px solid #d5d7d9;
+  z-index: 3;
+  overflow: hidden;
+  font-size: 0px;
+}
+.openplatform-2nd-nav .op-nav-group > a {
+  display: table-cell;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #4c5058;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  font-size: 14px;
+}
+.openplatform-2nd-nav .op-nav-group > a.active,
+.openplatform-2nd-nav .op-nav-group > a:hover {
+  color: #FFF;
+}
+.openplatform-2nd-nav .op-nav-group > .indecator {
+  height: 30px;
+  position: absolute;
+  background: #696a6e;
+  width: 78px;
+  left: 0px;
+  top: 0px;
+  border-radius: 16px;
+  z-index: 1;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.openplatform-2nd-nav .nav-left {
+  top: 14px;
+  left: 12px;
+  position: absolute;
+}
+.openplatform-2nd-nav .sui-dropdown.dropdown-bordered {
+  display: block;
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  text-align: left;
+}
+.openplatform-2nd-nav .sui-dropdown.dropdown-bordered .dropdown-inner {
+  width: 187px;
+  border: 1px solid #d5d7d9;
+}
+.openplatform-2nd-nav .sui-dropdown.dropdown-bordered .dropdown-inner .dropdown-toggle {
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.09);
+}
+.openplatform-2nd-nav .sui-dropdown.dropdown-bordered .dropdown-inner .dropdown-toggle > span {
+  display: block;
+  width: 140px;
+  height: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.openplatform-2nd-nav .sui-dropdown.dropdown-bordered .dropdown-inner .app {
+  padding-left: 20px !important;
+}
+.openplatform-2nd-nav .sui-dropdown.dropdown-bordered .dropdown-inner .app .appkey {
+  font-size: 12px;
+}
+.openplatform-2nd-nav .open-create-app {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  font-size: 14px;
+  padding: 5px 24px;
+  background: #6cb5f4;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.19), inset 0px 1px 0px rgba(255, 255, 255, 0.22);
+  border-color: #5e9ed5;
+}
+.openplatform-2nd-nav .open-create-app:hover {
+  background: #76bdfb;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25), inset 0px 1px 0px rgba(255, 255, 255, 0.22);
+}
+.openplatform-2nd-nav .open-create-app:active {
+  background: #67aeec;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.09), inset 0px 1px 4px rgba(0, 0, 0, 0.22);
+}
+.openplatform-2nd-nav .open-create-app .open-icon-plus {
+  position: relative;
+  left: -10px;
+  font-size: 18px;
+}
+.openplatform-2nd-nav .second-nav-container {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+.openplatform-2nd-nav .second-nav-container .indecator {
+  width: 100px;
+  display: inline-block;
+  position: absolute;
+  height: 3px;
+  background: #6cb5f4;
+  top: 58px;
+  -webkit-transition: all 0.5s cubic-bezier(0.3, 0.8, 0.39, 1.32);
+  -moz-transition: all 0.5s cubic-bezier(0.3, 0.8, 0.39, 1.32);
+  transition: all 0.5s cubic-bezier(0.3, 0.8, 0.39, 1.32);
+}
+.openplatform-2nd-nav .second-nav-container > ul > li {
+  float: left;
+  list-style-type: none;
+  /*为了动画效果和使用便捷性，在外层做padding left/right*/
+
+  padding: 0px 20px;
+  cursor: pointer;
+}
+.openplatform-2nd-nav .second-nav-container > ul > li > a {
+  color: #656977;
+  display: block;
+  padding: 21px 0px;
+  font-size: 16px;
+  line-height: 18px;
+  /***font-weight:bold导致字体加粗，在windows下会撑开宽度,不得已只能固定一个宽度*/
+
+  overflow: hidden;
+}
+.openplatform-2nd-nav .second-nav-container > ul > li > a:focus {
+  text-decoration: none;
+}
+.openplatform-2nd-nav .second-nav-container > ul > li:hover > a {
+  color: #2a2c33;
+  text-decoration: none;
+}
+.openplatform-2nd-nav .second-nav-container > ul > li.active > a {
+  color: #2a2c33;
+  text-decoration: none;
+}
+.openplatform-3rd-nav {
+  height: 100%;
+  float: left;
+  width: 188px;
+  border-right: 1px #d8dce4 solid;
+  border-bottom: 1px #d8dce4 solid;
+  padding: 7px 0px;
+  padding-left: 12px;
+  font-size: 14px;
+  background: #FFF;
+  overflow-y: auto;
+  color: #333640;
+  margin-top: 7px;
+}
+.openplatform-3rd-nav .folder {
+  cursor: pointer;
+}
+.openplatform-3rd-nav.fix-pos {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin-top: 0px;
+}
+.openplatform-3rd-nav ul {
+  -webkit-transition: height 0.4s ease;
+  -moz-transition: height 0.4s ease;
+  transition: height 0.4s ease;
+}
+.openplatform-3rd-nav ul a:focus {
+  text-decoration: none;
+  outline: none;
+}
+.openplatform-3rd-nav ul > li {
+  list-style-type: none;
+  position: relative;
+}
+.openplatform-3rd-nav ul > li .open-iconfont {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  font-size: 18px;
+  transition: transform 0.4s ease;
+  -webkit-transition: -webkit-transform 0.4s ease;
+  -moz-transition: -moz-transform 0.4s ease;
+}
+.openplatform-3rd-nav ul > li > a {
+  padding: 6px 0px 6px 25px;
+  margin: 1px 0px;
+  display: block;
+  color: #333640;
+  font-size: 14px;
+}
+.openplatform-3rd-nav ul > li > a:hover {
+  background: #f5f5f5;
+  text-decoration: none;
+  /*
+					color: #FFF;
+					& + .open-iconfont {
+						color: #FFF;
+					}
+					*/
+
+}
+.openplatform-3rd-nav ul > li > ul {
+  height: 0px;
+  overflow: hidden;
+}
+.openplatform-3rd-nav ul > li > ul > li .open-iconfont {
+  left: 19px;
+}
+.openplatform-3rd-nav ul > li > ul > li > a {
+  padding-left: 39px;
+}
+.openplatform-3rd-nav ul > li > ul > li > ul > li > a {
+  padding-left: 53px;
+}
+.openplatform-3rd-nav ul > li.opened > .open-iconfont {
+  transform: rotate(90deg);
+  -wekbit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+.openplatform-3rd-nav ul > li.active a {
+  background: #5c9df5;
+  color: #FFF;
+}
+.openplatform-3rd-nav ul > li.active a + .open-iconfont {
+  color: #FFF;
+}
+.open-framework-container {
+  height: 100%;
+  color: #333;
+  min-width: 1000px;
+}
+.open-framework-container .open-content {
+  margin-left: 201px;
+  padding: 20px;
+  width: auto;
+}
+.open-framework-container .open-content .open-content-inner {
+  min-height: 600px;
+  overflow: hidden;
+}
+.open-framework-single-container {
+  padding: 20px;
+  min-height: 400px;
+}
+.open-footer {
+  text-align: center;
+  margin-top: 20px;
+}

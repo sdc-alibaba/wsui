@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SUI Demo</title>
+
+    <link rel="stylesheet" href="../css/sui.min.css"/> 
+    <link rel="stylesheet" href="../css/framework.css"/>
+    <link rel="stylesheet" href="../css/sui-grid.css"/>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../js/sui.min.js"></script>
+    <script src="../js/framework.js"></script>
+
+  </head>
+  <body>
+    <div>
+        <div class="openplatform-nav">
+            <div class="logo-container">
+                <h1>
+                    <a href="#"><i class="open-iconfont open-icon-alibaba"></i>阿里 · XX平台</a>
+                </h1>
+            </div>
+            <div class="top-nav-container">
+                <span class="slash">/</span>
+                <span>首级菜单 <i class="empty-triangle"></i></span>
+                <ul class="open-nav-menu" data-name="common">
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                    <li>
+                        <a href="#">一级下拉菜单</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <div class="person-container">
+                    <span>ADMIN 
+                        <i class="open-iconfont open-icon-person"></i> 
+                        <i class="open-iconfont open-icon-triangle-down"></i>
+                    </span>
+                    <div>
+                        <i class="triangle"></i>
+                        <ul class="open-nav-menu" data-name="common">
+                            <li>
+                                <a href="http://www.atatech.org/"><i class="open-iconfont open-icon-pencil"></i>内容一</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-tag"></i>内容二</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-earth"></i>内容三</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-group"></i>内容四</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="open-iconfont open-icon-quit"></i>内容五</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="notify-container has-message">
+                    <i class="open-iconfont open-icon-bell"></i>
+                    <span class="dotted">2</span>
+                </a>
+                <div class="search-container">
+                    <div class="inner">
+                        <input type="hidden" class="J_openType" value="">
+                        <input type="text" id="J_openAutoComp" value="" placeholder="资料库/API搜索" class="ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                        <i class="open-iconfont open-icon-search"></i>
+                    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+                </div>
+
+            </div>
+        </div>
+        <!--openplatform-nav end-->
+        <div class="openplatform-2nd-nav">
+            <div class="op-nav-group nav-left" data-name="common">
+                <a href="#" class="active">标签一</a>
+                <a href="#">标签二</a>
+                <a href="#" class="J_insert">标签三</a>
+                <div class="indecator" style="left: 10px; width: 40px;"></div>
+            </div>
+            <a href="#" class="btn btn-xlarge btn-primary open-create-app">
+                <i class="open-iconfont open-icon-plus"></i>这里放置按钮
+            </a>
+            <div class="second-nav-container" data-name="common">
+                <ul>
+                    <li><a href="#">菜单二</a>
+                    </li>
+                    <li class="J_insert"><a href="#">菜单二</a>
+                    </li>
+                    <li class="active"><a href="#">菜单三</a>
+                    </li>
+                    <li><a href="#">再来一个长长的菜单</a>
+                    </li>
+                </ul>
+                <div class="indecator" style="left: 48px; width: 40px;"></div>
+            </div>
+        </div>
+        <!---openplatform-2nd-nav end-->
+    </div><div class="open-framework-container">
+        <div class="openplatform-3rd-nav">
+            <ul>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+                <li>
+                    <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                    <ul>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+                <li class="opened">
+                    <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                    <ul style="height: auto;">
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li class="opened">
+                            <a class="folder">三级菜单</a> <i class="open-iconfont open-icon-triangle-right"></i>
+                            <ul style="height: auto;">
+                                <li class="active">
+                                    <a href="#">这是一个三级菜单</a>
+                                </li>
+                                <li>
+                                    <a href="#">这是一个三级菜单</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                        <li>
+                            <a href="http://www.baidu.com">应用收费管理</a>
+                        </li>
+                        <li>
+                            <a href="#">三级菜单</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://www.baidu.com">三级菜单</a>
+                </li>
+            </ul>
+        </div>
+        <div class="open-content">
+            <div class="open-content-inner edit-area">
+
+                <ol class="breadcrumb" data-name="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="J_insert">
+                        <a href="#">Library</a>
+                    </li>
+                    <li class="active">Data</li>
+                </ol>
+                <div class="steps" data-name="steps">
+                        <div class="wrap col-md-5" data-name="steps-item">
+                            <div class="finished">
+                                <label>
+                                    <span class="round">1</span>
+                                    <span>第一步 注册支付宝</span>
+                                </label> <i class="triangle-right-bg"></i> <i class="triangle-right"></i>
+                            </div>
+                        </div>
+                        <div class="wrap col-md-4" data-name="steps-item">
+                            <div class="current">
+                                <label>
+                                    <span class="round">2</span>
+                                    <span>第二步 实名认证</span>
+                                </label>
+                                <i class="triangle-right-bg"></i>
+                                <i class="triangle-right"></i>
+                            </div>
+                        </div>
+                        <div class="wrap col-md-3" data-name="steps-item">
+                            <div class="todo">
+                                <label>
+                                    <span class="round">3</span>
+                                    <span>第三步 上传相关文件</span>
+                                </label>
+                                <i class="triangle-right-bg"></i>
+                                <i class="triangle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                <h3 class="" data-name="heading">一个典型的表单</h3>
+                <form class="form-horizontal" data-name="form">
+
+                        <div class="row" data-name="grid-row">
+                            <div class="col-md-6" data-name="grid-col">
+                                <div class="alert alert-danger" role="alert" data-name="alert"> <strong>这里是必填项！</strong>
+                                    You successfully read this important alert message.
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">所在地</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <label class="select">
+                                            <select class="form-control" name="" id="selectSuccess">
+                                                <option value="1" checked="checked">杭州</option>
+                                                <option value="2">上海</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-4 text-danger">
+                                        <span>花田里犯个错</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">用户名</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    </div>
+                                    <div class="col-sm-4 text-danger">
+                                        <span>再犯个错</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">密码</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    </div>
+                                    <div class="col-sm-4 text-warning">
+                                        <span>给你点提醒</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">再次输入密码</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    </div>
+                                    <div class="col-sm-4 text-warning">
+                                        <span>长点心吧</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">性取向</label>
+                                    <div class="col-sm-10 static-container" data-name="grid-col-sm">
+                                        <div class="checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" value="">男</label>
+                                        </div>
+                                        <div class="checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" value="">女</label>
+                                        </div>
+                                        <div class="checkbox-inline">
+                                            <label>
+                                                <input type="checkbox" value="">春哥</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">所在地</label>
+                                    <div class="col-sm-10 static-container" data-name="grid-col-sm">
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">选项一</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项二</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项三</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项三</label>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">所在地</label>
+                                    <div class="col-sm-10 static-container" data-name="grid-col-sm">
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">选项一</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项二</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项三</label>
+                                        </div>
+                                        <div class="radio-inline">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">选项三</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">所在地</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <label class="select">
+                                            <select class="form-control" name="" id="selectSuccess">
+                                                <option value="1" checked="checked">杭州</option>
+                                                <option value="2">上海</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">所在地</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                       <textarea class="form-control" placeholder="textarea" style="height:100px"></textarea> 
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">所在地</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <label class="select">
+                                            <select class="form-control" name="" id="selectSuccess">
+                                                <option value="1" checked="checked">杭州</option>
+                                                <option value="2">上海</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" data-name="grid-col">
+                                <div class="alert alert-success" role="alert" data-name="alert"> <strong>这里是选填项!</strong>
+                                    You successfully read this important alert message.
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">Email</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></div>
+                                </div>
+                                <div class="form-group" data-name="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label" data-name="grid-col-sm">Email</label>
+                                    <div class="col-sm-6 static-container" data-name="grid-col-sm">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" data-name="form-group">
+                          <div class="col-sm-10 col-sm-offset-2 static-container" data-name="grid-col-sm">
+                            <button class="btn btn-primary btn-lg" type="submit" data-name="btn">提交</button>
+                            <button class="btn btn-default btn-lg" type="reset" data-name="btn">重置</button>
+                        </div>
+                    </div> 
+                    </form>
+
+            </div> 
+            <div class="open-footer"> 淘宝XX平台@2014 </div>
+
+        </div>
+        <!--content end-->
+    </div>
+    
+    <!--framework end-->
+  </body>
+</html>

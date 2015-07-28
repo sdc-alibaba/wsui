@@ -1,0 +1,101 @@
+.preview-index {
+  color: #333;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.preview-index .color-out-date {
+  color: #ff6600;
+}
+.preview-index .color-in-use {
+  color: #0099cc;
+}
+.preview-index .color-not-use {
+  color: #669900;
+}
+.preview-index .has-right-border {
+  border-right: 1px solid #ccc;
+}
+.preview-index .preview-column {
+  padding: 0px 30px;
+  /**make column same height**/
+
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+.preview-index .preview-column:first-child {
+  padding-left: 10px;
+}
+.preview-index .business-block {
+  padding: 50px 20px 10px 20px;
+}
+.preview-index .business-block h4.title {
+  font-size: 18px;
+  color: inherit;
+  margin-bottom: 20px;
+  background: url("http://gtms01.alicdn.com/tps/i1/TB1FNsiHXXXXXblXXXXoK7CJXXX-24-250.jpg") no-repeat;
+  height: 24px;
+  line-height: 24px;
+  padding-left: 30px;
+}
+.preview-index .business-block h4.title.computing {
+  background-position: 0px -12px;
+}
+.preview-index .business-block h4.title.app {
+  background-position: 0px -49px;
+}
+.preview-index .business-block h4.title.database {
+  background-position: 0px -89px;
+}
+.preview-index .business-block h4.title.bigdata {
+  background-position: 0px -129px;
+}
+.preview-index .business-block h4.title.storage-cdn {
+  background-position: 0px -177px;
+}
+.preview-index .business-block h4.title.business-compoent {
+  background-position: 0px -212px;
+}
+.preview-index .business-block .subtitle {
+  font-size: 14px;
+  color: inherit;
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  -webkit-transition: color 0.2s ease-in;
+  -moz-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+.preview-index .business-block .subtitle span {
+  -webkit-transition: color 0.2s ease-in;
+  -moz-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+.preview-index .business-block .subtitle:hover {
+  text-decoration: underline;
+  color: #F60;
+}
+.preview-index .business-block .subtitle:hover span {
+  color: #F60;
+}
+.preview-index .business-block .detail {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.preview-index .business-block .detail > label {
+  margin-right: 25px;
+}
+.preview-index .business-block > div {
+  margin-bottom: 30px;
+}
+.preview-index .business-block > div:last-child {
+  margin-bottom: 10px;
+}
+.preview-index .business-container > hr {
+  margin: 0px;
+  padding: 0px;
+  border-top: 1px solid #ccc;
+}
+.preview-index .business-container:first-child .business-block {
+  padding-top: 0px;
+}
