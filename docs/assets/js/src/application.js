@@ -426,7 +426,7 @@
 
 
     //design toggle
-    $(document).on("click", function(e) {
+    $(document).on("click", ".toggle-design-btn", function(e) {
       var $btn = $(e.target);
       $btn.parent().next().toggleClass("open");
     });

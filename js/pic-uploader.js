@@ -15,7 +15,7 @@
  * @param opt.cropOptions {json}裁剪参数，详见[http://deepliquid.com/content/Jcrop_Manual.html]
  * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
  * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
- * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url
+ * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url,第二个参数是一个json，包含了图片宽、高和tfs路径等信息
  * @version 1.0.2
  * @date 2015-04-23
  */
@@ -167,7 +167,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
           if (res.success) {
             //手工调用的okHide不会再进okHide回调
             cropdlg.modal('okHide')
-            options.success && options.success.call(self, (/daily/.test(location.host)  ? '//img.daily.taobaocdn.net/tfscom/' : '//img.alicdn.com/tfscom/') + res.data.tfsFilePath)
+            options.success && options.success.call(self, (/daily/.test(location.host)  ? '//img.daily.taobaocdn.net/tfscom/' : '//img.alicdn.com/tfscom/') + res.data.tfsFilePath, res.data)
             //把之前隐藏的图片空间iframe和弹层关闭
             pic.close()
           } else {
@@ -273,7 +273,8 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
     picUploader: function (opt) {
       opt.triggerEle = this
       var config = $.extend({}, $.fn.picUploader.defaults, $(this).data(), opt)
-      pp.init.call(pp, config)
+      pp.init.call(pp, config);
+      return pp;
     }
   })
 
