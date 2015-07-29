@@ -26,7 +26,7 @@
  * @param opt.cancel {function} 打开图片空间弹层后，点击叉关闭弹层执行的回调（一般不需，针对业务弹层里的上传触发元素时可能会用）
  * @param opt.cropInit {function} Jcrop初始化完成后紧跟着会执行的一些逻辑，用于一些特殊目的控制
  * @param opt.beforeSend {function} 用户拖曳鼠标裁剪完后，点击弹层的“确定”按钮后立即执行的回调,第一个参数是即将发送给后端的json数据，包含裁剪信息。该函数若return false，中断后续逻辑（也就不会执行到success），否则会向后端发送裁剪的数据。
- * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url
+ * @param opt.success {function} 主流程完全顺利走完后的回调，第一个参数是图片url,第二个参数是一个json，包含了图片宽、高和tfs路径等信息
  */
   </code></pre>
 
@@ -152,11 +152,12 @@
             console.log(data)
             //return false
           },
-          success: function(url) {
-            console.log('finally:   ' + url)
-            $('#imgwrap').html('<img src="' + url + '">')
-            $('[name=persistence]').val(url)
-          },
+        success: function(url, data) {
+          console.log('imgurl:   ' + url)
+          console.log(data)
+          $('#imgwrap').html('<img src="' + url + '">')
+          $('[name=persistence]').val(url)
+        },
           cancel: function(t) {
             console.log(t + '1')
           }
