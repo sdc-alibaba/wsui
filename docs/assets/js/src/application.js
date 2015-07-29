@@ -10,7 +10,7 @@
  */
 
 /* global ZeroClipboard */
-//jscs:disable 
+//jscs:disable
 
 !function ($) {
   'use strict';
