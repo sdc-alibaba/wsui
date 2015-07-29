@@ -152,11 +152,12 @@
             console.log(data)
             //return false
           },
-          success: function(url) {
-            console.log('finally:   ' + url)
-            $('#imgwrap').html('<img src="' + url + '">')
-            $('[name=persistence]').val(url)
-          },
+        success: function(url, data) {
+          console.log('imgurl:   ' + url)
+          console.log(data)
+          $('#imgwrap').html('<img src="' + url + '">')
+          $('[name=persistence]').val(url)
+        },
           cancel: function(t) {
             console.log(t + '1')
           }
