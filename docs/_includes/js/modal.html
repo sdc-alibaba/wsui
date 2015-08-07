@@ -306,7 +306,7 @@ $('#exampleModal').on('show', function (event) {
   <p>通过data属性或者Javascript调用模态框组件可以根据需要动态展示隐藏的内容。模态框展示的时候会为<code>&lt;body&gt;</code>元素添加<code>.modal-open</code>类，该类主要用来重写body的默认滚动行为，并且产生一个<code>.modal-backdrop</code>遮罩层用来提供可点击区域，点击该区域就可以关闭模态框。</p>
 
   <h3>通过data属性</h3>
-  <p>可以不通过Javascript就激活一个模态框。设置一个控制元素（比如一个阿牛）的属性如下<code>data-toggle="modal"</code>， <code>data-target="#foo"</code>或者<code>href="#foo"</code> 用以指向一个特定的模态框。</p>
+  <p>可以不通过Javascript就激活一个模态框。设置一个控制元素（比如一个按钮）的属性如下<code>data-toggle="modal"</code>， <code>data-target="#foo"</code>或者<code>href="#foo"</code> 用以指向一个特定的模态框。</p>
 {% highlight html %}
 <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
 {% endhighlight %}
@@ -379,7 +379,7 @@ $('#myModal').modal({
   {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
 
   <h4>.modal('okHide')</h4>
-  <p>手动关闭弹层并触发okHide逻辑. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden</code> event occurs).</p>
+  <p>手动关闭弹层并触发okHide逻辑. <strong>在模态框隐藏之前返回主调函数中</strong> (比如在<code>hidden</code>事件之前触发).</p>
   {% highlight js %}$('#myModal').modal('okHide'){% endhighlight %}
 
   <h4>.modal('handleUpdate')</h4>
@@ -392,8 +392,8 @@ $('#myModal').modal({
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
-         <th>Description</th>
+         <th style="width: 150px;">事件类型</th>
+         <th>描述</th>
        </tr>
       </thead>
       <tbody>
@@ -415,7 +415,7 @@ $('#myModal').modal({
        </tr>
        <tr>
          <td>okHide</td>
-         <td>该事件在<code>hide</code>方法被调用之后触发。其他不变，不过是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
+         <td>该事件在<code>hide</code>方法被调用之后触发。其他不变，响应的是点击了“确认”按钮时执行的回调，返回false可阻止弹层关闭</td>
        </tr>
        <tr>
          <td>okHidden</td>
