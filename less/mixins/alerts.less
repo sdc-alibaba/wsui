@@ -1,5 +1,5 @@
 // Alerts
-.alert-variant(@background; @border; @text-color) {
+.alert-variant(@background; @border; @text-color;@icon-color:#fff) {
   background-color: @background;
   border-color: @border;
   color: @text-color;
@@ -12,9 +12,9 @@
   }
   .wsif{
   	display: inline-block;
-  	margin-right: 24px;
+  	// margin-right: 24px;
   	font-size: 30px;
-  	color:#fff;
+  	color:@icon-color;
   	vertical-align: middle;
   }
 }

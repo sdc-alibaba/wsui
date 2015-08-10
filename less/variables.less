@@ -17,8 +17,13 @@
 @brand-primary:         #f23f40;
 @brand-primary-hover:   #ff6566;
 @brand-primary-active:  #d93838;
-@brand-success:         #21c19f;
-@brand-info:            #2daae1;
+//宁尘修改颜色 如下
+@brand-success:         #005110;
+//旧版success颜色
+// @brand-success:         #21c19f;
+//宁尘修改颜色如下
+@brand-info:			#125077;
+// @brand-info:            #2daae1;
 @brand-warning:         #f5af08;
 @brand-danger:          #f23f40;
 @brand-purple:          #9470ce;
@@ -487,20 +492,35 @@
 //## Define colors for form feedback states and, by default, alerts.
 
 @state-success-text:             @brand-success;
-@state-success-bg:               lighten(@brand-success, 30%);
-@state-success-border:           @brand-success;
+//宁尘修改
+@state-success-bg:               #e5f7e9;
+// @state-success-bg:               lighten(@brand-success, 30%);
+//宁尘修改
+@state-success-border:			 #8ce595;
+// @state-success-border:           @brand-success;
 
 @state-info-text:                @brand-info;
-@state-info-bg:                  lighten(@brand-info, 30%);
-@state-info-border:              @brand-info;
+//宁尘修改
+@state-info-bg:					 #eaf4f9;
+// @state-info-bg:                  lighten(@brand-info, 30%);
+//宁尘修改
+@state-info-border:				 #8cc0e5;
+// @state-info-border:              @brand-info;
 
-@state-warning-text:             #ee9f28;
-@state-warning-bg:               lighten(@state-warning-text, 30%);
-@state-warning-border:           @state-warning-text;
+@state-warning-text:			 #333333;
+// @state-warning-text:             #ee9f28;
+@state-warning-bg:               #fff7ed;
+// @state-warning-bg:               lighten(@state-warning-text, 30%);
+@state-warning-border:           #ffe1be;
+// @state-warning-border:           @state-warning-text;
 
-@state-danger-text:              @brand-danger;
-@state-danger-bg:                lighten(@brand-danger, 30%);
-@state-danger-border:            @brand-danger;
+//宁尘修改 全局danger颜色
+@state-danger-text:              #821919;
+// @state-danger-text:              @brand-danger;
+@state-danger-bg:                #feeaea;
+// @state-danger-bg:                lighten(@brand-danger, 30%);
+@state-danger-border:            #e56363;
+// @state-danger-border:            @brand-danger;
 
 
 //== Tooltips
