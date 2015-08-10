@@ -194,7 +194,7 @@ jQuery.ajax(picPluginUrl, {dataType: 'script', cache: true})
 
   pp.init = function(opt) {
     var $ele = $(opt.triggerEle)
-    $ele.data('ppid', 'pp_' + (+new Date()))
+    $ele.data('ppid', 'pp_' + Math.random().toString(36).substring(2))
 
     this[$ele.data('ppid')] = $.extend({
       //默认配置
