@@ -75,7 +75,7 @@
     // 值传递
     _drawCtrl: function () {
       var tpl = '<div>&nbsp;' + (this.displayInfoType == 'itemsCount' ? '<span>共' + this.itemsCount + '条</span> ' : '共<span class="text-muted">' + this.pages + '</span>页 ') +
-        '<span>' + ' 去 ' + '<input type="text" class="page-num"/><button class="btn btn-primary btn-sm">确定</button>' + ' 页' + '</span>' + '</div>';
+        '<span>' + ' 去 ' + '<input type="text" class="page-num"/>' + ' 页 ' + '<button class="btn btn-primary btn-sm">确定</button>' + '</span>' + '</div>';
       return tpl;
     },
 
