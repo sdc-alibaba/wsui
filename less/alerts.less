@@ -26,6 +26,11 @@
   > p + p {
     margin-top: 5px;
   }
+  .wsif{
+    display: inline-block;
+    font-size: 30px;
+    vertical-align: middle;
+  }
 }
 
 // Dismissible alerts
@@ -52,21 +57,26 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 .alert-success {
-  .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
+  .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text;#00b12c);
 }
 .alert-info {
-  .alert-variant(@alert-info-bg; @alert-info-border; @alert-info-text);
+  .alert-variant(@alert-info-bg; @alert-info-border; @alert-info-text;#5aace6);
 }
 .alert-warning {
-  .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
+  .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text;#ffa94a);
 }
 .alert-danger {
-  .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
+  .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text;#f33434);
 }
 
 .alert-small {
   padding: @padding-base-vertical @padding-base-horizontal;
-
+  //宁尘添加
+  .alert-icon{
+    line-height: 1;
+    margin-right: 5px;
+    font-size: 20px !important;
+  }
   .close {
     font-size: 20px;
     top: 0;
