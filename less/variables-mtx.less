@@ -14,6 +14,7 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 @gray-light-mtx:         #aab3cd;//满天星默认文字浅色
+@gray-border-color:     #ccd5e5;//满天星的table的border的颜色
 
 @brand-primary:         #03adf5;//满天星蓝色基调
 @brand-primary-hover:   #4ac9ff;//hover时的颜色
@@ -167,7 +168,7 @@
 @btn-primary-hover-bg:           @brand-primary-hover;
 @btn-primary-active-bg:          @brand-primary-active;
 
-@btn-bordered-color:             #717d98;                       
+@btn-bordered-color:             #717d98;
 @btn-bordered-border:            #ccd5e5;
 
 //== Forms
@@ -418,19 +419,19 @@
 
 //=== Shared nav styles
 @nav-link-padding:                          2px 10px;
-@nav-link-hover-bg:                         @gray-lighter;
+@nav-link-hover-bg:                         #fff;
 
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
 
 //== Tabs
-@nav-tabs-border-color:                     #ddd;
+@nav-tabs-border-color:                     @gray-border-color;
 
 @nav-tabs-link-hover-border-color:          @gray-lighter;
 
 @nav-tabs-active-link-hover-bg:             @body-bg;
 @nav-tabs-active-link-hover-color:          @brand-primary;
-@nav-tabs-active-link-hover-border-color:   #ddd;
+@nav-tabs-active-link-hover-border-color:   @gray-border-color;
 
 @nav-tabs-justified-link-border-color:            #ddd;
 @nav-tabs-justified-active-link-border-color:     @body-bg;
@@ -440,6 +441,10 @@
 @nav-pills-active-link-hover-bg:            @component-active-bg;
 @nav-pills-active-link-hover-color:         @component-active-color;
 
+//== wrap
+@navTabsBorderColor:  @gray-border-color;
+@nav-tab-wraped-color: @gray;
+@nav-tab-wraped-bg: #fff;
 
 //== Pagination
 //
