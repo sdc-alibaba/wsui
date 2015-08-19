@@ -769,3 +769,24 @@ select:-moz-focusring {
     }
   }
 }
+
+//textarea字数限制组件
+.textarea-group {
+  position: relative;
+  textarea {
+    resize: vertical;
+  }
+  .textarea-addon {
+    margin-top: 5px;
+    span {
+      display: inline-block;
+    }
+    .error-container {
+      width: 70%;
+    }
+    .textarea-group-addon-count {
+      padding: 5px 0;
+      float: right;
+    }
+  }
+}

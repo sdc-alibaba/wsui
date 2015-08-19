@@ -7,6 +7,11 @@
     var that = this,
         len = $(that).data('max'),
         count = $(that).val().length;
-    $(that).siblings('.input-group-addon-count').html('<span class="' + (count < len ? '' : 'text-primary') + '">' + count + '/' + len + '</span>');
+    if ($(that).is('input')) {
+      $(that).siblings('.input-group-addon-count').html('<span class="' + (count < len ? '' : 'text-danger') + '">' + count + '/' + len + '</span>');
+    }
+    if ($(that).is('textarea')) {
+      $(that).siblings('.textarea-addon').find('.textarea-group-addon-count').html('<span class="' + (count < len ? '' : 'text-danger') + '">' + count + '/' + len + '</span>');
+    }
   });
 }(jQuery);
