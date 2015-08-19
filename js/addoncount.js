@@ -6,12 +6,15 @@
   $(document).on('input propertychange', '[data-max]', function () {
     var that = this,
         len = $(that).data('max'),
-        count = $(that).val().length;
+        count = $(that).val().length,
+        numHtml = '<span class="' + (count < len ? '' : 'text-danger') + '">' + count + '/' + len + '</span>',
+        $container;
     if ($(that).is('input')) {
-      $(that).siblings('.input-group-addon-count').html('<span class="' + (count < len ? '' : 'text-danger') + '">' + count + '/' + len + '</span>');
+      $container = $(that).siblings('.input-group-addon-count');
     }
     if ($(that).is('textarea')) {
-      $(that).siblings('.textarea-addon').find('.textarea-group-addon-count').html('<span class="' + (count < len ? '' : 'text-danger') + '">' + count + '/' + len + '</span>');
+      $container = $(that).siblings('.textarea-addon').find('.textarea-group-addon-count');
     }
+    $container.html(numHtml);
   });
 }(jQuery);
