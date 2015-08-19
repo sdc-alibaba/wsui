@@ -249,6 +249,24 @@ input[type="search"] {
   span:before {
     margin-right: 4px;
   }
+  //disabled
+  &.disabled {
+    span {
+      color: @box-disabled-color;
+    }
+    input[type="checkbox"]:checked + span:before,
+    input[type="checkbox"][disabled]:hover + span:before,
+    input[type="checkbox"]:checked + span,
+    input[type="checkbox"][disabled]:hover + span {
+      color: @box-disabled-color;
+    }
+    input[type="radio"]:checked + span:before,
+    input[type="radio"][disabled]:hover + span:before,
+    input[type="radio"]:checked + span,
+    input[type="radio"][disabled]:hover + span {
+      color: @box-disabled-color;
+    }
+  }
 }
 .checkbox, .checkbox-inline {
   span:before {
@@ -281,6 +299,7 @@ input[type="search"] {
     content:'\e623';
     color: @box-checked-color;
   }
+  //disabled
   // 强对比场景hover变红
   &.text-primary {
     input[type="radio"]:checked + span:before, input[type="radio"]:not([disabled]):hover + span:before {
