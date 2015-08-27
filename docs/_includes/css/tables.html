@@ -119,6 +119,46 @@
 </table>
 {% endhighlight %}
 
+<h2 id="tables-striped">头部格式化表格</h2>
+  <p>通过 <code>.table-format</code> 类可以给 <code>&lt;tbody&gt;</code> 表格头部凸显，每一行通过<code>border-bottom</code>隔开。</p>
+  <div class="bs-example" data-example-id="formated-table">
+    <table class="table table-format">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- /example -->
+{% highlight html %}
+<table class="table table-format">
+  ...
+</table>
+{% endhighlight %}
+
 
   <h2 id="tables-bordered">带边框的表格</h2>
   <p>添加 <code>.table-bordered</code> 类为表格和其中的每个单元格增加边框。</p>
