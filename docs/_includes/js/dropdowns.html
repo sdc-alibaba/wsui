@@ -153,7 +153,7 @@
       {% endhighlight %}
       <div class="bs-callout bs-callout-info" id="callout-dropdowns-data-required">
         <h4><code>data-toggle="dropdown"</code> still required</h4>
-        <p>Regardless of whether you call your dropdown via JavaScript or instead use the data-api, <code>data-toggle="dropdown"</code> is always required to be present on the dropdown's trigger element.</p>
+        <p>无论是通过Javascript还是data-api进行dropdown初始化，都需要为触发元素添加<code>data-toggle="dropdown"</code>属性。</p>
       </div>
 
       <h3 id="dropdowns-options">Options</h3>
@@ -170,26 +170,26 @@
         <table class="table table-bordered table-striped bs-events-table">
           <thead>
             <tr>
-              <th style="width: 150px;">Event Type</th>
-              <th>Description</th>
+              <th style="width: 150px;">事件类型</th>
+              <th>描述</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>show</td>
-              <td>This event fires immediately when the show instance method is called.</td>
+              <td>调用实例的show方法时触发该事件。</td>
             </tr>
             <tr>
               <td>shown</td>
-              <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
+              <td>dropdown完全显示（包括CSS过渡效果）之后触发该事件。</td>
             </tr>
             <tr>
               <td>hide</td>
-              <td>This event is fired immediately when the hide instance method has been called.</td>
+              <td>调用实例的hide方法时触发该事件。</td>
             </tr>
             <tr>
               <td>hidden</td>
-              <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
+              <td>dropdown完全隐藏（包括CSS过渡效果）之后触发该事件。</td>
             </tr>
           </tbody>
         </table>

@@ -263,3 +263,27 @@ table {
     }
   }
 }
+
+//宁尘添加增强型表单样式
+@formatTableBorderWidth:1px;
+@formatTableBorderColor:#ddd;
+@formatTableTheadBackColor:#f6f6f6;
+@formatTableTheadColor:#333;
+@formatTableTbodyBackColor:#fff;
+.table-format{
+  border: @formatTableBorderWidth solid @formatTableBorderColor;
+  thead{
+    border:@formatTableBorderWidth solid @formatTableBorderColor;
+    background-color: @formatTableTheadBackColor !important;
+    color:@formatTableTheadColor !important;
+    th{
+      font-weight: normal;
+    }
+  }
+  tbody{
+    background: @formatTableTbodyBackColor;
+    tr{
+      background-color: @formatTableTbodyBackColor !important;
+    }
+  }
+}

@@ -526,7 +526,7 @@
     });
     $('#toast-top').click(function(event){
       event.preventDefault();
-      $.toast({text:'button top success',posititon:'top',type:'success'});
+      $.toast({text:'button top success',position:'top',type:'success'});
     });
     $('#toast-topright').click(function(event){
       event.preventDefault();

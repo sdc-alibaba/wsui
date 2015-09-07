@@ -66,7 +66,7 @@
     <div class="col-sm-offset-2 col-sm-6">
       <div class="checkbox">
         <label>
-          <input type="checkbox" data-rule-required='true' name='validate-checkbox-example'> 
+          <input type="checkbox" data-rule-required='true' name='validate-checkbox-example'>
           <span class="error-container">Remember me</span>
         </label>
       </div>
@@ -207,10 +207,19 @@ $("form").validate({
       </div>
       </div>
       <div class="col-sm-4 error-container"></div>
-      <!-- <div class="input-append">
-          <input type="text" autocomplete="off" data-max="10" name="input-rule-count" class="form-control" placeholder="rule" data-rules="required|maxlength=10">
-          <span class="add-on">0/10</span> -->
-      <!-- </div> -->
+    </div>
+    <div class="form-group">
+      <!-- 个数计算 -->
+      <label for="input-rule-demo-count" class="col-sm-2 control-label">textarea字符个数</label>
+      <div class="col-sm-6">
+      <div class="textarea-group">
+        <textarea class="form-control" rows="3" placeholder="Recipient's username" autocomplete="off" data-max="500" name="textarea-rule-count" data-rule-required="true" data-rule-maxlength="500"></textarea>
+        <div class="textarea-addon">
+          <span class="error-container"></span>
+          <span class="textarea-group-addon-count" >0/500</span>
+        </div>
+      </div>
+      </div>
     </div>
     <div class="form-group">
       <div class="col-sm-6 col-sm-offset-2">
